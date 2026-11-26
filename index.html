@@ -525,10 +525,29 @@ function renderPreview(){
 /* PRINT */
 function printReport() {
     if (!currentReport) {
-        alert("No report available");
+        alert("No report available.");
         return;
     }
 
+    renderPreview();
+
+    const reportImage = document.querySelector(
+        "#reportPreview .report-background"
+    );
+
+    function startPrinting() {
+        setTimeout(() => {
+            window.print();
+        }, 500);
+    }
+
+    if (reportImage && !reportImage.complete) {
+        reportImage.onload = startPrinting;
+        reportImage.onerror = startPrinting;
+    } else {
+        startPrinting();
+    }
+}
     renderPreview();
 
     const report = document.querySelector("#reportPreview .report-sheet");
