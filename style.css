@@ -89,3 +89,103 @@ button { cursor: pointer; }
     background: white;
     border-radius: 12px;
     padding: 20px;
+/* ===== FINAL A4 BACKGROUND FIX ===== */
+
+.report-sheet {
+    width: 210mm !important;
+    height: 297mm !important;
+    min-height: 297mm !important;
+    max-height: 297mm !important;
+    position: relative !important;
+    overflow: hidden !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    background: #fff !important;
+    box-sizing: border-box !important;
+}
+
+/* Remove black margins from background by vertically enlarging it */
+.report-background {
+    position: absolute !important;
+    left: 0 !important;
+    top: -15% !important;
+    width: 100% !important;
+    height: 130% !important;
+    object-fit: fill !important;
+    display: block !important;
+    z-index: 0 !important;
+}
+
+/* Keep report content above background */
+.report-content {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 2 !important;
+}
+
+/* Keep patient information unchanged */
+.report-patient-info {
+    position: absolute !important;
+    z-index: 5 !important;
+}
+
+/* Keep results table unchanged */
+.report-results {
+    position: absolute !important;
+    z-index: 5 !important;
+}
+
+/* ===== PRINT / PDF ===== */
+@media print {
+    @page {
+        size: A4 portrait;
+        margin: 0 !important;
+    }
+
+    html,
+    body {
+        width: 210mm !important;
+        height: 297mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        background: #fff !important;
+    }
+
+    #reportPreview {
+        width: 210mm !important;
+        height: 297mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        background: #fff !important;
+    }
+
+    .report-sheet {
+        width: 210mm !important;
+        height: 297mm !important;
+        min-height: 297mm !important;
+        max-height: 297mm !important;
+        margin: 0 !important;
+        overflow: hidden !important;
+        page-break-after: avoid !important;
+        break-after: avoid !important;
+    }
+
+    .report-background {
+        top: -15% !important;
+        width: 100% !important;
+        height: 130% !important;
+        object-fit: fill !important;
+    }
+
+    .sidebar,
+    .topbar,
+    .no-print,
+    footer,
+    button {
+        display: none !important;
+    }
+}
