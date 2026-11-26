@@ -54,3 +54,46 @@ function loadSettings(){let s=db.settings;$('setLabAr').value=s.labAr||'';$('set
 function exportWord(){if(!currentReport)return;renderPreview();let html=`<html><head><meta charset="UTF-8"><style>body{font-family:Arial}table{width:100%;border-collapse:collapse}th,td{border:1px solid #777;padding:7px;text-align:center}</style></head><body>${$('reportPreview').innerHTML}</body></html>`,b=new Blob(['\ufeff',html],{type:'application/msword'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='Report-'+currentReport.id+'.doc';a.click()}
 dashboard();renderPatients();renderTests();
 </script></body></html>
+<thead>
+<tr>
+    <th>Reference Range</th>
+    <th>Unit</th>
+    <th>Result</th>
+    <th>Test Name</th>
+</tr>
+</thead>
+.report-results {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    direction: ltr !important;
+}
+
+.report-results th,
+.report-results td {
+    border: 1px solid #777;
+    padding: 6px 4px;
+    text-align: center;
+    font-size: 9pt;
+    overflow-wrap: anywhere;
+}
+
+.report-results th:nth-child(1),
+.report-results td:nth-child(1) {
+    width: 34%;
+}
+
+.report-results th:nth-child(2),
+.report-results td:nth-child(2) {
+    width: 14%;
+}
+
+.report-results th:nth-child(3),
+.report-results td:nth-child(3) {
+    width: 18%;
+}
+
+.report-results th:nth-child(4),
+.report-results td:nth-child(4) {
+    width: 34%;
+}
