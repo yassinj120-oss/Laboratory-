@@ -22,7 +22,55 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build Windows application
+      - name: Install Electron tools
+        run: npm install --save-dev electron electron-builder
+
+      - name: Create Electron main file
+        shell: pwsh
+        run: |
+          @'
+          const { app, BrowserWindow } = require('electron');
+
+          function createWindow() {
+            const win = new BrowserWindow({
+              width: 1200,
+              height: 850,
+              minWidth: 900,
+              minHeight: 650,
+              title: "Al-Juman Laboratory",
+              autoHideMenuBar: true,
+              webPreferences: {
+                nodeIntegration: false,
+                contextIsolation: true
+              }
+            });
+
+            win.loadFile('index.html');
+          }
+
+          app.whenReady().then(() => {
+            createWindow();
+
+            app.on('activate', () => {
+              if (BrowserWindow.getAllWindows().length === 0) {
+                createWindow();
+              }
+            });
+          });
+
+          app.on('window-all-closed', () => {
+            if (process.platform !== 'darwin') {
+              app.quit();
+            }
+          });
+          '@ | Set-Content -Path index.js -Encoding UTF8
+
+      - name: Configure Electron
+        run: |
+          npm pkg set main="index.js"
+          npm pkg set scripts.desktop:build="electron-builder --win nsis"
+
+      - name: Build Windows installer
         run: npm run desktop:build
 
       - name: Upload Windows installer
