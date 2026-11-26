@@ -16,6 +16,10 @@ function createWindow() {
   });
 
   win.loadFile(path.join(__dirname, "index.html"));
+
+  win.webContents.on("did-fail-load", (event, errorCode, errorDescription) => {
+    console.error("Failed to load:", errorCode, errorDescription);
+  });
 }
 
 app.whenReady().then(() => {
