@@ -1,229 +1,63 @@
+/* ===== CROP BLACK BARS FROM LAB FORM ===== */
 
-/* ==========================================
-   AL-JUMAN LAB - FINAL REPORT BACKGROUND FIX
-   A4 - Remove black bars from background
-   ========================================== */
-
-:root {
-    --report-width: 210mm;
-    --report-height: 297mm;
-
-    /* Background crop adjustment */
-    --background-scale: 152%;
-    --background-offset-y: -26%;
-
-    /* Patient and results positions - preserve current */
-    --patient-info-top: 17%;
-    --results-top: 23%;
-}
-
-/* A4 report */
 .report-sheet {
     position: relative !important;
-    width: var(--report-width) !important;
-    height: var(--report-height) !important;
-    min-width: var(--report-width) !important;
-    min-height: var(--report-height) !important;
-    max-width: var(--report-width) !important;
-    max-height: var(--report-height) !important;
-
-    margin: 0 auto !important;
-    padding: 0 !important;
+    width: 210mm !important;
+    height: 297mm !important;
     overflow: hidden !important;
-    box-sizing: border-box !important;
-
-    background: #fff !important;
-    isolation: isolate !important;
+    background: white !important;
 }
 
-/* Background image - crop black bands */
-.report-sheet .report-background {
+.report-background {
     position: absolute !important;
-
-    left: 0 !important;
-    top: var(--background-offset-y) !important;
-
-    width: 100% !important;
-    height: var(--background-scale) !important;
-
-    max-width: none !important;
-    max-height: none !important;
-
-    object-fit: fill !important;
-    object-position: center !important;
-
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-
-    z-index: 0 !important;
-    pointer-events: none !important;
-}
-
-/* Report content layer */
-.report-sheet .report-content {
-    position: absolute !important;
-    inset: 0 !important;
-
     width: 100% !important;
     height: 100% !important;
-
-    margin: 0 !important;
-    padding: 0 !important;
-
-    background: transparent !important;
-    z-index: 2 !important;
+    top: 0 !important;
+    left: 0 !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    transform: scale(1.12) !important;
+    transform-origin: center center !important;
+    z-index: 0 !important;
 }
 
-/* Patient information */
-.report-sheet .report-patient-info {
+.report-patient-info {
     position: absolute !important;
-    top: var(--patient-info-top) !important;
-
-    z-index: 5 !important;
+    top: 20.5% !important;
+    z-index: 20 !important;
 }
 
-/* Results table */
-.report-sheet .report-results {
+.report-results {
     position: absolute !important;
-    top: var(--results-top) !important;
-
-    z-index: 5 !important;
+    top: 25.5% !important;
+    z-index: 20 !important;
 }
-
-/* Report preview container */
-#reportPreview {
-    width: 100% !important;
-    margin: 0 auto !important;
-    padding: 0 !important;
-    overflow: auto !important;
-    background: #fff !important;
-}
-
-/* ==========================================
-   PRINT AND PDF
-   ========================================== */
 
 @media print {
-
     @page {
-        size: A4 portrait !important;
-        margin: 0 !important;
-    }
-
-    html,
-    body {
-        width: 210mm !important;
-        height: 297mm !important;
-
-        margin: 0 !important;
-        padding: 0 !important;
-
-        overflow: hidden !important;
-        background: white !important;
-    }
-
-    #reportPreview {
-        position: absolute !important;
-        left: 0 !important;
-        top: 0 !important;
-
-        width: 210mm !important;
-        height: 297mm !important;
-
-        margin: 0 !important;
-        padding: 0 !important;
-
-        overflow: hidden !important;
-        background: white !important;
+        size: A4 portrait;
+        margin: 0;
     }
 
     .report-sheet {
-        position: relative !important;
-
         width: 210mm !important;
         height: 297mm !important;
-        min-width: 210mm !important;
-        min-height: 297mm !important;
-        max-width: 210mm !important;
-        max-height: 297mm !important;
-
-        margin: 0 !important;
-        padding: 0 !important;
-
         overflow: hidden !important;
-
-        transform: none !important;
-        zoom: 1 !important;
-
-        page-break-before: avoid !important;
-        page-break-after: avoid !important;
-        page-break-inside: avoid !important;
-
-        break-before: avoid !important;
-        break-after: avoid !important;
-        break-inside: avoid !important;
     }
 
-    .report-sheet .report-background {
-        position: absolute !important;
-
-        left: 0 !important;
-        top: -26% !important;
-
+    .report-background {
         width: 100% !important;
-        height: 152% !important;
-
-        object-fit: fill !important;
-
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center !important;
+        transform: scale(1.12) !important;
     }
 
-    .report-sheet .report-content {
-        position: absolute !important;
-        inset: 0 !important;
-        width: 210mm !important;
-        height: 297mm !important;
+    .report-patient-info {
+        top: 20.5% !important;
     }
 
-    .report-sheet .report-patient-info {
-        top: 17% !important;
-    }
-
-    .report-sheet .report-results {
-        top: 23% !important;
-    }
-
-    /* Hide application interface */
-    body * {
-        visibility: hidden !important;
-    }
-
-    #reportPreview,
-    #reportPreview * {
-        visibility: visible !important;
-    }
-
-    .sidebar,
-    .topbar,
-    .no-print,
-    footer,
-    button,
-    nav {
-        display: none !important;
-    }
-
-    #reportPreview {
-        display: block !important;
-    }
-
-    /* Preserve background colors */
-    *,
-    *::before,
-    *::after {
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
+    .report-results {
+        top: 30.5% !important;
     }
 }
