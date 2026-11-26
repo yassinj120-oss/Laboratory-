@@ -1,1 +1,36 @@
-{"name":"al-juman-lab","version":"1.0.0","private":true,"scripts":{"build":"echo web app ready"},"dependencies":{"@capacitor/core":"^7.0.0"},"devDependencies":{"@capacitor/cli":"^7.0.0","@capacitor/android":"^7.0.0"}}
+{
+  "name": "al-juman-lab",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "echo web app ready",
+    "desktop": "electron .",
+    "desktop:build": "electron-builder --win"
+  },
+  "dependencies": {
+    "@capacitor/core": "^7.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^7.0.0",
+    "@capacitor/android": "^7.0.0",
+    "electron": "39.8.10",
+    "electron-builder": "^26.0.0"
+  },
+  "build": {
+    "appId": "com.aljuman.lab",
+    "productName": "Al-Juman Laboratory",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "index.html",
+      "app.js",
+      "style.css",
+      "assets/**/*",
+      "electron.js"
+    ],
+    "win": {
+      "target": "nsis"
+    }
+  }
+}
