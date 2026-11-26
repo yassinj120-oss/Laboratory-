@@ -1,38 +1,566 @@
-{
-  "name": "al-juman-lab",
-  "version": "1.0.0",
-  "private": true,
-  "description": "Al-Juman Al-Janabi Laboratory Desktop Application",
-  "main": "electron.js",
-  "scripts": {
-    "build": "echo Web app ready",
-    "desktop": "electron .",
-    "desktop:build": "electron-builder --win"
-  },
-  "dependencies": {
-    "@capacitor/core": "^7.0.0"
-  },
-  "devDependencies": {
-    "@capacitor/cli": "^7.0.0",
-    "@capacitor/android": "^7.0.0",
-    "electron": "39.8.10",
-    "electron-builder": "^26.0.0"
-  },
-  "build": {
-    "appId": "com.aljuman.lab",
-    "productName": "Al-Juman Laboratory",
-    "directories": {
-      "output": "dist"
-    },
-    "files": [
-      "index.html",
-      "app.js",
-      "style.css",
-      "assets/**/*",
-      "electron.js"
-    ],
-    "win": {
-      "target": "nsis"
-    }
-  }
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#12345a">
+<title>مختبر الجمان الجانبي</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,"Noto Sans Arabic",sans-serif;
+  background:#f2f5f9;
+  color:#172335
 }
+button,input,select,textarea{font:inherit}
+button{
+  cursor:pointer;border:0;border-radius:9px;
+  padding:11px 14px;background:#1769aa;color:#fff
+}
+button:active{transform:scale(.98)}
+.secondary{background:#eaf1f8;color:#12345a}
+.danger{background:#ffe5e5;color:#b42318}
+.success{background:#16834b}
+header{
+  background:#12345a;color:white;padding:16px;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:12px
+}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{
+  width:48px;height:48px;border-radius:12px;
+  background:#eaf1f8;color:#12345a;
+  display:grid;place-items:center;font-size:24px;font-weight:bold
+}
+header h1{font-size:20px;margin:0}
+header small{display:block;margin-top:5px;color:#cbd9e8}
+nav{
+  display:flex;gap:8px;flex-wrap:wrap;
+  background:white;padding:10px;border-bottom:1px solid #dce4ee
+}
+nav button{background:#eaf1f8;color:#12345a}
+nav button.active{background:#12345a;color:white}
+main{max-width:1250px;margin:auto;padding:18px}
+.page{display:none}
+.page.active{display:block}
+.title{font-size:24px;margin:0 0 16px}
+.cards{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:12px
+}
+.card,.panel{
+  background:white;border:1px solid #dce4ee;
+  border-radius:13px;padding:16px
+}
+.metric{font-size:30px;font-weight:bold;color:#1769aa;margin-top:8px}
+.panel{margin-top:16px}
+.grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:12px
+}
+.field label{display:block;font-weight:bold;margin-bottom:6px}
+.field input,.field select,.field textarea{
+  width:100%;padding:11px;border:1px solid #dce4ee;
+  border-radius:8px;background:white
+}
+.field textarea{min-height:80px}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}
+.table-wrap{overflow:auto;border:1px solid #dce4ee;border-radius:10px}
+table{border-collapse:collapse;width:100%;background:white;min-width:600px}
+th,td{text-align:right;padding:10px;border-bottom:1px solid #dce4ee}
+th{background:#eaf1f8;color:#12345a}
+.search{
+  width:100%;max-width:400px;padding:11px;
+  border:1px solid #dce4ee;border-radius:8px;margin-bottom:12px
+}
+.empty{text-align:center;padding:25px;color:#64748b}
+footer{text-align:center;padding:20px;color:#64748b;font-size:12px}
+.stat-box{display:flex;align-items:center;justify-content:space-between}
+.badge{display:inline-block;padding:5px 9px;border-radius:20px;background:#eaf1f8;color:#12345a;font-size:12px}
+@media(max-width:600px){
+  header{align-items:flex-start}
+  header h1{font-size:17px}
+  main{padding:12px}
+  nav{display:grid;grid-template-columns:repeat(3,1fr)}
+  nav button{padding:10px 5px;font-size:13px}
+  .title{font-size:21px}
+  .grid{grid-template-columns:1fr}
+  .actions button{flex:1}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="brand">
+    <div class="logo">✚</div>
+    <div>
+      <h1>مختبر الجمان الجانبي</h1>
+      <small>Al-Juman Al-Janabi Laboratory</small>
+    </div>
+  </div>
+  <button class="secondary" onclick="backupData()">نسخ احتياطي</button>
+</header>
+
+<nav>
+  <button class="active" onclick="showPage('home',this)">الرئيسية</button>
+  <button onclick="showPage('newPatient',this)">مريض جديد</button>
+  <button onclick="showPage('patients',this)">سجلات المرضى</button>
+  <button onclick="showPage('tests',this)">التحاليل</button>
+  <button onclick="showPage('settings',this)">الإعدادات</button>
+</nav>
+
+<main>
+
+<!-- HOME -->
+<section id="home" class="page active">
+  <h2 class="title">لوحة الرئيسية</h2>
+
+  <div class="cards">
+    <div class="card">
+      <div>إجمالي المرضى</div>
+      <div class="metric" id="totalPatients">0</div>
+    </div>
+    <div class="card">
+      <div>تقارير اليوم</div>
+      <div class="metric" id="todayPatients">0</div>
+    </div>
+    <div class="card">
+      <div>عدد التحاليل</div>
+      <div class="metric" id="totalTests">0</div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>إجراءات سريعة</h3>
+    <div class="actions">
+      <button onclick="showPage('newPatient')">+ إضافة مريض جديد</button>
+      <button class="secondary" onclick="showPage('patients')">عرض السجلات</button>
+      <button class="secondary" onclick="showPage('tests')">إدارة التحاليل</button>
+    </div>
+  </div>
+</section>
+
+<!-- NEW PATIENT -->
+<section id="newPatient" class="page">
+  <h2 class="title">إضافة مريض جديد</h2>
+
+  <div class="panel">
+    <form id="patientForm">
+      <div class="grid">
+
+        <div class="field">
+          <label>اسم المريض</label>
+          <input id="patientName" required>
+        </div>
+
+        <div class="field">
+          <label>العمر</label>
+          <div style="display:flex;gap:8px">
+            <input id="patientAge" type="number" min="0" required>
+            <select id="ageUnit">
+              <option value="Years">سنة</option>
+              <option value="Months">شهر</option>
+              <option value="Days">يوم</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>الجنس</label>
+          <select id="patientGender" required>
+            <option value="">اختر</option>
+            <option value="Male">ذكر</option>
+            <option value="Female">أنثى</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>تاريخ الفحص</label>
+          <input id="patientDate" type="date" required>
+        </div>
+
+        <div class="field">
+          <label>رقم المريض</label>
+          <input id="patientNumber" readonly>
+        </div>
+
+        <div class="field">
+          <label>اسم الطبيب (اختياري)</label>
+          <input id="doctorName">
+        </div>
+
+      </div>
+
+      <div class="field" style="margin-top:12px">
+        <label>ملاحظات</label>
+        <textarea id="patientNotes"></textarea>
+      </div>
+
+      <div class="actions">
+        <button type="submit">حفظ المريض</button>
+        <button type="reset" class="secondary">إعادة تعيين</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- PATIENTS -->
+<section id="patients" class="page">
+  <h2 class="title">سجلات المرضى</h2>
+
+  <input class="search" id="patientSearch"
+         placeholder="بحث عن مريض..."
+         oninput="renderPatients()">
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>رقم المريض</th>
+          <th>الاسم</th>
+          <th>العمر</th>
+          <th>الجنس</th>
+          <th>التاريخ</th>
+          <th>إجراءات</th>
+        </tr>
+      </thead>
+      <tbody id="patientsTable"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- TESTS -->
+<section id="tests" class="page">
+  <h2 class="title">إدارة التحاليل</h2>
+
+  <div class="panel">
+    <h3>إضافة تحليل</h3>
+    <div class="grid">
+      <div class="field">
+        <label>اسم التحليل</label>
+        <input id="testName" placeholder="Test Name">
+      </div>
+      <div class="field">
+        <label>الوحدة</label>
+        <input id="testUnit" placeholder="Unit">
+      </div>
+      <div class="field">
+        <label>Reference Range</label>
+        <input id="testRange" placeholder="Normal Range">
+      </div>
+    </div>
+    <div class="actions">
+      <button onclick="addTest()">إضافة التحليل</button>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>التحاليل الموجودة</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Test Name</th>
+            <th>Unit</th>
+            <th>Reference Range</th>
+            <th>إجراء</th>
+          </tr>
+        </thead>
+        <tbody id="testsTable"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SETTINGS -->
+<section id="settings" class="page">
+  <h2 class="title">الإعدادات</h2>
+
+  <div class="panel">
+    <h3>بيانات المختبر</h3>
+    <div class="grid">
+      <div class="field">
+        <label>اسم المختبر</label>
+        <input value="مختبر الجمان الجانبي">
+      </div>
+      <div class="field">
+        <label>English Name</label>
+        <input value="Al-Juman Al-Janabi Laboratory">
+      </div>
+      <div class="field">
+        <label>العنوان</label>
+        <input value="الصقلاوية - الشهداء الثانية">
+      </div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>البيانات</h3>
+    <div class="actions">
+      <button onclick="backupData()">تصدير نسخة احتياطية</button>
+      <button class="secondary" onclick="restoreData()">استعادة نسخة احتياطية</button>
+      <button class="danger" onclick="clearAllData()">مسح جميع البيانات</button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  مختبر الجمان الجانبي © 2026
+</footer>
+
+<script>
+const STORAGE_KEY="aljuman_lab_v1";
+
+let data=JSON.parse(localStorage.getItem(STORAGE_KEY)||"null");
+
+if(!data){
+  data={
+    patients:[],
+    tests:[
+      {name:"CBC",unit:"",range:""},
+      {name:"Hemoglobin",unit:"g/dL",range:""},
+      {name:"WBC",unit:"10³/µL",range:""},
+      {name:"Platelets",unit:"10³/µL",range:""},
+      {name:"Glucose",unit:"mg/dL",range:""},
+      {name:"Urea",unit:"mg/dL",range:""},
+      {name:"Creatinine",unit:"mg/dL",range:""},
+      {name:"ALT",unit:"U/L",range:""},
+      {name:"AST",unit:"U/L",range:""},
+      {name:"TSH",unit:"µIU/mL",range:""},
+      {name:"Vitamin D",unit:"ng/mL",range:""},
+      {name:"CRP",unit:"mg/L",range:""},
+      {name:"Troponin I",unit:"ng/mL",range:""},
+      {name:"Urine Analysis",unit:"",range:""}
+    ]
+  };
+}
+
+function saveData(){
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(data));
+  updateDashboard();
+}
+
+function showPage(id,btn){
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+
+  document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
+  if(btn)btn.classList.add("active");
+
+  if(id==="patients")renderPatients();
+  if(id==="tests")renderTests();
+}
+
+function generatePatientNumber(){
+  const year=new Date().getFullYear();
+  const count=data.patients.length+1;
+  return year+"-"+String(count).padStart(4,"0");
+}
+
+function updateDashboard(){
+  document.getElementById("totalPatients").textContent=data.patients.length;
+  document.getElementById("totalTests").textContent=data.tests.length;
+
+  const today=new Date().toISOString().slice(0,10);
+  document.getElementById("todayPatients").textContent=
+    data.patients.filter(p=>p.date===today).length;
+
+  document.getElementById("patientNumber").value=generatePatientNumber();
+}
+
+document.getElementById("patientDate").value=
+  new Date().toISOString().slice(0,10);
+
+document.getElementById("patientForm").addEventListener("submit",function(e){
+  e.preventDefault();
+
+  const patient={
+    id:Date.now(),
+    number:generatePatientNumber(),
+    name:document.getElementById("patientName").value.trim(),
+    age:document.getElementById("patientAge").value,
+    ageUnit:document.getElementById("ageUnit").value,
+    gender:document.getElementById("patientGender").value,
+    date:document.getElementById("patientDate").value,
+    doctor:document.getElementById("doctorName").value,
+    notes:document.getElementById("patientNotes").value,
+    results:[]
+  };
+
+  data.patients.push(patient);
+  saveData();
+
+  alert("تم حفظ المريض بنجاح");
+  this.reset();
+
+  document.getElementById("patientDate").value=
+    new Date().toISOString().slice(0,10);
+
+  showPage("patients");
+});
+
+function renderPatients(){
+  const search=document.getElementById("patientSearch").value.toLowerCase();
+  const tbody=document.getElementById("patientsTable");
+
+  const patients=data.patients.filter(p=>
+    p.name.toLowerCase().includes(search)||
+    p.number.toLowerCase().includes(search)
+  );
+
+  if(!patients.length){
+    tbody.innerHTML='<tr><td colspan="6" class="empty">لا توجد سجلات</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML=patients.map(p=>`
+    <tr>
+      <td>${p.number}</td>
+      <td>${escapeHTML(p.name)}</td>
+      <td>${p.age} ${p.ageUnit}</td>
+      <td>${p.gender==="Male"?"ذكر":"أنثى"}</td>
+      <td>${p.date}</td>
+      <td>
+        <button onclick="viewPatient(${p.id})">عرض</button>
+        <button class="danger" onclick="deletePatient(${p.id})">حذف</button>
+      </td>
+    </tr>
+  `).join("");
+}
+
+function viewPatient(id){
+  const p=data.patients.find(x=>x.id===id);
+  if(!p)return;
+
+  alert(
+    "اسم المريض: "+p.name+
+    "\nرقم المريض: "+p.number+
+    "\nالعمر: "+p.age+" "+p.ageUnit+
+    "\nالجنس: "+p.gender+
+    "\nالتاريخ: "+p.date+
+    "\nالطبيب: "+(p.doctor||"-")+
+    "\nالملاحظات: "+(p.notes||"-")
+  );
+}
+
+function deletePatient(id){
+  if(!confirm("هل تريد حذف هذا المريض؟"))return;
+  data.patients=data.patients.filter(p=>p.id!==id);
+  saveData();
+  renderPatients();
+}
+
+function addTest(){
+  const name=document.getElementById("testName").value.trim();
+  const unit=document.getElementById("testUnit").value.trim();
+  const range=document.getElementById("testRange").value.trim();
+
+  if(!name){
+    alert("يرجى إدخال اسم التحليل");
+    return;
+  }
+
+  data.tests.push({name,unit,range});
+  saveData();
+
+  document.getElementById("testName").value="";
+  document.getElementById("testUnit").value="";
+  document.getElementById("testRange").value="";
+
+  renderTests();
+}
+
+function renderTests(){
+  const tbody=document.getElementById("testsTable");
+
+  tbody.innerHTML=data.tests.map((t,i)=>`
+    <tr>
+      <td>${escapeHTML(t.name)}</td>
+      <td>${escapeHTML(t.unit)}</td>
+      <td>${escapeHTML(t.range)}</td>
+      <td><button class="danger" onclick="deleteTest(${i})">حذف</button></td>
+    </tr>
+  `).join("");
+}
+
+function deleteTest(i){
+  if(!confirm("حذف هذا التحليل؟"))return;
+  data.tests.splice(i,1);
+  saveData();
+  renderTests();
+}
+
+function backupData(){
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(blob);
+  a.download="Al-Juman-Lab-Backup.json";
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+function restoreData(){
+  const input=document.createElement("input");
+  input.type="file";
+  input.accept=".json,application/json";
+
+  input.onchange=()=>{
+    const file=input.files[0];
+    if(!file)return;
+
+    const reader=new FileReader();
+    reader.onload=()=>{
+      try{
+        const restored=JSON.parse(reader.result);
+        if(!restored.patients||!restored.tests)
+          throw new Error("Invalid file");
+
+        data=restored;
+        saveData();
+        renderPatients();
+        renderTests();
+        alert("تم استعادة البيانات بنجاح");
+      }catch{
+        alert("ملف النسخة الاحتياطية غير صالح");
+      }
+    };
+    reader.readAsText(file);
+  };
+
+  input.click();
+}
+
+function clearAllData(){
+  if(!confirm("تحذير: سيتم حذف جميع المرضى والبيانات. هل أنت متأكد؟"))return;
+  data={patients:[],tests:[]};
+  saveData();
+  renderPatients();
+  renderTests();
+  alert("تم مسح البيانات");
+}
+
+function escapeHTML(value){
+  return String(value||"").replace(/[&<>"']/g,function(c){
+    return {
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#39;"
+    }[c];
+  });
+}
+
+updateDashboard();
+renderPatients();
+renderTests();
+</script>
+
+</body>
+</html>
