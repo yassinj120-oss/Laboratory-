@@ -124,3 +124,36 @@
     display: none !important;
   }
 }
+/* ===== REPORT GROUP HEADERS FIX ===== */
+.report-results tr.report-group {
+    display: table-row !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.report-results tr.report-group td {
+    display: table-cell !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    background-color: #d8eafa !important;
+    color: #102d4f !important;
+    font-weight: bold !important;
+    text-align: left !important;
+    padding: 7px 10px !important;
+    font-size: 10pt !important;
+    border-top: 2px solid #286a9d !important;
+    border-bottom: 1px solid #286a9d !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+}
+
+/* Keep group background during printing */
+@media print {
+    .report-results tr.report-group td {
+        background-color: #d8eafa !important;
+        color: #102d4f !important;
+        font-weight: bold !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+}
