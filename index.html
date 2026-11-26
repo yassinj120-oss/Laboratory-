@@ -6,16 +6,19 @@
 <title>Al-Juman Side Lab</title>
 
 <style>
-:root{
- --navy:#102b46;--blue:#1c6ca8;--silver:#d9e1e8;
- --bg:#f2f5f9;--white:#fff;--border:#dce4ed;
- --green:#16845b;--red:#c0392b;--text:#1c2938
+:root {
+  --navy:#153b5b;
+  --blue:#2478b4;
+  --light:#eaf2f8;
+  --border:#d4e0e9;
+  --text:#1d2d3d;
+  --bg:#f2f5f9;
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);font-family:Arial,sans-serif;color:var(--text)}
 button,input,select,textarea{font:inherit}
-button{border:0;border-radius:9px;padding:11px 15px;background:var(--blue);color:white;cursor:pointer}
-button:hover{opacity:.92}
+button{border:0;border-radius:8px;padding:10px 14px;background:var(--blue);color:#fff;cursor:pointer}
+button:hover{opacity:.9}
 .light{background:#e8eef4;color:var(--navy)}
 .green{background:#d9f8e5;color:#17643b}
 .danger{background:#ffeded;color:#b42318}
@@ -35,9 +38,7 @@ h2,h3{color:var(--navy)}
 h2{font-size:22px}
 .form-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 .field label{display:block;font-weight:bold;font-size:13px;margin-bottom:6px}
-.field input,.field select,.field textarea{
- width:100%;border:1px solid var(--border);padding:10px;border-radius:8px;background:white
-}
+.field input,.field select,.field textarea{width:100%;border:1px solid var(--border);padding:10px;border-radius:8px;background:white}
 .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
 .search{width:100%;padding:12px;border:1px solid var(--border);border-radius:9px;margin-bottom:14px}
 .test-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
@@ -48,7 +49,7 @@ h2{font-size:22px}
 table{width:100%;border-collapse:collapse}
 th,td{border:1px solid #d5dde5;padding:9px;text-align:center}
 th{background:var(--navy);color:white}
-input.result-input{width:100%;min-width:85px;padding:7px;border:1px solid #ccd6df;border-radius:5px}
+input.result-input{width:100%;min-width:80px;padding:7px;border:1px solid #ccd6df;border-radius:5px}
 .entry-table{direction:ltr}
 .entry-table th,.entry-table td{direction:ltr;text-align:center}
 .special-editor{padding:12px;border:1px solid #d5e3ef;border-radius:10px;background:#f6faff}
@@ -56,24 +57,65 @@ input.result-input{width:100%;min-width:85px;padding:7px;border:1px solid #ccd6d
 .special-grid input,.special-grid select{width:100%;padding:9px;border:1px solid #ccd6df;border-radius:7px}
 .note{color:#697b8d;font-size:13px}
 
-/* REPORT TABLE: DOM order is Test Name, Result, Unit, Range.
-   RTL makes Test Name the right-most column. */
-.report-sheet{width:210mm;height:297mm;margin:auto;background:white;position:relative;overflow:hidden}
-.report-background{position:absolute;inset:0;width:210mm;height:297mm;object-fit:fill}
-.report-content{position:relative;padding:50mm 15mm 20mm;z-index:2}
-.report-patient{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;direction:ltr;text-align:left;font-size:10pt;background:#ffffffdd;padding:10px;margin-bottom:12px}
-.report-results{direction:rtl!important;width:100%;border-collapse:collapse;table-layout:fixed}
-.report-results th,.report-results td{border:1px solid #777;padding:5px;text-align:center;font-size:9pt;overflow-wrap:anywhere}
-.report-results th:nth-child(1),.report-results td:nth-child(1){width:34%}
-.report-results th:nth-child(2),.report-results td:nth-child(2){width:16%}
+/* REPORT SHEET */
+.report-sheet{
+ width:210mm;height:297mm;margin:auto;background:white;
+ position:relative;overflow:hidden;box-shadow:0 3px 18px #0001
+}
+.report-background{
+ position:absolute;inset:0;width:210mm;height:297mm;
+ object-fit:fill;z-index:0
+}
+.report-content{position:relative;z-index:2;padding:50mm 15mm 20mm}
+.report-patient{
+ display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
+ direction:ltr;text-align:left;font-size:10pt;
+ background:#ffffffed;padding:10px;margin-bottom:12px;
+ border:1px solid #dce6ee;border-radius:5px
+}
+
+/* PROFESSIONAL REPORT TABLE — LEFT TO RIGHT */
+.report-results{
+ direction:ltr!important;
+ width:100%;border-collapse:collapse;table-layout:fixed;
+ border:1.5px solid #234d70;
+}
+.report-results thead th{
+ background:#163c5a!important;color:white!important;
+ font-weight:bold;padding:9px 5px;
+ border:1px solid #315d7c;
+ letter-spacing:.2px
+}
+.report-results th,.report-results td{
+ border:1px solid #c7d5e1;
+ padding:7px 5px;text-align:center;
+ font-size:9pt;overflow-wrap:anywhere;
+}
+.report-results tbody tr:nth-child(even):not(.group-row):not(.special-row){
+ background:#f6f9fc;
+}
+.report-results td:first-child{text-align:left;font-weight:600}
+.report-results td:nth-child(2){font-weight:bold;color:#123e63}
+.report-results th:nth-child(1),.report-results td:nth-child(1){width:32%}
+.report-results th:nth-child(2),.report-results td:nth-child(2){width:14%}
 .report-results th:nth-child(3),.report-results td:nth-child(3){width:18%}
-.report-results th:nth-child(4),.report-results td:nth-child(4){width:32%}
-.group-row td{background:#e5edf5!important;color:#102b46!important;font-weight:bold;text-align:right!important}
-.special-report{margin:7mm auto;width:95%;color:#111}
-.special-report h3{background:#183b59;color:white;text-align:center;padding:8px;margin:0}
+.report-results th:nth-child(4),.report-results td:nth-child(4){width:36%}
+.group-row td{
+ background:#e5eff8!important;color:#173c5b!important;
+ font-weight:bold;text-align:left!important;
+ padding:8px 10px!important;
+ border-top:2px solid #7899b4!important;
+}
+.special-row>td{padding:4px!important;background:white!important}
+.special-report{margin:5mm auto;width:98%;color:#111}
+.special-report h3{
+ background:#183b59;color:white;text-align:center;
+ padding:8px;margin:0;border-radius:4px 4px 0 0;font-size:10pt
+}
 .special-table{direction:ltr;min-width:0;width:100%;border-collapse:collapse}
-.special-table th,.special-table td{border:1px solid #777;padding:5px;font-size:9pt}
-.special-table th{background:#f0f2f4;color:#111}
+.special-table th,.special-table td{border:1px solid #aab9c7;padding:6px;font-size:8.5pt}
+.special-table th{background:#eaf1f7;color:#173c5b}
+.special-table tr:nth-child(even){background:#f8fafc}
 .hcg-report{border:1px solid #aaa;padding:12mm 8mm;min-height:100mm;background:white}
 .hcg-report h3{background:#386900;color:white;text-align:center;padding:9px}
 .hcg-report .hcg-result{margin-top:20mm;text-align:center;font-size:18pt;font-weight:bold}
@@ -96,10 +138,10 @@ input.result-input{width:100%;min-width:85px;padding:7px;border:1px solid #ccd6d
  .sidebar,.topbar,.content>.page:not(#reportPage),.actions,.no-print{display:none!important}
  .app,.main,.content,.page#reportPage{display:block!important;width:210mm!important;margin:0!important;padding:0!important}
  .panel#reportPreview{display:block!important;border:0!important;padding:0!important;margin:0!important}
- .report-sheet{width:210mm!important;height:297mm!important;min-height:297mm!important;margin:0!important;page-break-after:avoid!important}
+ .report-sheet{width:210mm!important;height:297mm!important;min-height:297mm!important;margin:0!important;page-break-after:avoid!important;box-shadow:none!important}
  .report-background{width:210mm!important;height:297mm!important}
  .report-content{padding:50mm 15mm 20mm!important}
- .report-results{direction:rtl!important}
+ .report-results{direction:ltr!important}
 }
 </style>
 </head>
@@ -107,8 +149,7 @@ input.result-input{width:100%;min-width:85px;padding:7px;border:1px solid #ccd6d
 <body>
 <div class="app">
 <aside class="sidebar">
- <div class="brand">
-  ✚ Al-Juman Side Lab
+ <div class="brand">✚ Al-Juman Side Lab
   <small>Medical Laboratory Management</small>
  </div>
  <nav class="nav">
@@ -121,26 +162,21 @@ input.result-input{width:100%;min-width:85px;padding:7px;border:1px solid #ccd6d
 </aside>
 
 <div class="main">
-<div class="topbar">
- <h3 id="pageLabel">Home</h3>
- <span id="todayLabel"></span>
-</div>
-
+<div class="topbar"><h3 id="pageLabel">Home</h3><span id="todayLabel"></span></div>
 <main class="content">
+
 <section class="page active" id="home">
  <div class="panel">
   <h2>Al-Juman Side Lab</h2>
   <p>Patient and laboratory report management</p>
   <button onclick="go('newPatient')">+ New Patient</button>
  </div>
- <div class="panel">
-  <h3>Statistics</h3>
+ <div class="panel"><h3>Statistics</h3>
   <p>Patients: <b id="statPatients">0</b></p>
   <p>Reports: <b id="statReports">0</b></p>
   <p>Tests: <b id="statTests">0</b></p>
  </div>
- <div class="panel">
-  <h3>Recent Patients</h3>
+ <div class="panel"><h3>Recent Patients</h3>
   <div class="table-wrap"><table>
    <thead><tr><th>Patient ID</th><th>Name</th><th>Date</th><th>Open</th></tr></thead>
    <tbody id="recentPatients"></tbody>
@@ -150,8 +186,7 @@ input.result-input{width:100%;min-width:85px;padding:7px;border:1px solid #ccd6d
 
 <section class="page" id="newPatient">
  <h2>New Patient Registration</h2>
- <div class="panel">
- <form id="patientForm">
+ <div class="panel"><form id="patientForm">
   <div class="form-grid">
    <div class="field"><label>Patient Name *</label><input id="pName" required></div>
    <div class="field"><label>Age *</label><input id="pAge" type="number" min="0" required></div>
@@ -163,8 +198,7 @@ input.result-input{width:100%;min-width:85px;padding:7px;border:1px solid #ccd6d
   </div>
   <div class="field" style="margin-top:12px"><label>Notes</label><textarea id="pNotes"></textarea></div>
   <div class="actions"><button type="submit">Save & Select Tests</button></div>
- </form>
- </div>
+ </form></div>
 </section>
 
 <section class="page" id="choosePage">
@@ -184,12 +218,10 @@ input.result-input{width:100%;min-width:85px;padding:7px;border:1px solid #ccd6d
  <h2>Enter Results</h2>
  <div class="panel">
   <div id="resultPatientInfo"></div>
-  <div class="table-wrap">
-   <table class="entry-table">
-    <thead><tr><th>Test Name</th><th>Result</th><th>Unit</th><th>Reference Range</th><th>Note</th><th>Delete</th></tr></thead>
-    <tbody id="resultRows"></tbody>
-   </table>
-  </div>
+  <div class="table-wrap"><table class="entry-table">
+   <thead><tr><th>Test Name</th><th>Result</th><th>Unit</th><th>Reference Range</th><th>Note</th><th>Delete</th></tr></thead>
+   <tbody id="resultRows"></tbody>
+  </table></div>
   <div class="actions">
    <button class="light" onclick="saveDraft()">Save Draft</button>
    <button class="green" onclick="saveFinal()">Save Final Report</button>
@@ -237,24 +269,16 @@ input.result-input{width:100%;min-width:85px;padding:7px;border:1px solid #ccd6d
 
 <section class="page" id="settings">
  <h2>Settings & Backup</h2>
- <div class="panel">
-  <div class="form-grid">
-   <div class="field"><label>Lab Arabic Name</label><input id="setLabAr"></div>
-   <div class="field"><label>Lab English Name</label><input id="setLabEn"></div>
-   <div class="field"><label>Phone</label><input id="setPhone"></div>
-   <div class="field"><label>Address</label><input id="setAddress"></div>
-  </div>
-  <div class="actions"><button onclick="saveSettings()">Save Settings</button></div>
- </div>
- <div class="panel">
-  <h3>Backup</h3>
-  <button onclick="backupData()">Export Backup</button>
-  <button class="light" onclick="restoreData()">Restore Backup</button>
- </div>
+ <div class="panel"><div class="form-grid">
+  <div class="field"><label>Lab Arabic Name</label><input id="setLabAr"></div>
+  <div class="field"><label>Lab English Name</label><input id="setLabEn"></div>
+  <div class="field"><label>Phone</label><input id="setPhone"></div>
+  <div class="field"><label>Address</label><input id="setAddress"></div>
+ </div><div class="actions"><button onclick="saveSettings()">Save Settings</button></div></div>
+ <div class="panel"><h3>Backup</h3><button onclick="backupData()">Export Backup</button><button class="light" onclick="restoreData()">Restore Backup</button></div>
 </section>
-</main>
-</div>
-</div>
+
+</main></div></div>
 
 <script>
 const $=id=>document.getElementById(id);
@@ -513,196 +537,64 @@ function renderPreview(){
  let p=db.patients.find(x=>x.id===currentReport.patientId);if(!p)return;
  let groups={};currentReport.items.forEach(i=>(groups[groupName(i.name)]??=[]).push(i));
  let order=['Hematology','Biochemistry','Lipid Profile','Hormones','Immunology','Serology','Urine','Stool','Coagulation','Other Tests'];
- let rows=order.filter(g=>groups[g]).map(g=>`<tr class="group-row"><td colspan="4">${g}</td></tr>${groups[g].map(i=>i.template?`<tr><td colspan="4">${specialReport(i)}</td></tr>`:`<tr><td>${esc(i.name)}</td><td>${esc(i.result)}</td><td>${esc(i.unit)}</td><td>${esc(i.range)}</td></tr>`).join('')}`).join('');
+ let rows=order.filter(g=>groups[g]).map(g=>`<tr class="group-row"><td colspan="4">${g}</td></tr>${groups[g].map(i=>i.template?`<tr class="special-row"><td colspan="4">${specialReport(i)}</td></tr>`:`<tr><td>${esc(i.name)}</td><td>${esc(i.result)}</td><td>${esc(i.unit)}</td><td>${esc(i.range)}</td></tr>`).join('')}`).join('');
  $('reportPreview').innerHTML=`<div class="report-sheet"><img class="report-background" src="lab_form.jpg" onerror="this.style.display='none'"><div class="report-content">
  <div class="report-patient"><div><b>Patient:</b> ${esc(p.name)}</div><div><b>Patient ID:</b> ${esc(p.number)}</div><div><b>Report No:</b> ${esc(currentReport.id)}</div><div><b>Age:</b> ${esc(p.age)} ${esc(p.ageUnit)}</div><div><b>Gender:</b> ${esc(p.gender)}</div><div><b>Date:</b> ${esc(currentReport.date)}</div>${p.doctor?`<div><b>Doctor:</b> ${esc(p.doctor)}</div>`:''}</div>
  <table class="report-results"><thead><tr><th>Test Name</th><th>Result</th><th>Unit</th><th>Reference Range</th></tr></thead><tbody>${rows}</tbody></table>
  ${p.notes?`<p style="direction:ltr;text-align:left"><b>Notes:</b> ${esc(p.notes)}</p>`:''}
- <p style="direction:ltr;text-align:left;margin-top:30mm">Laboratory Signature: __________________</p>
- </div></div>`
+ </div></div>`;
 }
 
-/* PRINT */
-function printReport() {
-    if (!currentReport) {
-        alert("No report available.");
-        return;
-    }
+/* PRINT — SINGLE CLEAN FUNCTION */
+function printReport(){
+ if(!currentReport)return alert('No report available.');
+ renderPreview();
+ const report=document.querySelector('#reportPreview .report-sheet');
+ if(!report)return alert('Report preview not found.');
 
-    renderPreview();
+ const printWindow=window.open('','_blank');
+ if(!printWindow){alert('Please allow pop-ups to print the report.');return;}
 
-    const reportImage = document.querySelector(
-        "#reportPreview .report-background"
-    );
+ const styles=`
+ @page{size:A4 portrait;margin:0}
+ *{box-sizing:border-box}
+ html,body{margin:0;padding:0;width:210mm;height:297mm;font-family:Arial,sans-serif}
+ .report-sheet{width:210mm;height:297mm;position:relative;overflow:hidden;margin:0}
+ .report-background{position:absolute;inset:0;width:210mm;height:297mm;object-fit:fill}
+ .report-content{position:relative;z-index:2;padding:50mm 15mm 20mm}
+ .report-patient{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;direction:ltr;text-align:left;font-size:10pt;background:#ffffffed;padding:10px;margin-bottom:12px;border:1px solid #dce6ee}
+ .report-results{direction:ltr!important;width:100%;border-collapse:collapse;table-layout:fixed;border:1.5px solid #234d70}
+ .report-results thead th{background:#163c5a!important;color:white!important;font-weight:bold;padding:9px 5px;border:1px solid #315d7c}
+ .report-results th,.report-results td{border:1px solid #c7d5e1;padding:7px 5px;text-align:center;font-size:9pt;overflow-wrap:anywhere}
+ .report-results td:first-child{text-align:left;font-weight:600}
+ .report-results td:nth-child(2){font-weight:bold;color:#123e63}
+ .report-results th:nth-child(1),.report-results td:nth-child(1){width:32%}
+ .report-results th:nth-child(2),.report-results td:nth-child(2){width:14%}
+ .report-results th:nth-child(3),.report-results td:nth-child(3){width:18%}
+ .report-results th:nth-child(4),.report-results td:nth-child(4){width:36%}
+ .report-results tbody tr:nth-child(even):not(.group-row):not(.special-row){background:#f6f9fc}
+ .group-row td{background:#e5eff8!important;color:#173c5b!important;font-weight:bold;text-align:left!important;padding:8px 10px!important;border-top:2px solid #7899b4!important}
+ .special-row>td{padding:4px!important;background:white!important}
+ .special-report{margin:5mm auto;width:98%;color:#111}
+ .special-report h3{background:#183b59;color:white;text-align:center;padding:8px;margin:0;font-size:10pt}
+ .special-table{width:100%;border-collapse:collapse;direction:ltr}
+ .special-table th,.special-table td{border:1px solid #aab9c7;padding:6px;font-size:8.5pt}
+ .special-table th{background:#eaf1f7;color:#173c5b}
+ .hcg-report{border:1px solid #aaa;padding:12mm 8mm;min-height:100mm;background:white}
+ .hcg-report h3{background:#386900;color:white;text-align:center;padding:9px}
+ .hcg-report .hcg-result{margin-top:20mm;text-align:center;font-size:18pt;font-weight:bold}
+ .hcg-report .hcg-date{text-align:right;margin-top:15mm}
+ `;
 
-    function startPrinting() {
-        setTimeout(() => {
-            window.print();
-        }, 500);
-    }
+ printWindow.document.open();
+ printWindow.document.write(`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Laboratory Report</title><style>${styles}</style></head><body>${report.outerHTML}</body></html>`);
+ printWindow.document.close();
 
-    if (reportImage && !reportImage.complete) {
-        reportImage.onload = startPrinting;
-        reportImage.onerror = startPrinting;
-    } else {
-        startPrinting();
-    }
-}
-    renderPreview();
-
-    const report = document.querySelector("#reportPreview .report-sheet");
-    if (!report) {
-        alert("Report preview not found");
-        return;
-    }
-
-    const printWindow = window.open("", "_blank");
-
-    if (!printWindow) {
-        alert("Please allow pop-ups to print the report.");
-        return;
-    }
-
-    const styles = `
-        @page {
-            size: A4 portrait;
-            margin: 0;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 210mm;
-            height: 297mm;
-            overflow: hidden;
-            font-family: Arial, sans-serif;
-        }
-
-        .report-sheet {
-            width: 210mm !important;
-            height: 297mm !important;
-            min-height: 297mm !important;
-            margin: 0 !important;
-            position: relative !important;
-            overflow: hidden !important;
-            page-break-after: avoid !important;
-        }
-
-        .report-background {
-            position: absolute !important;
-            inset: 0 !important;
-            width: 210mm !important;
-            height: 297mm !important;
-            object-fit: fill !important;
-        }
-
-        .report-content {
-            position: relative !important;
-            z-index: 2 !important;
-            padding: 50mm 15mm 20mm !important;
-        }
-
-        .report-results {
-            direction: rtl !important;
-            width: 100% !important;
-            border-collapse: collapse !important;
-            table-layout: fixed !important;
-        }
-
-        .report-results th,
-        .report-results td {
-            border: 1px solid #777 !important;
-            padding: 5px !important;
-            text-align: center !important;
-            font-size: 9pt !important;
-            overflow-wrap: anywhere !important;
-        }
-
-        .report-results th:nth-child(1),
-        .report-results td:nth-child(1) {
-            width: 34% !important;
-        }
-
-        .report-results th:nth-child(2),
-        .report-results td:nth-child(2) {
-            width: 18% !important;
-        }
-
-        .report-results th:nth-child(3),
-        .report-results td:nth-child(3) {
-            width: 16% !important;
-        }
-
-        .report-results th:nth-child(4),
-        .report-results td:nth-child(4) {
-            width: 32% !important;
-        }
-
-        .group-row td {
-            background: #e5edf5 !important;
-            font-weight: bold !important;
-            text-align: right !important;
-        }
-
-        .special-report {
-            width: 95% !important;
-            margin: 5mm auto !important;
-        }
-
-        .special-report h3 {
-            text-align: center !important;
-        }
-
-        .special-table {
-            width: 100% !important;
-            border-collapse: collapse !important;
-            direction: ltr !important;
-        }
-
-        .special-table th,
-        .special-table td {
-            border: 1px solid #777 !important;
-            padding: 4px !important;
-            font-size: 8pt !important;
-        }
-    `;
-
-    printWindow.document.open();
-
-    printWindow.document.write(`
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <meta charset="UTF-8">
-            <title>Laboratory Report</title>
-            <style>${styles}</style>
-        </head>
-        <body>
-            ${report.outerHTML}
-        </body>
-        </html>
-    `);
-
-    printWindow.document.close();
-
-    printWindow.onload = function () {
-        const img = printWindow.document.querySelector(".report-background");
-
-        if (img && !img.complete) {
-            img.onload = function () {
-                setTimeout(() => printWindow.print(), 500);
-            };
-            img.onerror = function () {
-                printWindow.print();
-            };
-        } else {
-            setTimeout(() => printWindow.print(), 500);
-        }
-    };
+ printWindow.onload=()=>{
+  const img=printWindow.document.querySelector('.report-background');
+  const doPrint=()=>setTimeout(()=>{printWindow.focus();printWindow.print()},700);
+  if(img&&!img.complete){img.onload=doPrint;img.onerror=doPrint}else doPrint();
+ };
 }
 
 /* PATIENT RECORDS */
