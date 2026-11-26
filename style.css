@@ -1,143 +1,194 @@
-/* =========================================
+/* =========================================================
    AL-JUMAN AL-JANABI LABORATORY
-   FINAL STYLE.CSS
-   A4 REPORT POSITION & PRINT FIX
-   ========================================= */
+   FINAL REPORT STYLE
+   A4 PORTRAIT | PDF FORM BACKGROUND
+   ========================================================= */
 
-* {
-    box-sizing: border-box;
-}
-
-html,
-body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    min-height: 100%;
-    font-family: Arial, sans-serif;
-}
-
-/* ===============================
-   REPORT PREVIEW
-================================ */
+/* ===== REPORT PREVIEW CONTAINER ===== */
 
 #reportPreview {
     width: 100%;
-    background: #000;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 15px 0;
     overflow: auto;
-    padding: 0;
-    margin: 0;
+    background: #e8edf3;
+    box-sizing: border-box;
 }
+
+/* ===== A4 REPORT SHEET ===== */
 
 .report-sheet {
     position: relative !important;
+
     width: 210mm !important;
     height: 297mm !important;
+    min-width: 210mm !important;
     min-height: 297mm !important;
+    max-width: 210mm !important;
     max-height: 297mm !important;
+
     margin: 0 auto !important;
     padding: 0 !important;
+
     overflow: hidden !important;
-    background: white !important;
+    box-sizing: border-box !important;
+
+    background: #ffffff !important;
+    isolation: isolate !important;
+
+    box-shadow: 0 4px 20px rgba(0,0,0,0.18);
 }
 
-/* ===============================
-   BACKGROUND IMAGE
-================================ */
+/* =========================================================
+   PDF BACKGROUND
+   IMPORTANT:
+   The HTML background element must be an iframe/embed,
+   not an IMG element, because lab_form.pdf is a PDF file.
+   ========================================================= */
 
-.report-background {
+.report-background,
+.report-pdf-background {
     position: absolute !important;
+
     top: 0 !important;
     left: 0 !important;
+
     width: 210mm !important;
     height: 297mm !important;
-    max-width: none !important;
-    max-height: none !important;
-    object-fit: fill !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    border: none !important;
+
     display: block !important;
     visibility: visible !important;
-    z-index: 1 !important;
+    opacity: 1 !important;
+
+    z-index: 0 !important;
+
+    background: #ffffff !important;
 }
 
-/* ===============================
-   REPORT CONTENT CONTAINER
-================================ */
+/* PDF iframe */
+
+.report-pdf-background {
+    width: 210mm !important;
+    height: 297mm !important;
+
+    overflow: hidden !important;
+
+    pointer-events: none !important;
+}
+
+/* ===== REPORT CONTENT LAYER ===== */
 
 .report-content {
     position: absolute !important;
+
     top: 0 !important;
     left: 0 !important;
+
     width: 210mm !important;
     height: 297mm !important;
-    z-index: 2 !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    z-index: 5 !important;
+
     background: transparent !important;
+
+    box-sizing: border-box !important;
+    overflow: hidden !important;
 }
 
-/* ===============================
+/* =========================================================
    PATIENT INFORMATION
-================================ */
+   ========================================================= */
 
 .report-patient-info {
     position: absolute !important;
 
-    /* تنزيل معلومات المريض إلى داخل النموذج */
-    top: 17% !important;
-
+    top: 15.5% !important;
     left: 8% !important;
     right: 8% !important;
+
     width: 84% !important;
 
     display: grid !important;
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
 
-    gap: 4px 10px !important;
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr)) !important;
 
-    padding: 5px 8px !important;
+    grid-auto-rows: auto !important;
+
+    gap: 5px 12px !important;
+
     margin: 0 !important;
-
-    background: rgba(255, 255, 255, 0.94) !important;
-
-    border-radius: 4px !important;
-
-    font-size: 9pt !important;
-    line-height: 1.5 !important;
-
-    color: #111 !important;
-
-    direction: ltr !important;
-    text-align: left !important;
-
-    z-index: 10 !important;
+    padding: 5px 8px !important;
 
     box-sizing: border-box !important;
+
+    background: rgba(255,255,255,0.92) !important;
+
+    border-radius: 3px !important;
+
+    color: #111111 !important;
+
+    font-family: Arial, Helvetica, sans-serif !important;
+
+    font-size: 9pt !important;
+    line-height: 1.45 !important;
+
+    text-align: left !important;
+    direction: ltr !important;
+
+    z-index: 10 !important;
 }
 
 /* Patient information items */
 
 .report-patient-info .info-item {
+    position: relative !important;
+
     min-width: 0 !important;
     width: auto !important;
 
     margin: 0 !important;
     padding: 2px 3px !important;
 
-    flex: none !important;
+    box-sizing: border-box !important;
+
+    flex: initial !important;
+
+    font-size: 9pt !important;
+    line-height: 1.4 !important;
+
+    color: #111111 !important;
 
     overflow-wrap: break-word !important;
     word-break: normal !important;
 }
 
-/* ===============================
+/* Patient information labels */
+
+.report-patient-info strong,
+.report-patient-info b {
+    font-weight: 700 !important;
+}
+
+/* =========================================================
    RESULTS TABLE
-================================ */
+   ========================================================= */
 
 .report-results {
     position: absolute !important;
 
-    /* مكان بداية جدول النتائج */
-    top: 23% !important;
-
+    top: 22.5% !important;
     left: 8% !important;
+
     width: 84% !important;
 
     margin: 0 !important;
@@ -148,59 +199,75 @@ body {
 
     table-layout: fixed !important;
 
-    background: rgba(255, 255, 255, 0.94) !important;
+    box-sizing: border-box !important;
+
+    background: rgba(255,255,255,0.96) !important;
 
     direction: ltr !important;
-    text-align: center !important;
-
-    font-size: 8pt !important;
 
     z-index: 10 !important;
+
+    font-family: Arial, Helvetica, sans-serif !important;
 }
 
-/* Table cells */
+/* Table header and cells */
 
 .report-results th,
 .report-results td {
-    border: 1px solid #555 !important;
+    border: 1px solid #555555 !important;
 
     padding: 4px 5px !important;
+
+    margin: 0 !important;
+
+    box-sizing: border-box !important;
 
     text-align: center !important;
     vertical-align: middle !important;
 
-    font-size: 8pt !important;
-    line-height: 1.3 !important;
+    font-size: 8.5pt !important;
+    line-height: 1.35 !important;
 
-    color: #111 !important;
+    color: #111111 !important;
 
     background: transparent !important;
 
-    overflow-wrap: anywhere !important;
+    overflow-wrap: break-word !important;
     word-break: normal !important;
 }
 
-/* Table header */
+/* Header */
 
 .report-results th {
     font-weight: bold !important;
 }
 
-/* ===============================
+/* Result cells */
+
+.report-results td {
+    font-weight: normal !important;
+}
+
+/* =========================================================
    CATEGORY / GROUP ROWS
-================================ */
+   ========================================================= */
 
 .report-results tr.report-group,
-.report-results tr.category-row {
+.report-results tr.category-row,
+.report-results tr.group-row {
     display: table-row !important;
     visibility: visible !important;
     opacity: 1 !important;
 }
 
+/* Category cells */
+
 .report-results tr.report-group td,
-.report-results tr.category-row td {
-    background: #d8eafa !important;
-    color: #102d4f !important;
+.report-results tr.category-row td,
+.report-results tr.group-row td {
+    background: #d9eafa !important;
+
+    color: #153a5b !important;
 
     font-weight: bold !important;
 
@@ -208,22 +275,44 @@ body {
 
     padding: 5px 7px !important;
 
-    border-top: 1px solid #286a9d !important;
-    border-bottom: 1px solid #286a9d !important;
+    border-top: 1px solid #2875a8 !important;
+    border-bottom: 1px solid #2875a8 !important;
 
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
 }
 
-/* ===============================
-   SCREEN PREVIEW
-================================ */
+/* =========================================================
+   REPORT TEXT
+   ========================================================= */
+
+.report-sheet {
+    color: #111111 !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+}
+
+/* Prevent unexpected oversized elements */
+
+.report-sheet * {
+    box-sizing: border-box !important;
+}
+
+/* =========================================================
+   MOBILE PREVIEW
+   ========================================================= */
 
 @media screen {
 
     #reportPreview {
+        display: block !important;
+
+        width: 100% !important;
+        max-width: 100% !important;
+
         overflow-x: auto !important;
         overflow-y: auto !important;
+
+        padding: 10px !important;
     }
 
     .report-sheet {
@@ -231,14 +320,14 @@ body {
     }
 }
 
-/* ===============================
-   PRINT / SAVE PDF
-================================ */
+/* =========================================================
+   PRINT
+   ========================================================= */
 
 @media print {
 
     @page {
-        size: A4 portrait;
+        size: A4 portrait !important;
         margin: 0 !important;
     }
 
@@ -247,15 +336,23 @@ body {
         width: 210mm !important;
         height: 297mm !important;
 
+        min-width: 210mm !important;
+        min-height: 297mm !important;
+
         margin: 0 !important;
         padding: 0 !important;
 
         overflow: hidden !important;
 
-        background: white !important;
+        background: #ffffff !important;
+
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
     }
 
-    body * {
+    /* Hide application interface */
+
+    body > * {
         visibility: hidden !important;
     }
 
@@ -278,35 +375,47 @@ body {
 
         overflow: hidden !important;
 
-        background: white !important;
+        background: #ffffff !important;
     }
+
+    /* A4 page */
 
     .report-sheet {
         position: relative !important;
 
-        top: 0 !important;
-        left: 0 !important;
-
         width: 210mm !important;
         height: 297mm !important;
 
+        min-width: 210mm !important;
         min-height: 297mm !important;
+
+        max-width: 210mm !important;
         max-height: 297mm !important;
 
         margin: 0 !important;
         padding: 0 !important;
 
-        transform: none !important;
-
         overflow: hidden !important;
 
-        background: white !important;
+        transform: none !important;
 
+        box-shadow: none !important;
+
+        page-break-before: avoid !important;
         page-break-after: avoid !important;
+        page-break-inside: avoid !important;
+
+        break-before: avoid !important;
         break-after: avoid !important;
+        break-inside: avoid !important;
+
+        background: #ffffff !important;
     }
 
-    .report-background {
+    /* PDF background */
+
+    .report-background,
+    .report-pdf-background {
         position: absolute !important;
 
         top: 0 !important;
@@ -315,11 +424,21 @@ body {
         width: 210mm !important;
         height: 297mm !important;
 
-        object-fit: fill !important;
+        margin: 0 !important;
+        padding: 0 !important;
+
+        border: none !important;
 
         display: block !important;
         visibility: visible !important;
+        opacity: 1 !important;
+
+        z-index: 0 !important;
+
+        background: #ffffff !important;
     }
+
+    /* Content */
 
     .report-content {
         position: absolute !important;
@@ -330,62 +449,131 @@ body {
         width: 210mm !important;
         height: 297mm !important;
 
-        z-index: 2 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+
+        z-index: 5 !important;
+
+        background: transparent !important;
     }
 
-    /* Patient information position in PDF */
+    /* Patient information */
 
     .report-patient-info {
-        top: 17% !important;
+        position: absolute !important;
 
+        top: 15.5% !important;
         left: 8% !important;
         right: 8% !important;
+
         width: 84% !important;
 
-        background: rgba(255, 255, 255, 0.94) !important;
+        display: grid !important;
+
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr)) !important;
+
+        gap: 5px 12px !important;
+
+        margin: 0 !important;
+        padding: 5px 8px !important;
+
+        background: rgba(255,255,255,0.92) !important;
+
+        color: #111111 !important;
 
         font-size: 9pt !important;
+        line-height: 1.45 !important;
+
+        direction: ltr !important;
+        text-align: left !important;
 
         z-index: 10 !important;
     }
 
-    /* Results table position in PDF */
+    .report-patient-info .info-item {
+        min-width: 0 !important;
+
+        margin: 0 !important;
+        padding: 2px 3px !important;
+
+        font-size: 9pt !important;
+        line-height: 1.4 !important;
+    }
+
+    /* Results table */
 
     .report-results {
-        top: 23% !important;
+        position: absolute !important;
 
+        top: 22.5% !important;
         left: 8% !important;
+
         width: 84% !important;
 
-        font-size: 8pt !important;
+        margin: 0 !important;
+
+        border-collapse: collapse !important;
+        border-spacing: 0 !important;
+
+        table-layout: fixed !important;
+
+        background: rgba(255,255,255,0.96) !important;
+
+        direction: ltr !important;
 
         z-index: 10 !important;
     }
 
     .report-results th,
     .report-results td {
+        border: 1px solid #555555 !important;
+
         padding: 4px 5px !important;
+
+        text-align: center !important;
+        vertical-align: middle !important;
+
+        font-size: 8.5pt !important;
+        line-height: 1.35 !important;
+
+        color: #111111 !important;
+
         background: transparent !important;
     }
 
+    /* Category rows */
+
     .report-results tr.report-group td,
-    .report-results tr.category-row td {
-        background: #d8eafa !important;
-        color: #102d4f !important;
+    .report-results tr.category-row td,
+    .report-results tr.group-row td {
+        background: #d9eafa !important;
+
+        color: #153a5b !important;
+
+        font-weight: bold !important;
+
+        text-align: left !important;
+
+        padding: 5px 7px !important;
+
+        visibility: visible !important;
+        opacity: 1 !important;
 
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
     }
 
-    /* Hide application interface */
+    /* Hide application controls */
 
     .sidebar,
     .topbar,
     .no-print,
-    nav,
     footer,
+    nav,
     button,
-    .page-header {
+    .page-header,
+    .report-actions {
         display: none !important;
     }
 }
