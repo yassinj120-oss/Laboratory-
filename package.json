@@ -8,7 +8,7 @@
   "scripts": {
     "build": "echo Web app ready",
     "desktop": "electron .",
-   "desktop:build": "electron-builder --win --publish never"
+    "desktop:build": "electron-builder --win --publish never"
   },
   "dependencies": {
     "@capacitor/core": "^7.0.0"
@@ -16,7 +16,7 @@
   "devDependencies": {
     "@capacitor/cli": "^7.0.0",
     "@capacitor/android": "^7.0.0",
-    "electron": "39.8.10",
+    "electron": "^39.0.0",
     "electron-builder": "^26.0.0"
   },
   "build": {
@@ -30,18 +30,25 @@
       "app.js",
       "style.css",
       "assets/**/*",
-      "electron.js"
+      "electron.js",
+      "package.json"
     ],
     "win": {
       "target": [
-        "nsis"
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
       ]
     },
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
-      "createStartMenuShortcut": true
+      "createStartMenuShortcut": true,
+      "shortcutName": "Al-Juman Laboratory"
     }
   }
 }
