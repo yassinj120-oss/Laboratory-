@@ -1,70 +1,3601 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#102d4f">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#123451">
 <title>مختبر الجمان الجانبي</title>
+
 <style>
-:root{--navy:#102d4f;--blue:#1c6ca8;--light:#eaf2fa;--bg:#f4f7fb;--text:#1c2938;--muted:#718096;--border:#e1e8f0;--white:#fff;--green:#16845b;--red:#c0392b;--shadow:0 8px 25px rgba(16,45,79,.06)}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,"Noto Sans Arabic",sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:10px;padding:10px 15px;background:var(--blue);color:white;font-weight:600;transition:.15s}button:hover{filter:brightness(.96)}button:active{transform:scale(.98)}.btn-light{background:var(--light);color:var(--navy)}.btn-danger{background:#feeceb;color:var(--red)}.btn-green{background:var(--green)}.app{min-height:100vh;display:flex}.sidebar{width:245px;background:var(--navy);color:#fff;padding:20px 14px;display:flex;flex-direction:column;gap:16px;flex-shrink:0}.brand{display:flex;gap:11px;align-items:center;padding:6px 8px 18px;border-bottom:1px solid #ffffff22}.logo{height:48px;width:48px;border-radius:15px;background:#eaf2fa;color:var(--navy);display:grid;place-items:center;font-size:25px;font-weight:bold}.brand h1{font-size:16px;margin:0 0 5px}.brand small{font-size:11px;color:#c7d8e9}.nav{display:grid;gap:5px}.nav button{background:transparent;text-align:right;color:#d9e5f1;padding:12px 14px;border-radius:10px;display:flex;gap:10px;align-items:center}.nav button.active,.nav button:hover{background:#ffffff16;color:#fff}.nav .ico{width:22px;text-align:center;font-size:17px}.side-footer{margin-top:auto;font-size:12px;color:#b9c9d9;text-align:center;padding:12px}.main{min-width:0;flex:1}.topbar{background:#fff;border-bottom:1px solid var(--border);padding:15px 25px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.topbar h2{font-size:19px;margin:0}.topbar .date{font-size:13px;color:var(--muted)}.content{max-width:1450px;margin:auto;padding:24px}.page{display:none}.page.active{display:block}.page-title{margin:0 0 20px;font-size:24px}.welcome{background:linear-gradient(120deg,#102d4f,#1c6ca8);color:white;border-radius:18px;padding:24px;margin-bottom:22px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}.welcome h2{margin:0 0 7px;font-size:22px}.welcome p{margin:0;color:#d9e7f5}.welcome button{background:white;color:var(--navy)}.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}.stat{background:#fff;border:1px solid var(--border);border-radius:15px;padding:18px;box-shadow:var(--shadow)}.stat-top{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:14px}.stat-icon{height:40px;width:40px;border-radius:12px;background:var(--light);display:grid;place-items:center;font-size:20px}.stat-num{font-size:30px;font-weight:bold;color:var(--navy);margin-top:13px}.panel{background:#fff;border:1px solid var(--border);border-radius:15px;padding:20px;margin-top:18px;box-shadow:var(--shadow)}.panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:15px}.panel-head h3{margin:0;font-size:17px}.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.quick button{padding:17px;background:var(--light);color:var(--navy);text-align:center}.form-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.field label{display:block;font-weight:700;font-size:13px;margin-bottom:7px}.field input,.field select,.field textarea{width:100%;border:1px solid var(--border);background:#fff;border-radius:9px;padding:11px;color:var(--text);outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px #1c6ca818}.field textarea{min-height:85px;resize:vertical}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:17px}.search{width:100%;max-width:440px;border:1px solid var(--border);padding:11px 13px;border-radius:10px;margin-bottom:14px}.table-wrap{overflow:auto;border:1px solid var(--border);border-radius:12px}table{width:100%;border-collapse:collapse;min-width:650px;background:white}th,td{text-align:right;padding:12px;border-bottom:1px solid var(--border);white-space:nowrap}th{background:#f0f5fa;color:var(--navy);font-size:13px}tbody tr:hover{background:#fafcff}.empty{text-align:center;color:var(--muted);padding:25px}.badge{display:inline-block;padding:4px 9px;border-radius:20px;background:#e9f3ff;color:#1c6ca8;font-size:12px}.test-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;max-height:430px;overflow:auto}.test-option{border:1px solid var(--border);padding:12px;border-radius:10px;display:flex;gap:9px;align-items:center;cursor:pointer;background:#fff}.test-option.selected{border-color:var(--blue);background:#eef6ff}.test-option input{accent-color:var(--blue)}.test-option small{color:var(--muted);display:block;margin-top:4px}.result-input{min-width:110px}
-#reportPreview{padding:0!important;margin:0!important;background:transparent!important;border:0!important;box-shadow:none!important;overflow:visible!important}.report-sheet{position:relative;width:210mm;height:297mm;margin:0 auto;background:#fff;overflow:hidden;isolation:isolate}.report-background{position:absolute;inset:0;width:210mm;height:297mm;object-fit:fill;z-index:0;display:block}.report-content{position:absolute;inset:0;z-index:1;color:#111;font-family:Arial,sans-serif}
-/* FIX: Patient information is separated from the form header */
-.report-patient-info{position:absolute;top:16.5%;left:8%;right:8%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 14px;font-size:8.5pt;line-height:1.5;direction:ltr;text-align:left;background:rgba(255,255,255,.92);padding:8px 10px;border-radius:5px;z-index:5}.report-patient-info .info-item{min-width:0;overflow-wrap:anywhere;white-space:normal}.report-patient-info b{font-weight:700;margin-right:4px}
-.report-results{position:absolute;top:23.5%;left:8%;width:84%;border-collapse:collapse;table-layout:fixed;min-width:0;background:transparent;direction:ltr;z-index:4}.report-results th,.report-results td{border:1px solid #555;padding:5px 6px;text-align:center;white-space:normal;overflow-wrap:anywhere;font-size:9pt;background:transparent;color:#111}.report-results th{font-weight:700}.report-results tr.report-group{display:table-row!important;visibility:visible!important;height:auto!important}.report-results tr.report-group td{display:table-cell!important;background:#d8eafa!important;color:#102d4f!important;font-weight:700!important;text-align:left!important;padding:6px 8px!important;font-size:9pt!important;border-top:2px solid #286a9d!important;border-bottom:1px solid #286a9d!important;visibility:visible!important;opacity:1!important}.report-results th:nth-child(1){width:30%}.report-results th:nth-child(2){width:15%}.report-results th:nth-child(3){width:15%}.report-results th:nth-child(4){width:40%}.report-notes{position:absolute;left:8%;right:8%;bottom:12%;font-size:10pt;direction:ltr;text-align:left}.report-signature{position:absolute;bottom:6%;left:8%;font-size:10pt;direction:ltr;text-align:left}.report-head{border-bottom:2px solid var(--navy);padding-bottom:12px;margin-bottom:14px}.report-head h2{margin:0;color:var(--navy)}.report-head small{color:var(--muted)}.patient-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0;padding:13px;background:#f7f9fc;border-radius:10px}.meta-item{font-size:13px}.meta-item b{display:block;margin-bottom:3px}.modal-back{position:fixed;inset:0;background:#07162999;display:none;align-items:center;justify-content:center;padding:15px;z-index:100}.modal-back.show{display:flex}.modal{width:min(600px,100%);background:#fff;border-radius:16px;padding:22px;max-height:90vh;overflow:auto}.modal h3{margin-top:0}.modal-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}footer{text-align:center;color:var(--muted);padding:22px;font-size:12px}.mobile-menu{display:none}
-@media(max-width:1000px){.sidebar{width:205px}.cards{grid-template-columns:repeat(2,1fr)}.form-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:680px){.app{display:block}.sidebar{width:auto;padding:10px;position:sticky;top:0;z-index:10}.brand{padding:5px;border:0}.brand h1{font-size:15px}.brand small{font-size:10px}.nav{display:flex;overflow:auto;gap:5px}.nav button{white-space:nowrap;padding:9px 10px;font-size:12px}.side-footer{display:none}.topbar{padding:12px 15px}.content{padding:14px}.cards{grid-template-columns:repeat(2,1fr);gap:9px}.stat{padding:13px}.stat-num{font-size:25px}.welcome{padding:18px}.welcome h2{font-size:18px}.form-grid{grid-template-columns:1fr}.quick{grid-template-columns:1fr}.test-list{grid-template-columns:1fr}.patient-meta{grid-template-columns:1fr 1fr}.page-title{font-size:21px}}
-@media print{@page{size:A4 portrait;margin:0}html,body{width:210mm!important;height:297mm!important;margin:0!important;padding:0!important;background:#fff!important;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}.sidebar,.topbar,.content>.page:not(#reportPage),#reportPage .actions,.no-print,footer{display:none!important}.app,.main,.content{display:block!important;width:210mm!important;height:297mm!important;min-height:0!important;padding:0!important;margin:0!important;background:#fff!important}.page#reportPage{display:block!important;width:210mm!important;height:297mm!important;margin:0!important;padding:0!important}.page#reportPage>.page-title{display:none!important}.panel#reportPreview{display:block!important;width:210mm!important;height:297mm!important;padding:0!important;margin:0!important;border:0!important;box-shadow:none!important;background:#fff!important;overflow:hidden!important}.report-sheet{width:210mm!important;height:297mm!important;min-height:297mm!important;margin:0!important;page-break-after:avoid!important;break-after:avoid!important}.report-background{width:210mm!important;height:297mm!important;object-fit:fill!important}.report-content{width:210mm!important;height:297mm!important}.report-patient-info{top:16.5%!important;left:8%!important;right:8%!important;font-size:8.5pt!important;padding:8px 10px!important;background:rgba(255,255,255,.92)!important;line-height:1.5!important}.report-results{top:23.5%!important;min-width:0!important;width:84%!important}.report-results th,.report-results td{background:transparent!important;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}table{min-width:0!important}*{box-shadow:none!important}}
+/* =====================================================
+   AL-JUMAN AL-JANABI LABORATORY
+   COMPLETE INDEX.HTML
+   ===================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #f3f6fb;
+    color: #172b42;
+    font-family: Arial, Tahoma, sans-serif;
+    direction: rtl;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.app-header {
+    background: #123451;
+    color: white;
+    padding: 18px;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.lab-title {
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.lab-subtitle {
+    font-size: 12px;
+    color: #c6d8e9;
+    margin-top: 5px;
+}
+
+.header-logo {
+    width: 55px;
+    height: 55px;
+    border-radius: 12px;
+    background: white;
+    color: #123451;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/* Navigation */
+
+.navigation {
+    background: #173e60;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 10px;
+}
+
+.navigation button {
+    border: 0;
+    background: transparent;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 8px;
+}
+
+.navigation button:hover,
+.navigation button.active {
+    background: #ffffff22;
+}
+
+/* Main layout */
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+.page-title {
+    font-size: 23px;
+    margin: 0 0 20px;
+    color: #123451;
+}
+
+/* Cards */
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(15, 40, 70, 0.06);
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #123451;
+}
+
+/* Form */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.form-group.full {
+    grid-column: 1 / -1;
+}
+
+label {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    min-height: 42px;
+    padding: 10px;
+    border: 1px solid #d6deea;
+    border-radius: 7px;
+    background: white;
+    color: #172b42;
+    font-size: 14px;
+}
+
+textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #2476a9;
+    box-shadow: 0 0 0 2px #2476a920;
+}
+
+/* Buttons */
+
+.btn {
+    border: none;
+    border-radius: 7px;
+    padding: 11px 17px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.btn-primary {
+    background: #17689b;
+    color: white;
+}
+
+.btn-secondary {
+    background: #e6edf5;
+    color: #123451;
+}
+
+.btn-danger {
+    background: #dc3545;
+    color: white;
+}
+
+.btn-success {
+    background: #198754;
+    color: white;
+}
+
+.btn-light {
+    background: white;
+    color: #123451;
+    border: 1px solid #d6deea;
+}
+
+.button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* Test selection */
+
+.test-search {
+    margin-bottom: 12px;
+}
+
+.test-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.test-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px;
+    border: 1px solid #e0e7ef;
+    border-radius: 7px;
+    background: #f9fbfd;
+}
+
+.test-option input {
+    width: 18px;
+    height: 18px;
+    min-height: auto;
+}
+
+.selected-tests {
+    margin-top: 20px;
+}
+
+.result-input-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.result-input-table th,
+.result-input-table td {
+    border: 1px solid #d8e0e8;
+    padding: 8px;
+    text-align: center;
+}
+
+.result-input-table th {
+    background: #e9f2fa;
+}
+
+.result-input-table input {
+    min-width: 70px;
+    padding: 7px;
+}
+
+/* Dashboard */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px #12345110;
+}
+
+.stat-number {
+    font-size: 28px;
+    font-weight: bold;
+    color: #17689b;
+}
+
+.stat-label {
+    margin-top: 7px;
+    color: #60758b;
+}
+
+/* Patient records */
+
+.search-box {
+    margin-bottom: 15px;
+}
+
+.records-list {
+    display: grid;
+    gap: 10px;
+}
+
+.record-card {
+    background: white;
+    border: 1px solid #e0e7ef;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.record-card-header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.record-actions {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+/* Report page */
+
+.report-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+#reportPreview {
+    width: 100%;
+    overflow: auto;
+    background: #dce3eb;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+/* =====================================================
+   A4 REPORT
+   ===================================================== */
+
+.report-sheet {
+    position: relative;
+
+    width: 210mm;
+    height: 297mm;
+    min-width: 210mm;
+    max-width: 210mm;
+
+    margin: 0 auto;
+
+    overflow: hidden;
+
+    background: white;
+
+    box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+}
+
+/* PDF background */
+
+.report-pdf-background {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 210mm;
+    height: 297mm;
+
+    border: none;
+
+    display: block;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    background: white;
+}
+
+/* Report content */
+
+.report-content {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 210mm;
+    height: 297mm;
+
+    z-index: 5;
+
+    background: transparent;
+
+    overflow: hidden;
+}
+
+/* Patient information */
+
+.report-patient-info {
+    position: absolute;
+
+    top: 15.5%;
+    left: 8%;
+    right: 8%;
+
+    width: 84%;
+
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 5px 12px;
+
+    padding: 5px 8px;
+
+    background: rgba(255,255,255,0.93);
+
+    border-radius: 3px;
+
+    color: #111;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 9pt;
+    line-height: 1.45;
+
+    direction: ltr;
+    text-align: left;
+
+    z-index: 10;
+}
+
+.info-item {
+    min-width: 0;
+    padding: 2px 3px;
+    overflow-wrap: break-word;
+}
+
+/* Results table */
+
+.report-results {
+    position: absolute;
+
+    top: 22.5%;
+    left: 8%;
+
+    width: 84%;
+
+    margin: 0;
+
+    border-collapse: collapse;
+    border-spacing: 0;
+
+    table-layout: fixed;
+
+    background: rgba(255,255,255,0.96);
+
+    direction: ltr;
+
+    z-index: 10;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.report-results th,
+.report-results td {
+    border: 1px solid #555;
+
+    padding: 4px 5px;
+
+    text-align: center;
+    vertical-align: middle;
+
+    font-size: 8.5pt;
+    line-height: 1.35;
+
+    color: #111;
+
+    background: transparent;
+
+    overflow-wrap: break-word;
+}
+
+.report-results th {
+    font-weight: bold;
+}
+
+.report-results .report-group td {
+    background: #d9eafa !important;
+    color: #153a5b !important;
+    font-weight: bold;
+    text-align: left;
+    padding: 5px 7px;
+}
+
+/* Footer */
+
+.app-footer {
+    background: #123451;
+    color: #dce8f3;
+    text-align: center;
+    padding: 15px;
+    font-size: 12px;
+    margin-top: 30px;
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media screen and (max-width: 700px) {
+
+    .container {
+        padding: 10px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .test-list {
+        grid-template-columns: 1fr;
+    }
+
+    .header-content {
+        flex-direction: row;
+    }
+
+    .lab-title {
+        font-size: 18px;
+    }
+
+    .navigation button {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    #reportPreview {
+        padding: 10px;
+    }
+
+    .report-sheet {
+        transform-origin: top center;
+    }
+}
+
+/* =====================================================
+   PRINT
+   ===================================================== */
+
+@media print {
+
+    @page {
+        size: A4 portrait;
+        margin: 0;
+    }
+
+    html,
+    body {
+        width: 210mm !important;
+        height: 297mm !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        overflow: hidden !important;
+
+        background: white !important;
+
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    body > * {
+        visibility: hidden !important;
+    }
+
+    #reportPreview,
+    #reportPreview * {
+        visibility: visible !important;
+    }
+
+    #reportPreview {
+        position: absolute !important;
+
+        top: 0 !important;
+        left: 0 !important;
+
+        width: 210mm !important;
+        height: 297mm !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        overflow: hidden !important;
+
+        background: white !important;
+    }
+
+    .report-sheet {
+        position: relative !important;
+
+        width: 210mm !important;
+        height: 297mm !important;
+
+        min-width: 210mm !important;
+        max-width: 210mm !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        transform: none !important;
+
+        overflow: hidden !important;
+
+        box-shadow: none !important;
+
+        page-break-before: avoid !important;
+        page-break-after: avoid !important;
+        page-break-inside: avoid !important;
+
+        break-before: avoid !important;
+        break-after: avoid !important;
+        break-inside: avoid !important;
+    }
+
+    .report-pdf-background {
+        position: absolute !important;
+
+        top: 0 !important;
+        left: 0 !important;
+
+        width: 210mm !important;
+        height: 297mm !important;
+
+        display: block !important;
+
+        visibility: visible !important;
+
+        z-index: 0 !important;
+    }
+
+    .report-content {
+        position: absolute !important;
+
+        top: 0 !important;
+        left: 0 !important;
+
+        width: 210mm !important;
+        height: 297mm !important;
+
+        z-index: 5 !important;
+    }
+
+    .report-patient-info {
+        top: 15.5% !important;
+        left: 8% !important;
+        right: 8% !important;
+
+        width: 84% !important;
+
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+
+        gap: 5px 12px !important;
+
+        background: rgba(255,255,255,0.93) !important;
+    }
+
+    .report-results {
+        top: 22.5% !important;
+        left: 8% !important;
+
+        width: 84% !important;
+    }
+
+    .report-results th,
+    .report-results td {
+        background: transparent !important;
+    }
+
+    .report-results .report-group td {
+        background: #d9eafa !important;
+        color: #153a5b !important;
+
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .app-header,
+    .navigation,
+    .app-footer,
+    .report-actions,
+    .sidebar,
+    .topbar,
+    button,
+    .no-print {
+        display: none !important;
+    }
+}
 </style>
 </head>
+
 <body>
-<div class="app">
-<aside class="sidebar">
- <div class="brand"><div class="logo">✚</div><div><h1>مختبر الجمان الجانبي</h1><small>Al-Juman Al-Janabi Laboratory</small></div></div>
- <nav class="nav"><button class="active" data-page="home"><span class="ico">⌂</span>الرئيسية</button><button data-page="newPatient"><span class="ico">＋</span>مريض جديد</button><button data-page="patients"><span class="ico">▤</span>سجلات المرضى</button><button data-page="tests"><span class="ico">⚕</span>إدارة التحاليل</button><button data-page="settings"><span class="ico">⚙</span>الإعدادات</button></nav>
- <div class="side-footer">مختبر الجمان الجانبي © 2026</div>
-</aside>
-<div class="main"><div class="topbar"><h2 id="pageLabel">لوحة التحكم</h2><div class="date" id="todayLabel"></div></div>
-<main class="content">
-<section class="page active" id="home"><div class="welcome"><div><h2>مرحباً بك في مختبر الجمان الجانبي</h2><p>إدارة المرضى والتحاليل والتقارير من مكان واحد</p></div><button onclick="go('newPatient')">＋ تسجيل مريض جديد</button></div><div class="cards"><div class="stat"><div class="stat-top"><span>إجمالي المرضى</span><span class="stat-icon">♙</span></div><div class="stat-num" id="statPatients">0</div></div><div class="stat"><div class="stat-top"><span>تقارير اليوم</span><span class="stat-icon">▣</span></div><div class="stat-num" id="statToday">0</div></div><div class="stat"><div class="stat-top"><span>عدد التحاليل</span><span class="stat-icon">⚕</span></div><div class="stat-num" id="statTests">0</div></div><div class="stat"><div class="stat-top"><span>إجمالي التقارير</span><span class="stat-icon">▤</span></div><div class="stat-num" id="statReports">0</div></div></div><div class="panel"><div class="panel-head"><h3>إجراءات سريعة</h3></div><div class="quick"><button onclick="go('newPatient')">＋ مريض جديد</button><button onclick="go('patients')">▤ سجلات المرضى</button><button onclick="go('tests')">⚕ إدارة التحاليل</button></div></div><div class="panel"><div class="panel-head"><h3>آخر المرضى</h3><button class="btn-light" onclick="go('patients')">عرض الكل</button></div><div class="table-wrap"><table><thead><tr><th>رقم المريض</th><th>الاسم</th><th>العمر</th><th>التاريخ</th><th>إجراء</th></tr></thead><tbody id="recentPatients"></tbody></table></div></div></section>
-<section class="page" id="newPatient"><h2 class="page-title">تسجيل مريض / زيارة جديدة</h2><div class="panel"><form id="patientForm"><div class="form-grid"><div class="field"><label>اسم المريض *</label><input id="pName" required></div><div class="field"><label>العمر *</label><div style="display:flex;gap:7px"><input id="pAge" type="number" min="0" required><select id="pAgeUnit"><option value="Years">سنة</option><option value="Months">شهر</option><option value="Days">يوم</option></select></div></div><div class="field"><label>الجنس *</label><select id="pGender" required><option value="">اختر</option><option value="Male">ذكر</option><option value="Female">أنثى</option></select></div><div class="field"><label>تاريخ الفحص *</label><input id="pDate" type="date" required></div><div class="field"><label>رقم المريض</label><input id="pNumber" readonly></div><div class="field"><label>اسم الطبيب (اختياري)</label><input id="pDoctor"></div></div><div class="field" style="margin-top:15px"><label>ملاحظات</label><textarea id="pNotes"></textarea></div><div class="actions"><button type="submit">حفظ واختيار التحاليل</button><button type="reset" class="btn-light">إعادة تعيين</button></div></form></div></section>
-<section class="page" id="choosePage"><h2 class="page-title">اختيار التحاليل</h2><div class="panel"><div id="choosePatientInfo"></div><input class="search" id="testSearch" placeholder="ابحث عن تحليل..." oninput="renderTestChoices()"><div class="test-list" id="testChoices"></div><div class="actions"><button onclick="createReport()">متابعة إلى إدخال النتائج</button><button class="btn-light" onclick="go('patients')">حفظ لاحقاً / رجوع</button></div></div></section>
-<section class="page" id="resultPage"><h2 class="page-title">إدخال نتائج التحاليل</h2><div class="panel"><div id="resultPatientInfo"></div><div class="table-wrap"><table><thead><tr><th>Test Name</th><th>Result</th><th>Unit</th><th>Reference Range</th><th>Note</th><th>حذف</th></tr></thead><tbody id="resultRows"></tbody></table></div><div class="actions"><button class="btn-light" onclick="saveDraft()">حفظ مسودة</button><button class="btn-green" onclick="saveFinal()">حفظ واعتماد التقرير</button><button class="btn-light" onclick="go('patients')">رجوع</button></div></div></section>
-<section class="page" id="reportPage"><h2 class="page-title">معاينة التقرير</h2><div class="panel" id="reportPreview"></div><div class="actions no-print"><button onclick="printReport()">طباعة / حفظ PDF</button><button class="btn-light" onclick="exportWord()">تصدير Word</button><button class="btn-light" onclick="editCurrentReport()">تعديل النتائج</button><button class="btn-light" onclick="go('patients')">العودة للسجلات</button></div></section>
-<section class="page" id="patients"><h2 class="page-title">سجلات المرضى</h2><input class="search" id="patientSearch" placeholder="بحث بالاسم أو رقم المريض أو التقرير" oninput="renderPatients()"><div class="panel"><div class="table-wrap"><table><thead><tr><th>رقم المريض</th><th>الاسم</th><th>العمر</th><th>الجنس</th><th>التاريخ</th><th>التقارير</th><th>إجراءات</th></tr></thead><tbody id="patientsRows"></tbody></table></div></div></section>
-<section class="page" id="tests"><h2 class="page-title">إدارة التحاليل</h2><div class="panel"><div class="panel-head"><h3>إضافة تحليل جديد</h3></div><div class="form-grid"><div class="field"><label>اسم التحليل</label><input id="newTestName" placeholder="Test Name"></div><div class="field"><label>الوحدة</label><input id="newTestUnit" placeholder="Unit"></div><div class="field"><label>Reference Range</label><input id="newTestRange" placeholder="Reference Range"></div></div><div class="actions"><button onclick="addTest()">＋ إضافة التحليل</button></div></div><div class="panel"><div class="panel-head"><h3>التحاليل المعتمدة</h3></div><div class="table-wrap"><table><thead><tr><th>Test Name</th><th>Unit</th><th>Reference Range</th><th>إجراء</th></tr></thead><tbody id="testsRows"></tbody></table></div></div></section>
-<section class="page" id="settings"><h2 class="page-title">الإعدادات والنسخ الاحتياطي</h2><div class="panel"><h3>بيانات المختبر</h3><div class="form-grid"><div class="field"><label>اسم المختبر بالعربي</label><input id="setLabAr"></div><div class="field"><label>English Name</label><input id="setLabEn"></div><div class="field"><label>رقم الهاتف</label><input id="setPhone"></div><div class="field"><label>العنوان</label><input id="setAddress"></div></div><div class="actions"><button onclick="saveSettings()">حفظ الإعدادات</button></div></div><div class="panel"><h3>إدارة البيانات</h3><div class="actions"><button onclick="backupData()">تصدير نسخة احتياطية</button><button class="btn-light" onclick="restoreData()">استعادة نسخة</button><button class="btn-danger" onclick="clearData()">مسح البيانات</button></div></div></section>
-</main><footer>مختبر الجمان الجانبي © 2026</footer></div></div>
-<div class="modal-back" id="outputModal"><div class="modal"><h3>إخراج التقرير</h3><p>اختر طريقة إخراج التقرير:</p><div class="modal-actions"><button onclick="printReport()">طباعة / PDF</button><button class="btn-light" onclick="exportWord()">حفظ Word</button><button class="btn-light" onclick="closeModal()">إلغاء</button></div></div></div>
+
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
+
+<header class="app-header">
+    <div class="header-content">
+
+        <div>
+            <div class="lab-title">مختبر الجمان الجانبي</div>
+            <div class="lab-subtitle">
+                Al-Juman Al-Janabi Laboratory
+            </div>
+        </div>
+
+        <div class="header-logo">+</div>
+
+    </div>
+</header>
+
+<!-- =====================================================
+     NAVIGATION
+     ===================================================== -->
+
+<nav class="navigation no-print">
+
+    <button class="active" onclick="goPage('home')">
+        الرئيسية
+    </button>
+
+    <button onclick="goPage('newPatient')">
+        مريض جديد
+    </button>
+
+    <button onclick="goPage('patients')">
+        سجلات المرضى
+    </button>
+
+    <button onclick="goPage('reportPage')">
+        معاينة التقرير
+    </button>
+
+</nav>
+
+<main class="container">
+
+<!-- =====================================================
+     HOME
+     ===================================================== -->
+
+<section id="home" class="page active">
+
+    <h2 class="page-title">الرئيسية</h2>
+
+    <div class="dashboard-grid">
+
+        <div class="stat-card">
+            <div class="stat-number" id="statPatients">0</div>
+            <div class="stat-label">عدد المرضى</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-number" id="statReports">0</div>
+            <div class="stat-label">عدد التقارير</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-number" id="statToday">0</div>
+            <div class="stat-label">مرضى اليوم</div>
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <div class="card-title">
+            الإجراءات السريعة
+        </div>
+
+        <div class="button-row">
+
+            <button class="btn btn-primary"
+                    onclick="goPage('newPatient')">
+                + تسجيل مريض جديد
+            </button>
+
+            <button class="btn btn-secondary"
+                    onclick="goPage('patients')">
+                عرض سجلات المرضى
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     NEW PATIENT
+     ===================================================== -->
+
+<section id="newPatient" class="page">
+
+    <h2 class="page-title">
+        تسجيل مريض جديد
+    </h2>
+
+    <div class="card">
+
+        <div class="card-title">
+            بيانات المريض
+        </div>
+
+        <form id="patientForm">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label>اسم المريض</label>
+                    <input id="patientName"
+                           type="text"
+                           required
+                           placeholder="اسم المريض الكامل">
+                </div>
+
+                <div class="form-group">
+                    <label>رقم المريض</label>
+                    <input id="patientNumber"
+                           type="text"
+                           readonly>
+                </div>
+
+                <div class="form-group">
+                    <label>العمر</label>
+                    <input id="patientAge"
+                           type="number"
+                           min="0"
+                           required
+                           placeholder="العمر">
+                </div>
+
+                <div class="form-group">
+                    <label>وحدة العمر</label>
+                    <select id="ageUnit">
+                        <option value="Years">Years</option>
+                        <option value="Months">Months</option>
+                        <option value="Days">Days</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>الجنس</label>
+                    <select id="patientGender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>تاريخ التحليل</label>
+                    <input id="patientDate"
+                           type="date"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label>اسم الطبيب</label>
+                    <input id="doctorName"
+                           type="text"
+                           placeholder="اختياري">
+                </div>
+
+                <div class="form-group">
+                    <label>ملاحظات</label>
+                    <input id="patientNotes"
+                           type="text"
+                           placeholder="ملاحظات اختيارية">
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <!-- TESTS -->
+
+    <div class="card">
+
+        <div class="card-title">
+            اختيار التحاليل
+        </div>
+
+        <input class="test-search"
+               id="testSearch"
+               type="search"
+               placeholder="ابحث عن تحليل..."
+               oninput="renderTests()">
+
+        <div class="test-list" id="testChoices"></div>
+
+    </div>
+
+    <!-- RESULTS -->
+
+    <div class="card">
+
+        <div class="card-title">
+            إدخال نتائج التحاليل
+        </div>
+
+        <div class="selected-tests">
+
+            <table class="result-input-table">
+
+                <thead>
+                    <tr>
+                        <th>التحليل</th>
+                        <th>النتيجة</th>
+                        <th>الوحدة</th>
+                        <th>المدى الطبيعي</th>
+                        <th>حذف</th>
+                    </tr>
+                </thead>
+
+                <tbody id="resultInputs"></tbody>
+
+            </table>
+
+        </div>
+
+        <div class="button-row">
+
+            <button type="button"
+                    class="btn btn-primary"
+                    onclick="savePatient()">
+                حفظ المريض والنتائج
+            </button>
+
+            <button type="button"
+                    class="btn btn-success"
+                    onclick="createReport()">
+                معاينة التقرير
+            </button>
+
+            <button type="button"
+                    class="btn btn-secondary"
+                    onclick="resetPatientForm()">
+                مسح النموذج
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     PATIENTS
+     ===================================================== -->
+
+<section id="patients" class="page">
+
+    <h2 class="page-title">
+        سجلات المرضى
+    </h2>
+
+    <div class="card">
+
+        <input id="patientSearch"
+               class="search-box"
+               type="search"
+               placeholder="بحث بالاسم أو رقم المريض..."
+               oninput="renderPatients()">
+
+        <div id="patientsList"
+             class="records-list"></div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     REPORT
+     ===================================================== -->
+
+<section id="reportPage" class="page">
+
+    <h2 class="page-title">
+        معاينة التقرير
+    </h2>
+
+    <div class="report-actions no-print">
+
+        <button class="btn btn-primary"
+                onclick="printReport()">
+            طباعة / حفظ PDF
+        </button>
+
+        <button class="btn btn-secondary"
+                onclick="exportWord()">
+            تصدير Word
+        </button>
+
+        <button class="btn btn-light"
+                onclick="goPage('patients')">
+            رجوع للسجلات
+        </button>
+
+    </div>
+
+    <div id="reportPreview">
+
+        <div class="report-sheet">
+
+            <!-- PDF BACKGROUND -->
+
+            <iframe
+                class="report-pdf-background"
+                src="lab_form.pdf#toolbar=0&navpanes=0&scrollbar=0&view=Fit"
+                title="Laboratory report background">
+            </iframe>
+
+            <!-- REPORT CONTENT -->
+
+            <div class="report-content">
+
+                <div id="reportPatientInfo"
+                     class="report-patient-info">
+                </div>
+
+                <table class="report-results">
+
+                    <thead>
+                        <tr>
+                            <th>Reference Range</th>
+                            <th>Unit</th>
+                            <th>Result</th>
+                            <th>Test Name</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="reportTableBody"></tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+<footer class="app-footer">
+    مختبر الجمان الجانبي
+    <br>
+    Al-Juman Al-Janabi Laboratory
+    <br>
+    الصقلاوية - الشهداء الثانية
+</footer>
+
 <script>
-const KEY='aljuman_lab_v1';const defaultTests=[['CBC','','See laboratory reference'],['Hemoglobin','g/dL','Male 13.5-17.5 | Female 12.0-15.5'],['WBC','10³/µL','4.0-11.0'],['Platelets','10³/µL','150-400'],['Glucose','mg/dL','70-110'],['Urea','mg/dL','15-45'],['Creatinine','mg/dL','Male 0.7-1.3 | Female 0.6-1.1'],['ALT','U/L','7-56'],['AST','U/L','10-40'],['TSH','µIU/mL','0.4-4.0'],['Vitamin D','ng/mL','30-100'],['CRP','mg/L','<5'],['Troponin I','ng/mL','According to assay'],['Urine Analysis','','See report']].map(x=>({name:x[0],unit:x[1],range:x[2]}));
-const fresh=()=>({patients:[],reports:[],tests:defaultTests.map(x=>({...x})),settings:{labAr:'مختبر الجمان الجانبي',labEn:'Al-Juman Al-Janabi Laboratory',phone:'07831216789',address:'الصقلاوية - الشهداء الثانية'},pseq:1,rseq:1});let db;try{db={...fresh(),...JSON.parse(localStorage.getItem(KEY)||'{}')};db.patients=db.patients||[];db.reports=db.reports||[];db.tests=db.tests||defaultTests.map(x=>({...x}));db.settings={...fresh().settings,...db.settings};}catch{db=fresh()}
-let currentPatient=null,currentReport=null,selectedTests=new Set();const $=id=>document.getElementById(id);function save(){localStorage.setItem(KEY,JSON.stringify(db));dashboard()}function esc(s=''){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}function today(){return new Date().toISOString().slice(0,10)}function seq(n){return new Date().getFullYear()+'-'+String(n).padStart(4,'0')}function patientNumber(){return seq(db.pseq||db.patients.length+1)}
-const labels={home:'لوحة التحكم',newPatient:'مريض جديد',patients:'سجلات المرضى',tests:'إدارة التحاليل',settings:'الإعدادات',choosePage:'اختيار التحاليل',resultPage:'إدخال النتائج',reportPage:'معاينة التقرير'};
-function go(id){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));$(id).classList.add('active');$('pageLabel').textContent=labels[id]||'';document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));if(id==='home')dashboard();if(id==='patients')renderPatients();if(id==='tests')renderTests();if(id==='settings')loadSettings();if(id==='newPatient')preparePatientForm()}
-document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>go(b.dataset.page));$('todayLabel').textContent=new Date().toLocaleDateString('ar-IQ',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
-function dashboard(){if(!$('statPatients'))return;$('statPatients').textContent=db.patients.length;$('statTests').textContent=db.tests.length;$('statReports').textContent=db.reports.length;$('statToday').textContent=db.reports.filter(r=>r.date===today()).length;let list=db.patients.slice().reverse().slice(0,5);$('recentPatients').innerHTML=list.length?list.map(p=>`<tr><td>${esc(p.number||p.id)}</td><td>${esc(p.name)}</td><td>${esc(p.age)} ${esc(p.ageUnit)}</td><td>${esc(p.date)}</td><td><button onclick="openPatient('${p.id}')">فتح</button></td></tr>`).join(''):'<tr><td colspan="5" class="empty">لا توجد سجلات بعد</td></tr>'}
-function preparePatientForm(){if(!$('pDate').value)$('pDate').value=today();$('pNumber').value=patientNumber()}
-$('patientForm').onsubmit=e=>{e.preventDefault();let p={id:String(Date.now()),number:patientNumber(),name:$('pName').value.trim(),age:$('pAge').value,ageUnit:$('pAgeUnit').value,gender:$('pGender').value,date:$('pDate').value,doctor:$('pDoctor').value,notes:$('pNotes').value,reports:[]};db.pseq=(db.pseq||db.patients.length+1)+1;db.patients.push(p);save();currentPatient=p;selectedTests=new Set();$('choosePatientInfo').innerHTML=`<p><b>المريض:</b> ${esc(p.name)} &nbsp; <b>ID:</b> ${esc(p.number)} &nbsp; <b>التاريخ:</b> ${esc(p.date)}</p>`;$('testSearch').value='';renderTestChoices();go('choosePage')};
-function renderTestChoices(){let q=$('testSearch').value.toLowerCase();$('testChoices').innerHTML=db.tests.filter(t=>t.name.toLowerCase().includes(q)).map(t=>`<label class="test-option ${selectedTests.has(t.name)?'selected':''}"><input type="checkbox" ${selectedTests.has(t.name)?'checked':''} onchange="toggleTest('${esc(t.name)}',this.checked)"><span><b>${esc(t.name)}</b><small>${esc(t.unit)} · ${esc(t.range)}</small></span></label>`).join('')||'<div class="empty">لا توجد تحاليل مطابقة</div>'}function toggleTest(n,c){if(c)selectedTests.add(n);else selectedTests.delete(n);renderTestChoices()}
-function createReport(){if(!currentPatient)return alert('يرجى تسجيل المريض أولاً');if(!selectedTests.size)return alert('اختر تحليلًا واحدًا على الأقل');let r={id:seq(db.rseq||db.reports.length+1),patientId:currentPatient.id,date:currentPatient.date,status:'Draft',items:[...selectedTests].map(n=>{let t=db.tests.find(x=>x.name===n);return{name:t.name,result:'',unit:t.unit,range:t.range,note:''}})};db.rseq=(db.rseq||db.reports.length+1)+1;db.reports.unshift(r);currentPatient.reports=currentPatient.reports||[];currentPatient.reports.push(r.id);save();currentReport=r;renderResults();go('resultPage')}
-function renderResults(){let p=db.patients.find(x=>x.id===currentReport.patientId);$('resultPatientInfo').innerHTML=`<p><b>${esc(p.name)}</b> · ${esc(p.number)} · ${esc(p.age)} ${esc(p.ageUnit)} · ${esc(p.gender)} · ${esc(currentReport.date)}</p>`;$('resultRows').innerHTML=currentReport.items.map((i,n)=>`<tr><td>${esc(i.name)}</td><td><input class="result-input" value="${esc(i.result)}" oninput="currentReport.items[${n}].result=this.value"></td><td><input class="result-input" value="${esc(i.unit)}" oninput="currentReport.items[${n}].unit=this.value"></td><td><input class="result-input" value="${esc(i.range)}" oninput="currentReport.items[${n}].range=this.value"></td><td><input class="result-input" value="${esc(i.note)}" oninput="currentReport.items[${n}].note=this.value"></td><td><button class="btn-danger" onclick="removeItem(${n})">حذف</button></td></tr>`).join('')}
-function removeItem(n){currentReport.items.splice(n,1);renderResults()}function saveDraft(){currentReport.status='Draft';save();alert('تم حفظ المسودة');go('patients')}function saveFinal(){currentReport.status='Final';save();renderPreview();go('reportPage')}
-function classifyTest(name){let n=(name||'').toLowerCase();if(/cbc|wbc|rbc|hemoglobin|hgb|hematocrit|hct|mcv|mch|mchc|platelet|neutrophil|lymphocyte|monocyte|eosinophil|basophil/.test(n))return 'Hematology';if(/glucose|urea|creatinine|uric acid|electrolyte|sodium|potassium|chloride|calcium|phosph|magnesium/.test(n))return 'Biochemistry';if(/alt|ast|sgpt|sgot|alp|bilirubin|albumin|liver/.test(n))return 'Liver Function Tests (LFT)';if(/cholesterol|triglyceride|hdl|ldl|lipid/.test(n))return 'Lipid Profile';if(/tsh|t3|t4|ft3|ft4|hormone|prolactin|cortisol|ferritin/.test(n))return 'Hormones';if(/crp|troponin|vitamin|hbs|hcv|hiv|serology|immun|antibody|antigen/.test(n))return 'Immunology / Serology';if(/urine/.test(n))return 'Urine Analysis';return 'Other Tests'}
-function renderPreview(){let r=currentReport,p=db.patients.find(x=>x.id===r.patientId);if(!r||!p)return;let notes=p.notes||r.notes||'';let order=['Hematology','Biochemistry','Liver Function Tests (LFT)','Lipid Profile','Hormones','Immunology / Serology','Urine Analysis','Other Tests'];let grouped={};r.items.forEach(i=>{let g=classifyTest(i.name);(grouped[g]||(grouped[g]=[])).push(i)});let rows=order.filter(g=>grouped[g]?.length).map(g=>`<tr class="report-group"><td colspan="4">▰ &nbsp; ${g}</td></tr>${grouped[g].map(i=>`<tr><td>${esc(i.range)}</td><td>${esc(i.unit)}</td><td><b>${esc(i.result)}</b></td><td>${esc(i.name)}</td></tr>`).join('')}`).join('');
-$('reportPreview').innerHTML=`<div class="report-sheet"><img class="report-background" src="lab_form.jpg" alt="Laboratory report form" onerror="this.style.display='none';console.warn('lab_form.jpg not found beside index.html')"><div class="report-content"><div class="report-patient-info"><div class="info-item"><b>Patient Name:</b> ${esc(p.name)}</div><div class="info-item"><b>Patient ID:</b> ${esc(p.number||p.id)}</div><div class="info-item"><b>Report No:</b> ${esc(r.id)}</div><div class="info-item"><b>Age:</b> ${esc(p.age)} ${esc(p.ageUnit)}</div><div class="info-item"><b>Gender:</b> ${esc(p.gender)}</div><div class="info-item"><b>Date:</b> ${esc(r.date)}</div>${p.doctor?`<div class="info-item"><b>Doctor:</b> ${esc(p.doctor)}</div>`:''}</div><table class="report-results"><thead><tr><th>Reference Range</th><th>Unit</th><th>Result</th><th>Test Name</th></tr></thead><tbody>${rows}</tbody></table>${notes?`<div class="report-notes"><b>Notes:</b> ${esc(notes)}</div>`:''}<div class="report-signature">Laboratory Signature: __________________</div></div></div>`}
-function printReport(){if(!currentReport){alert('لا يوجد تقرير للطباعة');return}renderPreview();let img=$('reportPreview').querySelector('.report-background'),printed=false;const doPrint=()=>{if(printed)return;printed=true;window.print()};if(img&&img.complete){if(img.naturalWidth>0)doPrint();else alert('تعذر تحميل lab_form.jpg. تأكد أن الصورة في نفس مجلد index.html')}else if(img){img.onload=doPrint;img.onerror=()=>alert('تعذر تحميل lab_form.jpg. تأكد أن الصورة في نفس مجلد index.html')}else doPrint()}
-function editCurrentReport(){renderResults();go('resultPage')}
-function openPatient(id){currentPatient=db.patients.find(p=>p.id===id);let reports=db.reports.filter(r=>r.patientId===id);let detail=`المريض: ${currentPatient.name}\nرقم المريض: ${currentPatient.number}\nالعمر: ${currentPatient.age} ${currentPatient.ageUnit}\nالجنس: ${currentPatient.gender}\nالتاريخ: ${currentPatient.date}\n\nالتقارير: ${reports.length}`;if(!reports.length){if(confirm(detail+'\n\nهل تريد زيارة جديدة واختيار التحاليل؟')){selectedTests=new Set();$('choosePatientInfo').innerHTML=`<p><b>المريض:</b> ${esc(currentPatient.name)} &nbsp; <b>ID:</b> ${esc(currentPatient.number)}</p>`;renderTestChoices();go('choosePage')}return}let choices=reports.map((r,i)=>`${i+1}. ${r.id} (${r.status})`).join('\n');let idx=prompt(detail+'\n\nاختر رقم التقرير لفتحه:\n'+choices);if(idx&&reports[Number(idx)-1]){currentReport=reports[Number(idx)-1];if(currentReport.status==='Final'){renderPreview();go('reportPage')}else{renderResults();go('resultPage')}}}
-function renderPatients(){let q=$('patientSearch').value.toLowerCase();let list=db.patients.filter(p=>(p.name||'').toLowerCase().includes(q)||(p.number||p.id||'').toLowerCase().includes(q)||db.reports.some(r=>r.patientId===p.id&&r.id.toLowerCase().includes(q)));$('patientsRows').innerHTML=list.length?list.slice().reverse().map(p=>`<tr><td>${esc(p.number||p.id)}</td><td>${esc(p.name)}</td><td>${esc(p.age)} ${esc(p.ageUnit)}</td><td>${esc(p.gender)}</td><td>${esc(p.date)}</td><td>${db.reports.filter(r=>r.patientId===p.id).length}</td><td><button onclick="openPatient('${p.id}')">فتح</button> <button class="btn-danger" onclick="deletePatient('${p.id}')">حذف</button></td></tr>`).join(''):'<tr><td colspan="7" class="empty">لا توجد سجلات</td></tr>'}
-function deletePatient(id){if(!confirm('حذف المريض وتقاريره؟'))return;db.patients=db.patients.filter(p=>p.id!==id);db.reports=db.reports.filter(r=>r.patientId!==id);save();renderPatients()}
-function renderTests(){$('testsRows').innerHTML=db.tests.map((t,i)=>`<tr><td>${esc(t.name)}</td><td>${esc(t.unit)}</td><td>${esc(t.range)}</td><td><button class="btn-danger" onclick="deleteTest(${i})">حذف</button></td></tr>`).join('')}
-function addTest(){let name=$('newTestName').value.trim();if(!name)return alert('أدخل اسم التحليل');db.tests.push({name,unit:$('newTestUnit').value,range:$('newTestRange').value});save();$('newTestName').value=$('newTestUnit').value=$('newTestRange').value='';renderTests()}function deleteTest(i){if(confirm('حذف هذا التحليل من القائمة؟')){db.tests.splice(i,1);save();renderTests()}}
-function loadSettings(){for(let k of ['labAr','labEn','phone','address'])$('set'+k[0].toUpperCase()+k.slice(1)).value=db.settings[k]||''}function saveSettings(){for(let k of ['labAr','labEn','phone','address'])db.settings[k]=$('set'+k[0].toUpperCase()+k.slice(1)).value;save();alert('تم حفظ الإعدادات')}
-function backupData(){let blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='Al-Juman-Lab-Backup-'+today()+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}function restoreData(){let inp=document.createElement('input');inp.type='file';inp.accept='.json';inp.onchange=()=>{let f=inp.files[0];if(!f)return;let rd=new FileReader();rd.onload=()=>{try{let x=JSON.parse(rd.result);if(!x.patients||!x.tests)throw 0;if(confirm('استبدال البيانات الحالية بالنسخة؟')){db={...fresh(),...x};save();dashboard();renderPatients();renderTests();alert('تمت الاستعادة')}}catch{alert('ملف النسخة غير صحيح')}};rd.readAsText(f)};inp.click()}
-function clearData(){if(confirm('تأكيد مسح المرضى والتقارير؟')){db.patients=[];db.reports=[];db.pseq=1;db.rseq=1;save();renderPatients();dashboard();alert('تم مسح سجلات المرضى والتقارير')}}
-function exportWord(){if(!currentReport)return;let html=`<!DOCTYPE html><html><head><meta charset="utf-8"><style>body{font-family:Arial;margin:25px}h2{text-align:center;color:#102d4f}table{width:100%;border-collapse:collapse}td,th{border:1px solid #777;padding:8px;text-align:right}th{background:#eaf2fa}.meta{display:flex;flex-wrap:wrap;gap:20px;border:1px solid #aaa;padding:12px;margin:15px 0}</style></head><body>${$('reportPreview').innerHTML}</body></html>`;let blob=new Blob(['\ufeff',html],{type:'application/msword'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='Lab-Report-'+currentReport.id+'.doc';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}function closeModal(){$('outputModal').classList.remove('show')}
-if(db.patients.length&&db.patients[0].number===undefined){db.patients.forEach((p,i)=>{p.number=p.number||seq(i+1);p.id=String(p.id||Date.now()+i);p.reports=p.reports||[]});db.pseq=db.pseq||db.patients.length+1;save()}
-preparePatientForm();dashboard();renderPatients();renderTests();
-</script>
-</body></html>
-.report-patient-info {
-    top: 30% !important;
+/* =====================================================
+   DATABASE
+   ===================================================== */
+
+const STORAGE_KEY = "aljuman_lab_final_v1";
+
+const defaultTests = [
+    {name:"CBC",unit:"",range:"See laboratory reference",group:"Hematology"},
+    {name:"Hemoglobin",unit:"g/dL",range:"Male 13.5-17.5 | Female 12.0-15.5",group:"Hematology"},
+    {name:"WBC",unit:"10³/µL",range:"4.0-11.0",group:"Hematology"},
+    {name:"Platelets",unit:"10³/µL",range:"150-400",group:"Hematology"},
+
+    {name:"Glucose",unit:"mg/dL",range:"70-110",group:"Biochemistry"},
+    {name:"Urea",unit:"mg/dL",range:"15-45",group:"Biochemistry"},
+    {name:"Creatinine",unit:"mg/dL",range:"Male 0.7-1.3 | Female 0.6-1.1",group:"Biochemistry"},
+    {name:"ALT",unit:"U/L",range:"7-56",group:"Biochemistry"},
+    {name:"AST",unit:"U/L",range:"10-40",group:"Biochemistry"},
+
+    {name:"TSH",unit:"µIU/mL",range:"0.4-4.0",group:"Hormones"},
+    {name:"Vitamin D",unit:"ng/mL",range:"30-100",group:"Hormones"},
+
+    {name:"CRP",unit:"mg/L",range:"<5",group:"Immunology"},
+    {name:"Troponin I",unit:"ng/mL",range:"According to assay",group:"Cardiac"},
+
+    {name:"Urine Analysis",unit:"",range:"See laboratory reference",group:"Urine"}
+];
+
+let db = {
+    patients: [],
+    reports: [],
+    tests: defaultTests,
+    settings: {
+        labName: "مختبر الجمان الجانبي",
+        labNameEnglish: "Al-Juman Al-Janabi Laboratory",
+        address: "الصقلاوية - الشهداء الثانية"
+    }
+};
+
+try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+
+    if (saved) {
+        const loaded = JSON.parse(saved);
+
+        db = {
+            ...db,
+            ...loaded,
+            tests: loaded.tests || defaultTests,
+            patients: loaded.patients || [],
+            reports: loaded.reports || []
+        };
+    }
+} catch(error) {
+    console.error("Database loading error:", error);
 }
+
+function saveDatabase() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(db));
+    updateDashboard();
+}
+
+/* =====================================================
+   HELPERS
+   ===================================================== */
+
+function $(id) {
+    return document.getElementById(id);
+}
+
+function escapeHTML(value) {
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+function today() {
+    return new Date().toISOString().slice(0,10);
+}
+
+function patientNumber() {
+    return "2026-" + String(db.patients.length + 1).padStart(4, "0");
+}
+
+function reportNumber() {
+    return "2026-" + String(db.reports.length + 1).padStart(4, "0");
+}
+
+function generateID() {
+    return Date.now() + Math.floor(Math.random() * 1000);
+}
+
+/* =====================================================
+   PAGE NAVIGATION
+   ===================================================== */
+
+function goPage(id) {
+
+    document.querySelectorAll(".page").forEach(page => {
+        page.classList.remove("active");
+    });
+
+    $(id).classList.add("active");
+
+    document.querySelectorAll(".navigation button").forEach(button => {
+        button.classList.remove("active");
+    });
+
+    const buttons = document.querySelectorAll(".navigation button");
+
+    const pageMap = {
+        home: 0,
+        newPatient: 1,
+        patients: 2,
+        reportPage: 3
+    };
+
+    if (pageMap[id] !== undefined) {
+        buttons[pageMap[id]].classList.add("active");
+    }
+
+    if (id === "home") {
+        updateDashboard();
+    }
+
+    if (id === "patients") {
+        renderPatients();
+    }
+
+    if (id === "newPatient") {
+        if (!$("patientNumber").value) {
+            preparePatientForm();
+        }
+
+        renderTests();
+    }
+}
+
+/* =====================================================
+   PATIENT FORM
+   ===================================================== */
+
+function preparePatientForm() {
+
+    $("patientNumber").value = patientNumber();
+
+    $("patientDate").value = today();
+
+    $("patientName").value = "";
+    $("patientAge").value = "";
+    $("ageUnit").value = "Years";
+    $("patientGender").value = "Male";
+    $("doctorName").value = "";
+    $("patientNotes").value = "";
+
+    selectedTests.clear();
+
+    renderTests();
+    renderResultInputs();
+}
+
+function resetPatientForm() {
+    preparePatientForm();
+}
+
+let selectedTests = new Set();
+
+/* =====================================================
+   TEST LIST
+   ===================================================== */
+
+function renderTests() {
+
+    const query = $("testSearch").value.toLowerCase();
+
+    $("testChoices").innerHTML = db.tests
+        .filter(test => test.name.toLowerCase().includes(query))
+        .map(test => `
+            <label class="test-option">
+
+                <input
+                    type="checkbox"
+                    ${selectedTests.has(test.name) ? "checked" : ""}
+                    onchange="toggleTest('${escapeHTML(test.name)}')">
+
+                <span>${escapeHTML(test.name)}</span>
+
+            </label>
+        `).join("");
+}
+
+function toggleTest(name) {
+
+    if (selectedTests.has(name)) {
+        selectedTests.delete(name);
+    } else {
+        selectedTests.add(name);
+    }
+
+    renderResultInputs();
+}
+
+function renderResultInputs() {
+
+    const selected = db.tests.filter(test =>
+        selectedTests.has(test.name)
+    );
+
+    $("resultInputs").innerHTML = selected.map((test,index) => `
+        <tr>
+
+            <td>${escapeHTML(test.name)}</td>
+
+            <td>
+                <input
+                    type="text"
+                    id="result_${index}"
+                    placeholder="Result">
+            </td>
+
+            <td>
+                <input
+                    type="text"
+                    id="unit_${index}"
+                    value="${escapeHTML(test.unit)}">
+            </td>
+
+            <td>
+                <input
+                    type="text"
+                    id="range_${index}"
+                    value="${escapeHTML(test.range)}">
+            </td>
+
+            <td>
+                <button
+                    type="button"
+                    class="btn btn-danger"
+                    onclick="removeTest('${escapeHTML(test.name)}')">
+                    حذف
+                </button>
+            </td>
+
+        </tr>
+    `).join("");
+}
+
+function removeTest(name) {
+    selectedTests.delete(name);
+    renderTests();
+    renderResultInputs();
+}
+
+/* =====================================================
+   SAVE PATIENT
+   ===================================================== */
+
+function savePatient() {
+
+    const name = $("patientName").value.trim();
+
+    if (!name) {
+        alert("يرجى إدخال اسم المريض");
+        return;
+    }
+
+    if (selectedTests.size === 0) {
+        alert("يرجى اختيار تحليل واحد على الأقل");
+        return;
+    }
+
+    const selected = db.tests.filter(test =>
+        selectedTests.has(test.name)
+    );
+
+    const results = selected.map((test,index) => {
+
+        return {
+            name: test.name,
+
+            result: $("result_" + index)?.value || "",
+
+            unit: $("unit_" + index)?.value || test.unit,
+
+            range: $("range_" + index)?.value || test.range,
+
+            group: test.group
+        };
+    });
+
+    const patient = {
+        id: generateID(),
+        number: $("patientNumber").value,
+        name: name,
+        age: $("patientAge").value,
+        ageUnit: $("ageUnit").value,
+        gender: $("patientGender").value,
+        date: $("patientDate").value,
+        doctor: $("doctorName").value,
+        notes: $("patientNotes").value,
+        results: results
+    };
+
+    db.patients.push(patient);
+
+    saveDatabase();
+
+    currentPatient = patient;
+
+    alert("تم حفظ بيانات المريض والنتائج بنجاح");
+
+    renderPatients();
+
+    createReport(patient);
+
+    goPage("reportPage");
+}
+
+/* =====================================================
+   PATIENT RECORDS
+   ===================================================== */
+
+function renderPatients() {
+
+    const query = $("patientSearch").value.toLowerCase();
+
+    const patients = [...db.patients].reverse().filter(patient => {
+
+        return patient.name.toLowerCase().includes(query) ||
+               patient.number.toLowerCase().includes(query);
+    });
+
+    $("patientsList").innerHTML = patients.map(patient => `
+        <div class="record-card">
+
+            <div class="record-card-header">
+
+                <div>
+                    <strong>${escapeHTML(patient.name)}</strong>
+                    <br>
+                    <small>ID: ${escapeHTML(patient.number)}</small>
+                </div>
+
+                <div>
+                    ${escapeHTML(patient.date)}
+                </div>
+
+            </div>
+
+            <div style="margin-top:8px">
+                العمر: ${escapeHTML(patient.age)}
+                ${escapeHTML(patient.ageUnit)}
+                |
+                ${escapeHTML(patient.gender)}
+            </div>
+
+            <div style="margin-top:8px">
+                التحاليل:
+                ${patient.results.map(result =>
+                    escapeHTML(result.name)
+                ).join("، ")}
+            </div>
+
+            <div class="record-actions">
+
+                <button class="btn btn-primary"
+                        onclick="openPatientReport(${patient.id})">
+                    التقرير
+                </button>
+
+                <button class="btn btn-secondary"
+                        onclick="editPatient(${patient.id})">
+                    تعديل
+                </button>
+
+                <button class="btn btn-danger"
+                        onclick="deletePatient(${patient.id})">
+                    حذف
+                </button>
+
+            </div>
+
+        </div>
+    `).join("");
+
+    if (!patients.length) {
+        $("patientsList").innerHTML =
+            "<p>لا توجد سجلات مطابقة.</p>";
+    }
+}
+
+function openPatientReport(id) {
+
+    const patient = db.patients.find(p => p.id === id);
+
+    if (!patient) return;
+
+    currentPatient = patient;
+
+    createReport(patient);
+
+    goPage("reportPage");
+}
+
+function deletePatient(id) {
+
+    if (!confirm("هل تريد حذف سجل المريض؟")) {
+        return;
+    }
+
+    db.patients = db.patients.filter(p => p.id !== id);
+
+    db.reports = db.reports.filter(r => r.patientID !== id);
+
+    saveDatabase();
+
+    renderPatients();
+}
+
+function editPatient(id) {
+
+    const patient = db.patients.find(p => p.id === id);
+
+    if (!patient) return;
+
+    $("patientNumber").value = patient.number;
+    $("patientName").value = patient.name;
+    $("patientAge").value = patient.age;
+    $("ageUnit").value = patient.ageUnit;
+    $("patientGender").value = patient.gender;
+    $("patientDate").value = patient.date;
+    $("doctorName").value = patient.doctor || "";
+    $("patientNotes").value = patient.notes || "";
+
+    selectedTests.clear();
+
+    patient.results.forEach(result => {
+        selectedTests.add(result.name);
+    });
+
+    renderTests();
+    renderResultInputs();
+
+    patient.results.forEach((result,index) => {
+
+        const resultInput = $("result_" + index);
+        const unitInput = $("unit_" + index);
+        const rangeInput = $("range_" + index);
+
+        if (resultInput) resultInput.value = result.result;
+        if (unitInput) unitInput.value = result.unit;
+        if (rangeInput) rangeInput.value = result.range;
+    });
+
+    goPage("newPatient");
+}
+
+/* =====================================================
+   REPORT GENERATION
+   ===================================================== */
+
+let currentPatient = null;
+let currentReport = null;
+
+function createReport(patient = currentPatient) {
+
+    if (!patient) {
+        alert("يرجى اختيار مريض");
+        return;
+    }
+
+    currentPatient = patient;
+
+    const number = reportNumber();
+
+    currentReport = {
+        id: generateID(),
+        patientID: patient.id,
+        number: number,
+        date: patient.date,
+        results: patient.results
+    };
+
+    db.reports.push(currentReport);
+
+    saveDatabase();
+
+    renderReport(patient);
+
+    goPage("reportPage");
+}
+
+function renderReport(patient) {
+
+    if (!patient) return;
+
+    const reportNo = currentReport
+        ? currentReport.number
+        : reportNumber();
+
+    $("reportPatientInfo").innerHTML = `
+
+        <div class="info-item">
+            <strong>Patient Name:</strong>
+            ${escapeHTML(patient.name)}
+        </div>
+
+        <div class="info-item">
+            <strong>Patient ID:</strong>
+            ${escapeHTML(patient.number)}
+        </div>
+
+        <div class="info-item">
+            <strong>Report No:</strong>
+            ${escapeHTML(reportNo)}
+        </div>
+
+        <div class="info-item">
+            <strong>Age:</strong>
+            ${escapeHTML(patient.age)}
+            ${escapeHTML(patient.ageUnit)}
+        </div>
+
+        <div class="info-item">
+            <strong>Gender:</strong>
+            ${escapeHTML(patient.gender)}
+        </div>
+
+        <div class="info-item">
+            <strong>Date:</strong>
+            ${escapeHTML(patient.date)}
+        </div>
+
+        ${patient.doctor ? `
+        <div class="info-item">
+            <strong>Doctor:</strong>
+            ${escapeHTML(patient.doctor)}
+        </div>
+        ` : ""}
+
+    `;
+
+    const groups = {};
+
+    patient.results.forEach(result => {
+
+        const group = result.group || "Other";
+
+        if (!groups[group]) {
+            groups[group] = [];
+        }
+
+        groups[group].push(result);
+    });
+
+    let tableHTML = "";
+
+    Object.keys(groups).forEach(group => {
+
+        tableHTML += `
+            <tr class="report-group">
+                <td colspan="4">
+                    ${escapeHTML(group)}
+                </td>
+            </tr>
+        `;
+
+        groups[group].forEach(result => {
+
+            tableHTML += `
+                <tr>
+
+                    <td>
+                        ${escapeHTML(result.range)}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(result.unit)}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(result.result)}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(result.name)}
+                    </td>
+
+                </tr>
+            `;
+        });
+    });
+
+    $("reportTableBody").innerHTML = tableHTML;
+}
+
+/* =====================================================
+   PRINT
+   ===================================================== */
+
+function printReport() {
+
+    if (!currentPatient) {
+        alert("لا يوجد تقرير جاهز للطباعة");
+        return;
+    }
+
+    renderReport(currentPatient);
+
+    setTimeout(() => {
+        window.print();
+    }, 700);
+}
+
+/* =====================================================
+   WORD EXPORT
+   ===================================================== */
+
+function exportWord() {
+
+    if (!currentPatient) {
+        alert("لا يوجد تقرير");
+        return;
+    }
+
+    renderReport(currentPatient);
+
+    const reportHTML = $("reportPreview").innerHTML;
+
+    const blob = new Blob([
+        `
+        <html>
+        <head>
+        <meta charset="UTF-8">
+        </head>
+        <body>
+        ${reportHTML}
+        </body>
+        </html>
+        `
+    ], {
+        type: "application/msword"
+    });
+
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+
+    link.href = url;
+
+    link.download = "Laboratory_Report_" +
+                    currentPatient.number +
+                    ".doc";
+
+    link.click();
+
+    URL.revokeObjectURL(url);
+}
+
+/* =====================================================
+   DASHBOARD
+   ===================================================== */
+
+function updateDashboard() {
+
+    $("statPatients").textContent = db.patients.length;
+
+    $("statReports").textContent = db.reports.length;
+
+    $("statToday").textContent =
+        db.patients.filter(patient =>
+            patient.date === today()
+        ).length;
+}
+
+/* =====================================================
+   INITIALIZATION
+   ===================================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    $("patientDate").value = today();
+
+    preparePatientForm();
+
+    renderTests();
+
+    renderPatients();
+
+    updateDashboard();
+
+});
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#123451">
+<title>مختبر الجمان الجانبي</title>
+
+<style>
+/* =====================================================
+   AL-JUMAN AL-JANABI LABORATORY
+   COMPLETE INDEX.HTML
+   ===================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #f3f6fb;
+    color: #172b42;
+    font-family: Arial, Tahoma, sans-serif;
+    direction: rtl;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.app-header {
+    background: #123451;
+    color: white;
+    padding: 18px;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.lab-title {
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.lab-subtitle {
+    font-size: 12px;
+    color: #c6d8e9;
+    margin-top: 5px;
+}
+
+.header-logo {
+    width: 55px;
+    height: 55px;
+    border-radius: 12px;
+    background: white;
+    color: #123451;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/* Navigation */
+
+.navigation {
+    background: #173e60;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 10px;
+}
+
+.navigation button {
+    border: 0;
+    background: transparent;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 8px;
+}
+
+.navigation button:hover,
+.navigation button.active {
+    background: #ffffff22;
+}
+
+/* Main layout */
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+.page-title {
+    font-size: 23px;
+    margin: 0 0 20px;
+    color: #123451;
+}
+
+/* Cards */
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(15, 40, 70, 0.06);
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #123451;
+}
+
+/* Form */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.form-group.full {
+    grid-column: 1 / -1;
+}
+
+label {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    min-height: 42px;
+    padding: 10px;
+    border: 1px solid #d6deea;
+    border-radius: 7px;
+    background: white;
+    color: #172b42;
+    font-size: 14px;
+}
+
+textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #2476a9;
+    box-shadow: 0 0 0 2px #2476a920;
+}
+
+/* Buttons */
+
+.btn {
+    border: none;
+    border-radius: 7px;
+    padding: 11px 17px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.btn-primary {
+    background: #17689b;
+    color: white;
+}
+
+.btn-secondary {
+    background: #e6edf5;
+    color: #123451;
+}
+
+.btn-danger {
+    background: #dc3545;
+    color: white;
+}
+
+.btn-success {
+    background: #198754;
+    color: white;
+}
+
+.btn-light {
+    background: white;
+    color: #123451;
+    border: 1px solid #d6deea;
+}
+
+.button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* Test selection */
+
+.test-search {
+    margin-bottom: 12px;
+}
+
+.test-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.test-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px;
+    border: 1px solid #e0e7ef;
+    border-radius: 7px;
+    background: #f9fbfd;
+}
+
+.test-option input {
+    width: 18px;
+    height: 18px;
+    min-height: auto;
+}
+
+.selected-tests {
+    margin-top: 20px;
+}
+
+.result-input-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.result-input-table th,
+.result-input-table td {
+    border: 1px solid #d8e0e8;
+    padding: 8px;
+    text-align: center;
+}
+
+.result-input-table th {
+    background: #e9f2fa;
+}
+
+.result-input-table input {
+    min-width: 70px;
+    padding: 7px;
+}
+
+/* Dashboard */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px #12345110;
+}
+
+.stat-number {
+    font-size: 28px;
+    font-weight: bold;
+    color: #17689b;
+}
+
+.stat-label {
+    margin-top: 7px;
+    color: #60758b;
+}
+
+/* Patient records */
+
+.search-box {
+    margin-bottom: 15px;
+}
+
+.records-list {
+    display: grid;
+    gap: 10px;
+}
+
+.record-card {
+    background: white;
+    border: 1px solid #e0e7ef;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.record-card-header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.record-actions {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+/* Report page */
+
+.report-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+#reportPreview {
+    width: 100%;
+    overflow: auto;
+    background: #dce3eb;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+/* =====================================================
+   A4 REPORT
+   ===================================================== */
+
+.report-sheet {
+    position: relative;
+
+    width: 210mm;
+    height: 297mm;
+    min-width: 210mm;
+    max-width: 210mm;
+
+    margin: 0 auto;
+
+    overflow: hidden;
+
+    background: white;
+
+    box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+}
+
+/* PDF background */
+
+.report-pdf-background {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 210mm;
+    height: 297mm;
+
+    border: none;
+
+    display: block;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    background: white;
+}
+
+/* Report content */
+
+.report-content {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 210mm;
+    height: 297mm;
+
+    z-index: 5;
+
+    background: transparent;
+
+    overflow: hidden;
+}
+
+/* Patient information */
+
+.report-patient-info {
+    position: absolute;
+
+    top: 15.5%;
+    left: 8%;
+    right: 8%;
+
+    width: 84%;
+
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 5px 12px;
+
+    padding: 5px 8px;
+
+    background: rgba(255,255,255,0.93);
+
+    border-radius: 3px;
+
+    color: #111;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 9pt;
+    line-height: 1.45;
+
+    direction: ltr;
+    text-align: left;
+
+    z-index: 10;
+}
+
+.info-item {
+    min-width: 0;
+    padding: 2px 3px;
+    overflow-wrap: break-word;
+}
+
+/* Results table */
+
+.report-results {
+    position: absolute;
+
+    top: 22.5%;
+    left: 8%;
+
+    width: 84%;
+
+    margin: 0;
+
+    border-collapse: collapse;
+    border-spacing: 0;
+
+    table-layout: fixed;
+
+    background: rgba(255,255,255,0.96);
+
+    direction: ltr;
+
+    z-index: 10;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.report-results th,
+.report-results td {
+    border: 1px solid #555;
+
+    padding: 4px 5px;
+
+    text-align: center;
+    vertical-align: middle;
+
+    font-size: 8.5pt;
+    line-height: 1.35;
+
+    color: #111;
+
+    background: transparent;
+
+    overflow-wrap: break-word;
+}
+
+.report-results th {
+    font-weight: bold;
+}
+
+.report-results .report-group td {
+    background: #d9eafa !important;
+    color: #153a5b !important;
+    font-weight: bold;
+    text-align: left;
+    padding: 5px 7px;
+}
+
+/* Footer */
+
+.app-footer {
+    background: #123451;
+    color: #dce8f3;
+    text-align: center;
+    padding: 15px;
+    font-size: 12px;
+    margin-top: 30px;
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media screen and (max-width: 700px) {
+
+    .container {
+        padding: 10px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .test-list {
+        grid-template-columns: 1fr;
+    }
+
+    .header-content {
+        flex-direction: row;
+    }
+
+    .lab-title {
+        font-size: 18px;
+    }
+
+    .navigation button {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    #reportPreview {
+        padding: 10px;
+    }
+
+    .report-sheet {
+        transform-origin: top center;
+    }
+}
+
+/* =====================================================
+   PRINT
+   ===================================================== */
+
+@media print {
+
+    @page {
+        size: A4 portrait;
+        margin: 0;
+    }
+
+    html,
+    body {
+        width: 210mm !important;
+        height: 297mm !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        overflow: hidden !important;
+
+        background: white !important;
+
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    body > * {
+        visibility: hidden !important;
+    }
+
+    #reportPreview,
+    #reportPreview * {
+        visibility: visible !important;
+    }
+
+    #reportPreview {
+        position: absolute !important;
+
+        top: 0 !important;
+        left: 0 !important;
+
+        width: 210mm !important;
+        height: 297mm !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        overflow: hidden !important;
+
+        background: white !important;
+    }
+
+    .report-sheet {
+        position: relative !important;
+
+        width: 210mm !important;
+        height: 297mm !important;
+
+        min-width: 210mm !important;
+        max-width: 210mm !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        transform: none !important;
+
+        overflow: hidden !important;
+
+        box-shadow: none !important;
+
+        page-break-before: avoid !important;
+        page-break-after: avoid !important;
+        page-break-inside: avoid !important;
+
+        break-before: avoid !important;
+        break-after: avoid !important;
+        break-inside: avoid !important;
+    }
+
+    .report-pdf-background {
+        position: absolute !important;
+
+        top: 0 !important;
+        left: 0 !important;
+
+        width: 210mm !important;
+        height: 297mm !important;
+
+        display: block !important;
+
+        visibility: visible !important;
+
+        z-index: 0 !important;
+    }
+
+    .report-content {
+        position: absolute !important;
+
+        top: 0 !important;
+        left: 0 !important;
+
+        width: 210mm !important;
+        height: 297mm !important;
+
+        z-index: 5 !important;
+    }
+
+    .report-patient-info {
+        top: 15.5% !important;
+        left: 8% !important;
+        right: 8% !important;
+
+        width: 84% !important;
+
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+
+        gap: 5px 12px !important;
+
+        background: rgba(255,255,255,0.93) !important;
+    }
+
+    .report-results {
+        top: 22.5% !important;
+        left: 8% !important;
+
+        width: 84% !important;
+    }
+
+    .report-results th,
+    .report-results td {
+        background: transparent !important;
+    }
+
+    .report-results .report-group td {
+        background: #d9eafa !important;
+        color: #153a5b !important;
+
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .app-header,
+    .navigation,
+    .app-footer,
+    .report-actions,
+    .sidebar,
+    .topbar,
+    button,
+    .no-print {
+        display: none !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
+
+<header class="app-header">
+    <div class="header-content">
+
+        <div>
+            <div class="lab-title">مختبر الجمان الجانبي</div>
+            <div class="lab-subtitle">
+                Al-Juman Al-Janabi Laboratory
+            </div>
+        </div>
+
+        <div class="header-logo">+</div>
+
+    </div>
+</header>
+
+<!-- =====================================================
+     NAVIGATION
+     ===================================================== -->
+
+<nav class="navigation no-print">
+
+    <button class="active" onclick="goPage('home')">
+        الرئيسية
+    </button>
+
+    <button onclick="goPage('newPatient')">
+        مريض جديد
+    </button>
+
+    <button onclick="goPage('patients')">
+        سجلات المرضى
+    </button>
+
+    <button onclick="goPage('reportPage')">
+        معاينة التقرير
+    </button>
+
+</nav>
+
+<main class="container">
+
+<!-- =====================================================
+     HOME
+     ===================================================== -->
+
+<section id="home" class="page active">
+
+    <h2 class="page-title">الرئيسية</h2>
+
+    <div class="dashboard-grid">
+
+        <div class="stat-card">
+            <div class="stat-number" id="statPatients">0</div>
+            <div class="stat-label">عدد المرضى</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-number" id="statReports">0</div>
+            <div class="stat-label">عدد التقارير</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-number" id="statToday">0</div>
+            <div class="stat-label">مرضى اليوم</div>
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <div class="card-title">
+            الإجراءات السريعة
+        </div>
+
+        <div class="button-row">
+
+            <button class="btn btn-primary"
+                    onclick="goPage('newPatient')">
+                + تسجيل مريض جديد
+            </button>
+
+            <button class="btn btn-secondary"
+                    onclick="goPage('patients')">
+                عرض سجلات المرضى
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     NEW PATIENT
+     ===================================================== -->
+
+<section id="newPatient" class="page">
+
+    <h2 class="page-title">
+        تسجيل مريض جديد
+    </h2>
+
+    <div class="card">
+
+        <div class="card-title">
+            بيانات المريض
+        </div>
+
+        <form id="patientForm">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label>اسم المريض</label>
+                    <input id="patientName"
+                           type="text"
+                           required
+                           placeholder="اسم المريض الكامل">
+                </div>
+
+                <div class="form-group">
+                    <label>رقم المريض</label>
+                    <input id="patientNumber"
+                           type="text"
+                           readonly>
+                </div>
+
+                <div class="form-group">
+                    <label>العمر</label>
+                    <input id="patientAge"
+                           type="number"
+                           min="0"
+                           required
+                           placeholder="العمر">
+                </div>
+
+                <div class="form-group">
+                    <label>وحدة العمر</label>
+                    <select id="ageUnit">
+                        <option value="Years">Years</option>
+                        <option value="Months">Months</option>
+                        <option value="Days">Days</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>الجنس</label>
+                    <select id="patientGender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>تاريخ التحليل</label>
+                    <input id="patientDate"
+                           type="date"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label>اسم الطبيب</label>
+                    <input id="doctorName"
+                           type="text"
+                           placeholder="اختياري">
+                </div>
+
+                <div class="form-group">
+                    <label>ملاحظات</label>
+                    <input id="patientNotes"
+                           type="text"
+                           placeholder="ملاحظات اختيارية">
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <!-- TESTS -->
+
+    <div class="card">
+
+        <div class="card-title">
+            اختيار التحاليل
+        </div>
+
+        <input class="test-search"
+               id="testSearch"
+               type="search"
+               placeholder="ابحث عن تحليل..."
+               oninput="renderTests()">
+
+        <div class="test-list" id="testChoices"></div>
+
+    </div>
+
+    <!-- RESULTS -->
+
+    <div class="card">
+
+        <div class="card-title">
+            إدخال نتائج التحاليل
+        </div>
+
+        <div class="selected-tests">
+
+            <table class="result-input-table">
+
+                <thead>
+                    <tr>
+                        <th>التحليل</th>
+                        <th>النتيجة</th>
+                        <th>الوحدة</th>
+                        <th>المدى الطبيعي</th>
+                        <th>حذف</th>
+                    </tr>
+                </thead>
+
+                <tbody id="resultInputs"></tbody>
+
+            </table>
+
+        </div>
+
+        <div class="button-row">
+
+            <button type="button"
+                    class="btn btn-primary"
+                    onclick="savePatient()">
+                حفظ المريض والنتائج
+            </button>
+
+            <button type="button"
+                    class="btn btn-success"
+                    onclick="createReport()">
+                معاينة التقرير
+            </button>
+
+            <button type="button"
+                    class="btn btn-secondary"
+                    onclick="resetPatientForm()">
+                مسح النموذج
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     PATIENTS
+     ===================================================== -->
+
+<section id="patients" class="page">
+
+    <h2 class="page-title">
+        سجلات المرضى
+    </h2>
+
+    <div class="card">
+
+        <input id="patientSearch"
+               class="search-box"
+               type="search"
+               placeholder="بحث بالاسم أو رقم المريض..."
+               oninput="renderPatients()">
+
+        <div id="patientsList"
+             class="records-list"></div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     REPORT
+     ===================================================== -->
+
+<section id="reportPage" class="page">
+
+    <h2 class="page-title">
+        معاينة التقرير
+    </h2>
+
+    <div class="report-actions no-print">
+
+        <button class="btn btn-primary"
+                onclick="printReport()">
+            طباعة / حفظ PDF
+        </button>
+
+        <button class="btn btn-secondary"
+                onclick="exportWord()">
+            تصدير Word
+        </button>
+
+        <button class="btn btn-light"
+                onclick="goPage('patients')">
+            رجوع للسجلات
+        </button>
+
+    </div>
+
+    <div id="reportPreview">
+
+        <div class="report-sheet">
+
+            <!-- PDF BACKGROUND -->
+
+            <iframe
+                class="report-pdf-background"
+                src="lab_form.pdf#toolbar=0&navpanes=0&scrollbar=0&view=Fit"
+                title="Laboratory report background">
+            </iframe>
+
+            <!-- REPORT CONTENT -->
+
+            <div class="report-content">
+
+                <div id="reportPatientInfo"
+                     class="report-patient-info">
+                </div>
+
+                <table class="report-results">
+
+                    <thead>
+                        <tr>
+                            <th>Reference Range</th>
+                            <th>Unit</th>
+                            <th>Result</th>
+                            <th>Test Name</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="reportTableBody"></tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+<footer class="app-footer">
+    مختبر الجمان الجانبي
+    <br>
+    Al-Juman Al-Janabi Laboratory
+    <br>
+    الصقلاوية - الشهداء الثانية
+</footer>
+
+<script>
+/* =====================================================
+   DATABASE
+   ===================================================== */
+
+const STORAGE_KEY = "aljuman_lab_final_v1";
+
+const defaultTests = [
+    {name:"CBC",unit:"",range:"See laboratory reference",group:"Hematology"},
+    {name:"Hemoglobin",unit:"g/dL",range:"Male 13.5-17.5 | Female 12.0-15.5",group:"Hematology"},
+    {name:"WBC",unit:"10³/µL",range:"4.0-11.0",group:"Hematology"},
+    {name:"Platelets",unit:"10³/µL",range:"150-400",group:"Hematology"},
+
+    {name:"Glucose",unit:"mg/dL",range:"70-110",group:"Biochemistry"},
+    {name:"Urea",unit:"mg/dL",range:"15-45",group:"Biochemistry"},
+    {name:"Creatinine",unit:"mg/dL",range:"Male 0.7-1.3 | Female 0.6-1.1",group:"Biochemistry"},
+    {name:"ALT",unit:"U/L",range:"7-56",group:"Biochemistry"},
+    {name:"AST",unit:"U/L",range:"10-40",group:"Biochemistry"},
+
+    {name:"TSH",unit:"µIU/mL",range:"0.4-4.0",group:"Hormones"},
+    {name:"Vitamin D",unit:"ng/mL",range:"30-100",group:"Hormones"},
+
+    {name:"CRP",unit:"mg/L",range:"<5",group:"Immunology"},
+    {name:"Troponin I",unit:"ng/mL",range:"According to assay",group:"Cardiac"},
+
+    {name:"Urine Analysis",unit:"",range:"See laboratory reference",group:"Urine"}
+];
+
+let db = {
+    patients: [],
+    reports: [],
+    tests: defaultTests,
+    settings: {
+        labName: "مختبر الجمان الجانبي",
+        labNameEnglish: "Al-Juman Al-Janabi Laboratory",
+        address: "الصقلاوية - الشهداء الثانية"
+    }
+};
+
+try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+
+    if (saved) {
+        const loaded = JSON.parse(saved);
+
+        db = {
+            ...db,
+            ...loaded,
+            tests: loaded.tests || defaultTests,
+            patients: loaded.patients || [],
+            reports: loaded.reports || []
+        };
+    }
+} catch(error) {
+    console.error("Database loading error:", error);
+}
+
+function saveDatabase() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(db));
+    updateDashboard();
+}
+
+/* =====================================================
+   HELPERS
+   ===================================================== */
+
+function $(id) {
+    return document.getElementById(id);
+}
+
+function escapeHTML(value) {
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+function today() {
+    return new Date().toISOString().slice(0,10);
+}
+
+function patientNumber() {
+    return "2026-" + String(db.patients.length + 1).padStart(4, "0");
+}
+
+function reportNumber() {
+    return "2026-" + String(db.reports.length + 1).padStart(4, "0");
+}
+
+function generateID() {
+    return Date.now() + Math.floor(Math.random() * 1000);
+}
+
+/* =====================================================
+   PAGE NAVIGATION
+   ===================================================== */
+
+function goPage(id) {
+
+    document.querySelectorAll(".page").forEach(page => {
+        page.classList.remove("active");
+    });
+
+    $(id).classList.add("active");
+
+    document.querySelectorAll(".navigation button").forEach(button => {
+        button.classList.remove("active");
+    });
+
+    const buttons = document.querySelectorAll(".navigation button");
+
+    const pageMap = {
+        home: 0,
+        newPatient: 1,
+        patients: 2,
+        reportPage: 3
+    };
+
+    if (pageMap[id] !== undefined) {
+        buttons[pageMap[id]].classList.add("active");
+    }
+
+    if (id === "home") {
+        updateDashboard();
+    }
+
+    if (id === "patients") {
+        renderPatients();
+    }
+
+    if (id === "newPatient") {
+        if (!$("patientNumber").value) {
+            preparePatientForm();
+        }
+
+        renderTests();
+    }
+}
+
+/* =====================================================
+   PATIENT FORM
+   ===================================================== */
+
+function preparePatientForm() {
+
+    $("patientNumber").value = patientNumber();
+
+    $("patientDate").value = today();
+
+    $("patientName").value = "";
+    $("patientAge").value = "";
+    $("ageUnit").value = "Years";
+    $("patientGender").value = "Male";
+    $("doctorName").value = "";
+    $("patientNotes").value = "";
+
+    selectedTests.clear();
+
+    renderTests();
+    renderResultInputs();
+}
+
+function resetPatientForm() {
+    preparePatientForm();
+}
+
+let selectedTests = new Set();
+
+/* =====================================================
+   TEST LIST
+   ===================================================== */
+
+function renderTests() {
+
+    const query = $("testSearch").value.toLowerCase();
+
+    $("testChoices").innerHTML = db.tests
+        .filter(test => test.name.toLowerCase().includes(query))
+        .map(test => `
+            <label class="test-option">
+
+                <input
+                    type="checkbox"
+                    ${selectedTests.has(test.name) ? "checked" : ""}
+                    onchange="toggleTest('${escapeHTML(test.name)}')">
+
+                <span>${escapeHTML(test.name)}</span>
+
+            </label>
+        `).join("");
+}
+
+function toggleTest(name) {
+
+    if (selectedTests.has(name)) {
+        selectedTests.delete(name);
+    } else {
+        selectedTests.add(name);
+    }
+
+    renderResultInputs();
+}
+
+function renderResultInputs() {
+
+    const selected = db.tests.filter(test =>
+        selectedTests.has(test.name)
+    );
+
+    $("resultInputs").innerHTML = selected.map((test,index) => `
+        <tr>
+
+            <td>${escapeHTML(test.name)}</td>
+
+            <td>
+                <input
+                    type="text"
+                    id="result_${index}"
+                    placeholder="Result">
+            </td>
+
+            <td>
+                <input
+                    type="text"
+                    id="unit_${index}"
+                    value="${escapeHTML(test.unit)}">
+            </td>
+
+            <td>
+                <input
+                    type="text"
+                    id="range_${index}"
+                    value="${escapeHTML(test.range)}">
+            </td>
+
+            <td>
+                <button
+                    type="button"
+                    class="btn btn-danger"
+                    onclick="removeTest('${escapeHTML(test.name)}')">
+                    حذف
+                </button>
+            </td>
+
+        </tr>
+    `).join("");
+}
+
+function removeTest(name) {
+    selectedTests.delete(name);
+    renderTests();
+    renderResultInputs();
+}
+
+/* =====================================================
+   SAVE PATIENT
+   ===================================================== */
+
+function savePatient() {
+
+    const name = $("patientName").value.trim();
+
+    if (!name) {
+        alert("يرجى إدخال اسم المريض");
+        return;
+    }
+
+    if (selectedTests.size === 0) {
+        alert("يرجى اختيار تحليل واحد على الأقل");
+        return;
+    }
+
+    const selected = db.tests.filter(test =>
+        selectedTests.has(test.name)
+    );
+
+    const results = selected.map((test,index) => {
+
+        return {
+            name: test.name,
+
+            result: $("result_" + index)?.value || "",
+
+            unit: $("unit_" + index)?.value || test.unit,
+
+            range: $("range_" + index)?.value || test.range,
+
+            group: test.group
+        };
+    });
+
+    const patient = {
+        id: generateID(),
+        number: $("patientNumber").value,
+        name: name,
+        age: $("patientAge").value,
+        ageUnit: $("ageUnit").value,
+        gender: $("patientGender").value,
+        date: $("patientDate").value,
+        doctor: $("doctorName").value,
+        notes: $("patientNotes").value,
+        results: results
+    };
+
+    db.patients.push(patient);
+
+    saveDatabase();
+
+    currentPatient = patient;
+
+    alert("تم حفظ بيانات المريض والنتائج بنجاح");
+
+    renderPatients();
+
+    createReport(patient);
+
+    goPage("reportPage");
+}
+
+/* =====================================================
+   PATIENT RECORDS
+   ===================================================== */
+
+function renderPatients() {
+
+    const query = $("patientSearch").value.toLowerCase();
+
+    const patients = [...db.patients].reverse().filter(patient => {
+
+        return patient.name.toLowerCase().includes(query) ||
+               patient.number.toLowerCase().includes(query);
+    });
+
+    $("patientsList").innerHTML = patients.map(patient => `
+        <div class="record-card">
+
+            <div class="record-card-header">
+
+                <div>
+                    <strong>${escapeHTML(patient.name)}</strong>
+                    <br>
+                    <small>ID: ${escapeHTML(patient.number)}</small>
+                </div>
+
+                <div>
+                    ${escapeHTML(patient.date)}
+                </div>
+
+            </div>
+
+            <div style="margin-top:8px">
+                العمر: ${escapeHTML(patient.age)}
+                ${escapeHTML(patient.ageUnit)}
+                |
+                ${escapeHTML(patient.gender)}
+            </div>
+
+            <div style="margin-top:8px">
+                التحاليل:
+                ${patient.results.map(result =>
+                    escapeHTML(result.name)
+                ).join("، ")}
+            </div>
+
+            <div class="record-actions">
+
+                <button class="btn btn-primary"
+                        onclick="openPatientReport(${patient.id})">
+                    التقرير
+                </button>
+
+                <button class="btn btn-secondary"
+                        onclick="editPatient(${patient.id})">
+                    تعديل
+                </button>
+
+                <button class="btn btn-danger"
+                        onclick="deletePatient(${patient.id})">
+                    حذف
+                </button>
+
+            </div>
+
+        </div>
+    `).join("");
+
+    if (!patients.length) {
+        $("patientsList").innerHTML =
+            "<p>لا توجد سجلات مطابقة.</p>";
+    }
+}
+
+function openPatientReport(id) {
+
+    const patient = db.patients.find(p => p.id === id);
+
+    if (!patient) return;
+
+    currentPatient = patient;
+
+    createReport(patient);
+
+    goPage("reportPage");
+}
+
+function deletePatient(id) {
+
+    if (!confirm("هل تريد حذف سجل المريض؟")) {
+        return;
+    }
+
+    db.patients = db.patients.filter(p => p.id !== id);
+
+    db.reports = db.reports.filter(r => r.patientID !== id);
+
+    saveDatabase();
+
+    renderPatients();
+}
+
+function editPatient(id) {
+
+    const patient = db.patients.find(p => p.id === id);
+
+    if (!patient) return;
+
+    $("patientNumber").value = patient.number;
+    $("patientName").value = patient.name;
+    $("patientAge").value = patient.age;
+    $("ageUnit").value = patient.ageUnit;
+    $("patientGender").value = patient.gender;
+    $("patientDate").value = patient.date;
+    $("doctorName").value = patient.doctor || "";
+    $("patientNotes").value = patient.notes || "";
+
+    selectedTests.clear();
+
+    patient.results.forEach(result => {
+        selectedTests.add(result.name);
+    });
+
+    renderTests();
+    renderResultInputs();
+
+    patient.results.forEach((result,index) => {
+
+        const resultInput = $("result_" + index);
+        const unitInput = $("unit_" + index);
+        const rangeInput = $("range_" + index);
+
+        if (resultInput) resultInput.value = result.result;
+        if (unitInput) unitInput.value = result.unit;
+        if (rangeInput) rangeInput.value = result.range;
+    });
+
+    goPage("newPatient");
+}
+
+/* =====================================================
+   REPORT GENERATION
+   ===================================================== */
+
+let currentPatient = null;
+let currentReport = null;
+
+function createReport(patient = currentPatient) {
+
+    if (!patient) {
+        alert("يرجى اختيار مريض");
+        return;
+    }
+
+    currentPatient = patient;
+
+    const number = reportNumber();
+
+    currentReport = {
+        id: generateID(),
+        patientID: patient.id,
+        number: number,
+        date: patient.date,
+        results: patient.results
+    };
+
+    db.reports.push(currentReport);
+
+    saveDatabase();
+
+    renderReport(patient);
+
+    goPage("reportPage");
+}
+
+function renderReport(patient) {
+
+    if (!patient) return;
+
+    const reportNo = currentReport
+        ? currentReport.number
+        : reportNumber();
+
+    $("reportPatientInfo").innerHTML = `
+
+        <div class="info-item">
+            <strong>Patient Name:</strong>
+            ${escapeHTML(patient.name)}
+        </div>
+
+        <div class="info-item">
+            <strong>Patient ID:</strong>
+            ${escapeHTML(patient.number)}
+        </div>
+
+        <div class="info-item">
+            <strong>Report No:</strong>
+            ${escapeHTML(reportNo)}
+        </div>
+
+        <div class="info-item">
+            <strong>Age:</strong>
+            ${escapeHTML(patient.age)}
+            ${escapeHTML(patient.ageUnit)}
+        </div>
+
+        <div class="info-item">
+            <strong>Gender:</strong>
+            ${escapeHTML(patient.gender)}
+        </div>
+
+        <div class="info-item">
+            <strong>Date:</strong>
+            ${escapeHTML(patient.date)}
+        </div>
+
+        ${patient.doctor ? `
+        <div class="info-item">
+            <strong>Doctor:</strong>
+            ${escapeHTML(patient.doctor)}
+        </div>
+        ` : ""}
+
+    `;
+
+    const groups = {};
+
+    patient.results.forEach(result => {
+
+        const group = result.group || "Other";
+
+        if (!groups[group]) {
+            groups[group] = [];
+        }
+
+        groups[group].push(result);
+    });
+
+    let tableHTML = "";
+
+    Object.keys(groups).forEach(group => {
+
+        tableHTML += `
+            <tr class="report-group">
+                <td colspan="4">
+                    ${escapeHTML(group)}
+                </td>
+            </tr>
+        `;
+
+        groups[group].forEach(result => {
+
+            tableHTML += `
+                <tr>
+
+                    <td>
+                        ${escapeHTML(result.range)}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(result.unit)}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(result.result)}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(result.name)}
+                    </td>
+
+                </tr>
+            `;
+        });
+    });
+
+    $("reportTableBody").innerHTML = tableHTML;
+}
+
+/* =====================================================
+   PRINT
+   ===================================================== */
+
+function printReport() {
+
+    if (!currentPatient) {
+        alert("لا يوجد تقرير جاهز للطباعة");
+        return;
+    }
+
+    renderReport(currentPatient);
+
+    setTimeout(() => {
+        window.print();
+    }, 700);
+}
+
+/* =====================================================
+   WORD EXPORT
+   ===================================================== */
+
+function exportWord() {
+
+    if (!currentPatient) {
+        alert("لا يوجد تقرير");
+        return;
+    }
+
+    renderReport(currentPatient);
+
+    const reportHTML = $("reportPreview").innerHTML;
+
+    const blob = new Blob([
+        `
+        <html>
+        <head>
+        <meta charset="UTF-8">
+        </head>
+        <body>
+        ${reportHTML}
+        </body>
+        </html>
+        `
+    ], {
+        type: "application/msword"
+    });
+
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+
+    link.href = url;
+
+    link.download = "Laboratory_Report_" +
+                    currentPatient.number +
+                    ".doc";
+
+    link.click();
+
+    URL.revokeObjectURL(url);
+}
+
+/* =====================================================
+   DASHBOARD
+   ===================================================== */
+
+function updateDashboard() {
+
+    $("statPatients").textContent = db.patients.length;
+
+    $("statReports").textContent = db.reports.length;
+
+    $("statToday").textContent =
+        db.patients.filter(patient =>
+            patient.date === today()
+        ).length;
+}
+
+/* =====================================================
+   INITIALIZATION
+   ===================================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    $("patientDate").value = today();
+
+    preparePatientForm();
+
+    renderTests();
+
+    renderPatients();
+
+    updateDashboard();
+
+});
+</script>
+
+</body>
+</html>
