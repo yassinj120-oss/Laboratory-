@@ -523,14 +523,167 @@ function renderPreview(){
 }
 
 /* PRINT */
-function printReport(){
- if(!currentReport)return alert('No report selected');
- renderPreview();
- let img=$('reportPreview').querySelector('.report-background');
- if(img&&!img.complete){
-  img.onload=()=>window.print();
-  img.onerror=()=>window.print();
- }else window.print();
+function printReport() {
+    if (!currentReport) {
+        alert("No report available");
+        return;
+    }
+
+    renderPreview();
+
+    const report = document.querySelector("#reportPreview .report-sheet");
+    if (!report) {
+        alert("Report preview not found");
+        return;
+    }
+
+    const printWindow = window.open("", "_blank");
+
+    if (!printWindow) {
+        alert("Please allow pop-ups to print the report.");
+        return;
+    }
+
+    const styles = `
+        @page {
+            size: A4 portrait;
+            margin: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 210mm;
+            height: 297mm;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        .report-sheet {
+            width: 210mm !important;
+            height: 297mm !important;
+            min-height: 297mm !important;
+            margin: 0 !important;
+            position: relative !important;
+            overflow: hidden !important;
+            page-break-after: avoid !important;
+        }
+
+        .report-background {
+            position: absolute !important;
+            inset: 0 !important;
+            width: 210mm !important;
+            height: 297mm !important;
+            object-fit: fill !important;
+        }
+
+        .report-content {
+            position: relative !important;
+            z-index: 2 !important;
+            padding: 50mm 15mm 20mm !important;
+        }
+
+        .report-results {
+            direction: rtl !important;
+            width: 100% !important;
+            border-collapse: collapse !important;
+            table-layout: fixed !important;
+        }
+
+        .report-results th,
+        .report-results td {
+            border: 1px solid #777 !important;
+            padding: 5px !important;
+            text-align: center !important;
+            font-size: 9pt !important;
+            overflow-wrap: anywhere !important;
+        }
+
+        .report-results th:nth-child(1),
+        .report-results td:nth-child(1) {
+            width: 34% !important;
+        }
+
+        .report-results th:nth-child(2),
+        .report-results td:nth-child(2) {
+            width: 18% !important;
+        }
+
+        .report-results th:nth-child(3),
+        .report-results td:nth-child(3) {
+            width: 16% !important;
+        }
+
+        .report-results th:nth-child(4),
+        .report-results td:nth-child(4) {
+            width: 32% !important;
+        }
+
+        .group-row td {
+            background: #e5edf5 !important;
+            font-weight: bold !important;
+            text-align: right !important;
+        }
+
+        .special-report {
+            width: 95% !important;
+            margin: 5mm auto !important;
+        }
+
+        .special-report h3 {
+            text-align: center !important;
+        }
+
+        .special-table {
+            width: 100% !important;
+            border-collapse: collapse !important;
+            direction: ltr !important;
+        }
+
+        .special-table th,
+        .special-table td {
+            border: 1px solid #777 !important;
+            padding: 4px !important;
+            font-size: 8pt !important;
+        }
+    `;
+
+    printWindow.document.open();
+
+    printWindow.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Laboratory Report</title>
+            <style>${styles}</style>
+        </head>
+        <body>
+            ${report.outerHTML}
+        </body>
+        </html>
+    `);
+
+    printWindow.document.close();
+
+    printWindow.onload = function () {
+        const img = printWindow.document.querySelector(".report-background");
+
+        if (img && !img.complete) {
+            img.onload = function () {
+                setTimeout(() => printWindow.print(), 500);
+            };
+            img.onerror = function () {
+                printWindow.print();
+            };
+        } else {
+            setTimeout(() => printWindow.print(), 500);
+        }
+    };
 }
 
 /* PATIENT RECORDS */
