@@ -1,9 +1,12 @@
 {
   "name": "al-juman-lab",
   "version": "1.0.0",
+  "description": "Al-Juman Al-Janabi Laboratory Desktop Application",
+  "author": "Al-Juman Laboratory",
   "private": true,
+  "main": "electron.js",
   "scripts": {
-    "build": "echo web app ready",
+    "build": "echo Web app ready",
     "desktop": "electron .",
     "desktop:build": "electron-builder --win"
   },
@@ -30,7 +33,15 @@
       "electron.js"
     ],
     "win": {
-      "target": "nsis"
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
     }
   }
 }
