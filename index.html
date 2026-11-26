@@ -4,99 +4,295 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>مختبر الجمان الجانبي</title>
+
 <link rel="stylesheet" href="style.css">
 
 <style>
-/* =========================
-   REPORT - A4 FIX
-========================= */
+/* ================= APP ================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f0f4f8;
+  font-family: Arial, Tahoma, sans-serif;
+  color: #17385d;
+}
+
+.app-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 15px;
+}
+
+.main-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 20px;
+  text-align: center;
+  background: #102d50;
+  color: white;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+.main-header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.main-header p {
+  margin: 5px 0 0;
+}
+
+.navigation {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.navigation button {
+  flex: 1;
+  min-width: 100px;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #e8eef5;
+  color: #17385d;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.navigation button.active {
+  background: #17385d;
+  color: white;
+}
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+.panel {
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.07);
+}
+
+.panel h2 {
+  color: #17385d;
+  margin-top: 0;
+  border-bottom: 2px solid #d5e0eb;
+  padding-bottom: 10px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 11px;
+  border: 1px solid #ccd6e0;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.btn {
+  border: none;
+  border-radius: 9px;
+  padding: 11px 16px;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 4px;
+}
+
+.btn-primary {
+  background: #17385d;
+  color: white;
+}
+
+.btn-secondary {
+  background: #e5edf5;
+  color: #17385d;
+}
+
+.btn-danger {
+  background: #c0392b;
+  color: white;
+}
+
+.btn-success {
+  background: #218838;
+  color: white;
+}
+
+.tests-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 8px;
+  margin: 15px 0;
+}
+
+.test-option {
+  background: #f3f7fa;
+  border: 1px solid #d7e2ec;
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.test-option input {
+  width: auto;
+}
+
+.results-table,
+.records-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  background: white;
+}
+
+.results-table th,
+.results-table td,
+.records-table th,
+.records-table td {
+  border: 1px solid #ccd6e0;
+  padding: 8px;
+  text-align: center;
+}
+
+.results-table th,
+.records-table th {
+  background: #17385d;
+  color: white;
+}
+
+.results-table input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 7px;
+  border: 1px solid #d1d9e2;
+  border-radius: 5px;
+}
+
+.search-box {
+  width: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+  border: 1px solid #ccd6e0;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.status-normal {
+  color: green;
+}
+
+.status-high {
+  color: red;
+}
+
+.status-low {
+  color: blue;
+}
+
+/* ================= REPORT ================= */
+
 #reportPreview {
   width: 100%;
-  margin: 15px auto;
-  overflow: visible;
 }
 
 .report-sheet {
   position: relative;
-  width: 100%;
-  max-width: 794px;
-  aspect-ratio: 210 / 297;
-  margin: auto;
-  background-image: url("lab_form.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-color: white;
+  width: 210mm;
+  height: 297mm;
+  max-width: 100%;
+  margin: 20px auto;
   overflow: hidden;
-  color: #17385d;
+  background: white;
 }
 
-/* بيانات المريض داخل المساحة البيضاء */
+/* الخلفية الأصلية */
+.report-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+
+/* معلومات المريض */
 .report-patient-info {
   position: absolute;
-  top: 18.5%;
-  left: 10%;
-  width: 80%;
+  top: 11%;
+  left: 8%;
+  right: 8%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px 20px;
-  font-size: clamp(9px, 1.7vw, 14px);
+  gap: 7px 15px;
+  color: #12345a;
+  font-size: 12px;
   font-weight: bold;
-  color: #17385d;
-  direction: ltr;
-  text-align: left;
+  z-index: 2;
 }
 
 /* جدول النتائج */
 .report-results {
   position: absolute;
-  top: 28%;
+  top: 20%;
   left: 10%;
   width: 80%;
   border-collapse: collapse;
   background: rgba(255,255,255,.97);
-  color: #17385d;
-  font-size: clamp(8px, 1.6vw, 13px);
-  direction: ltr;
-  table-layout: fixed;
+  font-size: 12px;
+  z-index: 3;
 }
 
 .report-results th,
 .report-results td {
   border: 1px solid #1d5b91;
-  padding: 6px 4px;
+  padding: 7px 5px;
   text-align: center;
   vertical-align: middle;
-  overflow-wrap: anywhere;
 }
 
 .report-results th {
   background: #eaf1f8;
+  color: #17385d;
   font-weight: bold;
-}
-
-.report-results th:nth-child(1),
-.report-results td:nth-child(1) {
-  width: 32%;
-}
-
-.report-results th:nth-child(2),
-.report-results td:nth-child(2) {
-  width: 20%;
-}
-
-.report-results th:nth-child(3),
-.report-results td:nth-child(3) {
-  width: 18%;
-}
-
-.report-results th:nth-child(4),
-.report-results td:nth-child(4) {
-  width: 30%;
-}
-
-.report-results tr {
-  break-inside: avoid;
 }
 
 .report-actions {
@@ -104,15 +300,58 @@
   margin: 15px 0;
 }
 
-/* =========================
-   PRINT FIX
-========================= */
-@page {
-  size: A4 portrait;
-  margin: 0;
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .main-header {
+    flex-direction: column;
+  }
+
+  .main-header h1 {
+    font-size: 20px;
+  }
+
+  .navigation button {
+    min-width: 80px;
+    font-size: 13px;
+  }
+
+  .panel {
+    padding: 13px;
+  }
+
+  .results-table {
+    font-size: 12px;
+  }
+
+  .results-table input {
+    min-width: 70px;
+  }
+
+  #reportPreview {
+    overflow-x: auto;
+  }
+
+  .report-sheet {
+    width: 210mm;
+    height: 297mm;
+    max-width: none;
+    transform-origin: top center;
+  }
 }
 
+/* ================= PRINT / PDF ================= */
+
 @media print {
+
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
 
   html,
   body {
@@ -122,11 +361,6 @@
     padding: 0 !important;
     background: white !important;
     overflow: hidden !important;
-  }
-
-  body {
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
   }
 
   body * {
@@ -147,7 +381,6 @@
     margin: 0 !important;
     padding: 0 !important;
     overflow: hidden !important;
-    background: white !important;
   }
 
   .report-sheet {
@@ -157,54 +390,55 @@
     width: 210mm !important;
     height: 297mm !important;
     max-width: none !important;
-    min-width: 0 !important;
-    aspect-ratio: auto !important;
     margin: 0 !important;
-    padding: 0 !important;
-    background-image: url("lab_form.jpg") !important;
-    background-position: center center !important;
-    background-repeat: no-repeat !important;
-    background-size: 210mm 297mm !important;
+    transform: none !important;
     overflow: hidden !important;
-    page-break-after: avoid !important;
-    break-after: avoid !important;
-    page-break-inside: avoid !important;
-    break-inside: avoid !important;
+    background: white !important;
+  }
+
+  .report-background {
+    position: absolute !important;
+    width: 210mm !important;
+    height: 297mm !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 
   .report-patient-info {
-    top: 18.5% !important;
-    left: 10% !important;
-    width: 80% !important;
-    font-size: 10pt !important;
-    gap: 5mm 8mm !important;
+    position: absolute !important;
+    top: 11% !important;
+    left: 8% !important;
+    right: 8% !important;
+    font-size: 12px !important;
+    z-index: 2 !important;
   }
 
   .report-results {
-    top: 28% !important;
+    position: absolute !important;
+    top: 20% !important;
     left: 10% !important;
     width: 80% !important;
-    font-size: 9pt !important;
-    background: white !important;
+    font-size: 12px !important;
+    z-index: 3 !important;
   }
 
   .report-results th,
   .report-results td {
-    padding: 2.5mm 1.5mm !important;
-    border: 0.3mm solid #1d5b91 !important;
-  }
-
-  .report-results th {
-    background: #eaf1f8 !important;
+    padding: 7px 5px !important;
   }
 
   .report-actions,
-  button,
-  nav,
   .navigation,
   .main-header,
-  .app-container > *:not(#patientPage) {
+  button {
     display: none !important;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 }
 </style>
@@ -215,8 +449,6 @@
 <div class="app-container">
 
 <header class="main-header">
-  <img src="logo.png" alt="Lab Logo"
-       onerror="this.style.display='none'">
   <div>
     <h1>مختبر الجمان الجانبي</h1>
     <p>Al-Juman Al-Janabi Laboratory</p>
@@ -290,9 +522,8 @@
 
 <div class="panel">
 <h2>اختيار التحاليل</h2>
-<input id="testSearch" class="search-box"
-       placeholder="بحث عن تحليل..."
-       oninput="filterTestOptions()">
+<input id="testSearch" class="search-box" type="text"
+placeholder="بحث عن تحليل..." oninput="filterTestOptions()">
 <div id="testSelection" class="tests-grid"></div>
 </div>
 
@@ -302,11 +533,9 @@
 <p>اختر التحاليل أولاً حتى تظهر هنا.</p>
 </div>
 
-<div style="margin-top:15px">
 <button class="btn btn-primary" onclick="generateReport()">معاينة التقرير</button>
 <button class="btn btn-success" onclick="savePatient()">حفظ التقرير والمريض</button>
 <button class="btn btn-secondary" onclick="clearPatientForm()">تفريغ النموذج</button>
-</div>
 </div>
 
 <div class="panel">
@@ -315,15 +544,20 @@
 <div id="reportPreview">
 <div class="report-sheet">
 
-<div class="report-patient-info" id="reportPatientInfo"></div>
+<img class="report-background"
+src="lab_form.jpg"
+alt="Laboratory report form"
+onerror="this.style.display='none';alert('لم يتم العثور على lab_form.jpg. تأكد من وجود الصورة بجانب index.html');">
+
+<div id="reportPatientInfo" class="report-patient-info"></div>
 
 <table class="report-results">
 <thead>
 <tr>
-<th>Test Name</th>
-<th>Result</th>
-<th>Unit</th>
 <th>Reference Range</th>
+<th>Unit</th>
+<th>Result</th>
+<th>Test Name</th>
 </tr>
 </thead>
 <tbody id="reportTableBody"></tbody>
@@ -333,9 +567,7 @@
 </div>
 
 <div class="report-actions">
-<button class="btn btn-primary" onclick="printReport()">
-طباعة / حفظ PDF
-</button>
+<button class="btn btn-primary" onclick="printReport()">طباعة / حفظ PDF</button>
 </div>
 </div>
 
@@ -346,13 +578,13 @@
 <div class="panel">
 <h2>سجل المرضى والتقارير</h2>
 <input id="recordSearch" class="search-box"
-       placeholder="بحث بالاسم أو رقم المريض..."
-       oninput="renderRecords()">
+placeholder="بحث بالاسم أو رقم المريض..."
+oninput="renderRecords()">
 <div id="recordsContainer"></div>
 </div>
 </section>
 
-<!-- TESTS -->
+<!-- TEST MANAGEMENT -->
 <section id="testsPage" class="page">
 <div class="panel">
 <h2>إدارة التحاليل</h2>
@@ -400,6 +632,7 @@
 
 <script>
 const STORAGE_KEY = "aljuman_lab_v1";
+
 let database = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
 
 if (!database.tests) {
@@ -421,18 +654,18 @@ database.tests = [
 ];
 }
 
-if (!database.patients) database.patients=[];
-if (!database.nextPatientNumber) database.nextPatientNumber=1;
+if (!database.patients) database.patients = [];
+if (!database.nextPatientNumber) database.nextPatientNumber = 1;
 
-function saveDatabase(){
-localStorage.setItem(STORAGE_KEY,JSON.stringify(database));
+function saveDatabase() {
+localStorage.setItem(STORAGE_KEY, JSON.stringify(database));
 }
 
-document.addEventListener("DOMContentLoaded",()=>{
-document.getElementById("patientDate").value=
-new Date().toISOString().slice(0,10);
+document.addEventListener("DOMContentLoaded",function(){
+document.getElementById("patientDate").value =
+new Date().toISOString().split("T")[0];
 
-document.getElementById("patientNumber").value=
+document.getElementById("patientNumber").value =
 database.nextPatientNumber;
 
 renderTestSelection();
@@ -440,19 +673,20 @@ renderTestManagement();
 renderRecords();
 });
 
-function showPage(pageId,button){
+function showPage(pageId,button) {
 document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
 document.getElementById(pageId).classList.add("active");
 
 document.querySelectorAll(".navigation button").forEach(b=>b.classList.remove("active"));
-if(button)button.classList.add("active");
+if(button) button.classList.add("active");
 
-if(pageId==="recordsPage")renderRecords();
-if(pageId==="testsPage")renderTestManagement();
+if(pageId==="recordsPage") renderRecords();
+if(pageId==="testsPage") renderTestManagement();
 }
 
-function renderTestSelection(){
+function renderTestSelection() {
 const container=document.getElementById("testSelection");
+
 container.innerHTML=database.tests.map((test,index)=>`
 <label class="test-option" data-test-name="${escapeHtml(test.name.toLowerCase())}">
 <input type="checkbox" value="${index}" onchange="updateResultsTable()">
@@ -461,17 +695,20 @@ container.innerHTML=database.tests.map((test,index)=>`
 `).join("");
 }
 
-function filterTestOptions(){
+function filterTestOptions() {
 const query=document.getElementById("testSearch").value.toLowerCase();
+
 document.querySelectorAll(".test-option").forEach(option=>{
-option.style.display=option.dataset.testName.includes(query)?"flex":"none";
+option.style.display=(option.dataset.testName||"").includes(query)?"flex":"none";
 });
 }
 
-function getSelectedTests(){
+function getSelectedTests() {
 const selected=[];
+
 document.querySelectorAll("#testSelection input:checked").forEach(input=>{
 const test=database.tests[Number(input.value)];
+
 if(test){
 selected.push({
 name:test.name,
@@ -482,19 +719,21 @@ note:""
 });
 }
 });
+
 return selected;
 }
 
-function updateResultsTable(){
-const tests=getSelectedTests();
+function updateResultsTable() {
+const selectedTests=getSelectedTests();
 const container=document.getElementById("resultsContainer");
 
-if(!tests.length){
+if(!selectedTests.length){
 container.innerHTML="<p>اختر التحاليل أولاً حتى تظهر هنا.</p>";
 return;
 }
 
 container.innerHTML=`
+<div style="overflow-x:auto">
 <table class="results-table">
 <thead>
 <tr>
@@ -506,8 +745,9 @@ container.innerHTML=`
 </tr>
 </thead>
 <tbody>
-${tests.map(test=>{
+${selectedTests.map(test=>{
 const index=database.tests.findIndex(t=>t.name===test.name);
+
 return `
 <tr data-test-index="${index}">
 <td>${escapeHtml(test.name)}</td>
@@ -519,11 +759,14 @@ return `
 `;
 }).join("")}
 </tbody>
-</table>`;
+</table>
+</div>
+`;
 }
 
-function collectPatientData(){
+function collectPatientData() {
 const results=[];
+
 document.querySelectorAll("#resultsContainer tbody tr").forEach(row=>{
 results.push({
 name:row.cells[0].textContent.trim(),
@@ -544,12 +787,12 @@ gender:document.getElementById("patientGender").value,
 date:document.getElementById("patientDate").value,
 doctor:document.getElementById("doctorName").value,
 notes:document.getElementById("patientNotes").value,
-results,
+results:results,
 status:"Final"
 };
 }
 
-function generateReport(){
+function generateReport() {
 const patient=collectPatientData();
 
 if(!patient.name){
@@ -574,10 +817,10 @@ document.getElementById("reportPatientInfo").innerHTML=`
 document.getElementById("reportTableBody").innerHTML=
 patient.results.map(result=>`
 <tr>
-<td>${escapeHtml(result.name)}</td>
-<td>${escapeHtml(result.result)}</td>
-<td>${escapeHtml(result.unit)}</td>
 <td>${escapeHtml(result.range)}</td>
+<td>${escapeHtml(result.unit)}</td>
+<td>${escapeHtml(result.result)}</td>
+<td>${escapeHtml(result.name)}</td>
 </tr>
 `).join("");
 
@@ -587,7 +830,7 @@ block:"start"
 });
 }
 
-function printReport(){
+function printReport() {
 generateReport();
 
 setTimeout(()=>{
@@ -595,7 +838,7 @@ window.print();
 },500);
 }
 
-function savePatient(){
+function savePatient() {
 const patient=collectPatientData();
 
 if(!patient.name){
@@ -621,20 +864,22 @@ database.nextPatientNumber++;
 
 saveDatabase();
 
-document.getElementById("patientNumber").value=
-database.nextPatientNumber;
+document.getElementById("patientNumber").value=database.nextPatientNumber;
 
 renderRecords();
-alert("تم حفظ المريض والتقرير بنجاح.");
+
+alert("تم حفظ بيانات المريض والتقرير بنجاح.");
 }
 
-function clearPatientForm(){
+function clearPatientForm() {
 document.getElementById("patientName").value="";
 document.getElementById("patientAge").value="";
 document.getElementById("patientGender").value="";
 document.getElementById("doctorName").value="";
 document.getElementById("patientNotes").value="";
-document.getElementById("patientDate").value=new Date().toISOString().slice(0,10);
+
+document.getElementById("patientDate").value=
+new Date().toISOString().split("T")[0];
 
 document.querySelectorAll("#testSelection input").forEach(i=>i.checked=false);
 
@@ -647,12 +892,12 @@ document.getElementById("reportTableBody").innerHTML="";
 document.getElementById("patientNumber").value=database.nextPatientNumber;
 }
 
-function renderRecords(){
-const query=(document.getElementById("recordSearch")?.value||"").toLowerCase();
+function renderRecords() {
+const search=document.getElementById("recordSearch").value.toLowerCase();
 
 const filtered=database.patients.filter(patient=>
-(patient.name||"").toLowerCase().includes(query)||
-String(patient.patientNumber||"").toLowerCase().includes(query)
+(patient.name||"").toLowerCase().includes(search)||
+String(patient.patientNumber||"").toLowerCase().includes(search)
 );
 
 const container=document.getElementById("recordsContainer");
@@ -689,10 +934,11 @@ ${filtered.map(patient=>`
 `).join("")}
 </tbody>
 </table>
-</div>`;
+</div>
+`;
 }
 
-function viewPatient(id){
+function viewPatient(id) {
 const patient=database.patients.find(p=>p.id===id);
 if(!patient)return;
 
@@ -705,17 +951,23 @@ document.getElementById("patientDate").value=patient.date;
 document.getElementById("doctorName").value=patient.doctor||"";
 document.getElementById("patientNotes").value=patient.notes||"";
 
-document.querySelectorAll("#testSelection input").forEach(input=>input.checked=false);
+document.querySelectorAll("#testSelection input").forEach(input=>{
+input.checked=false;
+});
 
 patient.results.forEach(result=>{
 const index=database.tests.findIndex(t=>t.name===result.name);
+
+if(index>=0){
 const checkbox=document.querySelector(`#testSelection input[value="${index}"]`);
-if(checkbox)checkbox.checked=true;
+if(checkbox) checkbox.checked=true;
+}
 });
 
 updateResultsTable();
 
 const rows=document.querySelectorAll("#resultsContainer tbody tr");
+
 patient.results.forEach((result,i)=>{
 if(rows[i]){
 rows[i].querySelector(".result-input").value=result.result||"";
@@ -729,14 +981,15 @@ generateReport();
 showPage("patientPage",document.querySelector(".navigation button"));
 }
 
-function deletePatient(id){
-if(!confirm("هل تريد حذف هذا السجل؟"))return;
+function deletePatient(id) {
+if(!confirm("هل أنت متأكد من حذف هذا السجل؟"))return;
+
 database.patients=database.patients.filter(p=>p.id!==id);
 saveDatabase();
 renderRecords();
 }
 
-function addTest(){
+function addTest() {
 const name=document.getElementById("newTestName").value.trim();
 const unit=document.getElementById("newTestUnit").value.trim();
 const range=document.getElementById("newTestRange").value.trim();
@@ -760,11 +1013,13 @@ document.getElementById("newTestRange").value="";
 
 renderTestSelection();
 renderTestManagement();
+
 alert("تم إضافة التحليل.");
 }
 
-function renderTestManagement(){
+function renderTestManagement() {
 const container=document.getElementById("testManagementList");
+
 container.innerHTML=`
 <h3>التحاليل الموجودة</h3>
 <div style="overflow-x:auto">
@@ -788,56 +1043,69 @@ ${database.tests.map((test,index)=>`
 `).join("")}
 </tbody>
 </table>
-</div>`;
+</div>
+`;
 }
 
-function deleteTest(index){
+function deleteTest(index) {
 if(!confirm("هل تريد حذف هذا التحليل؟"))return;
+
 database.tests.splice(index,1);
 saveDatabase();
 renderTestSelection();
 renderTestManagement();
 }
 
-function exportBackup(){
-const blob=new Blob([JSON.stringify(database,null,2)],{type:"application/json"});
+function exportBackup() {
+const data=JSON.stringify(database,null,2);
+const blob=new Blob([data],{type:"application/json"});
 const url=URL.createObjectURL(blob);
+
 const link=document.createElement("a");
 link.href=url;
 link.download="Al-Juman-Lab-Backup.json";
 link.click();
+
 setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
 
-function importBackup(){
+function importBackup() {
 const file=document.getElementById("backupFile").files[0];
+
 if(!file){
 alert("اختر ملف النسخة الاحتياطية.");
 return;
 }
 
 const reader=new FileReader();
-reader.onload=event=>{
+
+reader.onload=function(event){
 try{
 const imported=JSON.parse(event.target.result);
-if(!imported.tests||!imported.patients)throw new Error();
+
+if(!imported.tests||!imported.patients){
+throw new Error("Invalid backup");
+}
 
 if(!confirm("سيتم استبدال البيانات الحالية. هل تريد المتابعة؟"))return;
 
 database=imported;
 saveDatabase();
+
 renderTestSelection();
 renderTestManagement();
 renderRecords();
-alert("تم استعادة النسخة الاحتياطية.");
-}catch{
+
+alert("تم استعادة النسخة الاحتياطية بنجاح.");
+}catch(e){
 alert("ملف النسخة الاحتياطية غير صحيح.");
 }
 };
+
 reader.readAsText(file);
 }
 
-function escapeHtml(value){
+function escapeHtml(value) {
 return String(value??"")
 .replace(/&/g,"&amp;")
 .replace(/</g,"&lt;")
