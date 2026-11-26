@@ -1,1511 +1,1137 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Al-Juman Side Lab</title>
+<meta name="theme-color" content="#123451">
+<title>مختبر الجمان الجانبي</title>
 
 <style>
 :root {
-  --navy:#102b46;
-  --navy2:#183e60;
-  --silver:#d9e1e8;
-  --bg:#f2f5f8;
-  --white:#ffffff;
-  --text:#203247;
-  --muted:#718096;
-  --border:#dce4ec;
-  --green:#13845b;
-  --red:#c0392b;
+    --info-top: 29%;
+    --results-top: 35%;
 }
 
-* { box-sizing:border-box; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:var(--bg);
-  color:var(--text);
+    margin: 0;
+    padding: 0;
+    background: #f3f6fb;
+    color: #172b42;
+    font-family: Arial, Tahoma, sans-serif;
+    direction: rtl;
 }
 
-button,input,select,textarea {
-  font-family:inherit;
-  font-size:14px;
+button, input, select, textarea { font-family: inherit; }
+button { cursor: pointer; }
+
+.app-header { background: #123451; color: white; padding: 18px; }
+
+.header-content {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
 }
 
-button {
-  cursor:pointer;
-  border:0;
-  border-radius:8px;
-  padding:11px 16px;
-  font-weight:bold;
+.lab-title { font-size: 23px; font-weight: bold; }
+.lab-subtitle { font-size: 12px; color: #c6d8e9; margin-top: 5px; }
+
+.header-logo {
+    width: 55px; height: 55px;
+    border-radius: 12px;
+    background: white;
+    color: #123451;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bold;
 }
 
-.btn-primary {
-  background:var(--navy);
-  color:white;
+.navigation {
+    background: #173e60;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 10px;
 }
 
-.btn-secondary {
-  background:#e7edf3;
-  color:var(--navy);
+.navigation button {
+    border: 0;
+    background: transparent;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 8px;
 }
 
-.btn-danger {
-  background:#fee2e2;
-  color:#991b1b;
+.navigation button:hover,
+.navigation button.active { background: #ffffff22; }
+
+.container { max-width: 1200px; margin: auto; padding: 20px; }
+.page { display: none; }
+.page.active { display: block; }
+.page-title { font-size: 23px; margin: 0 0 20px; color: #123451; }
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(15, 40, 70, 0.06);
 }
 
-.btn-success {
-  background:#dcfce7;
-  color:#166534;
+.card-title { font-size: 18px; font-weight: bold; margin-bottom: 15px; color: #123451; }
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
 }
 
-header {
-  background:linear-gradient(120deg,var(--navy),var(--navy2));
-  color:white;
-  padding:18px 22px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:12px;
+.form-group { display: flex; flex-direction: column; gap: 7px; }
+label { font-size: 14px; font-weight: bold; }
+
+input, select, textarea {
+    width: 100%;
+    min-height: 42px;
+    padding: 10px;
+    border: 1px solid #d6deea;
+    border-radius: 7px;
+    background: white;
+    color: #172b42;
+    font-size: 14px;
 }
 
-header h1 {
-  font-size:22px;
-  margin:0;
+textarea { min-height: 90px; resize: vertical; }
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #2476a9;
+    box-shadow: 0 0 0 2px #2476a920;
 }
 
-header p {
-  margin:6px 0 0;
-  color:#cbd5e1;
-  font-size:12px;
-}
+.btn { border: none; border-radius: 7px; padding: 11px 17px; font-weight: bold; font-size: 14px; }
+.btn-primary { background: #17689b; color: white; }
+.btn-secondary { background: #e6edf5; color: #123451; }
+.btn-danger { background: #dc3545; color: white; }
+.btn-success { background: #198754; color: white; }
+.btn-light { background: white; color: #123451; border: 1px solid #d6deea; }
 
-nav {
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  padding:12px;
-  background:white;
-  border-bottom:1px solid var(--border);
-}
+.button-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
 
-nav button {
-  background:#edf2f7;
-  color:var(--navy);
-}
+.test-search { margin-bottom: 12px; }
 
-nav button.active {
-  background:var(--navy);
-  color:white;
-}
-
-main {
-  max-width:1400px;
-  margin:auto;
-  padding:18px;
-}
-
-.panel {
-  background:white;
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:18px;
-  margin-bottom:16px;
-  box-shadow:0 2px 6px #102b4608;
-}
-
-.panel h2 {
-  margin:0 0 16px;
-  font-size:18px;
-  color:var(--navy);
-}
-
-.grid {
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:12px;
-}
-
-.field {
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-}
-
-.field label {
-  font-size:12px;
-  color:#536477;
-  font-weight:bold;
-}
-
-.field input,
-.field select,
-.field textarea {
-  width:100%;
-  border:1px solid var(--border);
-  border-radius:8px;
-  padding:10px;
-  background:white;
-  color:var(--text);
-  min-height:40px;
-}
-
-.field textarea {
-  resize:vertical;
-}
-
-.span2 { grid-column:span 2; }
-.span4 { grid-column:span 4; }
-
-.actions {
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-top:15px;
-}
-
-.test-search {
-  width:100%;
-  border:1px solid var(--border);
-  border-radius:9px;
-  padding:12px;
-  margin-bottom:12px;
-}
-
-.category {
-  margin-bottom:18px;
-}
-
-.category-title {
-  color:var(--navy);
-  background:#eef3f7;
-  padding:10px;
-  font-weight:bold;
-  border-radius:7px;
-  margin-bottom:8px;
-}
-
-.test-grid {
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:8px;
+.test-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    max-height: 350px;
+    overflow-y: auto;
 }
 
 .test-option {
-  border:1px solid var(--border);
-  padding:10px;
-  border-radius:8px;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  background:white;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px;
+    border: 1px solid #e0e7ef;
+    border-radius: 7px;
+    background: #f9fbfd;
 }
 
-.test-option input {
-  width:17px;
-  height:17px;
+.test-option input { width: 18px; height: 18px; min-height: auto; }
+
+.selected-tests { margin-top: 20px; overflow-x: auto; }
+.result-input-table { width: 100%; border-collapse: collapse; }
+
+.result-input-table th,
+.result-input-table td {
+    border: 1px solid #d8e0e8;
+    padding: 8px;
+    text-align: center;
 }
 
-.results-table-wrap {
-  overflow-x:auto;
+.result-input-table th { background: #e9f2fa; }
+.result-input-table input { min-width: 70px; padding: 7px; }
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
 }
 
-table {
-  border-collapse:collapse;
-  width:100%;
-}
+.stat-card { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 8px #12345110; }
+.stat-number { font-size: 28px; font-weight: bold; color: #17689b; }
+.stat-label { margin-top: 7px; color: #60758b; }
 
-.results-table th,
-.results-table td {
-  border:1px solid var(--border);
-  padding:8px;
-  text-align:left;
-  white-space:nowrap;
-}
+.search-box { margin-bottom: 15px; }
+.records-list { display: grid; gap: 10px; }
 
-.results-table th {
-  background:var(--navy);
-  color:white;
-}
+.record-card { background: white; border: 1px solid #e0e7ef; padding: 15px; border-radius: 8px; }
+.record-card-header { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+.record-actions { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 10px; }
 
-.results-table input {
-  width:100%;
-  min-width:90px;
-  padding:8px;
-  border:1px solid #dce4ec;
-  border-radius:6px;
-}
-
-.results-table input[type="text"] {
-  min-width:110px;
-}
-
-.results-table .test-name {
-  font-weight:bold;
-  min-width:180px;
-}
-
-.results-table .range-input {
-  min-width:140px;
-}
-
-.hidden { display:none!important; }
-
-.badge {
-  padding:4px 8px;
-  border-radius:20px;
-  background:#edf2f7;
-  font-size:12px;
-}
-
-.record-item {
-  border:1px solid var(--border);
-  border-radius:9px;
-  padding:12px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-bottom:8px;
-}
-
-.record-buttons {
-  display:flex;
-  gap:6px;
-  flex-wrap:wrap;
-}
-
-small { color:var(--muted); }
+.report-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 15px; }
 
 #reportPreview {
-  overflow:auto;
-  background:#e7ecf1;
-  padding:12px;
-  border-radius:8px;
+    width: 100%;
+    overflow: auto;
+    background: #dce3eb;
+    padding: 15px;
+    border-radius: 8px;
 }
 
+/* ===== A4 REPORT ===== */
+
 .report-sheet {
-  width:210mm;
-  min-height:297mm;
-  position:relative;
-  background:white;
-  margin:0 auto;
-  overflow:hidden;
-  color:#172b40;
+    position: relative;
+    width: 210mm;
+    height: 297mm;
+    min-width: 210mm;
+    max-width: 210mm;
+    margin: 0 auto;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.18);
 }
 
 .report-pdf-background {
-  position:absolute;
-  top:0;
-  left:0;
-  width:210mm;
-  height:297mm;
-  object-fit:fill;
-  z-index:0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 210mm;
+    height: 297mm;
+    border: none;
+    display: block;
+    z-index: 0;
+    pointer-events: none;
+    background: white;
+    object-fit: fill;
 }
 
 .report-content {
-  position:relative;
-  z-index:1;
-  width:100%;
-  padding:0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 210mm;
+    height: 297mm;
+    z-index: 5;
+    background: transparent;
+    overflow: hidden;
 }
 
-.report-info {
-  position:absolute;
-  top:17.5%;
-  left:8%;
-  width:84%;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:7px 22px;
-  font-size:12px;
+.report-patient-info {
+    position: absolute;
+    top: var(--info-top);
+    left: 8%;
+    right: 8%;
+    width: 84%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 5px 12px;
+    padding: 5px 8px;
+    background: rgba(255,255,255,0.93);
+    border-radius: 3px;
+    color: #111;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 9pt;
+    line-height: 1.45;
+    direction: ltr;
+    text-align: left;
+    z-index: 10;
 }
 
-.report-info div {
-  border-bottom:1px dotted #aab6c3;
-  padding:4px 0;
-}
-
-.report-results-position {
-  position:absolute;
-  top:21.5%;
-  left:8%;
-  width:84%;
-}
+.info-item { min-width: 0; padding: 2px 3px; overflow-wrap: break-word; }
 
 .report-results {
-  width:100%;
-  border-collapse:collapse;
-  table-layout:fixed;
-  direction:ltr;
+    position: absolute;
+    top: var(--results-top);
+    left: 8%;
+    width: 84%;
+    margin: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: fixed;
+    background: rgba(255,255,255,0.96);
+    direction: ltr;
+    z-index: 10;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .report-results th,
 .report-results td {
-  border:1px solid #9ba9b7;
-  padding:7px 5px;
-  text-align:left;
-  font-size:11px;
-  color:#172b40;
-  overflow-wrap:anywhere;
+    border: 1px solid #555;
+    padding: 4px 5px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 8.5pt;
+    line-height: 1.35;
+    color: #111;
+    background: transparent;
+    overflow-wrap: break-word;
 }
 
-.report-results th {
-  background:#173956;
-  color:white;
+.report-results th { font-weight: bold; background: #eef4fa; }
+
+.report-results .report-group td {
+    background: #d9eafa !important;
+    color: #153a5b !important;
+    font-weight: bold;
+    text-align: left;
+    padding: 5px 7px;
 }
 
-.report-results th:nth-child(1),
-.report-results td:nth-child(1) { width:34%; }
-
-.report-results th:nth-child(2),
-.report-results td:nth-child(2) { width:16%; }
-
-.report-results th:nth-child(3),
-.report-results td:nth-child(3) { width:18%; }
-
-.report-results th:nth-child(4),
-.report-results td:nth-child(4) { width:32%; }
-
-.report-results .group-row td {
-  background:#e7edf3;
-  font-weight:bold;
-  text-align:left;
+.app-footer {
+    background: #123451;
+    color: #dce8f3;
+    text-align: center;
+    padding: 15px;
+    font-size: 12px;
+    margin-top: 30px;
 }
 
-.high {
-  color:#c62828!important;
-  font-weight:bold;
-}
-
-.low {
-  color:#1565c0!important;
-  font-weight:bold;
-}
-
-.normal {
-  color:#1b5e20!important;
-}
-
-footer {
-  text-align:center;
-  color:var(--muted);
-  padding:20px;
-  font-size:12px;
-}
-
-@media(max-width:850px) {
-  .grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
-  .test-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
-  main { padding:10px; }
-}
-
-@media(max-width:500px) {
-  .grid { grid-template-columns:1fr; }
-  .span2,.span4 { grid-column:span 1; }
-  .test-grid { grid-template-columns:1fr; }
-  header h1 { font-size:18px; }
-}
-
-/* PRINT */
-@page {
-  size:A4 portrait;
-  margin:0;
+@media screen and (max-width: 700px) {
+    .container { padding: 10px; }
+    .form-grid { grid-template-columns: 1fr; }
+    .dashboard-grid { grid-template-columns: 1fr; }
+    .test-list { grid-template-columns: 1fr; }
+    .lab-title { font-size: 18px; }
+    .navigation button { padding: 10px; font-size: 12px; }
+    #reportPreview { padding: 10px; }
 }
 
 @media print {
-  body {
-    background:white!important;
-    margin:0!important;
-    padding:0!important;
-    -webkit-print-color-adjust:exact!important;
-    print-color-adjust:exact!important;
-  }
 
-  header,nav,main,footer,
-  .no-print,
-  #reportPreview {
-    display:none!important;
-  }
+    @page { size: A4 portrait; margin: 0; }
 
-  body.print-report #reportPrintArea {
-    display:block!important;
-  }
+    html, body {
+        width: 210mm !important;
+        height: 297mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        background: white !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
 
-  #reportPrintArea {
-    display:block!important;
-    position:absolute!important;
-    left:0!important;
-    top:0!important;
-    width:210mm!important;
-    margin:0!important;
-    padding:0!important;
-  }
+    body > * { visibility: hidden !important; }
 
-  .report-sheet {
-    display:block!important;
-    width:210mm!important;
-    height:297mm!important;
-    min-height:297mm!important;
-    margin:0!important;
-    padding:0!important;
-    overflow:hidden!important;
-    page-break-after:avoid!important;
-    break-after:avoid!important;
-  }
+    #reportPreview,
+    #reportPreview * { visibility: visible !important; }
 
-  .report-pdf-background {
-    display:block!important;
-    width:210mm!important;
-    height:297mm!important;
-    position:absolute!important;
-    left:0!important;
-    top:0!important;
-  }
+    #reportPreview {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 210mm !important;
+        height: 297mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        background: white !important;
+        border-radius: 0 !important;
+    }
 
-  .report-results th {
-    background:#173956!important;
-    color:white!important;
-  }
+    .report-sheet {
+        position: relative !important;
+        width: 210mm !important;
+        height: 297mm !important;
+        min-width: 210mm !important;
+        max-width: 210mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        transform: none !important;
+        overflow: hidden !important;
+        box-shadow: none !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+    }
+
+    .report-pdf-background {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 210mm !important;
+        height: 297mm !important;
+        display: block !important;
+        z-index: 0 !important;
+        object-fit: fill !important;
+    }
+
+    .report-content {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 210mm !important;
+        height: 297mm !important;
+        z-index: 5 !important;
+    }
+
+    .report-patient-info {
+        top: var(--info-top) !important;
+        left: 8% !important;
+        right: 8% !important;
+        width: 84% !important;
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 5px 12px !important;
+        background: rgba(255,255,255,0.93) !important;
+    }
+
+    .report-results { top: var(--results-top) !important; left: 8% !important; width: 84% !important; }
+
+    .report-results th,
+    .report-results td { background: transparent !important; }
+
+    .report-results th { background: #eef4fa !important; }
+
+    .report-results .report-group td {
+        background: #d9eafa !important;
+        color: #153a5b !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .app-header,
+    .navigation,
+    .app-footer,
+    .report-actions,
+    .no-print,
+    button { display: none !important; }
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <div>
-    <h1>Al-Juman Al-Janabi Laboratory</h1>
-    <p>مختبر الجمان الجانبي | Laboratory Management System</p>
-  </div>
-  <div id="headerDate"></div>
+<header class="app-header">
+    <div class="header-content">
+        <div>
+            <div class="lab-title">مختبر الجمان الجانبي</div>
+            <div class="lab-subtitle">Al-Juman Al-Janabi Laboratory</div>
+        </div>
+        <div class="header-logo">+</div>
+    </div>
 </header>
 
-<nav>
-  <button class="active" onclick="showPage('newPatient',this)">New Patient</button>
-  <button onclick="showPage('records',this)">Patient Records</button>
-  <button onclick="showPage('testsManage',this)">Tests Management</button>
-  <button onclick="showPage('backup',this)">Backup / Restore</button>
+<nav class="navigation no-print">
+    <button class="active" onclick="goPage('home')">الرئيسية</button>
+    <button onclick="goPage('newPatient')">مريض جديد</button>
+    <button onclick="goPage('patients')">سجلات المرضى</button>
+    <button onclick="goPage('reportPage')">معاينة التقرير</button>
 </nav>
 
-<main>
+<main class="container">
+
+<!-- HOME -->
+<section id="home" class="page active">
+    <h2 class="page-title">الرئيسية</h2>
+
+    <div class="dashboard-grid">
+        <div class="stat-card">
+            <div class="stat-number" id="statPatients">0</div>
+            <div class="stat-label">عدد المرضى</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" id="statReports">0</div>
+            <div class="stat-label">عدد التقارير</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number" id="statToday">0</div>
+            <div class="stat-label">مرضى اليوم</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">الإجراءات السريعة</div>
+        <div class="button-row">
+            <button class="btn btn-primary" onclick="newPatientPage()">+ تسجيل مريض جديد</button>
+            <button class="btn btn-secondary" onclick="goPage('patients')">عرض سجلات المرضى</button>
+        </div>
+    </div>
+</section>
 
 <!-- NEW PATIENT -->
 <section id="newPatient" class="page">
+    <h2 class="page-title">تسجيل مريض جديد</h2>
 
-<div class="panel">
-<h2>Patient Information</h2>
+    <div class="card">
+        <div class="card-title">بيانات المريض</div>
 
-<div class="grid">
+        <div class="form-grid">
+            <div class="form-group">
+                <label>اسم المريض</label>
+                <input id="patientName" type="text" placeholder="اسم المريض الكامل">
+            </div>
 
-<div class="field span2">
-<label>Patient Full Name</label>
-<input id="patientName" placeholder="Full patient name">
-</div>
+            <div class="form-group">
+                <label>رقم المريض</label>
+                <input id="patientNumber" type="text" readonly>
+            </div>
 
-<div class="field">
-<label>Patient Number</label>
-<input id="patientNumber" placeholder="Patient ID">
-</div>
+            <div class="form-group">
+                <label>العمر</label>
+                <input id="patientAge" type="number" min="0" placeholder="العمر">
+            </div>
 
-<div class="field">
-<label>Report Number</label>
-<input id="reportNumber" readonly>
-</div>
+            <div class="form-group">
+                <label>وحدة العمر</label>
+                <select id="ageUnit">
+                    <option value="Years">Years</option>
+                    <option value="Months">Months</option>
+                    <option value="Days">Days</option>
+                </select>
+            </div>
 
-<div class="field">
-<label>Age</label>
-<input id="patientAge" type="number" min="0" placeholder="Age">
-</div>
+            <div class="form-group">
+                <label>الجنس</label>
+                <select id="patientGender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
 
-<div class="field">
-<label>Age Unit</label>
-<select id="ageUnit">
-<option>Years</option>
-<option>Months</option>
-<option>Days</option>
-</select>
-</div>
+            <div class="form-group">
+                <label>تاريخ التحليل</label>
+                <input id="patientDate" type="date">
+            </div>
 
-<div class="field">
-<label>Gender</label>
-<select id="patientGender">
-<option value="">Select</option>
-<option>Male</option>
-<option>Female</option>
-</select>
-</div>
+            <div class="form-group">
+                <label>اسم الطبيب</label>
+                <input id="doctorName" type="text" placeholder="اختياري">
+            </div>
 
-<div class="field">
-<label>Date</label>
-<input id="patientDate" type="date">
-</div>
+            <div class="form-group">
+                <label>ملاحظات</label>
+                <input id="patientNotes" type="text" placeholder="ملاحظات اختيارية">
+            </div>
+        </div>
+    </div>
 
-<div class="field">
-<label>Doctor Name (Optional)</label>
-<input id="doctorName" placeholder="Doctor name">
-</div>
+    <div class="card">
+        <div class="card-title">اختيار التحاليل</div>
+        <input class="test-search" id="testSearch" type="search" placeholder="ابحث عن تحليل..." oninput="renderTests()">
+        <div class="test-list" id="testChoices"></div>
+    </div>
 
-<div class="field span4">
-<label>Notes</label>
-<textarea id="patientNotes" rows="2" placeholder="Notes..."></textarea>
-</div>
+    <div class="card">
+        <div class="card-title">إدخال نتائج التحاليل</div>
 
-</div>
+        <div class="selected-tests">
+            <table class="result-input-table">
+                <thead>
+                    <tr>
+                        <th>التحليل</th>
+                        <th>النتيجة</th>
+                        <th>الوحدة</th>
+                        <th>المدى الطبيعي</th>
+                        <th>حذف</th>
+                    </tr>
+                </thead>
+                <tbody id="resultInputs"></tbody>
+            </table>
+        </div>
 
-<div class="actions">
-<button class="btn-secondary" onclick="clearPatientForm()">Clear Form</button>
-<button class="btn-primary" onclick="savePatient()">Save Patient</button>
-</div>
-</div>
-
-<div class="panel">
-<h2>Select Laboratory Tests</h2>
-
-<input class="test-search" id="testSearch"
-placeholder="Search test name..."
-oninput="renderTestSelector()">
-
-<div id="testSelector"></div>
-
-<div class="actions">
-<button class="btn-secondary" onclick="selectAllVisible()">Select Visible</button>
-<button class="btn-secondary" onclick="clearSelectedTests()">Clear Selection</button>
-</div>
-</div>
-
-<div class="panel">
-<h2>Enter Results</h2>
-
-<div class="results-table-wrap">
-<table class="results-table" id="entryTable">
-<thead>
-<tr>
-<th style="width:34%">Test Name</th>
-<th style="width:16%">Result</th>
-<th style="width:18%">Unit</th>
-<th style="width:32%">Reference Range</th>
-</tr>
-</thead>
-<tbody id="entryTableBody"></tbody>
-</table>
-</div>
-
-<div class="actions">
-<button class="btn-primary" onclick="previewReport()">Preview Report</button>
-<button class="btn-success" onclick="savePatient()">Save Patient & Results</button>
-<button class="btn-secondary" onclick="printReport()">Print / Save PDF</button>
-<button class="btn-secondary" onclick="exportWord()">Export Word</button>
-</div>
-</div>
-
-<div class="panel">
-<h2>Report Preview</h2>
-<div id="reportPreview">
-<p>Select tests, enter results, then click Preview Report.</p>
-</div>
-<div class="actions no-print">
-<button class="btn-primary" onclick="printReport()">Print / Save PDF</button>
-<button class="btn-secondary" onclick="exportWord()">Download Word</button>
-</div>
-</div>
-
+        <div class="button-row">
+            <button type="button" class="btn btn-primary" onclick="savePatient()">حفظ المريض والنتائج</button>
+            <button type="button" class="btn btn-success" onclick="previewReport()">معاينة التقرير</button>
+            <button type="button" class="btn btn-secondary" onclick="resetPatientForm()">مسح النموذج</button>
+        </div>
+    </div>
 </section>
 
-<!-- RECORDS -->
-<section id="records" class="page hidden">
-<div class="panel">
-<h2>Patient Records</h2>
-<input class="test-search" id="recordSearch" placeholder="Search patient name or number..." oninput="renderRecords()">
-<div id="recordsList"></div>
-</div>
+<!-- PATIENTS -->
+<section id="patients" class="page">
+    <h2 class="page-title">سجلات المرضى</h2>
+
+    <div class="card">
+        <input id="patientSearch" class="search-box" type="search" placeholder="بحث بالاسم أو رقم المريض..." oninput="renderPatients()">
+        <div id="patientsList" class="records-list"></div>
+    </div>
 </section>
 
-<!-- TEST MANAGEMENT -->
-<section id="testsManage" class="page hidden">
-<div class="panel">
-<h2>Tests Management</h2>
+<!-- REPORT -->
+<section id="reportPage" class="page">
+    <h2 class="page-title">معاينة التقرير</h2>
 
-<div class="grid">
-<div class="field">
-<label>Test Name</label>
-<input id="newTestName" placeholder="Test name">
-</div>
-<div class="field">
-<label>Category</label>
-<input id="newTestCategory" placeholder="Category">
-</div>
-<div class="field">
-<label>Unit</label>
-<input id="newTestUnit" placeholder="Unit">
-</div>
-<div class="field">
-<label>Reference Range</label>
-<input id="newTestRange" placeholder="Reference range">
-</div>
-</div>
+    <div class="report-actions no-print">
+        <button class="btn btn-primary" onclick="printReport()">طباعة / حفظ PDF</button>
+        <button class="btn btn-secondary" onclick="exportWord()">تصدير Word</button>
+        <button class="btn btn-light" onclick="goPage('patients')">رجوع للسجلات</button>
+    </div>
 
-<div class="actions">
-<button class="btn-primary" onclick="addTest()">Add Test</button>
-</div>
+    <div id="reportPreview">
+        <div class="report-sheet">
 
-<div class="panel">
-<h2>Available Tests</h2>
-<div id="managedTests"></div>
-</div>
-</section>
+            <img class="report-pdf-background" src="lab_form.jpg" alt="">
 
-<!-- BACKUP -->
-<section id="backup" class="page hidden">
-<div class="panel">
-<h2>Backup & Restore</h2>
-<p>Export your patients and test database to a JSON backup file.</p>
-<div class="actions">
-<button class="btn-primary" onclick="downloadBackup()">Download Backup</button>
-<label class="btn-secondary">
-Restore Backup
-<input type="file" accept=".json,application/json" onchange="restoreBackup(event)" hidden>
-</label>
-<button class="btn-danger" onclick="clearAllData()">Delete All Data</button>
-</div>
-</div>
+            <div class="report-content">
+
+                <div id="reportPatientInfo" class="report-patient-info"></div>
+
+                <table class="report-results">
+                    <thead>
+                        <tr>
+                            <th>Reference Range</th>
+                            <th>Unit</th>
+                            <th>Result</th>
+                            <th>Test Name</th>
+                        </tr>
+                    </thead>
+                    <tbody id="reportTableBody"></tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
 </section>
 
 </main>
 
-<footer>Al-Juman Al-Janabi Laboratory • Laboratory Management System</footer>
-
-<!-- PRINT AREA -->
-<div id="reportPrintArea" style="display:none">
-<div class="report-sheet" id="reportSheet">
-<img class="report-pdf-background" src="lab_form.jpg" alt="">
-<div class="report-content">
-
-<div class="report-info" id="reportInfo"></div>
-
-<div class="report-results-position">
-<table class="report-results">
-<thead>
-<tr>
-<th>Test Name</th>
-<th>Result</th>
-<th>Unit</th>
-<th>Reference Range</th>
-</tr>
-</thead>
-<tbody id="reportTableBody"></tbody>
-</table>
-</div>
-
-</div>
-</div>
-</div>
+<footer class="app-footer">
+    مختبر الجمان الجانبي
+    <br>
+    Al-Juman Al-Janabi Laboratory
+    <br>
+    الصقلاوية - الشهداء الثانية
+</footer>
 
 <script>
-/* ===============================
-   DATABASE
-================================ */
+/* ================= DATABASE ================= */
 
 const STORAGE_KEY = "aljuman_lab_final_v1";
 
 const defaultTests = [
-{category:"Hematology",name:"CBC",unit:"",range:""},
-{category:"Hematology",name:"Hemoglobin",unit:"g/dL",range:"M: 13.5-17.5 | F: 12-16"},
-{category:"Hematology",name:"Hematocrit",unit:"%",range:"M: 41-53 | F: 36-46"},
-{category:"Hematology",name:"RBC",unit:"10^6/µL",range:"M: 4.5-5.9 | F: 4.1-5.1"},
-{category:"Hematology",name:"WBC",unit:"10^3/µL",range:"4.0-11.0"},
-{category:"Hematology",name:"Platelets",unit:"10^3/µL",range:"150-450"},
-{category:"Hematology",name:"MCV",unit:"fL",range:"80-100"},
-{category:"Hematology",name:"MCH",unit:"pg",range:"27-33"},
-{category:"Hematology",name:"MCHC",unit:"g/dL",range:"32-36"},
-{category:"Hematology",name:"RDW",unit:"%",range:"11.5-14.5"},
-{category:"Hematology",name:"Neutrophils",unit:"%",range:"40-75"},
-{category:"Hematology",name:"Lymphocytes",unit:"%",range:"20-45"},
-{category:"Hematology",name:"Monocytes",unit:"%",range:"2-10"},
-{category:"Hematology",name:"Eosinophils",unit:"%",range:"1-6"},
-{category:"Hematology",name:"Basophils",unit:"%",range:"0-2"},
-{category:"Hematology",name:"ESR",unit:"mm/hr",range:"Age/sex dependent"},
-{category:"Hematology",name:"Reticulocyte Count",unit:"%",range:"0.5-2.5"},
+    {name:"CBC",unit:"",range:"See laboratory reference",group:"Hematology"},
+    {name:"Hemoglobin",unit:"g/dL",range:"Male 13.5-17.5 | Female 12.0-15.5",group:"Hematology"},
+    {name:"WBC",unit:"10³/µL",range:"4.0-11.0",group:"Hematology"},
+    {name:"Platelets",unit:"10³/µL",range:"150-400",group:"Hematology"},
 
-{category:"Biochemistry",name:"Glucose",unit:"mg/dL",range:"70-110"},
-{category:"Biochemistry",name:"Fasting Blood Sugar (FBS)",unit:"mg/dL",range:"70-100"},
-{category:"Biochemistry",name:"Random Blood Sugar (RBS)",unit:"mg/dL",range:"70-140"},
-{category:"Biochemistry",name:"HbA1c",unit:"%",range:"<5.7"},
-{category:"Biochemistry",name:"Urea",unit:"mg/dL",range:"15-45"},
-{category:"Biochemistry",name:"Blood Urea Nitrogen (BUN)",unit:"mg/dL",range:"7-20"},
-{category:"Biochemistry",name:"Creatinine",unit:"mg/dL",range:"0.6-1.3"},
-{category:"Biochemistry",name:"Uric Acid",unit:"mg/dL",range:"M: 3.5-7.2 | F: 2.6-6.0"},
-{category:"Biochemistry",name:"Total Cholesterol",unit:"mg/dL",range:"<200"},
-{category:"Biochemistry",name:"Triglycerides",unit:"mg/dL",range:"<150"},
-{category:"Biochemistry",name:"HDL",unit:"mg/dL",range:"M: >40 | F: >50"},
-{category:"Biochemistry",name:"LDL",unit:"mg/dL",range:"<100"},
-{category:"Biochemistry",name:"VLDL",unit:"mg/dL",range:"5-40"},
-{category:"Biochemistry",name:"ALT",unit:"U/L",range:"7-56"},
-{category:"Biochemistry",name:"AST",unit:"U/L",range:"10-40"},
-{category:"Biochemistry",name:"ALP",unit:"U/L",range:"44-147"},
-{category:"Biochemistry",name:"GGT",unit:"U/L",range:"9-48"},
-{category:"Biochemistry",name:"Total Bilirubin",unit:"mg/dL",range:"0.1-1.2"},
-{category:"Biochemistry",name:"Direct Bilirubin",unit:"mg/dL",range:"0-0.3"},
-{category:"Biochemistry",name:"Albumin",unit:"g/dL",range:"3.5-5.0"},
-{category:"Biochemistry",name:"Total Protein",unit:"g/dL",range:"6.0-8.3"},
-{category:"Biochemistry",name:"Calcium",unit:"mg/dL",range:"8.5-10.5"},
-{category:"Biochemistry",name:"Phosphorus",unit:"mg/dL",range:"2.5-4.5"},
-{category:"Biochemistry",name:"Magnesium",unit:"mg/dL",range:"1.7-2.2"},
-{category:"Biochemistry",name:"Sodium",unit:"mmol/L",range:"135-145"},
-{category:"Biochemistry",name:"Potassium",unit:"mmol/L",range:"3.5-5.1"},
-{category:"Biochemistry",name:"Chloride",unit:"mmol/L",range:"98-107"},
-{category:"Biochemistry",name:"Iron",unit:"µg/dL",range:"M: 65-175 | F: 50-170"},
-{category:"Biochemistry",name:"TIBC",unit:"µg/dL",range:"250-450"},
-{category:"Biochemistry",name:"Ferritin",unit:"ng/mL",range:"M: 30-400 | F: 15-150"},
-{category:"Biochemistry",name:"Vitamin B12",unit:"pg/mL",range:"200-900"},
-{category:"Biochemistry",name:"Vitamin D",unit:"ng/mL",range:"30-100"},
-{category:"Biochemistry",name:"Amylase",unit:"U/L",range:"30-110"},
-{category:"Biochemistry",name:"Lipase",unit:"U/L",range:"0-160"},
-{category:"Biochemistry",name:"LDH",unit:"U/L",range:"140-280"},
+    {name:"Glucose",unit:"mg/dL",range:"70-110",group:"Biochemistry"},
+    {name:"Urea",unit:"mg/dL",range:"15-45",group:"Biochemistry"},
+    {name:"Creatinine",unit:"mg/dL",range:"Male 0.7-1.3 | Female 0.6-1.1",group:"Biochemistry"},
+    {name:"ALT",unit:"U/L",range:"7-56",group:"Biochemistry"},
+    {name:"AST",unit:"U/L",range:"10-40",group:"Biochemistry"},
 
-{category:"Hormones",name:"TSH",unit:"µIU/mL",range:"0.4-4.0"},
-{category:"Hormones",name:"T3",unit:"ng/mL",range:"0.8-2.0"},
-{category:"Hormones",name:"T4",unit:"µg/dL",range:"5-12"},
-{category:"Hormones",name:"FT3",unit:"pg/mL",range:"2.3-4.2"},
-{category:"Hormones",name:"FT4",unit:"ng/dL",range:"0.8-1.8"},
-{category:"Hormones",name:"Anti-TPO",unit:"IU/mL",range:"<35"},
-{category:"Hormones",name:"Prolactin",unit:"ng/mL",range:"M: 2-18 | F: 4-23"},
-{category:"Hormones",name:"Testosterone",unit:"ng/dL",range:"M: 300-1000"},
-{category:"Hormones",name:"Estradiol (E2)",unit:"pg/mL",range:"Cycle dependent"},
-{category:"Hormones",name:"FSH",unit:"mIU/mL",range:"Sex/age dependent"},
-{category:"Hormones",name:"LH",unit:"mIU/mL",range:"Sex/age dependent"},
-{category:"Hormones",name:"Progesterone",unit:"ng/mL",range:"Cycle dependent"},
-{category:"Hormones",name:"Cortisol",unit:"µg/dL",range:"Time dependent"},
-{category:"Hormones",name:"Insulin",unit:"µIU/mL",range:"2-25"},
-{category:"Hormones",name:"HOMA-IR",unit:"",range:""},
+    {name:"TSH",unit:"µIU/mL",range:"0.4-4.0",group:"Hormones"},
+    {name:"Vitamin D",unit:"ng/mL",range:"30-100",group:"Hormones"},
 
-{category:"Immunology",name:"CRP",unit:"mg/L",range:"<5"},
-{category:"Immunology",name:"ASO",unit:"IU/mL",range:"<200"},
-{category:"Immunology",name:"RF",unit:"IU/mL",range:"<14"},
-{category:"Immunology",name:"ANA",unit:"",range:"Negative"},
-{category:"Immunology",name:"Anti-CCP",unit:"U/mL",range:"Negative"},
-{category:"Immunology",name:"Troponin I",unit:"ng/mL",range:"Kit dependent"},
-{category:"Immunology",name:"NT-proBNP",unit:"pg/mL",range:"Age dependent"},
-{category:"Immunology",name:"D-Dimer",unit:"µg/mL FEU",range:"<0.5"},
-{category:"Immunology",name:"IgG",unit:"mg/dL",range:"700-1600"},
-{category:"Immunology",name:"IgA",unit:"mg/dL",range:"70-400"},
-{category:"Immunology",name:"IgM",unit:"mg/dL",range:"40-230"},
-{category:"Immunology",name:"TNF-α",unit:"pg/mL",range:"Kit dependent"},
+    {name:"CRP",unit:"mg/L",range:"<5",group:"Immunology"},
+    {name:"Troponin I",unit:"ng/mL",range:"According to assay",group:"Cardiac"},
 
-{category:"Serology",name:"HBsAg",unit:"",range:"Negative"},
-{category:"Serology",name:"Anti-HBs",unit:"mIU/mL",range:"Protective ≥10"},
-{category:"Serology",name:"Anti-HBc",unit:"",range:"Negative"},
-{category:"Serology",name:"HCV Ab",unit:"",range:"Negative"},
-{category:"Serology",name:"HIV 1/2",unit:"",range:"Negative"},
-{category:"Serology",name:"VDRL",unit:"",range:"Non-reactive"},
-{category:"Serology",name:"TPHA",unit:"",range:"Negative"},
-{category:"Serology",name:"Rubella IgG",unit:"IU/mL",range:"Kit dependent"},
-{category:"Serology",name:"Toxoplasma IgG",unit:"IU/mL",range:"Kit dependent"},
-{category:"Serology",name:"Toxoplasma IgM",unit:"",range:"Negative"},
-
-{category:"Urine",name:"GUE",unit:"",range:""},
-{category:"Urine",name:"Urine Analysis",unit:"",range:""},
-{category:"Urine",name:"Urine Color",unit:"",range:"Yellow"},
-{category:"Urine",name:"Urine Appearance",unit:"",range:"Clear"},
-{category:"Urine",name:"Urine pH",unit:"",range:"4.5-8.0"},
-{category:"Urine",name:"Urine Specific Gravity",unit:"",range:"1.005-1.030"},
-{category:"Urine",name:"Urine Protein",unit:"",range:"Negative"},
-{category:"Urine",name:"Urine Glucose",unit:"",range:"Negative"},
-{category:"Urine",name:"Urine Ketone",unit:"",range:"Negative"},
-{category:"Urine",name:"Urine Blood",unit:"",range:"Negative"},
-{category:"Urine",name:"Urine Bilirubin",unit:"",range:"Negative"},
-{category:"Urine",name:"Urine Nitrite",unit:"",range:"Negative"},
-{category:"Urine",name:"Urine Leukocytes",unit:"",range:"Negative"},
-{category:"Urine",name:"Urine RBC",unit:"/HPF",range:"0-2"},
-{category:"Urine",name:"Urine WBC",unit:"/HPF",range:"0-5"},
-{category:"Urine",name:"Urine Epithelial Cells",unit:"/HPF",range:"Few"},
-{category:"Urine",name:"Urine Casts",unit:"",range:"None/Few"},
-{category:"Urine",name:"Urine Crystals",unit:"",range:"None"},
-{category:"Urine",name:"Urine Bacteria",unit:"",range:"None"},
-{category:"Urine",name:"Urine Albumin",unit:"mg/L",range:""},
-{category:"Urine",name:"Urine Creatinine",unit:"mg/dL",range:""},
-{category:"Urine",name:"ACR",unit:"mg/g",range:"<30"},
-
-{category:"Stool",name:"GSE",unit:"",range:""},
-{category:"Stool",name:"Stool Analysis",unit:"",range:""},
-{category:"Stool",name:"Occult Blood",unit:"",range:"Negative"},
-{category:"Stool",name:"Stool Color",unit:"",range:"Brown"},
-{category:"Stool",name:"Stool Consistency",unit:"",range:"Formed"},
-{category:"Stool",name:"Stool RBC",unit:"",range:"None"},
-{category:"Stool",name:"Stool WBC",unit:"",range:"None"},
-{category:"Stool",name:"Stool Parasites",unit:"",range:"None"},
-{category:"Stool",name:"Stool Mucus",unit:"",range:"None"},
-
-{category:"Coagulation",name:"PT",unit:"sec",range:"11-13.5"},
-{category:"Coagulation",name:"INR",unit:"",range:"0.8-1.2"},
-{category:"Coagulation",name:"APTT",unit:"sec",range:"25-35"},
-{category:"Coagulation",name:"TT",unit:"sec",range:"14-19"},
-{category:"Coagulation",name:"Fibrinogen",unit:"mg/dL",range:"200-400"},
-
-{category:"Other",name:"Pregnancy Test",unit:"",range:"Negative"},
-{category:"Other",name:"Blood Group",unit:"",range:""},
-{category:"Other",name:"Rh",unit:"",range:""},
-{category:"Other",name:"Culture",unit:"",range:""},
-{category:"Other",name:"Microalbumin",unit:"mg/L",range:""}
+    {name:"Urine Analysis",unit:"",range:"See laboratory reference",group:"Urine"}
 ];
 
-let db = loadDatabase();
-let selectedTests = [];
-let currentPatientId = null;
-let currentReport = null;
-
-function loadDatabase() {
-  try {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if(saved) {
-      const parsed = JSON.parse(saved);
-      if(parsed && Array.isArray(parsed.patients) && Array.isArray(parsed.tests)) return parsed;
+let db = {
+    patients: [],
+    reports: [],
+    tests: defaultTests,
+    settings: {
+        labName: "مختبر الجمان الجانبي",
+        labNameEnglish: "Al-Juman Al-Janabi Laboratory",
+        address: "الصقلاوية - الشهداء الثانية"
     }
-  } catch(e) {}
-  return {patients:[],tests:defaultTests.map(t=>({...t}))};
+};
+
+try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+        const loaded = JSON.parse(saved);
+        db = {
+            ...db,
+            ...loaded,
+            tests: loaded.tests || defaultTests,
+            patients: loaded.patients || [],
+            reports: loaded.reports || []
+        };
+    }
+} catch (error) {
+    console.error("Database loading error:", error);
 }
 
-function persist() {
-  localStorage.setItem(STORAGE_KEY,JSON.stringify(db));
+function saveDatabase() {
+    try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(db));
+    } catch (error) {
+        console.error("Save error:", error);
+    }
+    updateDashboard();
 }
+
+/* ================= HELPERS ================= */
+
+function $(id) { return document.getElementById(id); }
 
 function escapeHTML(value) {
-  return String(value ?? "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 }
 
 function today() {
-  return new Date().toISOString().slice(0,10);
+    const d = new Date();
+    const m = String(d.getMonth() + 1).padStart(2, "0");
+    const day = String(d.getDate()).padStart(2, "0");
+    return d.getFullYear() + "-" + m + "-" + day;
 }
 
-function generateReportNumber() {
-  const d = new Date();
-  const stamp = d.getFullYear().toString()+
-    String(d.getMonth()+1).padStart(2,"0")+
-    String(d.getDate()).padStart(2,"0");
-  const suffix = String(Date.now()).slice(-5);
-  return "JL-"+stamp+"-"+suffix;
+function nextNumber(list, field) {
+    let max = 0;
+    list.forEach(item => {
+        const n = parseInt(String(item[field] || "").split("-").pop(), 10);
+        if (!isNaN(n) && n > max) max = n;
+    });
+    return new Date().getFullYear() + "-" + String(max + 1).padStart(4, "0");
 }
 
-/* ===============================
-   NAVIGATION
-================================ */
+function patientNumber() { return nextNumber(db.patients, "number"); }
+function reportNumber() { return nextNumber(db.reports, "number"); }
+function generateID() { return Date.now() + Math.floor(Math.random() * 1000); }
 
-function showPage(id,button) {
-  document.querySelectorAll(".page").forEach(p=>p.classList.add("hidden"));
-  document.getElementById(id).classList.remove("hidden");
+/* ================= NAVIGATION ================= */
 
-  document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
-  if(button) button.classList.add("active");
+let selectedTests = new Set();
+let draft = {};
+let editingId = null;
+let currentPatient = null;
+let currentReport = null;
 
-  if(id==="records") renderRecords();
-  if(id==="testsManage") renderManagedTests();
+function goPage(id) {
+    document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+    $(id).classList.add("active");
+
+    const buttons = document.querySelectorAll(".navigation button");
+    buttons.forEach(b => b.classList.remove("active"));
+
+    const pageMap = { home: 0, newPatient: 1, patients: 2, reportPage: 3 };
+    if (pageMap[id] !== undefined) buttons[pageMap[id]].classList.add("active");
+
+    if (id === "home") updateDashboard();
+    if (id === "patients") renderPatients();
+
+    if (id === "newPatient") {
+        if (!$("patientNumber").value) preparePatientForm();
+        renderTests();
+        renderResultInputs();
+    }
+
+    window.scrollTo(0, 0);
 }
 
-/* ===============================
-   TEST SELECTOR
-================================ */
-
-function renderTestSelector() {
-  const search=(document.getElementById("testSearch").value||"").toLowerCase();
-  const filtered=db.tests.filter(t=>
-    t.name.toLowerCase().includes(search) ||
-    t.category.toLowerCase().includes(search)
-  );
-
-  const groups={};
-  filtered.forEach(t=>{
-    if(!groups[t.category]) groups[t.category]=[];
-    groups[t.category].push(t);
-  });
-
-  const container=document.getElementById("testSelector");
-  container.innerHTML="";
-
-  Object.keys(groups).sort().forEach(category=>{
-    const section=document.createElement("div");
-    section.className="category";
-
-    section.innerHTML=`
-      <div class="category-title">${escapeHTML(category)}</div>
-      <div class="test-grid">
-      ${groups[category].map(t=>`
-        <label class="test-option">
-          <input type="checkbox"
-          data-test="${escapeHTML(t.name)}"
-          ${selectedTests.includes(t.name)?"checked":""}
-          onchange="toggleTest('${escapeHTML(t.name)}',this.checked)">
-          <span>${escapeHTML(t.name)}</span>
-        </label>
-      `).join("")}
-      </div>
-    `;
-    container.appendChild(section);
-  });
+function newPatientPage() {
+    preparePatientForm();
+    goPage("newPatient");
 }
 
-function toggleTest(name,checked) {
-  if(checked) {
-    if(!selectedTests.includes(name)) selectedTests.push(name);
-  } else {
-    selectedTests=selectedTests.filter(t=>t!==name);
-  }
-  renderEntryTable();
+/* ================= PATIENT FORM ================= */
+
+function preparePatientForm() {
+    editingId = null;
+    draft = {};
+    selectedTests.clear();
+
+    $("patientNumber").value = patientNumber();
+    $("patientDate").value = today();
+    $("patientName").value = "";
+    $("patientAge").value = "";
+    $("ageUnit").value = "Years";
+    $("patientGender").value = "Male";
+    $("doctorName").value = "";
+    $("patientNotes").value = "";
+    $("testSearch").value = "";
+
+    renderTests();
+    renderResultInputs();
 }
 
-function selectAllVisible() {
-  const search=(document.getElementById("testSearch").value||"").toLowerCase();
-  db.tests.filter(t=>
-    t.name.toLowerCase().includes(search) ||
-    t.category.toLowerCase().includes(search)
-  ).forEach(t=>{
-    if(!selectedTests.includes(t.name)) selectedTests.push(t.name);
-  });
-  renderTestSelector();
-  renderEntryTable();
+function resetPatientForm() { preparePatientForm(); }
+
+/* ================= TESTS ================= */
+
+function renderTests() {
+    const query = $("testSearch").value.toLowerCase();
+
+    $("testChoices").innerHTML = db.tests
+        .filter(test => test.name.toLowerCase().includes(query))
+        .map(test => `
+            <label class="test-option">
+                <input type="checkbox"
+                    data-name="${escapeHTML(test.name)}"
+                    ${selectedTests.has(test.name) ? "checked" : ""}
+                    onchange="toggleTest(this.dataset.name)">
+                <span>${escapeHTML(test.name)}</span>
+            </label>
+        `).join("");
 }
 
-function clearSelectedTests() {
-  selectedTests=[];
-  renderTestSelector();
-  renderEntryTable();
+function toggleTest(name) {
+    captureDraft();
+    if (selectedTests.has(name)) {
+        selectedTests.delete(name);
+        delete draft[name];
+    } else {
+        selectedTests.add(name);
+    }
+    renderResultInputs();
 }
 
-/* ===============================
-   RESULTS ENTRY
-================================ */
-
-function renderEntryTable() {
-  const body=document.getElementById("entryTableBody");
-  body.innerHTML="";
-
-  selectedTests.forEach(name=>{
-    const test=db.tests.find(t=>t.name===name);
-    if(!test) return;
-
-    const tr=document.createElement("tr");
-    tr.dataset.test=name;
-
-    tr.innerHTML=`
-      <td class="test-name">${escapeHTML(test.name)}</td>
-      <td><input type="text" class="result-input" placeholder="Result"></td>
-      <td><input type="text" class="unit-input" value="${escapeHTML(test.unit)}"></td>
-      <td><input type="text" class="range-input" value="${escapeHTML(test.range)}"></td>
-    `;
-
-    body.appendChild(tr);
-  });
+function captureDraft() {
+    document.querySelectorAll("#resultInputs tr[data-name]").forEach(row => {
+        draft[row.dataset.name] = {
+            result: row.querySelector(".r-result").value,
+            unit: row.querySelector(".r-unit").value,
+            range: row.querySelector(".r-range").value
+        };
+    });
 }
+
+function renderResultInputs() {
+    captureDraft();
+
+    const selected = db.tests.filter(test => selectedTests.has(test.name));
+
+    $("resultInputs").innerHTML = selected.map(test => {
+        const d = draft[test.name] || {};
+        const result = d.result ?? "";
+        const unit = d.unit ?? test.unit;
+        const range = d.range ?? test.range;
+
+        return `
+        <tr data-name="${escapeHTML(test.name)}">
+            <td>${escapeHTML(test.name)}</td>
+            <td><input type="text" class="r-result" placeholder="Result" value="${escapeHTML(result)}"></td>
+            <td><input type="text" class="r-unit" value="${escapeHTML(unit)}"></td>
+            <td><input type="text" class="r-range" value="${escapeHTML(range)}"></td>
+            <td>
+                <button type="button" class="btn btn-danger"
+                    data-name="${escapeHTML(test.name)}"
+                    onclick="removeTest(this.dataset.name)">حذف</button>
+            </td>
+        </tr>`;
+    }).join("");
+}
+
+function removeTest(name) {
+    captureDraft();
+    selectedTests.delete(name);
+    delete draft[name];
+    renderTests();
+    renderResultInputs();
+}
+
+/* ================= BUILD / SAVE ================= */
 
 function collectResults() {
-  const results=[];
-  document.querySelectorAll("#entryTableBody tr").forEach(tr=>{
-    const name=tr.dataset.test;
-    const result=tr.querySelector(".result-input").value.trim();
-    const unit=tr.querySelector(".unit-input").value.trim();
-    const range=tr.querySelector(".range-input").value.trim();
+    captureDraft();
 
-    results.push({name,result,unit,range,category:
-      db.tests.find(t=>t.name===name)?.category||"Other"});
-  });
-  return results;
+    return db.tests
+        .filter(test => selectedTests.has(test.name))
+        .map(test => {
+            const d = draft[test.name] || {};
+            return {
+                name: test.name,
+                result: d.result ?? "",
+                unit: d.unit ?? test.unit,
+                range: d.range ?? test.range,
+                group: test.group
+            };
+        });
 }
 
-/* ===============================
-   PATIENT SAVE
-================================ */
+function buildPatientFromForm() {
+    const name = $("patientName").value.trim();
 
-function getPatientForm() {
-  return {
-    name:document.getElementById("patientName").value.trim(),
-    number:document.getElementById("patientNumber").value.trim(),
-    reportNumber:document.getElementById("reportNumber").value,
-    age:document.getElementById("patientAge").value,
-    ageUnit:document.getElementById("ageUnit").value,
-    gender:document.getElementById("patientGender").value,
-    date:document.getElementById("patientDate").value,
-    doctor:document.getElementById("doctorName").value.trim(),
-    notes:document.getElementById("patientNotes").value.trim(),
-    results:collectResults()
-  };
+    if (!name) {
+        alert("يرجى إدخال اسم المريض");
+        return null;
+    }
+
+    if (selectedTests.size === 0) {
+        alert("يرجى اختيار تحليل واحد على الأقل");
+        return null;
+    }
+
+    return {
+        id: editingId || generateID(),
+        number: $("patientNumber").value,
+        name: name,
+        age: $("patientAge").value,
+        ageUnit: $("ageUnit").value,
+        gender: $("patientGender").value,
+        date: $("patientDate").value || today(),
+        doctor: $("doctorName").value,
+        notes: $("patientNotes").value,
+        results: collectResults()
+    };
 }
 
 function savePatient() {
-  const p=getPatientForm();
+    const patient = buildPatientFromForm();
+    if (!patient) return;
 
-  if(!p.name) {
-    alert("Please enter the patient's full name.");
-    document.getElementById("patientName").focus();
-    return;
-  }
+    const index = db.patients.findIndex(p => p.id === patient.id);
 
-  if(!p.results.length) {
-    alert("Please select at least one test.");
-    return;
-  }
-
-  if(currentPatientId) {
-    const index=db.patients.findIndex(x=>x.id===currentPatientId);
-    if(index>=0) {
-      p.id=currentPatientId;
-      db.patients[index]=p;
+    if (index >= 0) {
+        db.patients[index] = patient;
+    } else {
+        db.patients.push(patient);
     }
-  } else {
-    p.id=Date.now().toString();
-    db.patients.unshift(p);
-    currentPatientId=p.id;
-  }
 
-  persist();
-  alert("Patient and results saved successfully.");
-  renderRecords();
+    ensureReport(patient);
+    saveDatabase();
+
+    currentPatient = patient;
+    editingId = null;
+
+    renderReport(patient);
+    renderPatients();
+
+    alert("تم حفظ بيانات المريض والنتائج بنجاح");
+
+    preparePatientForm();
+    goPage("reportPage");
 }
 
-/* ===============================
-   CLEAR / EDIT
-================================ */
+function previewReport() {
+    const patient = buildPatientFromForm();
+    if (!patient) return;
 
-function clearPatientForm() {
-  if(!confirm("Clear the current patient form?")) return;
+    currentPatient = patient;
 
-  currentPatientId=null;
-  document.getElementById("patientName").value="";
-  document.getElementById("patientNumber").value="";
-  document.getElementById("reportNumber").value=generateReportNumber();
-  document.getElementById("patientAge").value="";
-  document.getElementById("ageUnit").value="Years";
-  document.getElementById("patientGender").value="";
-  document.getElementById("patientDate").value=today();
-  document.getElementById("doctorName").value="";
-  document.getElementById("patientNotes").value="";
-  selectedTests=[];
-  document.getElementById("testSearch").value="";
-  renderTestSelector();
-  renderEntryTable();
-  document.getElementById("reportPreview").innerHTML=
-    "<p>Select tests, enter results, then click Preview Report.</p>";
+    const existing = db.reports.find(r => r.patientID === patient.id);
+    currentReport = existing || { number: reportNumber() };
+
+    renderReport(patient);
+    goPage("reportPage");
 }
 
-function editPatient(id) {
-  const p=db.patients.find(x=>x.id===id);
-  if(!p) return;
+function ensureReport(patient) {
+    let report = db.reports.find(r => r.patientID === patient.id);
 
-  currentPatientId=p.id;
-  document.getElementById("patientName").value=p.name||"";
-  document.getElementById("patientNumber").value=p.number||"";
-  document.getElementById("reportNumber").value=p.reportNumber||generateReportNumber();
-  document.getElementById("patientAge").value=p.age||"";
-  document.getElementById("ageUnit").value=p.ageUnit||"Years";
-  document.getElementById("patientGender").value=p.gender||"";
-  document.getElementById("patientDate").value=p.date||today();
-  document.getElementById("doctorName").value=p.doctor||"";
-  document.getElementById("patientNotes").value=p.notes||"";
-
-  selectedTests=(p.results||[]).map(r=>r.name);
-  renderTestSelector();
-  renderEntryTable();
-
-  const rows=document.querySelectorAll("#entryTableBody tr");
-  rows.forEach(tr=>{
-    const name=tr.dataset.test;
-    const r=p.results.find(x=>x.name===name);
-    if(r) {
-      tr.querySelector(".result-input").value=r.result||"";
-      tr.querySelector(".unit-input").value=r.unit||"";
-      tr.querySelector(".range-input").value=r.range||"";
+    if (report) {
+        report.date = patient.date;
+        report.results = patient.results;
+    } else {
+        report = {
+            id: generateID(),
+            patientID: patient.id,
+            number: reportNumber(),
+            date: patient.date,
+            results: patient.results
+        };
+        db.reports.push(report);
     }
-  });
 
-  showPage("newPatient",document.querySelector("nav button"));
-  window.scrollTo({top:0,behavior:"smooth"});
+    currentReport = report;
+    return report;
+}
+
+/* ================= RECORDS ================= */
+
+function renderPatients() {
+    const query = $("patientSearch").value.toLowerCase();
+
+    const patients = [...db.patients].reverse().filter(patient =>
+        patient.name.toLowerCase().includes(query) ||
+        String(patient.number).toLowerCase().includes(query)
+    );
+
+    $("patientsList").innerHTML = patients.map(patient => `
+        <div class="record-card">
+            <div class="record-card-header">
+                <div>
+                    <strong>${escapeHTML(patient.name)}</strong>
+                    <br>
+                    <small>ID: ${escapeHTML(patient.number)}</small>
+                </div>
+                <div>${escapeHTML(patient.date)}</div>
+            </div>
+
+            <div style="margin-top:8px">
+                العمر: ${escapeHTML(patient.age)} ${escapeHTML(patient.ageUnit)} | ${escapeHTML(patient.gender)}
+            </div>
+
+            <div style="margin-top:8px">
+                التحاليل: ${patient.results.map(r => escapeHTML(r.name)).join("، ")}
+            </div>
+
+            <div class="record-actions">
+                <button class="btn btn-primary" onclick="openPatientReport(${patient.id})">التقرير</button>
+                <button class="btn btn-secondary" onclick="editPatient(${patient.id})">تعديل</button>
+                <button class="btn btn-danger" onclick="deletePatient(${patient.id})">حذف</button>
+            </div>
+        </div>
+    `).join("");
+
+    if (!patients.length) {
+        $("patientsList").innerHTML = "<p>لا توجد سجلات مطابقة.</p>";
+    }
+}
+
+function openPatientReport(id) {
+    const patient = db.patients.find(p => p.id === id);
+    if (!patient) return;
+
+    currentPatient = patient;
+    ensureReport(patient);
+    saveDatabase();
+
+    renderReport(patient);
+    goPage("reportPage");
 }
 
 function deletePatient(id) {
-  if(!confirm("Delete this patient record?")) return;
-  db.patients=db.patients.filter(p=>p.id!==id);
-  persist();
-  renderRecords();
+    if (!confirm("هل تريد حذف سجل المريض؟")) return;
+
+    db.patients = db.patients.filter(p => p.id !== id);
+    db.reports = db.reports.filter(r => r.patientID !== id);
+
+    if (currentPatient && currentPatient.id === id) currentPatient = null;
+
+    saveDatabase();
+    renderPatients();
 }
 
-/* ===============================
-   RECORDS
-================================ */
+function editPatient(id) {
+    const patient = db.patients.find(p => p.id === id);
+    if (!patient) return;
 
-function renderRecords() {
-  const q=(document.getElementById("recordSearch")?.value||"").toLowerCase();
-  const list=document.getElementById("recordsList");
-  if(!list) return;
+    editingId = patient.id;
 
-  const records=db.patients.filter(p=>
-    (p.name||"").toLowerCase().includes(q)||
-    (p.number||"").toLowerCase().includes(q)||
-    (p.reportNumber||"").toLowerCase().includes(q)
-  );
+    $("patientNumber").value = patient.number;
+    $("patientName").value = patient.name;
+    $("patientAge").value = patient.age;
+    $("ageUnit").value = patient.ageUnit;
+    $("patientGender").value = patient.gender;
+    $("patientDate").value = patient.date;
+    $("doctorName").value = patient.doctor || "";
+    $("patientNotes").value = patient.notes || "";
 
-  if(!records.length) {
-    list.innerHTML="<p>No records found.</p>";
-    return;
-  }
+    selectedTests.clear();
+    draft = {};
 
-  list.innerHTML=records.map(p=>`
-    <div class="record-item">
-      <div>
-        <strong>${escapeHTML(p.name)}</strong>
-        <br>
-        <small>Patient No: ${escapeHTML(p.number||"-")} |
-        Report: ${escapeHTML(p.reportNumber||"-")} |
-        Date: ${escapeHTML(p.date||"-")}</small>
-        <br>
-        <span class="badge">${(p.results||[]).length} tests</span>
-      </div>
-
-      <div class="record-buttons">
-        <button class="btn-primary" onclick="editPatient('${p.id}')">Edit</button>
-        <button class="btn-secondary" onclick="loadRecordReport('${p.id}')">Report</button>
-        <button class="btn-danger" onclick="deletePatient('${p.id}')">Delete</button>
-      </div>
-    </div>
-  `).join("");
-}
-
-function loadRecordReport(id) {
-  const p=db.patients.find(x=>x.id===id);
-  if(!p) return;
-
-  currentReport=p;
-  createReport(p);
-  showPage("newPatient",document.querySelector("nav button"));
-  document.getElementById("reportPreview").scrollIntoView({behavior:"smooth"});
-}
-
-/* ===============================
-   REPORT
-================================ */
-
-function previewReport() {
-  const p=getPatientForm();
-  if(!p.name) {
-    alert("Enter patient name first.");
-    return;
-  }
-  if(!p.results.length) {
-    alert("Select tests first.");
-    return;
-  }
-
-  currentReport=p;
-  createReport(p);
-  document.getElementById("reportPreview").innerHTML=
-    document.getElementById("reportPrintArea").innerHTML;
-}
-
-function createReport(p) {
-  const info=document.getElementById("reportInfo");
-  const body=document.getElementById("reportTableBody");
-
-  info.innerHTML=`
-    <div><strong>Patient Name:</strong> ${escapeHTML(p.name||"-")}</div>
-    <div><strong>Patient ID:</strong> ${escapeHTML(p.number||"-")}</div>
-    <div><strong>Report No:</strong> ${escapeHTML(p.reportNumber||"-")}</div>
-    <div><strong>Age:</strong> ${escapeHTML(p.age||"-")} ${escapeHTML(p.ageUnit||"")}</div>
-    <div><strong>Gender:</strong> ${escapeHTML(p.gender||"-")}</div>
-    <div><strong>Date:</strong> ${escapeHTML(p.date||"-")}</div>
-    <div><strong>Doctor:</strong> ${escapeHTML(p.doctor||"-")}</div>
-    <div><strong>Notes:</strong> ${escapeHTML(p.notes||"-")}</div>
-  `;
-
-  body.innerHTML="";
-
-  const groups={};
-  (p.results||[]).forEach(r=>{
-    const group=r.category||"Laboratory Tests";
-    if(!groups[group]) groups[group]=[];
-    groups[group].push(r);
-  });
-
-  Object.keys(groups).forEach(group=>{
-    const groupRow=document.createElement("tr");
-    groupRow.className="group-row";
-    groupRow.innerHTML=`<td colspan="4">${escapeHTML(group)}</td>`;
-    body.appendChild(groupRow);
-
-    groups[group].forEach(r=>{
-      const tr=document.createElement("tr");
-      tr.innerHTML=`
-        <td>${escapeHTML(r.name)}</td>
-        <td>${escapeHTML(r.result)}</td>
-        <td>${escapeHTML(r.unit)}</td>
-        <td>${escapeHTML(r.range)}</td>
-      `;
-      body.appendChild(tr);
+    patient.results.forEach(r => {
+        selectedTests.add(r.name);
+        draft[r.name] = { result: r.result, unit: r.unit, range: r.range };
     });
-  });
+
+    goPage("newPatient");
 }
 
-/* ===============================
-   PRINT / PDF
-================================ */
+/* ================= REPORT ================= */
+
+function renderReport(patient) {
+    if (!patient) return;
+
+    const reportNo = currentReport ? currentReport.number : reportNumber();
+
+    $("reportPatientInfo").innerHTML = `
+        <div class="info-item"><strong>Patient Name:</strong> ${escapeHTML(patient.name)}</div>
+        <div class="info-item"><strong>Patient ID:</strong> ${escapeHTML(patient.number)}</div>
+        <div class="info-item"><strong>Report No:</strong> ${escapeHTML(reportNo)}</div>
+        <div class="info-item"><strong>Age:</strong> ${escapeHTML(patient.age)} ${escapeHTML(patient.ageUnit)}</div>
+        <div class="info-item"><strong>Gender:</strong> ${escapeHTML(patient.gender)}</div>
+        <div class="info-item"><strong>Date:</strong> ${escapeHTML(patient.date)}</div>
+        ${patient.doctor ? `<div class="info-item"><strong>Doctor:</strong> ${escapeHTML(patient.doctor)}</div>` : ""}
+    `;
+
+    const groups = {};
+
+    patient.results.forEach(result => {
+        const group = result.group || "Other";
+        if (!groups[group]) groups[group] = [];
+        groups[group].push(result);
+    });
+
+    let tableHTML = "";
+
+    Object.keys(groups).forEach(group => {
+        tableHTML += `
+            <tr class="report-group">
+                <td colspan="4">${escapeHTML(group)}</td>
+            </tr>
+        `;
+
+        groups[group].forEach(result => {
+            tableHTML += `
+                <tr>
+                    <td>${escapeHTML(result.range)}</td>
+                    <td>${escapeHTML(result.unit)}</td>
+                    <td>${escapeHTML(result.result)}</td>
+                    <td>${escapeHTML(result.name)}</td>
+                </tr>
+            `;
+        });
+    });
+
+    $("reportTableBody").innerHTML = tableHTML;
+}
+
+/* ================= PRINT ================= */
 
 function printReport() {
-  if(!currentReport) {
-    previewReport();
-    if(!currentReport) return;
-  }
+    if (!currentPatient) {
+        alert("لا يوجد تقرير جاهز للطباعة");
+        return;
+    }
 
-  createReport(currentReport);
+    renderReport(currentPatient);
 
-  const bg=document.querySelector(".report-pdf-background");
-
-  const startPrint=()=>{
-    document.body.classList.add("print-report");
-    window.print();
-  };
-
-  if(bg && !bg.complete) {
-    bg.onload=startPrint;
-    bg.onerror=startPrint;
-  } else {
-    setTimeout(startPrint,250);
-  }
+    setTimeout(() => window.print(), 500);
 }
 
-window.addEventListener("afterprint",()=>{
-  document.body.classList.remove("print-report");
-});
-
-/* ===============================
-   WORD EXPORT
-================================ */
+/* ================= WORD ================= */
 
 function exportWord() {
-  if(!currentReport) {
-    previewReport();
-    if(!currentReport) return;
-  }
-
-  const p=currentReport;
-  const rows=(p.results||[]).map(r=>`
-    <tr>
-      <td>${escapeHTML(r.name)}</td>
-      <td>${escapeHTML(r.result)}</td>
-      <td>${escapeHTML(r.unit)}</td>
-      <td>${escapeHTML(r.range)}</td>
-    </tr>
-  `).join("");
-
-  const html=`
-  <html>
-  <head>
-  <meta charset="UTF-8">
-  <style>
-    body{font-family:Arial}
-    h2{text-align:center;color:#173956}
-    table{border-collapse:collapse;width:100%;direction:ltr}
-    td,th{border:1px solid #777;padding:8px;text-align:left}
-    th{background:#173956;color:white}
-  </style>
-  </head>
-  <body>
-  <h2>Al-Juman Al-Janabi Laboratory</h2>
-  <h3>Patient Information</h3>
-  <p>
-  Patient Name: ${escapeHTML(p.name)}<br>
-  Patient Number: ${escapeHTML(p.number)}<br>
-  Report Number: ${escapeHTML(p.reportNumber)}<br>
-  Age: ${escapeHTML(p.age)} ${escapeHTML(p.ageUnit)}<br>
-  Gender: ${escapeHTML(p.gender)}<br>
-  Date: ${escapeHTML(p.date)}<br>
-  Doctor: ${escapeHTML(p.doctor)}<br>
-  Notes: ${escapeHTML(p.notes)}
-  </p>
-  <table>
-  <thead>
-  <tr>
-  <th>Test Name</th><th>Result</th><th>Unit</th><th>Reference Range</th>
-  </tr>
-  </thead>
-  <tbody>${rows}</tbody>
-  </table>
-  </body>
-  </html>`;
-
-  const blob=new Blob(["\ufeff",html],{
-    type:"application/msword"
-  });
-
-  const a=document.createElement("a");
-  a.href=URL.createObjectURL(blob);
-  a.download=(p.name||"Patient")+"-Report.doc";
-  a.click();
-  URL.revokeObjectURL(a.href);
-}
-
-/* ===============================
-   TEST MANAGEMENT
-================================ */
-
-function addTest() {
-  const name=document.getElementById("newTestName").value.trim();
-  const category=document.getElementById("newTestCategory").value.trim()||"Other";
-  const unit=document.getElementById("newTestUnit").value.trim();
-  const range=document.getElementById("newTestRange").value.trim();
-
-  if(!name) {
-    alert("Enter test name.");
-    return;
-  }
-
-  if(db.tests.some(t=>t.name.toLowerCase()===name.toLowerCase())) {
-    alert("This test already exists.");
-    return;
-  }
-
-  db.tests.push({name,category,unit,range});
-  persist();
-
-  document.getElementById("newTestName").value="";
-  document.getElementById("newTestCategory").value="";
-  document.getElementById("newTestUnit").value="";
-  document.getElementById("newTestRange").value="";
-
-  renderManagedTests();
-  renderTestSelector();
-  alert("Test added.");
-}
-
-function renderManagedTests() {
-  const box=document.getElementById("managedTests");
-  if(!box) return;
-
-  box.innerHTML=db.tests.map((t,i)=>`
-    <div class="record-item">
-      <div>
-        <strong>${escapeHTML(t.name)}</strong><br>
-        <small>${escapeHTML(t.category)} | ${escapeHTML(t.unit)} | ${escapeHTML(t.range)}</small>
-      </div>
-      <div class="record-buttons">
-        <button class="btn-secondary" onclick="editTest(${i})">Edit</button>
-        <button class="btn-danger" onclick="deleteTest(${i})">Delete</button>
-      </div>
-    </div>
-  `).join("");
-}
-
-function editTest(i) {
-  const t=db.tests[i];
-  if(!t) return;
-
-  const name=prompt("Test name:",t.name);
-  if(name===null) return;
-
-  const category=prompt("Category:",t.category);
-  if(category===null) return;
-
-  const unit=prompt("Unit:",t.unit);
-  if(unit===null) return;
-
-  const range=prompt("Reference Range:",t.range);
-  if(range===null) return;
-
-  db.tests[i]={name:name.trim(),category:category.trim(),unit:unit.trim(),range:range.trim()};
-  persist();
-  renderManagedTests();
-  renderTestSelector();
-  renderEntryTable();
-}
-
-function deleteTest(i) {
-  if(!confirm("Delete this test from the test list?")) return;
-  const name=db.tests[i]?.name;
-  db.tests.splice(i,1);
-  selectedTests=selectedTests.filter(t=>t!==name);
-  persist();
-  renderManagedTests();
-  renderTestSelector();
-  renderEntryTable();
-}
-
-/* ===============================
-   BACKUP / RESTORE
-================================ */
-
-function downloadBackup() {
-  const blob=new Blob([JSON.stringify(db,null,2)],{
-    type:"application/json"
-  });
-  const a=document.createElement("a");
-  a.href=URL.createObjectURL(blob);
-  a.download="Al-Juman-Lab-Backup-"+today()+".json";
-  a.click();
-  URL.revokeObjectURL(a.href);
-}
-
-function restoreBackup(event) {
-  const file=event.target.files[0];
-  if(!file) return;
-
-  const reader=new FileReader();
-
-  reader.onload=()=>{
-    try {
-      const data=JSON.parse(reader.result);
-      if(!Array.isArray(data.patients)||!Array.isArray(data.tests)) {
-        throw new Error("Invalid backup file.");
-      }
-
-      if(!confirm("Restore this backup? Current data will be replaced.")) return;
-
-      db=data;
-      persist();
-      renderRecords();
-      renderTestSelector();
-      renderManagedTests();
-      alert("Backup restored successfully.");
-    } catch(e) {
-      alert("Unable to restore: Invalid backup file.");
+    if (!currentPatient) {
+        alert("لا يوجد تقرير");
+        return;
     }
-  };
 
-  reader.readAsText(file);
+    renderReport(currentPatient);
+
+    const reportHTML = $("reportPreview").innerHTML;
+
+    const blob = new Blob([
+        `<html><head><meta charset="UTF-8"></head><body>${reportHTML}</body></html>`
+    ], { type: "application/msword" });
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+
+    link.href = url;
+    link.download = "Laboratory_Report_" + currentPatient.number + ".doc";
+    link.click();
+
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
-function clearAllData() {
-  if(!confirm("WARNING: Delete ALL patient records and custom tests?")) return;
-  if(!confirm("Are you absolutely sure?")) return;
+/* ================= DASHBOARD ================= */
 
-  db={patients:[],tests:defaultTests.map(t=>({...t}))};
-  persist();
-  renderRecords();
-  renderManagedTests();
-  renderTestSelector();
-  alert("Data cleared.");
+function updateDashboard() {
+    $("statPatients").textContent = db.patients.length;
+    $("statReports").textContent = db.reports.length;
+    $("statToday").textContent = db.patients.filter(p => p.date === today()).length;
 }
 
-/* ===============================
-   INITIALIZATION
-================================ */
+/* ================= INIT ================= */
 
-function initialize() {
-  document.getElementById("headerDate").textContent=today();
-  document.getElementById("patientDate").value=today();
-  document.getElementById("reportNumber").value=generateReportNumber();
-
-  renderTestSelector();
-  renderEntryTable();
-  renderRecords();
-}
-
-initialize();
+document.addEventListener("DOMContentLoaded", () => {
+    preparePatientForm();
+    renderPatients();
+    updateDashboard();
+});
 </script>
 
 </body>
