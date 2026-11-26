@@ -7,18 +7,13 @@
 <title>مختبر الجمان الجانبي</title>
 
 <style>
-/* =====================================================
-   AL-JUMAN AL-JANABI LABORATORY
-   COMPLETE INDEX.HTML
-   ===================================================== */
-
-* {
-    box-sizing: border-box;
+:root {
+    --info-top: 29%;
+    --results-top: 35%;
 }
 
-html {
-    scroll-behavior: smooth;
-}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
     margin: 0;
@@ -29,22 +24,10 @@ body {
     direction: rtl;
 }
 
-button,
-input,
-select,
-textarea {
-    font-family: inherit;
-}
+button, input, select, textarea { font-family: inherit; }
+button { cursor: pointer; }
 
-button {
-    cursor: pointer;
-}
-
-.app-header {
-    background: #123451;
-    color: white;
-    padding: 18px;
-}
+.app-header { background: #123451; color: white; padding: 18px; }
 
 .header-content {
     max-width: 1200px;
@@ -55,20 +38,11 @@ button {
     gap: 15px;
 }
 
-.lab-title {
-    font-size: 23px;
-    font-weight: bold;
-}
-
-.lab-subtitle {
-    font-size: 12px;
-    color: #c6d8e9;
-    margin-top: 5px;
-}
+.lab-title { font-size: 23px; font-weight: bold; }
+.lab-subtitle { font-size: 12px; color: #c6d8e9; margin-top: 5px; }
 
 .header-logo {
-    width: 55px;
-    height: 55px;
+    width: 55px; height: 55px;
     border-radius: 12px;
     background: white;
     color: #123451;
@@ -78,8 +52,6 @@ button {
     font-size: 30px;
     font-weight: bold;
 }
-
-/* Navigation */
 
 .navigation {
     background: #173e60;
@@ -99,33 +71,12 @@ button {
 }
 
 .navigation button:hover,
-.navigation button.active {
-    background: #ffffff22;
-}
+.navigation button.active { background: #ffffff22; }
 
-/* Main layout */
-
-.container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
-}
-
-.page {
-    display: none;
-}
-
-.page.active {
-    display: block;
-}
-
-.page-title {
-    font-size: 23px;
-    margin: 0 0 20px;
-    color: #123451;
-}
-
-/* Cards */
+.container { max-width: 1200px; margin: auto; padding: 20px; }
+.page { display: none; }
+.page.active { display: block; }
+.page-title { font-size: 23px; margin: 0 0 20px; color: #123451; }
 
 .card {
     background: white;
@@ -135,14 +86,7 @@ button {
     box-shadow: 0 2px 10px rgba(15, 40, 70, 0.06);
 }
 
-.card-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 15px;
-    color: #123451;
-}
-
-/* Form */
+.card-title { font-size: 18px; font-weight: bold; margin-bottom: 15px; color: #123451; }
 
 .form-grid {
     display: grid;
@@ -150,24 +94,10 @@ button {
     gap: 15px;
 }
 
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-}
+.form-group { display: flex; flex-direction: column; gap: 7px; }
+label { font-size: 14px; font-weight: bold; }
 
-.form-group.full {
-    grid-column: 1 / -1;
-}
-
-label {
-    font-size: 14px;
-    font-weight: bold;
-}
-
-input,
-select,
-textarea {
+input, select, textarea {
     width: 100%;
     min-height: 42px;
     padding: 10px;
@@ -178,67 +108,24 @@ textarea {
     font-size: 14px;
 }
 
-textarea {
-    min-height: 90px;
-    resize: vertical;
-}
+textarea { min-height: 90px; resize: vertical; }
 
-input:focus,
-select:focus,
-textarea:focus {
+input:focus, select:focus, textarea:focus {
     outline: none;
     border-color: #2476a9;
     box-shadow: 0 0 0 2px #2476a920;
 }
 
-/* Buttons */
+.btn { border: none; border-radius: 7px; padding: 11px 17px; font-weight: bold; font-size: 14px; }
+.btn-primary { background: #17689b; color: white; }
+.btn-secondary { background: #e6edf5; color: #123451; }
+.btn-danger { background: #dc3545; color: white; }
+.btn-success { background: #198754; color: white; }
+.btn-light { background: white; color: #123451; border: 1px solid #d6deea; }
 
-.btn {
-    border: none;
-    border-radius: 7px;
-    padding: 11px 17px;
-    font-weight: bold;
-    font-size: 14px;
-}
+.button-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
 
-.btn-primary {
-    background: #17689b;
-    color: white;
-}
-
-.btn-secondary {
-    background: #e6edf5;
-    color: #123451;
-}
-
-.btn-danger {
-    background: #dc3545;
-    color: white;
-}
-
-.btn-success {
-    background: #198754;
-    color: white;
-}
-
-.btn-light {
-    background: white;
-    color: #123451;
-    border: 1px solid #d6deea;
-}
-
-.button-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-/* Test selection */
-
-.test-search {
-    margin-bottom: 12px;
-}
+.test-search { margin-bottom: 12px; }
 
 .test-list {
     display: grid;
@@ -258,20 +145,10 @@ textarea:focus {
     background: #f9fbfd;
 }
 
-.test-option input {
-    width: 18px;
-    height: 18px;
-    min-height: auto;
-}
+.test-option input { width: 18px; height: 18px; min-height: auto; }
 
-.selected-tests {
-    margin-top: 20px;
-}
-
-.result-input-table {
-    width: 100%;
-    border-collapse: collapse;
-}
+.selected-tests { margin-top: 20px; overflow-x: auto; }
+.result-input-table { width: 100%; border-collapse: collapse; }
 
 .result-input-table th,
 .result-input-table td {
@@ -280,81 +157,28 @@ textarea:focus {
     text-align: center;
 }
 
-.result-input-table th {
-    background: #e9f2fa;
-}
-
-.result-input-table input {
-    min-width: 70px;
-    padding: 7px;
-}
-
-/* Dashboard */
+.result-input-table th { background: #e9f2fa; }
+.result-input-table input { min-width: 70px; padding: 7px; }
 
 .dashboard-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 15px;
+    margin-bottom: 20px;
 }
 
-.stat-card {
-    background: white;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 2px 8px #12345110;
-}
+.stat-card { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 8px #12345110; }
+.stat-number { font-size: 28px; font-weight: bold; color: #17689b; }
+.stat-label { margin-top: 7px; color: #60758b; }
 
-.stat-number {
-    font-size: 28px;
-    font-weight: bold;
-    color: #17689b;
-}
+.search-box { margin-bottom: 15px; }
+.records-list { display: grid; gap: 10px; }
 
-.stat-label {
-    margin-top: 7px;
-    color: #60758b;
-}
+.record-card { background: white; border: 1px solid #e0e7ef; padding: 15px; border-radius: 8px; }
+.record-card-header { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+.record-actions { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 10px; }
 
-/* Patient records */
-
-.search-box {
-    margin-bottom: 15px;
-}
-
-.records-list {
-    display: grid;
-    gap: 10px;
-}
-
-.record-card {
-    background: white;
-    border: 1px solid #e0e7ef;
-    padding: 15px;
-    border-radius: 8px;
-}
-
-.record-card-header {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.record-actions {
-    display: flex;
-    gap: 5px;
-    flex-wrap: wrap;
-    margin-top: 10px;
-}
-
-/* Report page */
-
-.report-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 15px;
-}
+.report-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 15px; }
 
 #reportPreview {
     width: 100%;
@@ -364,156 +188,97 @@ textarea:focus {
     border-radius: 8px;
 }
 
-/* =====================================================
-   A4 REPORT
-   ===================================================== */
+/* ===== A4 REPORT ===== */
 
 .report-sheet {
     position: relative;
-
     width: 210mm;
     height: 297mm;
     min-width: 210mm;
     max-width: 210mm;
-
     margin: 0 auto;
-
     overflow: hidden;
-
     background: white;
-
     box-shadow: 0 4px 20px rgba(0,0,0,0.18);
 }
 
-/* PDF background */
-
 .report-pdf-background {
     position: absolute;
-
     top: 0;
     left: 0;
-
     width: 210mm;
     height: 297mm;
-
     border: none;
-
     display: block;
-
     z-index: 0;
-
     pointer-events: none;
-
     background: white;
+    object-fit: fill;
 }
-
-/* Report content */
 
 .report-content {
     position: absolute;
-
     top: 0;
     left: 0;
-
     width: 210mm;
     height: 297mm;
-
     z-index: 5;
-
     background: transparent;
-
     overflow: hidden;
 }
 
-/* Patient information */
-
 .report-patient-info {
     position: absolute;
-
-    top: 15.5%;
+    top: var(--info-top);
     left: 8%;
     right: 8%;
-
     width: 84%;
-
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-
     gap: 5px 12px;
-
     padding: 5px 8px;
-
     background: rgba(255,255,255,0.93);
-
     border-radius: 3px;
-
     color: #111;
-
     font-family: Arial, Helvetica, sans-serif;
-
     font-size: 9pt;
     line-height: 1.45;
-
     direction: ltr;
     text-align: left;
-
     z-index: 10;
 }
 
-.info-item {
-    min-width: 0;
-    padding: 2px 3px;
-    overflow-wrap: break-word;
-}
-
-/* Results table */
+.info-item { min-width: 0; padding: 2px 3px; overflow-wrap: break-word; }
 
 .report-results {
     position: absolute;
-
-    top: 22.5%;
+    top: var(--results-top);
     left: 8%;
-
     width: 84%;
-
     margin: 0;
-
     border-collapse: collapse;
     border-spacing: 0;
-
     table-layout: fixed;
-
     background: rgba(255,255,255,0.96);
-
     direction: ltr;
-
     z-index: 10;
-
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .report-results th,
 .report-results td {
     border: 1px solid #555;
-
     padding: 4px 5px;
-
     text-align: center;
     vertical-align: middle;
-
     font-size: 8.5pt;
     line-height: 1.35;
-
     color: #111;
-
     background: transparent;
-
     overflow-wrap: break-word;
 }
 
-.report-results th {
-    font-weight: bold;
-}
+.report-results th { font-weight: bold; background: #eef4fa; }
 
 .report-results .report-group td {
     background: #d9eafa !important;
@@ -522,8 +287,6 @@ textarea:focus {
     text-align: left;
     padding: 5px 7px;
 }
-
-/* Footer */
 
 .app-footer {
     background: #123451;
@@ -534,189 +297,105 @@ textarea:focus {
     margin-top: 30px;
 }
 
-/* =====================================================
-   RESPONSIVE
-   ===================================================== */
-
 @media screen and (max-width: 700px) {
-
-    .container {
-        padding: 10px;
-    }
-
-    .form-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .dashboard-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .test-list {
-        grid-template-columns: 1fr;
-    }
-
-    .header-content {
-        flex-direction: row;
-    }
-
-    .lab-title {
-        font-size: 18px;
-    }
-
-    .navigation button {
-        padding: 10px;
-        font-size: 12px;
-    }
-
-    #reportPreview {
-        padding: 10px;
-    }
-
-    .report-sheet {
-        transform-origin: top center;
-    }
+    .container { padding: 10px; }
+    .form-grid { grid-template-columns: 1fr; }
+    .dashboard-grid { grid-template-columns: 1fr; }
+    .test-list { grid-template-columns: 1fr; }
+    .lab-title { font-size: 18px; }
+    .navigation button { padding: 10px; font-size: 12px; }
+    #reportPreview { padding: 10px; }
 }
-
-/* =====================================================
-   PRINT
-   ===================================================== */
 
 @media print {
 
-    @page {
-        size: A4 portrait;
-        margin: 0;
-    }
+    @page { size: A4 portrait; margin: 0; }
 
-    html,
-    body {
+    html, body {
         width: 210mm !important;
         height: 297mm !important;
-
         margin: 0 !important;
         padding: 0 !important;
-
         overflow: hidden !important;
-
         background: white !important;
-
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
     }
 
-    body > * {
-        visibility: hidden !important;
-    }
+    body > * { visibility: hidden !important; }
 
     #reportPreview,
-    #reportPreview * {
-        visibility: visible !important;
-    }
+    #reportPreview * { visibility: visible !important; }
 
     #reportPreview {
         position: absolute !important;
-
         top: 0 !important;
         left: 0 !important;
-
         width: 210mm !important;
         height: 297mm !important;
-
         margin: 0 !important;
         padding: 0 !important;
-
         overflow: hidden !important;
-
         background: white !important;
+        border-radius: 0 !important;
     }
 
     .report-sheet {
         position: relative !important;
-
         width: 210mm !important;
         height: 297mm !important;
-
         min-width: 210mm !important;
         max-width: 210mm !important;
-
         margin: 0 !important;
         padding: 0 !important;
-
         transform: none !important;
-
         overflow: hidden !important;
-
         box-shadow: none !important;
-
-        page-break-before: avoid !important;
-        page-break-after: avoid !important;
         page-break-inside: avoid !important;
-
-        break-before: avoid !important;
-        break-after: avoid !important;
         break-inside: avoid !important;
     }
 
     .report-pdf-background {
         position: absolute !important;
-
         top: 0 !important;
         left: 0 !important;
-
         width: 210mm !important;
         height: 297mm !important;
-
         display: block !important;
-
-        visibility: visible !important;
-
         z-index: 0 !important;
+        object-fit: fill !important;
     }
 
     .report-content {
         position: absolute !important;
-
         top: 0 !important;
         left: 0 !important;
-
         width: 210mm !important;
         height: 297mm !important;
-
         z-index: 5 !important;
     }
 
     .report-patient-info {
-        top: 15.5% !important;
+        top: var(--info-top) !important;
         left: 8% !important;
         right: 8% !important;
-
         width: 84% !important;
-
         display: grid !important;
         grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-
         gap: 5px 12px !important;
-
         background: rgba(255,255,255,0.93) !important;
     }
 
-    .report-results {
-        top: 22.5% !important;
-        left: 8% !important;
-
-        width: 84% !important;
-    }
+    .report-results { top: var(--results-top) !important; left: 8% !important; width: 84% !important; }
 
     .report-results th,
-    .report-results td {
-        background: transparent !important;
-    }
+    .report-results td { background: transparent !important; }
+
+    .report-results th { background: #eef4fa !important; }
 
     .report-results .report-group td {
         background: #d9eafa !important;
         color: #153a5b !important;
-
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
     }
@@ -725,232 +404,129 @@ textarea:focus {
     .navigation,
     .app-footer,
     .report-actions,
-    .sidebar,
-    .topbar,
-    button,
-    .no-print {
-        display: none !important;
-    }
+    .no-print,
+    button { display: none !important; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- =====================================================
-     HEADER
-     ===================================================== -->
-
 <header class="app-header">
     <div class="header-content">
-
         <div>
             <div class="lab-title">مختبر الجمان الجانبي</div>
-            <div class="lab-subtitle">
-                Al-Juman Al-Janabi Laboratory
-            </div>
+            <div class="lab-subtitle">Al-Juman Al-Janabi Laboratory</div>
         </div>
-
         <div class="header-logo">+</div>
-
     </div>
 </header>
 
-<!-- =====================================================
-     NAVIGATION
-     ===================================================== -->
-
 <nav class="navigation no-print">
-
-    <button class="active" onclick="goPage('home')">
-        الرئيسية
-    </button>
-
-    <button onclick="goPage('newPatient')">
-        مريض جديد
-    </button>
-
-    <button onclick="goPage('patients')">
-        سجلات المرضى
-    </button>
-
-    <button onclick="goPage('reportPage')">
-        معاينة التقرير
-    </button>
-
+    <button class="active" onclick="goPage('home')">الرئيسية</button>
+    <button onclick="goPage('newPatient')">مريض جديد</button>
+    <button onclick="goPage('patients')">سجلات المرضى</button>
+    <button onclick="goPage('reportPage')">معاينة التقرير</button>
 </nav>
 
 <main class="container">
 
-<!-- =====================================================
-     HOME
-     ===================================================== -->
-
+<!-- HOME -->
 <section id="home" class="page active">
-
     <h2 class="page-title">الرئيسية</h2>
 
     <div class="dashboard-grid">
-
         <div class="stat-card">
             <div class="stat-number" id="statPatients">0</div>
             <div class="stat-label">عدد المرضى</div>
         </div>
-
         <div class="stat-card">
             <div class="stat-number" id="statReports">0</div>
             <div class="stat-label">عدد التقارير</div>
         </div>
-
         <div class="stat-card">
             <div class="stat-number" id="statToday">0</div>
             <div class="stat-label">مرضى اليوم</div>
         </div>
-
     </div>
 
     <div class="card">
-
-        <div class="card-title">
-            الإجراءات السريعة
-        </div>
-
+        <div class="card-title">الإجراءات السريعة</div>
         <div class="button-row">
-
-            <button class="btn btn-primary"
-                    onclick="goPage('newPatient')">
-                + تسجيل مريض جديد
-            </button>
-
-            <button class="btn btn-secondary"
-                    onclick="goPage('patients')">
-                عرض سجلات المرضى
-            </button>
-
+            <button class="btn btn-primary" onclick="newPatientPage()">+ تسجيل مريض جديد</button>
+            <button class="btn btn-secondary" onclick="goPage('patients')">عرض سجلات المرضى</button>
         </div>
-
     </div>
-
 </section>
 
-<!-- =====================================================
-     NEW PATIENT
-     ===================================================== -->
-
+<!-- NEW PATIENT -->
 <section id="newPatient" class="page">
-
-    <h2 class="page-title">
-        تسجيل مريض جديد
-    </h2>
+    <h2 class="page-title">تسجيل مريض جديد</h2>
 
     <div class="card">
+        <div class="card-title">بيانات المريض</div>
 
-        <div class="card-title">
-            بيانات المريض
-        </div>
-
-        <form id="patientForm">
-
-            <div class="form-grid">
-
-                <div class="form-group">
-                    <label>اسم المريض</label>
-                    <input id="patientName"
-                           type="text"
-                           required
-                           placeholder="اسم المريض الكامل">
-                </div>
-
-                <div class="form-group">
-                    <label>رقم المريض</label>
-                    <input id="patientNumber"
-                           type="text"
-                           readonly>
-                </div>
-
-                <div class="form-group">
-                    <label>العمر</label>
-                    <input id="patientAge"
-                           type="number"
-                           min="0"
-                           required
-                           placeholder="العمر">
-                </div>
-
-                <div class="form-group">
-                    <label>وحدة العمر</label>
-                    <select id="ageUnit">
-                        <option value="Years">Years</option>
-                        <option value="Months">Months</option>
-                        <option value="Days">Days</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>الجنس</label>
-                    <select id="patientGender">
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>تاريخ التحليل</label>
-                    <input id="patientDate"
-                           type="date"
-                           required>
-                </div>
-
-                <div class="form-group">
-                    <label>اسم الطبيب</label>
-                    <input id="doctorName"
-                           type="text"
-                           placeholder="اختياري">
-                </div>
-
-                <div class="form-group">
-                    <label>ملاحظات</label>
-                    <input id="patientNotes"
-                           type="text"
-                           placeholder="ملاحظات اختيارية">
-                </div>
-
+        <div class="form-grid">
+            <div class="form-group">
+                <label>اسم المريض</label>
+                <input id="patientName" type="text" placeholder="اسم المريض الكامل">
             </div>
 
-        </form>
+            <div class="form-group">
+                <label>رقم المريض</label>
+                <input id="patientNumber" type="text" readonly>
+            </div>
 
+            <div class="form-group">
+                <label>العمر</label>
+                <input id="patientAge" type="number" min="0" placeholder="العمر">
+            </div>
+
+            <div class="form-group">
+                <label>وحدة العمر</label>
+                <select id="ageUnit">
+                    <option value="Years">Years</option>
+                    <option value="Months">Months</option>
+                    <option value="Days">Days</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>الجنس</label>
+                <select id="patientGender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>تاريخ التحليل</label>
+                <input id="patientDate" type="date">
+            </div>
+
+            <div class="form-group">
+                <label>اسم الطبيب</label>
+                <input id="doctorName" type="text" placeholder="اختياري">
+            </div>
+
+            <div class="form-group">
+                <label>ملاحظات</label>
+                <input id="patientNotes" type="text" placeholder="ملاحظات اختيارية">
+            </div>
+        </div>
     </div>
 
-    <!-- TESTS -->
-
     <div class="card">
-
-        <div class="card-title">
-            اختيار التحاليل
-        </div>
-
-        <input class="test-search"
-               id="testSearch"
-               type="search"
-               placeholder="ابحث عن تحليل..."
-               oninput="renderTests()">
-
+        <div class="card-title">اختيار التحاليل</div>
+        <input class="test-search" id="testSearch" type="search" placeholder="ابحث عن تحليل..." oninput="renderTests()">
         <div class="test-list" id="testChoices"></div>
-
     </div>
 
-    <!-- RESULTS -->
-
     <div class="card">
-
-        <div class="card-title">
-            إدخال نتائج التحاليل
-        </div>
+        <div class="card-title">إدخال نتائج التحاليل</div>
 
         <div class="selected-tests">
-
             <table class="result-input-table">
-
                 <thead>
                     <tr>
                         <th>التحليل</th>
@@ -960,115 +536,48 @@ textarea:focus {
                         <th>حذف</th>
                     </tr>
                 </thead>
-
                 <tbody id="resultInputs"></tbody>
-
             </table>
-
         </div>
 
         <div class="button-row">
-
-            <button type="button"
-                    class="btn btn-primary"
-                    onclick="savePatient()">
-                حفظ المريض والنتائج
-            </button>
-
-            <button type="button"
-                    class="btn btn-success"
-                    onclick="createReport()">
-                معاينة التقرير
-            </button>
-
-            <button type="button"
-                    class="btn btn-secondary"
-                    onclick="resetPatientForm()">
-                مسح النموذج
-            </button>
-
+            <button type="button" class="btn btn-primary" onclick="savePatient()">حفظ المريض والنتائج</button>
+            <button type="button" class="btn btn-success" onclick="previewReport()">معاينة التقرير</button>
+            <button type="button" class="btn btn-secondary" onclick="resetPatientForm()">مسح النموذج</button>
         </div>
-
     </div>
-
 </section>
 
-<!-- =====================================================
-     PATIENTS
-     ===================================================== -->
-
+<!-- PATIENTS -->
 <section id="patients" class="page">
-
-    <h2 class="page-title">
-        سجلات المرضى
-    </h2>
+    <h2 class="page-title">سجلات المرضى</h2>
 
     <div class="card">
-
-        <input id="patientSearch"
-               class="search-box"
-               type="search"
-               placeholder="بحث بالاسم أو رقم المريض..."
-               oninput="renderPatients()">
-
-        <div id="patientsList"
-             class="records-list"></div>
-
+        <input id="patientSearch" class="search-box" type="search" placeholder="بحث بالاسم أو رقم المريض..." oninput="renderPatients()">
+        <div id="patientsList" class="records-list"></div>
     </div>
-
 </section>
 
-<!-- =====================================================
-     REPORT
-     ===================================================== -->
-
+<!-- REPORT -->
 <section id="reportPage" class="page">
-
-    <h2 class="page-title">
-        معاينة التقرير
-    </h2>
+    <h2 class="page-title">معاينة التقرير</h2>
 
     <div class="report-actions no-print">
-
-        <button class="btn btn-primary"
-                onclick="printReport()">
-            طباعة / حفظ PDF
-        </button>
-
-        <button class="btn btn-secondary"
-                onclick="exportWord()">
-            تصدير Word
-        </button>
-
-        <button class="btn btn-light"
-                onclick="goPage('patients')">
-            رجوع للسجلات
-        </button>
-
+        <button class="btn btn-primary" onclick="printReport()">طباعة / حفظ PDF</button>
+        <button class="btn btn-secondary" onclick="exportWord()">تصدير Word</button>
+        <button class="btn btn-light" onclick="goPage('patients')">رجوع للسجلات</button>
     </div>
 
     <div id="reportPreview">
-
         <div class="report-sheet">
 
-            <!-- PDF BACKGROUND -->
-
-            <iframe
-                class="report-pdf-background"
-                src="lab_form.pdf#toolbar=0&navpanes=0&scrollbar=0&view=Fit"
-                title="Laboratory report background">
-            </iframe>
-
-            <!-- REPORT CONTENT -->
+            <img class="report-pdf-background" src="lab_form.jpg" alt="">
 
             <div class="report-content">
 
-                <div id="reportPatientInfo"
-                     class="report-patient-info">
-                </div>
+                <div id="reportPatientInfo" class="report-patient-info"></div>
 
                 <table class="report-results">
-
                     <thead>
                         <tr>
                             <th>Reference Range</th>
@@ -1077,17 +586,12 @@ textarea:focus {
                             <th>Test Name</th>
                         </tr>
                     </thead>
-
                     <tbody id="reportTableBody"></tbody>
-
                 </table>
 
             </div>
-
         </div>
-
     </div>
-
 </section>
 
 </main>
@@ -1101,9 +605,7 @@ textarea:focus {
 </footer>
 
 <script>
-/* =====================================================
-   DATABASE
-   ===================================================== */
+/* ================= DATABASE ================= */
 
 const STORAGE_KEY = "aljuman_lab_final_v1";
 
@@ -1141,10 +643,8 @@ let db = {
 
 try {
     const saved = localStorage.getItem(STORAGE_KEY);
-
     if (saved) {
         const loaded = JSON.parse(saved);
-
         db = {
             ...db,
             ...loaded,
@@ -1153,22 +653,22 @@ try {
             reports: loaded.reports || []
         };
     }
-} catch(error) {
+} catch (error) {
     console.error("Database loading error:", error);
 }
 
 function saveDatabase() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(db));
+    try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(db));
+    } catch (error) {
+        console.error("Save error:", error);
+    }
     updateDashboard();
 }
 
-/* =====================================================
-   HELPERS
-   ===================================================== */
+/* ================= HELPERS ================= */
 
-function $(id) {
-    return document.getElementById(id);
-}
+function $(id) { return document.getElementById(id); }
 
 function escapeHTML(value) {
     return String(value ?? "")
@@ -1180,353 +680,334 @@ function escapeHTML(value) {
 }
 
 function today() {
-    return new Date().toISOString().slice(0,10);
+    const d = new Date();
+    const m = String(d.getMonth() + 1).padStart(2, "0");
+    const day = String(d.getDate()).padStart(2, "0");
+    return d.getFullYear() + "-" + m + "-" + day;
 }
 
-function patientNumber() {
-    return "2026-" + String(db.patients.length + 1).padStart(4, "0");
+function nextNumber(list, field) {
+    let max = 0;
+    list.forEach(item => {
+        const n = parseInt(String(item[field] || "").split("-").pop(), 10);
+        if (!isNaN(n) && n > max) max = n;
+    });
+    return new Date().getFullYear() + "-" + String(max + 1).padStart(4, "0");
 }
 
-function reportNumber() {
-    return "2026-" + String(db.reports.length + 1).padStart(4, "0");
-}
+function patientNumber() { return nextNumber(db.patients, "number"); }
+function reportNumber() { return nextNumber(db.reports, "number"); }
+function generateID() { return Date.now() + Math.floor(Math.random() * 1000); }
 
-function generateID() {
-    return Date.now() + Math.floor(Math.random() * 1000);
-}
+/* ================= NAVIGATION ================= */
 
-/* =====================================================
-   PAGE NAVIGATION
-   ===================================================== */
+let selectedTests = new Set();
+let draft = {};
+let editingId = null;
+let currentPatient = null;
+let currentReport = null;
 
 function goPage(id) {
-
-    document.querySelectorAll(".page").forEach(page => {
-        page.classList.remove("active");
-    });
-
+    document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
     $(id).classList.add("active");
 
-    document.querySelectorAll(".navigation button").forEach(button => {
-        button.classList.remove("active");
-    });
-
     const buttons = document.querySelectorAll(".navigation button");
+    buttons.forEach(b => b.classList.remove("active"));
 
-    const pageMap = {
-        home: 0,
-        newPatient: 1,
-        patients: 2,
-        reportPage: 3
-    };
+    const pageMap = { home: 0, newPatient: 1, patients: 2, reportPage: 3 };
+    if (pageMap[id] !== undefined) buttons[pageMap[id]].classList.add("active");
 
-    if (pageMap[id] !== undefined) {
-        buttons[pageMap[id]].classList.add("active");
-    }
-
-    if (id === "home") {
-        updateDashboard();
-    }
-
-    if (id === "patients") {
-        renderPatients();
-    }
+    if (id === "home") updateDashboard();
+    if (id === "patients") renderPatients();
 
     if (id === "newPatient") {
-        if (!$("patientNumber").value) {
-            preparePatientForm();
-        }
-
+        if (!$("patientNumber").value) preparePatientForm();
         renderTests();
+        renderResultInputs();
     }
+
+    window.scrollTo(0, 0);
 }
 
-/* =====================================================
-   PATIENT FORM
-   ===================================================== */
+function newPatientPage() {
+    preparePatientForm();
+    goPage("newPatient");
+}
+
+/* ================= PATIENT FORM ================= */
 
 function preparePatientForm() {
+    editingId = null;
+    draft = {};
+    selectedTests.clear();
 
     $("patientNumber").value = patientNumber();
-
     $("patientDate").value = today();
-
     $("patientName").value = "";
     $("patientAge").value = "";
     $("ageUnit").value = "Years";
     $("patientGender").value = "Male";
     $("doctorName").value = "";
     $("patientNotes").value = "";
-
-    selectedTests.clear();
+    $("testSearch").value = "";
 
     renderTests();
     renderResultInputs();
 }
 
-function resetPatientForm() {
-    preparePatientForm();
-}
+function resetPatientForm() { preparePatientForm(); }
 
-let selectedTests = new Set();
-
-/* =====================================================
-   TEST LIST
-   ===================================================== */
+/* ================= TESTS ================= */
 
 function renderTests() {
-
     const query = $("testSearch").value.toLowerCase();
 
     $("testChoices").innerHTML = db.tests
         .filter(test => test.name.toLowerCase().includes(query))
         .map(test => `
             <label class="test-option">
-
-                <input
-                    type="checkbox"
+                <input type="checkbox"
+                    data-name="${escapeHTML(test.name)}"
                     ${selectedTests.has(test.name) ? "checked" : ""}
-                    onchange="toggleTest('${escapeHTML(test.name)}')">
-
+                    onchange="toggleTest(this.dataset.name)">
                 <span>${escapeHTML(test.name)}</span>
-
             </label>
         `).join("");
 }
 
 function toggleTest(name) {
-
+    captureDraft();
     if (selectedTests.has(name)) {
         selectedTests.delete(name);
+        delete draft[name];
     } else {
         selectedTests.add(name);
     }
-
     renderResultInputs();
 }
 
+function captureDraft() {
+    document.querySelectorAll("#resultInputs tr[data-name]").forEach(row => {
+        draft[row.dataset.name] = {
+            result: row.querySelector(".r-result").value,
+            unit: row.querySelector(".r-unit").value,
+            range: row.querySelector(".r-range").value
+        };
+    });
+}
+
 function renderResultInputs() {
+    captureDraft();
 
-    const selected = db.tests.filter(test =>
-        selectedTests.has(test.name)
-    );
+    const selected = db.tests.filter(test => selectedTests.has(test.name));
 
-    $("resultInputs").innerHTML = selected.map((test,index) => `
-        <tr>
+    $("resultInputs").innerHTML = selected.map(test => {
+        const d = draft[test.name] || {};
+        const result = d.result ?? "";
+        const unit = d.unit ?? test.unit;
+        const range = d.range ?? test.range;
 
+        return `
+        <tr data-name="${escapeHTML(test.name)}">
             <td>${escapeHTML(test.name)}</td>
-
+            <td><input type="text" class="r-result" placeholder="Result" value="${escapeHTML(result)}"></td>
+            <td><input type="text" class="r-unit" value="${escapeHTML(unit)}"></td>
+            <td><input type="text" class="r-range" value="${escapeHTML(range)}"></td>
             <td>
-                <input
-                    type="text"
-                    id="result_${index}"
-                    placeholder="Result">
+                <button type="button" class="btn btn-danger"
+                    data-name="${escapeHTML(test.name)}"
+                    onclick="removeTest(this.dataset.name)">حذف</button>
             </td>
-
-            <td>
-                <input
-                    type="text"
-                    id="unit_${index}"
-                    value="${escapeHTML(test.unit)}">
-            </td>
-
-            <td>
-                <input
-                    type="text"
-                    id="range_${index}"
-                    value="${escapeHTML(test.range)}">
-            </td>
-
-            <td>
-                <button
-                    type="button"
-                    class="btn btn-danger"
-                    onclick="removeTest('${escapeHTML(test.name)}')">
-                    حذف
-                </button>
-            </td>
-
-        </tr>
-    `).join("");
+        </tr>`;
+    }).join("");
 }
 
 function removeTest(name) {
+    captureDraft();
     selectedTests.delete(name);
+    delete draft[name];
     renderTests();
     renderResultInputs();
 }
 
-/* =====================================================
-   SAVE PATIENT
-   ===================================================== */
+/* ================= BUILD / SAVE ================= */
 
-function savePatient() {
+function collectResults() {
+    captureDraft();
 
+    return db.tests
+        .filter(test => selectedTests.has(test.name))
+        .map(test => {
+            const d = draft[test.name] || {};
+            return {
+                name: test.name,
+                result: d.result ?? "",
+                unit: d.unit ?? test.unit,
+                range: d.range ?? test.range,
+                group: test.group
+            };
+        });
+}
+
+function buildPatientFromForm() {
     const name = $("patientName").value.trim();
 
     if (!name) {
         alert("يرجى إدخال اسم المريض");
-        return;
+        return null;
     }
 
     if (selectedTests.size === 0) {
         alert("يرجى اختيار تحليل واحد على الأقل");
-        return;
+        return null;
     }
 
-    const selected = db.tests.filter(test =>
-        selectedTests.has(test.name)
-    );
-
-    const results = selected.map((test,index) => {
-
-        return {
-            name: test.name,
-
-            result: $("result_" + index)?.value || "",
-
-            unit: $("unit_" + index)?.value || test.unit,
-
-            range: $("range_" + index)?.value || test.range,
-
-            group: test.group
-        };
-    });
-
-    const patient = {
-        id: generateID(),
+    return {
+        id: editingId || generateID(),
         number: $("patientNumber").value,
         name: name,
         age: $("patientAge").value,
         ageUnit: $("ageUnit").value,
         gender: $("patientGender").value,
-        date: $("patientDate").value,
+        date: $("patientDate").value || today(),
         doctor: $("doctorName").value,
         notes: $("patientNotes").value,
-        results: results
+        results: collectResults()
     };
+}
 
-    db.patients.push(patient);
+function savePatient() {
+    const patient = buildPatientFromForm();
+    if (!patient) return;
 
+    const index = db.patients.findIndex(p => p.id === patient.id);
+
+    if (index >= 0) {
+        db.patients[index] = patient;
+    } else {
+        db.patients.push(patient);
+    }
+
+    ensureReport(patient);
     saveDatabase();
 
     currentPatient = patient;
+    editingId = null;
+
+    renderReport(patient);
+    renderPatients();
 
     alert("تم حفظ بيانات المريض والنتائج بنجاح");
 
-    renderPatients();
-
-    createReport(patient);
-
+    preparePatientForm();
     goPage("reportPage");
 }
 
-/* =====================================================
-   PATIENT RECORDS
-   ===================================================== */
+function previewReport() {
+    const patient = buildPatientFromForm();
+    if (!patient) return;
+
+    currentPatient = patient;
+
+    const existing = db.reports.find(r => r.patientID === patient.id);
+    currentReport = existing || { number: reportNumber() };
+
+    renderReport(patient);
+    goPage("reportPage");
+}
+
+function ensureReport(patient) {
+    let report = db.reports.find(r => r.patientID === patient.id);
+
+    if (report) {
+        report.date = patient.date;
+        report.results = patient.results;
+    } else {
+        report = {
+            id: generateID(),
+            patientID: patient.id,
+            number: reportNumber(),
+            date: patient.date,
+            results: patient.results
+        };
+        db.reports.push(report);
+    }
+
+    currentReport = report;
+    return report;
+}
+
+/* ================= RECORDS ================= */
 
 function renderPatients() {
-
     const query = $("patientSearch").value.toLowerCase();
 
-    const patients = [...db.patients].reverse().filter(patient => {
-
-        return patient.name.toLowerCase().includes(query) ||
-               patient.number.toLowerCase().includes(query);
-    });
+    const patients = [...db.patients].reverse().filter(patient =>
+        patient.name.toLowerCase().includes(query) ||
+        String(patient.number).toLowerCase().includes(query)
+    );
 
     $("patientsList").innerHTML = patients.map(patient => `
         <div class="record-card">
-
             <div class="record-card-header">
-
                 <div>
                     <strong>${escapeHTML(patient.name)}</strong>
                     <br>
                     <small>ID: ${escapeHTML(patient.number)}</small>
                 </div>
-
-                <div>
-                    ${escapeHTML(patient.date)}
-                </div>
-
+                <div>${escapeHTML(patient.date)}</div>
             </div>
 
             <div style="margin-top:8px">
-                العمر: ${escapeHTML(patient.age)}
-                ${escapeHTML(patient.ageUnit)}
-                |
-                ${escapeHTML(patient.gender)}
+                العمر: ${escapeHTML(patient.age)} ${escapeHTML(patient.ageUnit)} | ${escapeHTML(patient.gender)}
             </div>
 
             <div style="margin-top:8px">
-                التحاليل:
-                ${patient.results.map(result =>
-                    escapeHTML(result.name)
-                ).join("، ")}
+                التحاليل: ${patient.results.map(r => escapeHTML(r.name)).join("، ")}
             </div>
 
             <div class="record-actions">
-
-                <button class="btn btn-primary"
-                        onclick="openPatientReport(${patient.id})">
-                    التقرير
-                </button>
-
-                <button class="btn btn-secondary"
-                        onclick="editPatient(${patient.id})">
-                    تعديل
-                </button>
-
-                <button class="btn btn-danger"
-                        onclick="deletePatient(${patient.id})">
-                    حذف
-                </button>
-
+                <button class="btn btn-primary" onclick="openPatientReport(${patient.id})">التقرير</button>
+                <button class="btn btn-secondary" onclick="editPatient(${patient.id})">تعديل</button>
+                <button class="btn btn-danger" onclick="deletePatient(${patient.id})">حذف</button>
             </div>
-
         </div>
     `).join("");
 
     if (!patients.length) {
-        $("patientsList").innerHTML =
-            "<p>لا توجد سجلات مطابقة.</p>";
+        $("patientsList").innerHTML = "<p>لا توجد سجلات مطابقة.</p>";
     }
 }
 
 function openPatientReport(id) {
-
     const patient = db.patients.find(p => p.id === id);
-
     if (!patient) return;
 
     currentPatient = patient;
+    ensureReport(patient);
+    saveDatabase();
 
-    createReport(patient);
-
+    renderReport(patient);
     goPage("reportPage");
 }
 
 function deletePatient(id) {
-
-    if (!confirm("هل تريد حذف سجل المريض؟")) {
-        return;
-    }
+    if (!confirm("هل تريد حذف سجل المريض؟")) return;
 
     db.patients = db.patients.filter(p => p.id !== id);
-
     db.reports = db.reports.filter(r => r.patientID !== id);
 
-    saveDatabase();
+    if (currentPatient && currentPatient.id === id) currentPatient = null;
 
+    saveDatabase();
     renderPatients();
 }
 
 function editPatient(id) {
-
     const patient = db.patients.find(p => p.id === id);
-
     if (!patient) return;
+
+    editingId = patient.id;
 
     $("patientNumber").value = patient.number;
     $("patientName").value = patient.name;
@@ -1538,159 +1019,57 @@ function editPatient(id) {
     $("patientNotes").value = patient.notes || "";
 
     selectedTests.clear();
+    draft = {};
 
-    patient.results.forEach(result => {
-        selectedTests.add(result.name);
-    });
-
-    renderTests();
-    renderResultInputs();
-
-    patient.results.forEach((result,index) => {
-
-        const resultInput = $("result_" + index);
-        const unitInput = $("unit_" + index);
-        const rangeInput = $("range_" + index);
-
-        if (resultInput) resultInput.value = result.result;
-        if (unitInput) unitInput.value = result.unit;
-        if (rangeInput) rangeInput.value = result.range;
+    patient.results.forEach(r => {
+        selectedTests.add(r.name);
+        draft[r.name] = { result: r.result, unit: r.unit, range: r.range };
     });
 
     goPage("newPatient");
 }
 
-/* =====================================================
-   REPORT GENERATION
-   ===================================================== */
-
-let currentPatient = null;
-let currentReport = null;
-
-function createReport(patient = currentPatient) {
-
-    if (!patient) {
-        alert("يرجى اختيار مريض");
-        return;
-    }
-
-    currentPatient = patient;
-
-    const number = reportNumber();
-
-    currentReport = {
-        id: generateID(),
-        patientID: patient.id,
-        number: number,
-        date: patient.date,
-        results: patient.results
-    };
-
-    db.reports.push(currentReport);
-
-    saveDatabase();
-
-    renderReport(patient);
-
-    goPage("reportPage");
-}
+/* ================= REPORT ================= */
 
 function renderReport(patient) {
-
     if (!patient) return;
 
-    const reportNo = currentReport
-        ? currentReport.number
-        : reportNumber();
+    const reportNo = currentReport ? currentReport.number : reportNumber();
 
     $("reportPatientInfo").innerHTML = `
-
-        <div class="info-item">
-            <strong>Patient Name:</strong>
-            ${escapeHTML(patient.name)}
-        </div>
-
-        <div class="info-item">
-            <strong>Patient ID:</strong>
-            ${escapeHTML(patient.number)}
-        </div>
-
-        <div class="info-item">
-            <strong>Report No:</strong>
-            ${escapeHTML(reportNo)}
-        </div>
-
-        <div class="info-item">
-            <strong>Age:</strong>
-            ${escapeHTML(patient.age)}
-            ${escapeHTML(patient.ageUnit)}
-        </div>
-
-        <div class="info-item">
-            <strong>Gender:</strong>
-            ${escapeHTML(patient.gender)}
-        </div>
-
-        <div class="info-item">
-            <strong>Date:</strong>
-            ${escapeHTML(patient.date)}
-        </div>
-
-        ${patient.doctor ? `
-        <div class="info-item">
-            <strong>Doctor:</strong>
-            ${escapeHTML(patient.doctor)}
-        </div>
-        ` : ""}
-
+        <div class="info-item"><strong>Patient Name:</strong> ${escapeHTML(patient.name)}</div>
+        <div class="info-item"><strong>Patient ID:</strong> ${escapeHTML(patient.number)}</div>
+        <div class="info-item"><strong>Report No:</strong> ${escapeHTML(reportNo)}</div>
+        <div class="info-item"><strong>Age:</strong> ${escapeHTML(patient.age)} ${escapeHTML(patient.ageUnit)}</div>
+        <div class="info-item"><strong>Gender:</strong> ${escapeHTML(patient.gender)}</div>
+        <div class="info-item"><strong>Date:</strong> ${escapeHTML(patient.date)}</div>
+        ${patient.doctor ? `<div class="info-item"><strong>Doctor:</strong> ${escapeHTML(patient.doctor)}</div>` : ""}
     `;
 
     const groups = {};
 
     patient.results.forEach(result => {
-
         const group = result.group || "Other";
-
-        if (!groups[group]) {
-            groups[group] = [];
-        }
-
+        if (!groups[group]) groups[group] = [];
         groups[group].push(result);
     });
 
     let tableHTML = "";
 
     Object.keys(groups).forEach(group => {
-
         tableHTML += `
             <tr class="report-group">
-                <td colspan="4">
-                    ${escapeHTML(group)}
-                </td>
+                <td colspan="4">${escapeHTML(group)}</td>
             </tr>
         `;
 
         groups[group].forEach(result => {
-
             tableHTML += `
                 <tr>
-
-                    <td>
-                        ${escapeHTML(result.range)}
-                    </td>
-
-                    <td>
-                        ${escapeHTML(result.unit)}
-                    </td>
-
-                    <td>
-                        ${escapeHTML(result.result)}
-                    </td>
-
-                    <td>
-                        ${escapeHTML(result.name)}
-                    </td>
-
+                    <td>${escapeHTML(result.range)}</td>
+                    <td>${escapeHTML(result.unit)}</td>
+                    <td>${escapeHTML(result.result)}</td>
+                    <td>${escapeHTML(result.name)}</td>
                 </tr>
             `;
         });
@@ -1699,12 +1078,9 @@ function renderReport(patient) {
     $("reportTableBody").innerHTML = tableHTML;
 }
 
-/* =====================================================
-   PRINT
-   ===================================================== */
+/* ================= PRINT ================= */
 
 function printReport() {
-
     if (!currentPatient) {
         alert("لا يوجد تقرير جاهز للطباعة");
         return;
@@ -1712,17 +1088,12 @@ function printReport() {
 
     renderReport(currentPatient);
 
-    setTimeout(() => {
-        window.print();
-    }, 700);
+    setTimeout(() => window.print(), 500);
 }
 
-/* =====================================================
-   WORD EXPORT
-   ===================================================== */
+/* ================= WORD ================= */
 
 function exportWord() {
-
     if (!currentPatient) {
         alert("لا يوجد تقرير");
         return;
@@ -1733,1867 +1104,33 @@ function exportWord() {
     const reportHTML = $("reportPreview").innerHTML;
 
     const blob = new Blob([
-        `
-        <html>
-        <head>
-        <meta charset="UTF-8">
-        </head>
-        <body>
-        ${reportHTML}
-        </body>
-        </html>
-        `
-    ], {
-        type: "application/msword"
-    });
+        `<html><head><meta charset="UTF-8"></head><body>${reportHTML}</body></html>`
+    ], { type: "application/msword" });
 
     const url = URL.createObjectURL(blob);
-
     const link = document.createElement("a");
 
     link.href = url;
-
-    link.download = "Laboratory_Report_" +
-                    currentPatient.number +
-                    ".doc";
-
+    link.download = "Laboratory_Report_" + currentPatient.number + ".doc";
     link.click();
 
-    URL.revokeObjectURL(url);
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
-/* =====================================================
-   DASHBOARD
-   ===================================================== */
+/* ================= DASHBOARD ================= */
 
 function updateDashboard() {
-
     $("statPatients").textContent = db.patients.length;
-
     $("statReports").textContent = db.reports.length;
-
-    $("statToday").textContent =
-        db.patients.filter(patient =>
-            patient.date === today()
-        ).length;
+    $("statToday").textContent = db.patients.filter(p => p.date === today()).length;
 }
 
-/* =====================================================
-   INITIALIZATION
-   ===================================================== */
+/* ================= INIT ================= */
 
 document.addEventListener("DOMContentLoaded", () => {
-
-    $("patientDate").value = today();
-
     preparePatientForm();
-
-    renderTests();
-
     renderPatients();
-
     updateDashboard();
-
-});
-</script>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#123451">
-<title>مختبر الجمان الجانبي</title>
-
-<style>
-/* =====================================================
-   AL-JUMAN AL-JANABI LABORATORY
-   COMPLETE INDEX.HTML
-   ===================================================== */
-
-* {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    background: #f3f6fb;
-    color: #172b42;
-    font-family: Arial, Tahoma, sans-serif;
-    direction: rtl;
-}
-
-button,
-input,
-select,
-textarea {
-    font-family: inherit;
-}
-
-button {
-    cursor: pointer;
-}
-
-.app-header {
-    background: #123451;
-    color: white;
-    padding: 18px;
-}
-
-.header-content {
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-}
-
-.lab-title {
-    font-size: 23px;
-    font-weight: bold;
-}
-
-.lab-subtitle {
-    font-size: 12px;
-    color: #c6d8e9;
-    margin-top: 5px;
-}
-
-.header-logo {
-    width: 55px;
-    height: 55px;
-    border-radius: 12px;
-    background: white;
-    color: #123451;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    font-weight: bold;
-}
-
-/* Navigation */
-
-.navigation {
-    background: #173e60;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 5px;
-    padding: 10px;
-}
-
-.navigation button {
-    border: 0;
-    background: transparent;
-    color: white;
-    padding: 12px 15px;
-    border-radius: 8px;
-}
-
-.navigation button:hover,
-.navigation button.active {
-    background: #ffffff22;
-}
-
-/* Main layout */
-
-.container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
-}
-
-.page {
-    display: none;
-}
-
-.page.active {
-    display: block;
-}
-
-.page-title {
-    font-size: 23px;
-    margin: 0 0 20px;
-    color: #123451;
-}
-
-/* Cards */
-
-.card {
-    background: white;
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 10px rgba(15, 40, 70, 0.06);
-}
-
-.card-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 15px;
-    color: #123451;
-}
-
-/* Form */
-
-.form-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 15px;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-}
-
-.form-group.full {
-    grid-column: 1 / -1;
-}
-
-label {
-    font-size: 14px;
-    font-weight: bold;
-}
-
-input,
-select,
-textarea {
-    width: 100%;
-    min-height: 42px;
-    padding: 10px;
-    border: 1px solid #d6deea;
-    border-radius: 7px;
-    background: white;
-    color: #172b42;
-    font-size: 14px;
-}
-
-textarea {
-    min-height: 90px;
-    resize: vertical;
-}
-
-input:focus,
-select:focus,
-textarea:focus {
-    outline: none;
-    border-color: #2476a9;
-    box-shadow: 0 0 0 2px #2476a920;
-}
-
-/* Buttons */
-
-.btn {
-    border: none;
-    border-radius: 7px;
-    padding: 11px 17px;
-    font-weight: bold;
-    font-size: 14px;
-}
-
-.btn-primary {
-    background: #17689b;
-    color: white;
-}
-
-.btn-secondary {
-    background: #e6edf5;
-    color: #123451;
-}
-
-.btn-danger {
-    background: #dc3545;
-    color: white;
-}
-
-.btn-success {
-    background: #198754;
-    color: white;
-}
-
-.btn-light {
-    background: white;
-    color: #123451;
-    border: 1px solid #d6deea;
-}
-
-.button-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-/* Test selection */
-
-.test-search {
-    margin-bottom: 12px;
-}
-
-.test-list {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
-    max-height: 350px;
-    overflow-y: auto;
-}
-
-.test-option {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px;
-    border: 1px solid #e0e7ef;
-    border-radius: 7px;
-    background: #f9fbfd;
-}
-
-.test-option input {
-    width: 18px;
-    height: 18px;
-    min-height: auto;
-}
-
-.selected-tests {
-    margin-top: 20px;
-}
-
-.result-input-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.result-input-table th,
-.result-input-table td {
-    border: 1px solid #d8e0e8;
-    padding: 8px;
-    text-align: center;
-}
-
-.result-input-table th {
-    background: #e9f2fa;
-}
-
-.result-input-table input {
-    min-width: 70px;
-    padding: 7px;
-}
-
-/* Dashboard */
-
-.dashboard-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 15px;
-}
-
-.stat-card {
-    background: white;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 2px 8px #12345110;
-}
-
-.stat-number {
-    font-size: 28px;
-    font-weight: bold;
-    color: #17689b;
-}
-
-.stat-label {
-    margin-top: 7px;
-    color: #60758b;
-}
-
-/* Patient records */
-
-.search-box {
-    margin-bottom: 15px;
-}
-
-.records-list {
-    display: grid;
-    gap: 10px;
-}
-
-.record-card {
-    background: white;
-    border: 1px solid #e0e7ef;
-    padding: 15px;
-    border-radius: 8px;
-}
-
-.record-card-header {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.record-actions {
-    display: flex;
-    gap: 5px;
-    flex-wrap: wrap;
-    margin-top: 10px;
-}
-
-/* Report page */
-
-.report-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 15px;
-}
-
-#reportPreview {
-    width: 100%;
-    overflow: auto;
-    background: #dce3eb;
-    padding: 15px;
-    border-radius: 8px;
-}
-
-/* =====================================================
-   A4 REPORT
-   ===================================================== */
-
-.report-sheet {
-    position: relative;
-
-    width: 210mm;
-    height: 297mm;
-    min-width: 210mm;
-    max-width: 210mm;
-
-    margin: 0 auto;
-
-    overflow: hidden;
-
-    background: white;
-
-    box-shadow: 0 4px 20px rgba(0,0,0,0.18);
-}
-
-/* PDF background */
-
-.report-pdf-background {
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
-    width: 210mm;
-    height: 297mm;
-
-    border: none;
-
-    display: block;
-
-    z-index: 0;
-
-    pointer-events: none;
-
-    background: white;
-}
-
-/* Report content */
-
-.report-content {
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
-    width: 210mm;
-    height: 297mm;
-
-    z-index: 5;
-
-    background: transparent;
-
-    overflow: hidden;
-}
-
-/* Patient information */
-
-.report-patient-info {
-    position: absolute;
-
-    top: 15.5%;
-    left: 8%;
-    right: 8%;
-
-    width: 84%;
-
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-
-    gap: 5px 12px;
-
-    padding: 5px 8px;
-
-    background: rgba(255,255,255,0.93);
-
-    border-radius: 3px;
-
-    color: #111;
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    font-size: 9pt;
-    line-height: 1.45;
-
-    direction: ltr;
-    text-align: left;
-
-    z-index: 10;
-}
-
-.info-item {
-    min-width: 0;
-    padding: 2px 3px;
-    overflow-wrap: break-word;
-}
-
-/* Results table */
-
-.report-results {
-    position: absolute;
-
-    top: 22.5%;
-    left: 8%;
-
-    width: 84%;
-
-    margin: 0;
-
-    border-collapse: collapse;
-    border-spacing: 0;
-
-    table-layout: fixed;
-
-    background: rgba(255,255,255,0.96);
-
-    direction: ltr;
-
-    z-index: 10;
-
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.report-results th,
-.report-results td {
-    border: 1px solid #555;
-
-    padding: 4px 5px;
-
-    text-align: center;
-    vertical-align: middle;
-
-    font-size: 8.5pt;
-    line-height: 1.35;
-
-    color: #111;
-
-    background: transparent;
-
-    overflow-wrap: break-word;
-}
-
-.report-results th {
-    font-weight: bold;
-}
-
-.report-results .report-group td {
-    background: #d9eafa !important;
-    color: #153a5b !important;
-    font-weight: bold;
-    text-align: left;
-    padding: 5px 7px;
-}
-
-/* Footer */
-
-.app-footer {
-    background: #123451;
-    color: #dce8f3;
-    text-align: center;
-    padding: 15px;
-    font-size: 12px;
-    margin-top: 30px;
-}
-
-/* =====================================================
-   RESPONSIVE
-   ===================================================== */
-
-@media screen and (max-width: 700px) {
-
-    .container {
-        padding: 10px;
-    }
-
-    .form-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .dashboard-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .test-list {
-        grid-template-columns: 1fr;
-    }
-
-    .header-content {
-        flex-direction: row;
-    }
-
-    .lab-title {
-        font-size: 18px;
-    }
-
-    .navigation button {
-        padding: 10px;
-        font-size: 12px;
-    }
-
-    #reportPreview {
-        padding: 10px;
-    }
-
-    .report-sheet {
-        transform-origin: top center;
-    }
-}
-
-/* =====================================================
-   PRINT
-   ===================================================== */
-
-@media print {
-
-    @page {
-        size: A4 portrait;
-        margin: 0;
-    }
-
-    html,
-    body {
-        width: 210mm !important;
-        height: 297mm !important;
-
-        margin: 0 !important;
-        padding: 0 !important;
-
-        overflow: hidden !important;
-
-        background: white !important;
-
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-    }
-
-    body > * {
-        visibility: hidden !important;
-    }
-
-    #reportPreview,
-    #reportPreview * {
-        visibility: visible !important;
-    }
-
-    #reportPreview {
-        position: absolute !important;
-
-        top: 0 !important;
-        left: 0 !important;
-
-        width: 210mm !important;
-        height: 297mm !important;
-
-        margin: 0 !important;
-        padding: 0 !important;
-
-        overflow: hidden !important;
-
-        background: white !important;
-    }
-
-    .report-sheet {
-        position: relative !important;
-
-        width: 210mm !important;
-        height: 297mm !important;
-
-        min-width: 210mm !important;
-        max-width: 210mm !important;
-
-        margin: 0 !important;
-        padding: 0 !important;
-
-        transform: none !important;
-
-        overflow: hidden !important;
-
-        box-shadow: none !important;
-
-        page-break-before: avoid !important;
-        page-break-after: avoid !important;
-        page-break-inside: avoid !important;
-
-        break-before: avoid !important;
-        break-after: avoid !important;
-        break-inside: avoid !important;
-    }
-
-    .report-pdf-background {
-        position: absolute !important;
-
-        top: 0 !important;
-        left: 0 !important;
-
-        width: 210mm !important;
-        height: 297mm !important;
-
-        display: block !important;
-
-        visibility: visible !important;
-
-        z-index: 0 !important;
-    }
-
-    .report-content {
-        position: absolute !important;
-
-        top: 0 !important;
-        left: 0 !important;
-
-        width: 210mm !important;
-        height: 297mm !important;
-
-        z-index: 5 !important;
-    }
-
-    .report-patient-info {
-        top: 15.5% !important;
-        left: 8% !important;
-        right: 8% !important;
-
-        width: 84% !important;
-
-        display: grid !important;
-        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-
-        gap: 5px 12px !important;
-
-        background: rgba(255,255,255,0.93) !important;
-    }
-
-    .report-results {
-        top: 22.5% !important;
-        left: 8% !important;
-
-        width: 84% !important;
-    }
-
-    .report-results th,
-    .report-results td {
-        background: transparent !important;
-    }
-
-    .report-results .report-group td {
-        background: #d9eafa !important;
-        color: #153a5b !important;
-
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-    }
-
-    .app-header,
-    .navigation,
-    .app-footer,
-    .report-actions,
-    .sidebar,
-    .topbar,
-    button,
-    .no-print {
-        display: none !important;
-    }
-}
-</style>
-</head>
-
-<body>
-
-<!-- =====================================================
-     HEADER
-     ===================================================== -->
-
-<header class="app-header">
-    <div class="header-content">
-
-        <div>
-            <div class="lab-title">مختبر الجمان الجانبي</div>
-            <div class="lab-subtitle">
-                Al-Juman Al-Janabi Laboratory
-            </div>
-        </div>
-
-        <div class="header-logo">+</div>
-
-    </div>
-</header>
-
-<!-- =====================================================
-     NAVIGATION
-     ===================================================== -->
-
-<nav class="navigation no-print">
-
-    <button class="active" onclick="goPage('home')">
-        الرئيسية
-    </button>
-
-    <button onclick="goPage('newPatient')">
-        مريض جديد
-    </button>
-
-    <button onclick="goPage('patients')">
-        سجلات المرضى
-    </button>
-
-    <button onclick="goPage('reportPage')">
-        معاينة التقرير
-    </button>
-
-</nav>
-
-<main class="container">
-
-<!-- =====================================================
-     HOME
-     ===================================================== -->
-
-<section id="home" class="page active">
-
-    <h2 class="page-title">الرئيسية</h2>
-
-    <div class="dashboard-grid">
-
-        <div class="stat-card">
-            <div class="stat-number" id="statPatients">0</div>
-            <div class="stat-label">عدد المرضى</div>
-        </div>
-
-        <div class="stat-card">
-            <div class="stat-number" id="statReports">0</div>
-            <div class="stat-label">عدد التقارير</div>
-        </div>
-
-        <div class="stat-card">
-            <div class="stat-number" id="statToday">0</div>
-            <div class="stat-label">مرضى اليوم</div>
-        </div>
-
-    </div>
-
-    <div class="card">
-
-        <div class="card-title">
-            الإجراءات السريعة
-        </div>
-
-        <div class="button-row">
-
-            <button class="btn btn-primary"
-                    onclick="goPage('newPatient')">
-                + تسجيل مريض جديد
-            </button>
-
-            <button class="btn btn-secondary"
-                    onclick="goPage('patients')">
-                عرض سجلات المرضى
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- =====================================================
-     NEW PATIENT
-     ===================================================== -->
-
-<section id="newPatient" class="page">
-
-    <h2 class="page-title">
-        تسجيل مريض جديد
-    </h2>
-
-    <div class="card">
-
-        <div class="card-title">
-            بيانات المريض
-        </div>
-
-        <form id="patientForm">
-
-            <div class="form-grid">
-
-                <div class="form-group">
-                    <label>اسم المريض</label>
-                    <input id="patientName"
-                           type="text"
-                           required
-                           placeholder="اسم المريض الكامل">
-                </div>
-
-                <div class="form-group">
-                    <label>رقم المريض</label>
-                    <input id="patientNumber"
-                           type="text"
-                           readonly>
-                </div>
-
-                <div class="form-group">
-                    <label>العمر</label>
-                    <input id="patientAge"
-                           type="number"
-                           min="0"
-                           required
-                           placeholder="العمر">
-                </div>
-
-                <div class="form-group">
-                    <label>وحدة العمر</label>
-                    <select id="ageUnit">
-                        <option value="Years">Years</option>
-                        <option value="Months">Months</option>
-                        <option value="Days">Days</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>الجنس</label>
-                    <select id="patientGender">
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>تاريخ التحليل</label>
-                    <input id="patientDate"
-                           type="date"
-                           required>
-                </div>
-
-                <div class="form-group">
-                    <label>اسم الطبيب</label>
-                    <input id="doctorName"
-                           type="text"
-                           placeholder="اختياري">
-                </div>
-
-                <div class="form-group">
-                    <label>ملاحظات</label>
-                    <input id="patientNotes"
-                           type="text"
-                           placeholder="ملاحظات اختيارية">
-                </div>
-
-            </div>
-
-        </form>
-
-    </div>
-
-    <!-- TESTS -->
-
-    <div class="card">
-
-        <div class="card-title">
-            اختيار التحاليل
-        </div>
-
-        <input class="test-search"
-               id="testSearch"
-               type="search"
-               placeholder="ابحث عن تحليل..."
-               oninput="renderTests()">
-
-        <div class="test-list" id="testChoices"></div>
-
-    </div>
-
-    <!-- RESULTS -->
-
-    <div class="card">
-
-        <div class="card-title">
-            إدخال نتائج التحاليل
-        </div>
-
-        <div class="selected-tests">
-
-            <table class="result-input-table">
-
-                <thead>
-                    <tr>
-                        <th>التحليل</th>
-                        <th>النتيجة</th>
-                        <th>الوحدة</th>
-                        <th>المدى الطبيعي</th>
-                        <th>حذف</th>
-                    </tr>
-                </thead>
-
-                <tbody id="resultInputs"></tbody>
-
-            </table>
-
-        </div>
-
-        <div class="button-row">
-
-            <button type="button"
-                    class="btn btn-primary"
-                    onclick="savePatient()">
-                حفظ المريض والنتائج
-            </button>
-
-            <button type="button"
-                    class="btn btn-success"
-                    onclick="createReport()">
-                معاينة التقرير
-            </button>
-
-            <button type="button"
-                    class="btn btn-secondary"
-                    onclick="resetPatientForm()">
-                مسح النموذج
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- =====================================================
-     PATIENTS
-     ===================================================== -->
-
-<section id="patients" class="page">
-
-    <h2 class="page-title">
-        سجلات المرضى
-    </h2>
-
-    <div class="card">
-
-        <input id="patientSearch"
-               class="search-box"
-               type="search"
-               placeholder="بحث بالاسم أو رقم المريض..."
-               oninput="renderPatients()">
-
-        <div id="patientsList"
-             class="records-list"></div>
-
-    </div>
-
-</section>
-
-<!-- =====================================================
-     REPORT
-     ===================================================== -->
-
-<section id="reportPage" class="page">
-
-    <h2 class="page-title">
-        معاينة التقرير
-    </h2>
-
-    <div class="report-actions no-print">
-
-        <button class="btn btn-primary"
-                onclick="printReport()">
-            طباعة / حفظ PDF
-        </button>
-
-        <button class="btn btn-secondary"
-                onclick="exportWord()">
-            تصدير Word
-        </button>
-
-        <button class="btn btn-light"
-                onclick="goPage('patients')">
-            رجوع للسجلات
-        </button>
-
-    </div>
-
-    <div id="reportPreview">
-
-        <div class="report-sheet">
-
-            <!-- PDF BACKGROUND -->
-
-            <iframe
-                class="report-pdf-background"
-                src="lab_form.pdf#toolbar=0&navpanes=0&scrollbar=0&view=Fit"
-                title="Laboratory report background">
-            </iframe>
-
-            <!-- REPORT CONTENT -->
-
-            <div class="report-content">
-
-                <div id="reportPatientInfo"
-                     class="report-patient-info">
-                </div>
-
-                <table class="report-results">
-
-                    <thead>
-                        <tr>
-                            <th>Reference Range</th>
-                            <th>Unit</th>
-                            <th>Result</th>
-                            <th>Test Name</th>
-                        </tr>
-                    </thead>
-
-                    <tbody id="reportTableBody"></tbody>
-
-                </table>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-</main>
-
-<footer class="app-footer">
-    مختبر الجمان الجانبي
-    <br>
-    Al-Juman Al-Janabi Laboratory
-    <br>
-    الصقلاوية - الشهداء الثانية
-</footer>
-
-<script>
-/* =====================================================
-   DATABASE
-   ===================================================== */
-
-const STORAGE_KEY = "aljuman_lab_final_v1";
-
-const defaultTests = [
-    {name:"CBC",unit:"",range:"See laboratory reference",group:"Hematology"},
-    {name:"Hemoglobin",unit:"g/dL",range:"Male 13.5-17.5 | Female 12.0-15.5",group:"Hematology"},
-    {name:"WBC",unit:"10³/µL",range:"4.0-11.0",group:"Hematology"},
-    {name:"Platelets",unit:"10³/µL",range:"150-400",group:"Hematology"},
-
-    {name:"Glucose",unit:"mg/dL",range:"70-110",group:"Biochemistry"},
-    {name:"Urea",unit:"mg/dL",range:"15-45",group:"Biochemistry"},
-    {name:"Creatinine",unit:"mg/dL",range:"Male 0.7-1.3 | Female 0.6-1.1",group:"Biochemistry"},
-    {name:"ALT",unit:"U/L",range:"7-56",group:"Biochemistry"},
-    {name:"AST",unit:"U/L",range:"10-40",group:"Biochemistry"},
-
-    {name:"TSH",unit:"µIU/mL",range:"0.4-4.0",group:"Hormones"},
-    {name:"Vitamin D",unit:"ng/mL",range:"30-100",group:"Hormones"},
-
-    {name:"CRP",unit:"mg/L",range:"<5",group:"Immunology"},
-    {name:"Troponin I",unit:"ng/mL",range:"According to assay",group:"Cardiac"},
-
-    {name:"Urine Analysis",unit:"",range:"See laboratory reference",group:"Urine"}
-];
-
-let db = {
-    patients: [],
-    reports: [],
-    tests: defaultTests,
-    settings: {
-        labName: "مختبر الجمان الجانبي",
-        labNameEnglish: "Al-Juman Al-Janabi Laboratory",
-        address: "الصقلاوية - الشهداء الثانية"
-    }
-};
-
-try {
-    const saved = localStorage.getItem(STORAGE_KEY);
-
-    if (saved) {
-        const loaded = JSON.parse(saved);
-
-        db = {
-            ...db,
-            ...loaded,
-            tests: loaded.tests || defaultTests,
-            patients: loaded.patients || [],
-            reports: loaded.reports || []
-        };
-    }
-} catch(error) {
-    console.error("Database loading error:", error);
-}
-
-function saveDatabase() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(db));
-    updateDashboard();
-}
-
-/* =====================================================
-   HELPERS
-   ===================================================== */
-
-function $(id) {
-    return document.getElementById(id);
-}
-
-function escapeHTML(value) {
-    return String(value ?? "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-}
-
-function today() {
-    return new Date().toISOString().slice(0,10);
-}
-
-function patientNumber() {
-    return "2026-" + String(db.patients.length + 1).padStart(4, "0");
-}
-
-function reportNumber() {
-    return "2026-" + String(db.reports.length + 1).padStart(4, "0");
-}
-
-function generateID() {
-    return Date.now() + Math.floor(Math.random() * 1000);
-}
-
-/* =====================================================
-   PAGE NAVIGATION
-   ===================================================== */
-
-function goPage(id) {
-
-    document.querySelectorAll(".page").forEach(page => {
-        page.classList.remove("active");
-    });
-
-    $(id).classList.add("active");
-
-    document.querySelectorAll(".navigation button").forEach(button => {
-        button.classList.remove("active");
-    });
-
-    const buttons = document.querySelectorAll(".navigation button");
-
-    const pageMap = {
-        home: 0,
-        newPatient: 1,
-        patients: 2,
-        reportPage: 3
-    };
-
-    if (pageMap[id] !== undefined) {
-        buttons[pageMap[id]].classList.add("active");
-    }
-
-    if (id === "home") {
-        updateDashboard();
-    }
-
-    if (id === "patients") {
-        renderPatients();
-    }
-
-    if (id === "newPatient") {
-        if (!$("patientNumber").value) {
-            preparePatientForm();
-        }
-
-        renderTests();
-    }
-}
-
-/* =====================================================
-   PATIENT FORM
-   ===================================================== */
-
-function preparePatientForm() {
-
-    $("patientNumber").value = patientNumber();
-
-    $("patientDate").value = today();
-
-    $("patientName").value = "";
-    $("patientAge").value = "";
-    $("ageUnit").value = "Years";
-    $("patientGender").value = "Male";
-    $("doctorName").value = "";
-    $("patientNotes").value = "";
-
-    selectedTests.clear();
-
-    renderTests();
-    renderResultInputs();
-}
-
-function resetPatientForm() {
-    preparePatientForm();
-}
-
-let selectedTests = new Set();
-
-/* =====================================================
-   TEST LIST
-   ===================================================== */
-
-function renderTests() {
-
-    const query = $("testSearch").value.toLowerCase();
-
-    $("testChoices").innerHTML = db.tests
-        .filter(test => test.name.toLowerCase().includes(query))
-        .map(test => `
-            <label class="test-option">
-
-                <input
-                    type="checkbox"
-                    ${selectedTests.has(test.name) ? "checked" : ""}
-                    onchange="toggleTest('${escapeHTML(test.name)}')">
-
-                <span>${escapeHTML(test.name)}</span>
-
-            </label>
-        `).join("");
-}
-
-function toggleTest(name) {
-
-    if (selectedTests.has(name)) {
-        selectedTests.delete(name);
-    } else {
-        selectedTests.add(name);
-    }
-
-    renderResultInputs();
-}
-
-function renderResultInputs() {
-
-    const selected = db.tests.filter(test =>
-        selectedTests.has(test.name)
-    );
-
-    $("resultInputs").innerHTML = selected.map((test,index) => `
-        <tr>
-
-            <td>${escapeHTML(test.name)}</td>
-
-            <td>
-                <input
-                    type="text"
-                    id="result_${index}"
-                    placeholder="Result">
-            </td>
-
-            <td>
-                <input
-                    type="text"
-                    id="unit_${index}"
-                    value="${escapeHTML(test.unit)}">
-            </td>
-
-            <td>
-                <input
-                    type="text"
-                    id="range_${index}"
-                    value="${escapeHTML(test.range)}">
-            </td>
-
-            <td>
-                <button
-                    type="button"
-                    class="btn btn-danger"
-                    onclick="removeTest('${escapeHTML(test.name)}')">
-                    حذف
-                </button>
-            </td>
-
-        </tr>
-    `).join("");
-}
-
-function removeTest(name) {
-    selectedTests.delete(name);
-    renderTests();
-    renderResultInputs();
-}
-
-/* =====================================================
-   SAVE PATIENT
-   ===================================================== */
-
-function savePatient() {
-
-    const name = $("patientName").value.trim();
-
-    if (!name) {
-        alert("يرجى إدخال اسم المريض");
-        return;
-    }
-
-    if (selectedTests.size === 0) {
-        alert("يرجى اختيار تحليل واحد على الأقل");
-        return;
-    }
-
-    const selected = db.tests.filter(test =>
-        selectedTests.has(test.name)
-    );
-
-    const results = selected.map((test,index) => {
-
-        return {
-            name: test.name,
-
-            result: $("result_" + index)?.value || "",
-
-            unit: $("unit_" + index)?.value || test.unit,
-
-            range: $("range_" + index)?.value || test.range,
-
-            group: test.group
-        };
-    });
-
-    const patient = {
-        id: generateID(),
-        number: $("patientNumber").value,
-        name: name,
-        age: $("patientAge").value,
-        ageUnit: $("ageUnit").value,
-        gender: $("patientGender").value,
-        date: $("patientDate").value,
-        doctor: $("doctorName").value,
-        notes: $("patientNotes").value,
-        results: results
-    };
-
-    db.patients.push(patient);
-
-    saveDatabase();
-
-    currentPatient = patient;
-
-    alert("تم حفظ بيانات المريض والنتائج بنجاح");
-
-    renderPatients();
-
-    createReport(patient);
-
-    goPage("reportPage");
-}
-
-/* =====================================================
-   PATIENT RECORDS
-   ===================================================== */
-
-function renderPatients() {
-
-    const query = $("patientSearch").value.toLowerCase();
-
-    const patients = [...db.patients].reverse().filter(patient => {
-
-        return patient.name.toLowerCase().includes(query) ||
-               patient.number.toLowerCase().includes(query);
-    });
-
-    $("patientsList").innerHTML = patients.map(patient => `
-        <div class="record-card">
-
-            <div class="record-card-header">
-
-                <div>
-                    <strong>${escapeHTML(patient.name)}</strong>
-                    <br>
-                    <small>ID: ${escapeHTML(patient.number)}</small>
-                </div>
-
-                <div>
-                    ${escapeHTML(patient.date)}
-                </div>
-
-            </div>
-
-            <div style="margin-top:8px">
-                العمر: ${escapeHTML(patient.age)}
-                ${escapeHTML(patient.ageUnit)}
-                |
-                ${escapeHTML(patient.gender)}
-            </div>
-
-            <div style="margin-top:8px">
-                التحاليل:
-                ${patient.results.map(result =>
-                    escapeHTML(result.name)
-                ).join("، ")}
-            </div>
-
-            <div class="record-actions">
-
-                <button class="btn btn-primary"
-                        onclick="openPatientReport(${patient.id})">
-                    التقرير
-                </button>
-
-                <button class="btn btn-secondary"
-                        onclick="editPatient(${patient.id})">
-                    تعديل
-                </button>
-
-                <button class="btn btn-danger"
-                        onclick="deletePatient(${patient.id})">
-                    حذف
-                </button>
-
-            </div>
-
-        </div>
-    `).join("");
-
-    if (!patients.length) {
-        $("patientsList").innerHTML =
-            "<p>لا توجد سجلات مطابقة.</p>";
-    }
-}
-
-function openPatientReport(id) {
-
-    const patient = db.patients.find(p => p.id === id);
-
-    if (!patient) return;
-
-    currentPatient = patient;
-
-    createReport(patient);
-
-    goPage("reportPage");
-}
-
-function deletePatient(id) {
-
-    if (!confirm("هل تريد حذف سجل المريض؟")) {
-        return;
-    }
-
-    db.patients = db.patients.filter(p => p.id !== id);
-
-    db.reports = db.reports.filter(r => r.patientID !== id);
-
-    saveDatabase();
-
-    renderPatients();
-}
-
-function editPatient(id) {
-
-    const patient = db.patients.find(p => p.id === id);
-
-    if (!patient) return;
-
-    $("patientNumber").value = patient.number;
-    $("patientName").value = patient.name;
-    $("patientAge").value = patient.age;
-    $("ageUnit").value = patient.ageUnit;
-    $("patientGender").value = patient.gender;
-    $("patientDate").value = patient.date;
-    $("doctorName").value = patient.doctor || "";
-    $("patientNotes").value = patient.notes || "";
-
-    selectedTests.clear();
-
-    patient.results.forEach(result => {
-        selectedTests.add(result.name);
-    });
-
-    renderTests();
-    renderResultInputs();
-
-    patient.results.forEach((result,index) => {
-
-        const resultInput = $("result_" + index);
-        const unitInput = $("unit_" + index);
-        const rangeInput = $("range_" + index);
-
-        if (resultInput) resultInput.value = result.result;
-        if (unitInput) unitInput.value = result.unit;
-        if (rangeInput) rangeInput.value = result.range;
-    });
-
-    goPage("newPatient");
-}
-
-/* =====================================================
-   REPORT GENERATION
-   ===================================================== */
-
-let currentPatient = null;
-let currentReport = null;
-
-function createReport(patient = currentPatient) {
-
-    if (!patient) {
-        alert("يرجى اختيار مريض");
-        return;
-    }
-
-    currentPatient = patient;
-
-    const number = reportNumber();
-
-    currentReport = {
-        id: generateID(),
-        patientID: patient.id,
-        number: number,
-        date: patient.date,
-        results: patient.results
-    };
-
-    db.reports.push(currentReport);
-
-    saveDatabase();
-
-    renderReport(patient);
-
-    goPage("reportPage");
-}
-
-function renderReport(patient) {
-
-    if (!patient) return;
-
-    const reportNo = currentReport
-        ? currentReport.number
-        : reportNumber();
-
-    $("reportPatientInfo").innerHTML = `
-
-        <div class="info-item">
-            <strong>Patient Name:</strong>
-            ${escapeHTML(patient.name)}
-        </div>
-
-        <div class="info-item">
-            <strong>Patient ID:</strong>
-            ${escapeHTML(patient.number)}
-        </div>
-
-        <div class="info-item">
-            <strong>Report No:</strong>
-            ${escapeHTML(reportNo)}
-        </div>
-
-        <div class="info-item">
-            <strong>Age:</strong>
-            ${escapeHTML(patient.age)}
-            ${escapeHTML(patient.ageUnit)}
-        </div>
-
-        <div class="info-item">
-            <strong>Gender:</strong>
-            ${escapeHTML(patient.gender)}
-        </div>
-
-        <div class="info-item">
-            <strong>Date:</strong>
-            ${escapeHTML(patient.date)}
-        </div>
-
-        ${patient.doctor ? `
-        <div class="info-item">
-            <strong>Doctor:</strong>
-            ${escapeHTML(patient.doctor)}
-        </div>
-        ` : ""}
-
-    `;
-
-    const groups = {};
-
-    patient.results.forEach(result => {
-
-        const group = result.group || "Other";
-
-        if (!groups[group]) {
-            groups[group] = [];
-        }
-
-        groups[group].push(result);
-    });
-
-    let tableHTML = "";
-
-    Object.keys(groups).forEach(group => {
-
-        tableHTML += `
-            <tr class="report-group">
-                <td colspan="4">
-                    ${escapeHTML(group)}
-                </td>
-            </tr>
-        `;
-
-        groups[group].forEach(result => {
-
-            tableHTML += `
-                <tr>
-
-                    <td>
-                        ${escapeHTML(result.range)}
-                    </td>
-
-                    <td>
-                        ${escapeHTML(result.unit)}
-                    </td>
-
-                    <td>
-                        ${escapeHTML(result.result)}
-                    </td>
-
-                    <td>
-                        ${escapeHTML(result.name)}
-                    </td>
-
-                </tr>
-            `;
-        });
-    });
-
-    $("reportTableBody").innerHTML = tableHTML;
-}
-
-/* =====================================================
-   PRINT
-   ===================================================== */
-
-function printReport() {
-
-    if (!currentPatient) {
-        alert("لا يوجد تقرير جاهز للطباعة");
-        return;
-    }
-
-    renderReport(currentPatient);
-
-    setTimeout(() => {
-        window.print();
-    }, 700);
-}
-
-/* =====================================================
-   WORD EXPORT
-   ===================================================== */
-
-function exportWord() {
-
-    if (!currentPatient) {
-        alert("لا يوجد تقرير");
-        return;
-    }
-
-    renderReport(currentPatient);
-
-    const reportHTML = $("reportPreview").innerHTML;
-
-    const blob = new Blob([
-        `
-        <html>
-        <head>
-        <meta charset="UTF-8">
-        </head>
-        <body>
-        ${reportHTML}
-        </body>
-        </html>
-        `
-    ], {
-        type: "application/msword"
-    });
-
-    const url = URL.createObjectURL(blob);
-
-    const link = document.createElement("a");
-
-    link.href = url;
-
-    link.download = "Laboratory_Report_" +
-                    currentPatient.number +
-                    ".doc";
-
-    link.click();
-
-    URL.revokeObjectURL(url);
-}
-
-/* =====================================================
-   DASHBOARD
-   ===================================================== */
-
-function updateDashboard() {
-
-    $("statPatients").textContent = db.patients.length;
-
-    $("statReports").textContent = db.reports.length;
-
-    $("statToday").textContent =
-        db.patients.filter(patient =>
-            patient.date === today()
-        ).length;
-}
-
-/* =====================================================
-   INITIALIZATION
-   ===================================================== */
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    $("patientDate").value = today();
-
-    preparePatientForm();
-
-    renderTests();
-
-    renderPatients();
-
-    updateDashboard();
-
 });
 </script>
 
