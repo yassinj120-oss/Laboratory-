@@ -18,7 +18,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
 
       - name: Install dependencies
         run: npm install
@@ -31,3 +30,4 @@ jobs:
         with:
           name: Al-Juman-Windows-Installer
           path: dist/*.exe
+          if-no-files-found: error
