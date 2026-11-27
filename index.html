@@ -1,302 +1,117 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Al-Juman Side Lab</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Al-Juman Side Lab</title>
 <style>
-:root{--navy:#102b46;--blue:#1c6ca8;--silver:#d9e1e8;--bg:#f2f5f9;--white:#fff;--border:#dce4ed;--green:#16845b;--red:#c0392b;--text:#1c2938}*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Arial,sans-serif;color:var(--text)}button,input,select,textarea{font:inherit}button{border:0;border-radius:9px;padding:11px 15px;background:var(--blue);color:white;cursor:pointer}button:hover{opacity:.92}.light{background:#e8eef4;color:var(--navy)}.green{background:#d9f8e5;color:#17643b}.danger{background:#ffeded;color:#b42318}.sidebar{background:var(--navy);color:white;padding:15px}.brand{font-weight:bold;font-size:18px;padding:12px}.brand small{display:block;font-size:12px;margin-top:6px;color:#d3e0ec}.nav{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}.nav button{background:#234766}.nav button.active{background:white;color:var(--navy)}.main{max-width:1500px;margin:auto}.topbar{padding:15px 20px;background:white;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap}.content{padding:18px}.page{display:none}.page.active{display:block}.panel{background:white;border:1px solid var(--border);border-radius:15px;padding:18px;margin-bottom:17px}h2,h3{color:var(--navy)}h2{font-size:22px}.form-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.field label{display:block;font-weight:bold;font-size:13px;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;border:1px solid var(--border);padding:10px;border-radius:8px;background:white}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.search{width:100%;padding:12px;border:1px solid var(--border);border-radius:9px;margin-bottom:14px}.test-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.test-option{border:1px solid var(--border);border-radius:9px;padding:11px;display:flex;gap:8px;align-items:flex-start;background:#fff}.test-option.selected{border-color:var(--blue);background:#eef6ff}.test-option small{display:block;color:#718096;margin-top:4px}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse}th,td{border:1px solid #d5dde5;padding:9px;text-align:center}th{background:var(--navy);color:white}input.result-input{width:100%;min-width:85px;padding:7px;border:1px solid #ccd6df;border-radius:5px}.entry-table{direction:ltr}.entry-table th,.entry-table td{direction:ltr;text-align:center}.special-editor{padding:12px;border:1px solid #d5e3ef;border-radius:10px;background:#f6faff}.special-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.special-grid input,.special-grid select{width:100%;padding:9px;border:1px solid #ccd6df;border-radius:7px}.note{color:#697b8d;font-size:13px}
-/* Report table: visual LTR columns are Range | Unit | Result | Test Name */
-.report-sheet{width:210mm;height:297mm;margin:auto;background:white;position:relative;overflow:hidden}.report-background{position:absolute;inset:0;width:210mm;height:297mm;object-fit:fill;z-index:1}.report-content{position:relative;z-index:2;padding:50mm 15mm 20mm}.report-patient{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;direction:ltr;text-align:left;font-size:10pt;background:#ffffffdd;padding:10px;margin-bottom:12px}.report-results{direction:rtl!important;width:100%;border-collapse:collapse;table-layout:fixed;margin-top:7px;font-family:Arial,sans-serif}.report-results th{background:#173957!important;color:#fff!important;font-weight:700;padding:8px 5px;border:1px solid #b7c7d5;font-size:9pt;text-align:center}.report-results td{border:1px solid #c5d0da;padding:6px 5px;text-align:center;vertical-align:middle;font-size:8.5pt;color:#24384b;overflow-wrap:anywhere}.report-results tbody tr:nth-child(even):not(.group-row){background:#f4f8fb}.report-results th:nth-child(1),.report-results td:nth-child(1){width:34%}.report-results th:nth-child(2),.report-results td:nth-child(2){width:18%}.report-results th:nth-child(3),.report-results td:nth-child(3){width:16%}.report-results th:nth-child(4),.report-results td:nth-child(4){width:32%}.group-row td{background:#e5edf5!important;color:#173957!important;font-weight:bold;text-align:right!important;padding:7px 10px;border-top:2px solid #547895}.special-report{margin:5mm auto;width:100%;color:#111}.special-report h3{background:#173957;color:white;text-align:center;padding:8px;margin:0;font-size:9pt}.special-table{direction:ltr;min-width:0;width:100%;border-collapse:collapse}.special-table th,.special-table td{border:1px solid #c5d0da;padding:5px;font-size:8.5pt;text-align:center}.special-table th{background:#e5edf5;color:#173957}.hcg-report{border:1px solid #aaa;padding:12mm 8mm;min-height:100mm;background:white}.hcg-report h3{background:#386900;color:white;text-align:center;padding:9px}.hcg-report .hcg-result{margin-top:20mm;text-align:center;font-size:18pt;font-weight:bold}.hcg-report .hcg-date{text-align:right;margin-top:15mm}.empty{text-align:center;padding:20px;color:#6d7b89}.icon-btn{font-size:16px;min-width:42px}.small-btn{padding:6px 9px;margin:2px;font-size:13px}
-@media(max-width:700px){.form-grid,.special-grid{grid-template-columns:1fr}.test-list{grid-template-columns:1fr}.content{padding:10px}.panel{padding:13px}.sidebar{position:sticky;top:0;z-index:5}.report-sheet{width:100%;height:auto;min-height:100vh}.report-background{width:100%;height:100%}.report-content{padding:35% 5% 10%}}
-@media print{@page{size:A4 portrait;margin:0}html,body{margin:0!important;padding:0!important;background:white!important}.sidebar,.topbar,.content>.page:not(#reportPage),.actions,.no-print{display:none!important}.app,.main,.content,.page#reportPage{display:block!important;width:210mm!important;margin:0!important;padding:0!important}.panel#reportPreview{display:block!important;border:0!important;padding:0!important;margin:0!important}.report-sheet{width:210mm!important;height:297mm!important;min-height:297mm!important;margin:0!important;page-break-after:avoid!important;overflow:hidden!important}.report-background{width:210mm!important;height:297mm!important}.report-content{padding:50mm 15mm 20mm!important}.report-results{direction:rtl!important;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}.report-results thead{display:table-header-group}.report-content .signature,.report-content [id*="signature"],.report-content [class*="signature"]{display:none!important}}
-</style></head><body><div class="app"><aside class="sidebar"><div class="brand">✚ Al-Juman Side Lab<small>Medical Laboratory Management</small></div><nav class="nav"><button class="active" data-page="home">⌂ Home</button><button data-page="newPatient">＋ New Patient</button><button data-page="patients">▤ Patient Records</button><button data-page="tests">⚙ Test Management</button><button data-page="settings">☰ Settings</button></nav></aside><div class="main"><div class="topbar"><h3 id="pageLabel">Home</h3><span id="todayLabel"></span></div><main class="content">
-<section class="page active" id="home"><div class="panel"><h2>Al-Juman Side Lab</h2><p>Patient and laboratory report management</p><button onclick="go('newPatient')">＋ New Patient</button></div><div class="panel"><h3>Statistics</h3><p>Patients: <b id="statPatients">0</b></p><p>Reports: <b id="statReports">0</b></p><p>Tests: <b id="statTests">0</b></p></div><div class="panel"><h3>Recent Patients</h3><div class="table-wrap"><table><thead><tr><th>Patient ID</th><th>Name</th><th>Date</th><th>Open</th></tr></thead><tbody id="recentPatients"></tbody></table></div></div></section>
-<section class="page" id="newPatient"><h2>New Patient Registration</h2><div class="panel"><form id="patientForm"><div class="form-grid"><div class="field"><label>Patient Name *</label><input id="pName" required></div><div class="field"><label>Age *</label><input id="pAge" type="number" min="0" required></div><div class="field"><label>Age Unit</label><select id="pAgeUnit"><option>Years</option><option>Months</option><option>Days</option></select></div><div class="field"><label>Gender *</label><select id="pGender" required><option value="">Select</option><option>Male</option><option>Female</option></select></div><div class="field"><label>Date *</label><input id="pDate" type="date" required></div><div class="field"><label>Patient ID</label><input id="pNumber" readonly></div><div class="field"><label>Doctor</label><input id="pDoctor"></div></div><div class="field" style="margin-top:12px"><label>Notes</label><textarea id="pNotes"></textarea></div><div class="actions"><button type="submit">Save & Select Tests</button></div></form></div></section>
-<section class="page" id="choosePage"><h2>Select Laboratory Tests</h2><div class="panel"><div id="choosePatientInfo"></div><input class="search" id="testSearch" placeholder="Search tests..." oninput="renderTestChoices()"><div class="test-list" id="testChoices"></div><div class="actions"><button onclick="createReport()">Continue to Results</button><button class="light" onclick="go('patients')">Back</button></div></div></section>
-<section class="page" id="resultPage"><h2>Enter Results</h2><div class="panel"><div id="resultPatientInfo"></div><div class="table-wrap"><table class="entry-table"><thead><tr><th>Test Name</th><th>Result</th><th>Unit</th><th>Reference Range</th><th>Note</th><th>Delete</th></tr></thead><tbody id="resultRows"></tbody></table></div><div class="actions"><button class="light" onclick="saveDraft()">Save Draft</button><button class="green" onclick="saveFinal()">Save Final Report</button><button class="light" onclick="go('patients')">Back</button></div></div></section>
-<section class="page" id="reportPage"><h2>Report Preview</h2><div class="panel" id="reportPreview"></div><div class="actions no-print"><button onclick="printReport()">Print / Save PDF</button><button class="light" onclick="editCurrentReport()">Edit Results</button><button class="light" onclick="exportWord()">Export Word</button><button class="light" onclick="go('patients')">Back</button></div></section>
-<section class="page" id="patients"><h2>Patient Records</h2><input class="search" id="patientSearch" placeholder="Search patients..." oninput="renderPatients()"><div class="panel"><div class="table-wrap"><table><thead><tr><th>ID</th><th>Name</th><th>Age</th><th>Gender</th><th>Date</th><th>Reports</th><th>Actions</th></tr></thead><tbody id="patientsRows"></tbody></table></div></div></section>
-<section class="page" id="tests"><h2>Test Management</h2><div class="panel"><h3>Add New Test</h3><div class="form-grid"><div class="field"><label>Test Name</label><input id="newTestName"></div><div class="field"><label>Unit</label><input id="newTestUnit"></div><div class="field"><label>Reference Range</label><input id="newTestRange"></div></div><button style="margin-top:12px" onclick="addTest()">Add Test</button></div><div class="panel"><div class="table-wrap"><table><thead><tr><th>Test</th><th>Unit</th><th>Range</th><th>Delete</th></tr></thead><tbody id="testsRows"></tbody></table></div></div></section>
-<section class="page" id="settings"><h2>Settings & Backup</h2><div class="panel"><div class="form-grid"><div class="field"><label>Lab Arabic Name</label><input id="setLabAr"></div><div class="field"><label>Lab English Name</label><input id="setLabEn"></div><div class="field"><label>Phone</label><input id="setPhone"></div><div class="field"><label>Address</label><input id="setAddress"></div></div><div class="actions"><button onclick="saveSettings()">Save Settings</button></div></div><div class="panel"><h3>Backup</h3><button onclick="backupData()">Export Backup</button><button class="light" onclick="restoreData()">Restore Backup</button></div></section>
+:root{--navy:#102b46;--blue:#1c6ca8;--silver:#d9e1e8;--bg:#f2f5f9;--border:#dce4ed;--green:#16845b;--red:#c0392b;--text:#1c2938}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Arial,sans-serif;color:var(--text)}button,input,select,textarea{font:inherit}button{border:0;border-radius:9px;padding:11px 15px;background:var(--blue);color:white;cursor:pointer}button:hover{opacity:.92}.light{background:#e8eef4;color:var(--navy)}.green{background:#d9f8e5;color:#17643b}.danger{background:#ffeded;color:#b42318}
+.sidebar{background:var(--navy);color:white;padding:15px}.brand{font-weight:bold;font-size:18px;padding:12px}.brand small{display:block;font-size:12px;margin-top:6px;color:#d3e0ec}.nav{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}.nav button{background:#234766}.nav button.active{background:#fff;color:var(--navy)}.main{max-width:1500px;margin:auto}.topbar{padding:15px 20px;background:white;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap}.content{padding:18px}.page{display:none}.page.active{display:block}.panel{background:white;border:1px solid var(--border);border-radius:15px;padding:18px;margin-bottom:17px}h2,h3{color:var(--navy)}h2{font-size:22px}.form-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.field label{display:block;font-weight:bold;font-size:13px;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;border:1px solid var(--border);padding:10px;border-radius:8px;background:white}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.search{width:100%;padding:12px;border:1px solid var(--border);border-radius:9px;margin-bottom:14px}.test-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.test-option{border:1px solid var(--border);border-radius:9px;padding:11px;display:flex;gap:8px;align-items:flex-start;background:#fff}.test-option.selected{border-color:var(--blue);background:#eef6ff}.test-option small{display:block;color:#718096;margin-top:4px}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse}th,td{border:1px solid #d5dde5;padding:9px;text-align:center}th{background:var(--navy);color:white}.entry-table{direction:ltr;min-width:760px}.entry-table th,.entry-table td{direction:ltr;text-align:center}.entry-table input{min-width:80px;width:100%;padding:7px;border:1px solid #ccd6df;border-radius:5px}.special-editor{padding:12px;border:1px solid #d5e3ef;border-radius:10px;background:#f6faff}.special-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.special-grid input,.special-grid select{width:100%;padding:9px;border:1px solid #ccd6df;border-radius:7px}.note{color:#697b8d;font-size:13px}
+.report-sheet{width:210mm;min-height:297mm;margin:auto;background:white;position:relative;overflow:hidden}.report-background{position:absolute;inset:0;width:210mm;height:297mm;object-fit:fill}.report-content{position:relative;padding:50mm 15mm 20mm;z-index:2}.report-patient{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;direction:ltr;text-align:left;font-size:10pt;background:#ffffffdd;padding:10px;margin-bottom:12px}.report-results{direction:rtl!important;width:100%;border-collapse:collapse;table-layout:fixed}.report-results th,.report-results td{border:1px solid #777;padding:5px;text-align:center;font-size:9pt;overflow-wrap:anywhere}.report-results th:nth-child(1),.report-results td:nth-child(1){width:32%}.report-results th:nth-child(2),.report-results td:nth-child(2){width:16%}.report-results th:nth-child(3),.report-results td:nth-child(3){width:18%}.report-results th:nth-child(4),.report-results td:nth-child(4){width:34%}.group-row td{background:#e5edf5!important;color:#102b46!important;font-weight:bold;text-align:right!important}
+.special-report{margin:7mm auto;width:95%;color:#111}.special-report h3{background:#183b59;color:white;text-align:center;padding:8px;margin:0}.special-table{direction:ltr;min-width:0;width:100%;border-collapse:collapse}.special-table th,.special-table td{border:1px solid #777;padding:5px;font-size:9pt}.special-table th{background:#f0f2f4;color:#111}.hcg-report{border:1px solid #aaa;padding:12mm 8mm;min-height:100mm;background:white}.hcg-report h3{background:#386900;color:white;text-align:center;padding:9px}.hcg-report .hcg-result{margin-top:20mm;text-align:center;font-size:18pt;font-weight:bold}.hcg-report .hcg-date{text-align:right;margin-top:15mm}.empty{text-align:center;padding:20px;color:#6d7b89}
+@media(max-width:700px){.form-grid,.special-grid{grid-template-columns:1fr}.test-list{grid-template-columns:1fr}.content{padding:10px}.panel{padding:13px}.sidebar{position:sticky;top:0;z-index:5;}.report-sheet{width:100%;min-height:100vh}.report-background{width:100%;height:100%}.report-content{padding:35% 5% 10%}}
+@media print{@page{size:A4 portrait;margin:0}html,body{margin:0!important;padding:0!important;background:white!important}.sidebar,.topbar,.content>.page:not(#reportPage),.actions,.no-print{display:none!important}.app,.main,.content,.page#reportPage{display:block!important;width:210mm!important;margin:0!important;padding:0!important}.panel#reportPreview{display:block!important;border:0!important;padding:0!important;margin:0!important}.report-sheet{width:210mm!important;height:297mm!important;min-height:297mm!important;margin:0!important;page-break-after:avoid!important}.report-background{width:210mm!important;height:297mm!important}.report-content{padding:50mm 15mm 20mm!important}.report-results{direction:rtl!important}}
+
+/* REPORT LAYOUT AND PRINT REPAIR */
+#reportPreview{width:100%;overflow:auto;}
+.report-sheet{position:relative;width:210mm!important;height:297mm!important;min-height:297mm!important;max-width:none!important;margin:0 auto!important;overflow:hidden!important;background:#fff!important;box-sizing:border-box!important;}
+.report-background{position:absolute!important;inset:0!important;width:210mm!important;height:297mm!important;object-fit:fill!important;}
+.report-content{position:absolute!important;inset:0!important;width:210mm!important;height:297mm!important;padding:50mm 15mm 20mm!important;z-index:2!important;box-sizing:border-box!important;}
+.report-results{direction:rtl!important;width:100%!important;border-collapse:collapse!important;table-layout:fixed!important;}
+.report-results th,.report-results td{box-sizing:border-box!important;text-align:center!important;overflow-wrap:anywhere!important;}
+/* DOM order: Test Name, Result, Unit, Reference Range; visual L-to-R: Range, Unit, Result, Test Name */
+.report-results th:nth-child(1),.report-results td:nth-child(1){width:34%!important;}
+.report-results th:nth-child(2),.report-results td:nth-child(2){width:16%!important;}
+.report-results th:nth-child(3),.report-results td:nth-child(3){width:18%!important;}
+.report-results th:nth-child(4),.report-results td:nth-child(4){width:32%!important;}
+@page{size:A4 portrait;margin:0;}
+@media print{
+ html,body{width:210mm!important;height:297mm!important;margin:0!important;padding:0!important;background:#fff!important;overflow:hidden!important;}
+ body *{visibility:hidden!important;}
+ #reportPage,#reportPage *{visibility:visible!important;}
+ .sidebar,.topbar,.page:not(#reportPage),.actions,.no-print{display:none!important;}
+ .app,.main,.content,#reportPage{display:block!important;width:210mm!important;height:297mm!important;min-height:0!important;margin:0!important;padding:0!important;overflow:hidden!important;}
+ #reportPage h2{display:none!important;}
+ #reportPreview{display:block!important;width:210mm!important;height:297mm!important;margin:0!important;padding:0!important;border:0!important;overflow:hidden!important;}
+ .report-sheet{position:absolute!important;left:0!important;top:0!important;width:210mm!important;height:297mm!important;min-height:297mm!important;margin:0!important;overflow:hidden!important;page-break-after:avoid!important;break-after:avoid!important;}
+ .report-background{position:absolute!important;left:0!important;top:0!important;width:210mm!important;height:297mm!important;}
+ .report-content{position:absolute!important;left:0!important;top:0!important;width:210mm!important;height:297mm!important;padding:50mm 15mm 20mm!important;}
+ .report-results{direction:rtl!important;width:100%!important;table-layout:fixed!important;border-collapse:collapse!important;}
+}
+
+</style></head><body>
+<div class="app"><aside class="sidebar"><div class="brand">✚ مختبر الجمان الجانبي<small>Al-Juman Side Lab</small></div><nav class="nav"><button class="active" data-page="home">الرئيسية</button><button data-page="newPatient">مريض جديد</button><button data-page="patients">سجلات المرضى</button><button data-page="tests">إدارة التحاليل</button><button data-page="settings">الإعدادات</button></nav></aside>
+<div class="main"><div class="topbar"><h3 id="pageLabel">الرئيسية</h3><span id="todayLabel"></span></div><main class="content">
+<section class="page active" id="home"><div class="panel"><h2>مختبر الجمان الجانبي</h2><p>إدارة المرضى والتحاليل والتقارير المختبرية</p><button onclick="go('newPatient')">＋ مريض جديد</button></div><div class="panel"><h3>إحصائيات</h3><p>عدد المرضى: <b id="statPatients">0</b></p><p>عدد التقارير: <b id="statReports">0</b></p><p>عدد التحاليل: <b id="statTests">0</b></p></div><div class="panel"><h3>آخر المرضى</h3><div class="table-wrap"><table><thead><tr><th>Patient ID</th><th>Name</th><th>Date</th><th>فتح</th></tr></thead><tbody id="recentPatients"></tbody></table></div></div></section>
+<section class="page" id="newPatient"><h2>تسجيل مريض جديد</h2><div class="panel"><form id="patientForm"><div class="form-grid"><div class="field"><label>Patient Name *</label><input id="pName" required></div><div class="field"><label>Age *</label><input id="pAge" type="number" min="0" required></div><div class="field"><label>Age Unit</label><select id="pAgeUnit"><option>Years</option><option>Months</option><option>Days</option></select></div><div class="field"><label>Gender *</label><select id="pGender" required><option value="">Select</option><option>Male</option><option>Female</option></select></div><div class="field"><label>Date *</label><input id="pDate" type="date" required></div><div class="field"><label>Patient ID</label><input id="pNumber" readonly></div><div class="field"><label>Doctor</label><input id="pDoctor"></div></div><div class="field" style="margin-top:12px"><label>Notes</label><textarea id="pNotes"></textarea></div><div class="actions"><button type="submit">حفظ واختيار التحاليل</button></div></form></div></section>
+<section class="page" id="choosePage"><h2>اختر التحاليل</h2><div class="panel"><div id="choosePatientInfo"></div><input class="search" id="testSearch" placeholder="Search test/category..." oninput="renderTestChoices()"><div class="test-list" id="testChoices"></div><div class="actions"><button onclick="createReport()">متابعة وإدخال النتائج</button><button class="light" onclick="go('patients')">رجوع</button></div></div></section>
+<section class="page" id="resultPage"><h2>إدخال النتائج</h2><div class="panel"><div id="resultPatientInfo"></div><div class="table-wrap"><table class="entry-table"><thead><tr><th>Test Name</th><th>Result</th><th>Unit</th><th>Reference Range</th><th>Note</th><th>Delete</th></tr></thead><tbody id="resultRows"></tbody></table></div><div class="actions"><button class="light" onclick="saveDraft()">حفظ مسودة</button><button class="green" onclick="saveFinal()">حفظ التقرير</button><button class="light" onclick="go('patients')">رجوع</button></div></div></section>
+<section class="page" id="reportPage"><h2>معاينة التقرير</h2><div class="panel" id="reportPreview"></div><div class="actions no-print"><button onclick="printReport()">طباعة / حفظ PDF</button><button class="light" onclick="editCurrentReport()">تعديل النتائج</button><button class="light" onclick="exportWord()">Word</button><button class="light" onclick="go('patients')">رجوع</button></div></section>
+<section class="page" id="patients"><h2>سجلات المرضى</h2><input class="search" id="patientSearch" placeholder="بحث..." oninput="renderPatients()"><div class="panel"><div class="table-wrap"><table><thead><tr><th>ID</th><th>Name</th><th>Age</th><th>Gender</th><th>Date</th><th>Reports</th><th>Actions</th></tr></thead><tbody id="patientsRows"></tbody></table></div></div></section>
+<section class="page" id="tests"><h2>إدارة التحاليل</h2><div class="panel"><h3>إضافة تحليل</h3><div class="form-grid"><div class="field"><label>Test Name</label><input id="newTestName"></div><div class="field"><label>Unit</label><input id="newTestUnit"></div><div class="field"><label>Reference Range</label><input id="newTestRange"></div></div><button style="margin-top:12px" onclick="addTest()">إضافة</button></div><div class="panel"><div class="table-wrap"><table><thead><tr><th>Test</th><th>Unit</th><th>Range</th><th>Delete</th></tr></thead><tbody id="testsRows"></tbody></table></div></div></section>
+<section class="page" id="settings"><h2>الإعدادات والنسخ الاحتياطي</h2><div class="panel"><div class="form-grid"><div class="field"><label>Lab Arabic Name</label><input id="setLabAr"></div><div class="field"><label>Lab English Name</label><input id="setLabEn"></div><div class="field"><label>Phone</label><input id="setPhone"></div><div class="field"><label>Address</label><input id="setAddress"></div></div><div class="actions"><button onclick="saveSettings()">حفظ</button></div></div><div class="panel"><h3>Backup</h3><button onclick="backupData()">Export Backup</button><button class="light" onclick="restoreData()">Restore Backup</button></div></section>
 </main></div></div>
 <script>
 const $=id=>document.getElementById(id),STORAGE_KEY='aljuman_lab_final_v1',today=()=>new Date().toISOString().slice(0,10),esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])),seq=n=>String(n).padStart(5,'0');
-const labels={home:'Home',newPatient:'New Patient',choosePage:'Select Tests',resultPage:'Enter Results',reportPage:'Report Preview',patients:'Patient Records',tests:'Test Management',settings:'Settings'};
+const labels={home:'الرئيسية',newPatient:'مريض جديد',choosePage:'اختيار التحاليل',resultPage:'إدخال النتائج',reportPage:'معاينة التقرير',patients:'سجلات المرضى',tests:'إدارة التحاليل',settings:'الإعدادات'};
+const T=(name,unit='',range='',category='Other',template='')=>({name,unit,range,category,...(template?{template}:{})});
 const defaultTests=[
-{name:'CBC',unit:'',range:'',category:'Hematology'},{name:'Hemoglobin (Hb)',unit:'g/dL',range:'M: 13-17 | F: 12-16',category:'Hematology'},{name:'RBC',unit:'10^6/µL',range:'M: 4.5-5.9 | F: 4.1-5.1',category:'Hematology'},{name:'HCT',unit:'%',range:'M: 40-52 | F: 36-48',category:'Hematology'},{name:'MCV',unit:'fL',range:'80-100',category:'Hematology'},{name:'MCH',unit:'pg',range:'27-33',category:'Hematology'},{name:'MCHC',unit:'g/dL',range:'32-36',category:'Hematology'},{name:'RDW',unit:'%',range:'11.5-14.5',category:'Hematology'},{name:'WBC',unit:'10^3/µL',range:'4-10',category:'Hematology'},{name:'Neutrophils',unit:'%',range:'40-75',category:'Hematology'},{name:'Lymphocytes',unit:'%',range:'20-45',category:'Hematology'},{name:'Monocytes',unit:'%',range:'2-10',category:'Hematology'},{name:'Eosinophils',unit:'%',range:'1-6',category:'Hematology'},{name:'Basophils',unit:'%',range:'0-2',category:'Hematology'},{name:'Platelets',unit:'10^3/µL',range:'150-400',category:'Hematology'},{name:'ESR',unit:'mm/hr',range:'M: 0-15 | F: 0-20',category:'Hematology'},{name:'Reticulocyte Count',unit:'%',range:'0.5-2.5',category:'Hematology'},{name:'Absolute Neutrophil Count',unit:'cells/µL',range:'1500-8000',category:'Hematology'},
-{name:'Blood Glucose Fasting',unit:'mg/dL',range:'70-100',category:'Biochemistry'},{name:'Blood Glucose Random',unit:'mg/dL',range:'70-140',category:'Biochemistry'},{name:'Blood Glucose 2H PP',unit:'mg/dL',range:'<140',category:'Biochemistry'},{name:'HbA1c',unit:'%',range:'<5.7',category:'Biochemistry'},{name:'Urea',unit:'mg/dL',range:'15-45',category:'Biochemistry'},{name:'BUN',unit:'mg/dL',range:'7-20',category:'Biochemistry'},{name:'Creatinine',unit:'mg/dL',range:'M: 0.7-1.3 | F: 0.6-1.1',category:'Biochemistry'},{name:'eGFR',unit:'mL/min/1.73m²',range:'≥90',category:'Biochemistry'},{name:'Uric Acid',unit:'mg/dL',range:'M: 3.5-7.2 | F: 2.6-6.0',category:'Biochemistry'},{name:'Sodium (Na)',unit:'mmol/L',range:'135-145',category:'Biochemistry'},{name:'Potassium (K)',unit:'mmol/L',range:'3.5-5.1',category:'Biochemistry'},{name:'Chloride (Cl)',unit:'mmol/L',range:'98-107',category:'Biochemistry'},{name:'Calcium',unit:'mg/dL',range:'8.5-10.5',category:'Biochemistry'},{name:'Phosphorus',unit:'mg/dL',range:'2.5-4.5',category:'Biochemistry'},{name:'Magnesium',unit:'mg/dL',range:'1.7-2.4',category:'Biochemistry'},{name:'Total Protein',unit:'g/dL',range:'6.0-8.3',category:'Biochemistry'},{name:'Albumin',unit:'g/dL',range:'3.5-5.0',category:'Biochemistry'},{name:'Total Bilirubin',unit:'mg/dL',range:'0.2-1.2',category:'Biochemistry'},{name:'Direct Bilirubin',unit:'mg/dL',range:'0-0.3',category:'Biochemistry'},{name:'ALT (GPT)',unit:'U/L',range:'7-56',category:'Biochemistry'},{name:'AST (GOT)',unit:'U/L',range:'10-40',category:'Biochemistry'},{name:'ALP',unit:'U/L',range:'40-130',category:'Biochemistry'},{name:'GGT',unit:'U/L',range:'9-48',category:'Biochemistry'},{name:'Amylase',unit:'U/L',range:'30-110',category:'Biochemistry'},{name:'Lipase',unit:'U/L',range:'0-160',category:'Biochemistry'},{name:'LDH',unit:'U/L',range:'140-280',category:'Biochemistry'},{name:'CK',unit:'U/L',range:'30-200',category:'Biochemistry'},{name:'CK-MB',unit:'ng/mL',range:'0-5',category:'Biochemistry'},{name:'Troponin I',unit:'ng/mL',range:'Kit-dependent',category:'Biochemistry'},{name:'NT-proBNP',unit:'pg/mL',range:'Kit-dependent',category:'Biochemistry'},
-{name:'Cholesterol Total',unit:'mg/dL',range:'<200',category:'Lipid Profile'},{name:'Triglycerides',unit:'mg/dL',range:'<150',category:'Lipid Profile'},{name:'HDL',unit:'mg/dL',range:'>40',category:'Lipid Profile'},{name:'LDL',unit:'mg/dL',range:'<100',category:'Lipid Profile'},{name:'VLDL',unit:'mg/dL',range:'5-40',category:'Lipid Profile'},
-{name:'TSH',unit:'µIU/mL',range:'0.4-4.0',category:'Hormones'},{name:'T3 Total',unit:'ng/mL',range:'0.8-2.0',category:'Hormones'},{name:'T4 Total',unit:'µg/dL',range:'5-12',category:'Hormones'},{name:'FT3',unit:'pg/mL',range:'2.3-4.2',category:'Hormones'},{name:'FT4',unit:'ng/dL',range:'0.8-1.8',category:'Hormones'},{name:'Prolactin',unit:'ng/mL',range:'Lab-dependent',category:'Hormones'},{name:'FSH',unit:'mIU/mL',range:'Lab-dependent',category:'Hormones'},{name:'LH',unit:'mIU/mL',range:'Lab-dependent',category:'Hormones'},{name:'Testosterone',unit:'ng/dL',range:'Lab-dependent',category:'Hormones'},{name:'Estradiol (E2)',unit:'pg/mL',range:'Lab-dependent',category:'Hormones'},{name:'Progesterone',unit:'ng/mL',range:'Lab-dependent',category:'Hormones'},{name:'Cortisol',unit:'µg/dL',range:'Time-dependent',category:'Hormones'},{name:'β-HCG',unit:'mIU/mL',range:'Lab-dependent',category:'Hormones',template:'HCG'},{name:'HCG',unit:'',range:'Positive / Negative',category:'Hormones',template:'HCG'},
-{name:'CRP',unit:'mg/L',range:'<5',category:'Immunology'},{name:'ASO',unit:'IU/mL',range:'<200',category:'Immunology'},{name:'RF',unit:'IU/mL',range:'<14',category:'Immunology'},{name:'Anti-CCP',unit:'U/mL',range:'Kit-dependent',category:'Immunology'},{name:'Ferritin',unit:'ng/mL',range:'Lab-dependent',category:'Immunology'},{name:'Vitamin D (25-OH)',unit:'ng/mL',range:'30-100',category:'Immunology'},{name:'Vitamin B12',unit:'pg/mL',range:'200-900',category:'Immunology'},{name:'Folate',unit:'ng/mL',range:'Lab-dependent',category:'Immunology'},
-{name:'HBsAg',unit:'',range:'Negative',category:'Serology'},{name:'Anti-HCV',unit:'',range:'Negative',category:'Serology'},{name:'HIV 1/2',unit:'',range:'Negative',category:'Serology'},{name:'VDRL',unit:'',range:'Non-reactive',category:'Serology'},{name:'Widal',unit:'',range:'Lab-dependent',category:'Serology'},
-{name:'GUE - General Urine Examination',unit:'',range:'',category:'Urine',template:'GUE'},{name:'GSE - General Stool Examination',unit:'',range:'',category:'Stool',template:'GSE'},{name:'Urine Albumin',unit:'',range:'Negative',category:'Urine'},{name:'Urine Sugar',unit:'',range:'Negative',category:'Urine'},{name:'Urine Pregnancy Test',unit:'',range:'Negative',category:'Urine'},{name:'Urine Protein',unit:'',range:'Negative',category:'Urine'},{name:'Urine Culture',unit:'',range:'No growth',category:'Urine'},
-{name:'PT',unit:'sec',range:'Lab-dependent',category:'Coagulation'},{name:'INR',unit:'',range:'0.8-1.2',category:'Coagulation'},{name:'APTT',unit:'sec',range:'Lab-dependent',category:'Coagulation'},{name:'TT',unit:'sec',range:'Lab-dependent',category:'Coagulation'},{name:'D-Dimer',unit:'ng/mL',range:'Lab-dependent',category:'Coagulation'},{name:'Fibrinogen',unit:'mg/dL',range:'200-400',category:'Coagulation'}];
-function fresh(){return{patients:[],reports:[],tests:defaultTests.map(t=>({...t})),settings:{labAr:'مختبر الجمان الجانبي',labEn:'Al-Juman Side Lab',phone:'',address:'الصقلاوية - الشهداء الثانية'},pseq:1,rseq:1}}
-function loadDB(){try{let old=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');if(!old)return fresh();let d=fresh();old.patients=Array.isArray(old.patients)?old.patients:[];old.reports=Array.isArray(old.reports)?old.reports:[];old.tests=Array.isArray(old.tests)?old.tests:[];let names=new Set(old.tests.map(t=>(t.name||'').toLowerCase()));d.tests.forEach(t=>{if(!names.has(t.name.toLowerCase()))old.tests.push({...t})});old.settings={...d.settings,...(old.settings||{})};old.pseq=old.pseq||old.patients.length+1;old.rseq=old.rseq||old.reports.length+1;return old}catch(e){console.warn('DB read failed; using fresh DB',e);return fresh()}}
-let db=loadDB();function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(db))}save();let currentPatient=null,currentReport=null,selectedTests=new Set();function patientNumber(){return'P-'+seq(db.pseq||1)}function preparePatientForm(){$('pDate').value=today();$('pNumber').value=patientNumber()}
-function go(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));$(id).classList.add('active');$('pageLabel').textContent=labels[id]||id;document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));if(id==='home')dashboard();if(id==='patients')renderPatients();if(id==='tests')renderTests();if(id==='settings')loadSettings()}document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>go(b.dataset.page));$('todayLabel').textContent=today();preparePatientForm();
-$('patientForm').onsubmit=e=>{e.preventDefault();let p={id:String(Date.now()),number:patientNumber(),name:$('pName').value.trim(),age:$('pAge').value,ageUnit:$('pAgeUnit').value,gender:$('pGender').value,date:$('pDate').value,doctor:$('pDoctor').value,notes:$('pNotes').value,reports:[]};db.pseq++;db.patients.push(p);save();currentPatient=p;selectedTests=new Set();$('choosePatientInfo').innerHTML=`<p><b>Patient:</b> ${esc(p.name)} &nbsp; <b>ID:</b> ${esc(p.number)} &nbsp; <b>Date:</b> ${esc(p.date)}</p>`;$('testSearch').value='';renderTestChoices();$('patientForm').reset();preparePatientForm();go('choosePage')};
-function renderTestChoices(){let q=$('testSearch').value.trim().toLowerCase(),list=db.tests.filter(t=>(t.name||'').toLowerCase().includes(q)||(t.category||'').toLowerCase().includes(q));$('testChoices').innerHTML=list.map(t=>`<label class="test-option ${selectedTests.has(t.name)?'selected':''}"><input type="checkbox" ${selectedTests.has(t.name)?'checked':''} onchange="toggleTest('${esc(t.name)}',this.checked)"><span><b>${esc(t.name)}</b><small>${esc(t.category||'')} · ${esc(t.unit||'')} ${t.range?'· '+esc(t.range):''}</small></span></label>`).join('')||'<div class="empty">No matching tests</div>'}function toggleTest(n,c){c?selectedTests.add(n):selectedTests.delete(n);renderTestChoices()}
-function specialType(t){if(t.template)return t.template;let n=(t.name||'').toLowerCase();if(n.includes('gue')||n.includes('urine examination'))return'GUE';if(n.includes('gse')||n.includes('stool examination'))return'GSE';if(n==='hcg'||n.includes('hcg')||n.includes('pregnancy'))return'HCG';return''}
-function defaults(type){if(type==='GUE')return{color:'',appearance:'',reaction:'',gravity:'',albumin:'',sugar:'',bilePigment:'',ketone:'',nitrite:'',ascorbic:'',rbc:'',pus:'',epith:'',casts:'',amUrat:'',mucous:'',uricAcid:'',bacteria:'',oxalate:''};if(type==='GSE')return{color:'',consistency:'',mucus:'',blood:'',ph:'',occultBlood:'',reducingSubstances:'',ova:'',cysts:'',trophozoites:'',rbc:'',pus:'',fat:'',undigestedFood:'',yeast:'',other:''};if(type==='HCG')return{specimen:'Blood',result:'',date:currentPatient?.date||today()};return''}
-function createReport(){if(!currentPatient)return alert('Register a patient first');if(!selectedTests.size)return alert('Select at least one test');let r={id:'R-'+seq(db.rseq++),patientId:currentPatient.id,date:currentPatient.date,status:'Draft',items:[]};selectedTests.forEach(name=>{let t=db.tests.find(x=>x.name===name);if(!t)return;let ty=specialType(t);r.items.push({name:t.name,result:ty?defaults(ty):'',template:ty,unit:t.unit||'',range:t.range||'',note:''})});db.reports.unshift(r);currentPatient.reports.push(r.id);save();currentReport=r;renderResults();go('resultPage')}
-function renderResults(){let p=db.patients.find(x=>x.id===currentReport.patientId);$('resultPatientInfo').innerHTML=`<p><b>${esc(p?.name)}</b> | ${esc(p?.number)} | ${esc(p?.age)} ${esc(p?.ageUnit)} | ${esc(p?.gender)} | ${esc(currentReport.date)}</p>`;$('resultRows').innerHTML=currentReport.items.map((i,n)=>{if(i.template)return`<tr><td colspan="6"><div class="special-editor"><h3>${esc(i.name)}</h3>${specialEditor(i,n)}</div></td></tr>`;return`<tr><td>${esc(i.name)}</td><td><input class="result-input" value="${esc(i.result)}" oninput="currentReport.items[${n}].result=this.value"></td><td><input class="result-input" value="${esc(i.unit)}" oninput="currentReport.items[${n}].unit=this.value"></td><td><input class="result-input" value="${esc(i.range)}" oninput="currentReport.items[${n}].range=this.value"></td><td><input class="result-input" value="${esc(i.note)}" oninput="currentReport.items[${n}].note=this.value"></td><td><button class="danger" onclick="removeItem(${n})">×</button></td></tr>`}).join('')}
-function specialEditor(item,index){let r=item.result||{},fields={GUE:[['color','Color'],['appearance','Appearance'],['reaction','Reaction'],['gravity','Specific Gravity'],['albumin','Albumin'],['sugar','Sugar'],['bilePigment','Bile Pigment'],['ketone','Ketone Bodies'],['nitrite','Nitrite'],['ascorbic','Ascorbic Acid'],['rbc','RBC / HPF'],['pus','Pus Cells / HPF'],['epith','Epithelial Cells / HPF'],['casts','Casts'],['amUrat','Amorphous Urates'],['mucous','Mucous'],['uricAcid','Uric Acid'],['bacteria','Bacteria'],['oxalate','Calcium Oxalate']],GSE:[['color','Color'],['consistency','Consistency'],['mucus','Mucus'],['blood','Blood'],['ph','pH'],['occultBlood','Occult Blood'],['reducingSubstances','Reducing Substances'],['ova','Ova'],['cysts','Cysts'],['trophozoites','Trophozoites'],['rbc','RBC'],['pus','Pus Cells'],['fat','Fat'],['undigestedFood','Undigested Food'],['yeast','Yeast'],['other','Other']],HCG:[['specimen','Specimen'],['result','Result'],['date','Date']]};return`<div class="special-grid">${(fields[item.template]||[]).map(([k,l])=>{let v=r[k]??'';if(item.template==='HCG'&&k==='result')return`<div class="field"><label>${l}</label><select onchange="currentReport.items[${index}].result.result=this.value"><option value="">Select</option><option ${v==='Positive'?'selected':''}>Positive</option><option ${v==='Negative'?'selected':''}>Negative</option></select></div>`;if(item.template==='HCG'&&k==='specimen')return`<div class="field"><label>${l}</label><input value="${esc(v||'Blood')}" oninput="currentReport.items[${index}].result.specimen=this.value"></div>`;if(item.template==='HCG'&&k==='date')return`<div class="field"><label>${l}</label><input type="date" value="${esc(v)}" oninput="currentReport.items[${index}].result.date=this.value"></div>`;return`<div class="field"><label>${l}</label><input value="${esc(v)}" oninput="currentReport.items[${index}].result.${k}=this.value"></div>`}).join('')}</div>`}
+T('CBC','','','Hematology'),T('Hemoglobin (Hb)','g/dL','M: 13-17 | F: 12-16','Hematology'),T('RBC','10^6/µL','M: 4.5-5.9 | F: 4.1-5.1','Hematology'),T('HCT','%','M: 40-52 | F: 36-48','Hematology'),T('MCV','fL','80-100','Hematology'),T('MCH','pg','27-33','Hematology'),T('MCHC','g/dL','32-36','Hematology'),T('RDW','%','11.5-14.5','Hematology'),T('WBC','10^3/µL','4-10','Hematology'),T('Neutrophils','%','40-75','Hematology'),T('Lymphocytes','%','20-45','Hematology'),T('Monocytes','%','2-10','Hematology'),T('Eosinophils','%','1-6','Hematology'),T('Basophils','%','0-2','Hematology'),T('Platelets','10^3/µL','150-400','Hematology'),T('MPV','fL','7.5-12','Hematology'),T('PDW','fL','9-17','Hematology'),T('PCT','%','0.1-0.5','Hematology'),T('ESR','mm/hr','M: 0-15 | F: 0-20','Hematology'),T('Reticulocyte Count','%','0.5-2.5','Hematology'),T('Peripheral Blood Smear','','Report morphology','Hematology'),T('Blood Group & Rh','','','Hematology'),
+T('Fasting Glucose','mg/dL','70-100','Biochemistry'),T('Random Glucose','mg/dL','70-140','Biochemistry'),T('2H PP Glucose','mg/dL','<140','Biochemistry'),T('HbA1c','%','<5.7','Biochemistry'),T('Urea','mg/dL','15-45','Biochemistry'),T('BUN','mg/dL','7-20','Biochemistry'),T('Creatinine','mg/dL','M: 0.7-1.3 | F: 0.6-1.1','Biochemistry'),T('eGFR','mL/min/1.73m²','≥90','Biochemistry'),T('Uric Acid','mg/dL','M: 3.5-7.2 | F: 2.6-6.0','Biochemistry'),T('Sodium (Na)','mmol/L','135-145','Biochemistry'),T('Potassium (K)','mmol/L','3.5-5.1','Biochemistry'),T('Chloride (Cl)','mmol/L','98-107','Biochemistry'),T('Bicarbonate (HCO3)','mmol/L','22-29','Biochemistry'),T('Calcium','mg/dL','8.5-10.5','Biochemistry'),T('Ionized Calcium','mmol/L','1.12-1.32','Biochemistry'),T('Phosphorus','mg/dL','2.5-4.5','Biochemistry'),T('Magnesium','mg/dL','1.7-2.4','Biochemistry'),T('Total Protein','g/dL','6.0-8.3','Biochemistry'),T('Albumin','g/dL','3.5-5.0','Biochemistry'),T('Globulin','g/dL','2.0-3.5','Biochemistry'),T('A/G Ratio','','1.0-2.2','Biochemistry'),T('Total Bilirubin','mg/dL','0.2-1.2','Biochemistry'),T('Direct Bilirubin','mg/dL','0-0.3','Biochemistry'),T('Indirect Bilirubin','mg/dL','Calculated','Biochemistry'),T('ALT (GPT)','U/L','7-56','Biochemistry'),T('AST (GOT)','U/L','10-40','Biochemistry'),T('ALP','U/L','40-130','Biochemistry'),T('GGT','U/L','9-48','Biochemistry'),T('Amylase','U/L','30-110','Biochemistry'),T('Lipase','U/L','0-160','Biochemistry'),T('LDH','U/L','140-280','Biochemistry'),T('CK','U/L','30-200','Biochemistry'),T('CK-MB','ng/mL','Kit-dependent','Biochemistry'),T('Troponin I','ng/mL','Kit-dependent','Biochemistry'),T('Troponin T','ng/mL','Kit-dependent','Biochemistry'),T('NT-proBNP','pg/mL','Kit-dependent','Biochemistry'),T('Iron','µg/dL','60-170','Biochemistry'),T('TIBC','µg/dL','250-450','Biochemistry'),T('Transferrin Saturation','%','20-50','Biochemistry'),
+T('Total Cholesterol','mg/dL','Desirable <200','Lipid Profile'),T('Triglycerides','mg/dL','<150','Lipid Profile'),T('HDL','mg/dL','>40','Lipid Profile'),T('LDL','mg/dL','<100','Lipid Profile'),T('VLDL','mg/dL','5-40','Lipid Profile'),
+T('TSH','µIU/mL','0.4-4.0','Hormones'),T('T3 Total','ng/mL','0.8-2.0','Hormones'),T('T4 Total','µg/dL','5-12','Hormones'),T('FT3','pg/mL','2.3-4.2','Hormones'),T('FT4','ng/dL','0.8-1.8','Hormones'),T('Prolactin','ng/mL','Lab-dependent','Hormones'),T('FSH','mIU/mL','Lab-dependent','Hormones'),T('LH','mIU/mL','Lab-dependent','Hormones'),T('Testosterone','ng/dL','Lab-dependent','Hormones'),T('Estradiol (E2)','pg/mL','Lab-dependent','Hormones'),T('Progesterone','ng/mL','Lab-dependent','Hormones'),T('Cortisol','µg/dL','Time-dependent','Hormones'),T('β-HCG','mIU/mL','Lab-dependent','Hormones','HCG'),T('HCG','','Positive / Negative','Hormones','HCG'),T('Insulin','µIU/mL','Lab-dependent','Hormones'),T('C-Peptide','ng/mL','Lab-dependent','Hormones'),
+T('CRP','mg/L','<5','Immunology'),T('hs-CRP','mg/L','Cardiovascular risk interpretation','Immunology'),T('ASO','IU/mL','<200','Immunology'),T('RF','IU/mL','<14','Immunology'),T('Anti-CCP','U/mL','Kit-dependent','Immunology'),T('Ferritin','ng/mL','Lab-dependent','Immunology'),T('Vitamin D (25-OH)','ng/mL','30-100','Immunology'),T('Vitamin B12','pg/mL','200-900','Immunology'),T('Folate','ng/mL','Lab-dependent','Immunology'),T('TNF-α','pg/mL','Kit-dependent','Immunology'),T('ANA','','Negative','Immunology'),T('Anti-dsDNA','IU/mL','Kit-dependent','Immunology'),
+T('HBsAg','','Negative','Serology'),T('Anti-HBs','mIU/mL','Interpret per lab','Serology'),T('Anti-HCV','','Negative','Serology'),T('HIV 1/2','','Negative','Serology'),T('VDRL/RPR','','Non-reactive','Serology'),T('Widal','','Lab-dependent','Serology'),T('Brucella (Rose Bengal)','','Negative','Serology'),T('Toxoplasma IgG','IU/mL','Kit-dependent','Serology'),T('Toxoplasma IgM','Index','Kit-dependent','Serology'),
+T('GUE - General Urine Examination','','','Urine','GUE'),T('Urine Albumin','','Negative','Urine'),T('Urine Protein','','Negative','Urine'),T('Urine Sugar','','Negative','Urine'),T('Urine Ketone','','Negative','Urine'),T('Urine Pregnancy Test','','Negative','Urine','HCG'),T('Urine Culture','','No growth','Urine'),T('Urine Microalbumin','mg/L','Lab-dependent','Urine'),T('Urine Albumin/Creatinine Ratio','mg/g','<30','Urine'),
+T('GSE - General Stool Examination','','','Stool','GSE'),T('Stool Occult Blood','','Negative','Stool'),T('Stool Culture','','No growth','Stool'),T('H. pylori Stool Ag','','Negative','Stool'),
+T('PT','sec','Lab-dependent','Coagulation'),T('INR','','0.8-1.2','Coagulation'),T('APTT','sec','Lab-dependent','Coagulation'),T('TT','sec','Lab-dependent','Coagulation'),T('D-Dimer','ng/mL','Lab-dependent','Coagulation'),T('Fibrinogen','mg/dL','200-400','Coagulation'),T('Bleeding Time','min','Lab-dependent','Coagulation'),T('Clotting Time','min','Lab-dependent','Coagulation'),
+T('Semen Analysis','','','Other'),T('CSF Analysis','','','Other'),T('Synovial Fluid Analysis','','','Other'),T('Pleural Fluid Analysis','','','Other'),T('Ascitic Fluid Analysis','','','Other'),T('Pregnancy Test (Rapid)','','Positive / Negative','Other','HCG')
+];
+
+function fresh(){return {patients:[],reports:[],tests:defaultTests.map(x=>({...x})),settings:{labAr:'مختبر الجمان الجانبي',labEn:'Al-Juman Side Lab',phone:'',address:'الصقلاوية - الشهداء الثانية'},pseq:1,rseq:1}}
+function loadDB(){try{const old=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');if(!old)return fresh();const base=fresh();old.patients=Array.isArray(old.patients)?old.patients:[];old.reports=Array.isArray(old.reports)?old.reports:[];old.tests=Array.isArray(old.tests)?old.tests:[];const names=new Set(old.tests.map(t=>(t.name||'').toLowerCase()));base.tests.forEach(t=>{if(!names.has(t.name.toLowerCase()))old.tests.push({...t})});old.settings={...base.settings,...(old.settings||{})};old.pseq=old.pseq||old.patients.length+1;old.rseq=old.rseq||old.reports.length+1;return old}catch(e){console.warn(e);return fresh()}}
+let db=loadDB();function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(db))}
+let currentPatient=null,currentReport=null,selectedTests=new Set();
+function patientNumber(){return 'P-'+seq(db.pseq||1)}
+function preparePatientForm(){$('pDate').value=today();$('pNumber').value=patientNumber()}
+function go(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));$(id).classList.add('active');$('pageLabel').textContent=labels[id]||id;document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));if(id==='home')dashboard();if(id==='patients')renderPatients();if(id==='tests')renderTests();if(id==='settings')loadSettings()}
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>go(b.dataset.page));$('todayLabel').textContent=today();preparePatientForm();
+$('patientForm').onsubmit=e=>{e.preventDefault();let p={id:String(Date.now()),number:patientNumber(),name:$('pName').value.trim(),age:$('pAge').value,ageUnit:$('pAgeUnit').value,gender:$('pGender').value,date:$('pDate').value,doctor:$('pDoctor').value,notes:$('pNotes').value,reports:[]};db.pseq++;db.patients.push(p);save();currentPatient=p;selectedTests=new Set();$('choosePatientInfo').innerHTML=`<p><b>Patient:</b> ${esc(p.name)} <b>ID:</b> ${esc(p.number)} <b>Date:</b> ${esc(p.date)}</p>`;$('testSearch').value='';renderTestChoices();go('choosePage');};
+function renderTestChoices(){let q=$('testSearch').value.trim().toLowerCase();let list=db.tests.filter(t=>(t.name||'').toLowerCase().includes(q)||(t.category||'').toLowerCase().includes(q));$('testChoices').innerHTML=list.map(t=>`<label class="test-option ${selectedTests.has(t.name)?'selected':''}"><input type="checkbox" ${selectedTests.has(t.name)?'checked':''} onchange="toggleTest('${esc(t.name)}',this.checked)"><span><b>${esc(t.name)}</b><small>${esc(t.category||'')} · ${esc(t.unit||'')} ${t.range?'· '+esc(t.range):''}</small></span></label>`).join('')||'<div class="empty">لا توجد تحاليل مطابقة</div>'}
+function toggleTest(n,c){c?selectedTests.add(n):selectedTests.delete(n);renderTestChoices()}
+function specialType(t){if(t.template)return t.template;let n=(t.name||'').toLowerCase();if(n.includes('gue')||n.includes('urine examination'))return'GUE';if(n.includes('gse')||n.includes('stool examination'))return'GSE';if(n.includes('hcg')||n.includes('pregnancy'))return'HCG';return''}
+function defaults(type){if(type==='GUE')return{color:'',appearance:'',reaction:'',gravity:'',albumin:'',sugar:'',bilePigment:'',ketone:'',nitrite:'',ascorbic:'',rbc:'',pus:'',epith:'',casts:'',amUrat:'',mucous:'',uricAcid:'',bacteria:'',oxalate:''};if(type==='GSE')return{color:'',consistency:'',odor:'',reaction:'',mucus:'',blood:'',occultBlood:'',reducingSubstances:'',ova:'',cysts:'',trophozoites:'',rbc:'',pus:'',fat:'',undigestedFood:'',yeast:'',other:''};if(type==='HCG')return{specimen:'Blood',result:'',date:currentPatient?.date||today()};return{}}
+function createReport(){if(!currentPatient)return alert('سجل المريض أولاً');if(!selectedTests.size)return alert('اختر تحليل واحد على الأقل');let r={id:'R-'+seq(db.rseq++),patientId:currentPatient.id,date:currentPatient.date,status:'Draft',items:[]};selectedTests.forEach(name=>{let t=db.tests.find(x=>x.name===name);if(t){let type=specialType(t);r.items.push({name:t.name,result:type?defaults(type):'',template:type,unit:t.unit||'',range:t.range||'',note:''})}});db.reports.unshift(r);currentPatient.reports.push(r.id);save();currentReport=r;renderResults();go('resultPage')}
+function specialEditor(item,index){let r=item.result||{},fields={GUE:[['color','Color'],['appearance','Appearance'],['reaction','Reaction'],['gravity','Specific Gravity'],['albumin','Albumin'],['sugar','Sugar'],['bilePigment','Bile Pigment'],['ketone','Ketone Bodies'],['nitrite','Nitrite'],['ascorbic','Ascorbic Acid'],['rbc','RBC / HPF'],['pus','Pus Cells / HPF'],['epith','Epithelial Cells / HPF'],['casts','Casts'],['amUrat','Amorphous Urates'],['mucous','Mucous'],['uricAcid','Uric Acid'],['bacteria','Bacteria'],['oxalate','Calcium Oxalate']],GSE:[['color','Color'],['consistency','Consistency'],['odor','Odor'],['reaction','Reaction / pH'],['mucus','Mucus'],['blood','Blood'],['occultBlood','Occult Blood'],['reducingSubstances','Reducing Substances'],['ova','Ova'],['cysts','Cysts'],['trophozoites','Trophozoites'],['rbc','RBC / HPF'],['pus','Pus Cells / HPF'],['fat','Fat'],['undigestedFood','Undigested Food'],['yeast','Yeast'],['other','Other']],HCG:[['specimen','Specimen'],['result','Result'],['date','Date']]};return `<div class="special-grid">${fields[item.template].map(([k,l])=>{let v=r[k]??'';if(item.template==='HCG'&&k==='result')return `<div class="field"><label>${l}</label><select onchange="currentReport.items[${index}].result.result=this.value"><option value="">Select</option><option ${v==='Positive'?'selected':''}>Positive</option><option ${v==='Negative'?'selected':''}>Negative</option></select></div>`;if(item.template==='HCG'&&k==='specimen')return `<div class="field"><label>${l}</label><select onchange="currentReport.items[${index}].result.specimen=this.value"><option ${v==='Blood'?'selected':''}>Blood</option><option ${v==='Serum'?'selected':''}>Serum</option><option ${v==='Urine'?'selected':''}>Urine</option></select></div>`;if(item.template==='HCG'&&k==='date')return `<div class="field"><label>${l}</label><input type="date" value="${esc(v)}" oninput="currentReport.items[${index}].result.date=this.value"></div>`;return `<div class="field"><label>${l}</label><input value="${esc(v)}" oninput="currentReport.items[${index}].result.${k}=this.value"></div>`}).join('')}</div>`}
+function renderResults(){let p=db.patients.find(x=>x.id===currentReport.patientId);$('resultPatientInfo').innerHTML=`<p><b>${esc(p?.name)}</b> | ${esc(p?.number)} | ${esc(p?.age)} ${esc(p?.ageUnit)} | ${esc(p?.gender)} | ${esc(currentReport.date)}</p>`;$('resultRows').innerHTML=currentReport.items.map((i,n)=>i.template?`<tr><td colspan="6"><div class="special-editor"><h3>${esc(i.name)}</h3>${specialEditor(i,n)}</div></td></tr>`:`<tr><td>${esc(i.name)}</td><td><input value="${esc(i.result)}" oninput="currentReport.items[${n}].result=this.value"></td><td><input value="${esc(i.unit)}" oninput="currentReport.items[${n}].unit=this.value"></td><td><input value="${esc(i.range)}" oninput="currentReport.items[${n}].range=this.value"></td><td><input value="${esc(i.note)}" oninput="currentReport.items[${n}].note=this.value"></td><td><button class="danger" onclick="removeItem(${n})">×</button></td></tr>`).join('')}
 function removeItem(n){currentReport.items.splice(n,1);renderResults()}
-function saveDraft(){if(!currentReport)return;currentReport.status='Draft';save();alert('Draft saved');go('patients')}
-function saveFinal(){if(!currentReport)return;currentReport.status='Final';save();renderPreview();go('reportPage')}
-function editCurrentReport(){if(!currentReport)return;renderResults();go('resultPage')}
-function groupName(name){let n=name.toLowerCase();if(/cbc|hemoglobin|rbc|wbc|hct|mcv|mch|mchc|rdw|platelet|neutrophil|lymphocyte|monocyte|eosinophil|basophil|esr|reticulocyte/.test(n))return'Hematology';if(/glucose|urea|bun|creatinine|egfr|uric acid|sodium|potassium|chloride|calcium|phosphorus|magnesium|protein|albumin|bilirubin|alt|ast|alp|ggt|amylase|lipase|ldh|ck|troponin|nt-probnp/.test(n))return'Biochemistry';if(/cholesterol|triglyceride|hdl|ldl|vldl/.test(n))return'Lipid Profile';if(/tsh|t3|t4|ft3|ft4|prolactin|fsh|lh|testosterone|estradiol|progesterone|cortisol|hcg/.test(n))return'Hormones';if(/crp|aso|rf|anti-ccp|ferritin|vitamin/.test(n))return'Immunology';if(/hbs|hcv|hiv|vdrl|widal/.test(n))return'Serology';if(/gue|urine/.test(n))return'Urine';if(/gse|stool/.test(n))return'Stool';if(/pt|inr|aptt|tt|d-dimer|fibrinogen/.test(n))return'Coagulation';return'Other Tests'}
-function specialReport(item){let r=item.result||{},gue=[['Color','color'],['Appearance','appearance'],['Reaction','reaction'],['Specific Gravity','gravity'],['Albumin','albumin'],['Sugar','sugar'],['Bile Pigment','bilePigment'],['Ketone Bodies','ketone'],['Nitrite','nitrite'],['Ascorbic Acid','ascorbic'],['RBC','rbc'],['Pus Cells','pus'],['Epithelial Cells','epith'],['Casts','casts'],['Amorphous Urates','amUrat'],['Mucous','mucous'],['Uric Acid','uricAcid'],['Bacteria','bacteria'],['Calcium Oxalate','oxalate']],gse=[['Color','color'],['Consistency','consistency'],['Mucus','mucus'],['Blood','blood'],['pH','ph'],['Occult Blood','occultBlood'],['Reducing Substances','reducingSubstances'],['Ova','ova'],['Cysts','cysts'],['Trophozoites','trophozoites'],['RBC','rbc'],['Pus Cells','pus'],['Fat','fat'],['Undigested Food','undigestedFood'],['Yeast','yeast'],['Other','other']];if(item.template==='HCG')return`<div class="hcg-report"><h3>SPECIMEN: ${esc(r.specimen||'Blood')}</h3><div class="hcg-result">HCG: ${esc(r.result||'________')}</div><div class="hcg-date">Date: ${esc(r.date||'')}</div></div>`;let specs=item.template==='GUE'?gue:gse;if(item.template==='GUE'){let rows=[];for(let i=0;i<specs.length;i+=2){let a=specs[i],b=specs[i+1];rows.push(`<tr><th>${a[0]}</th><td>${esc(r[a[1]]||'')}</td>${b?`<th>${b[0]}</th><td>${esc(r[b[1]]||'')}</td>`:''}</tr>`)}return`<div class="special-report"><h3>GENERAL URINE EXAMINATION</h3><table class="special-table"><tbody>${rows.join('')}</tbody></table></div>`}return`<div class="special-report"><h3>GENERAL STOOL EXAMINATION</h3><table class="special-table"><tbody>${specs.map(s=>`<tr><th>${s[0]}</th><td>${esc(r[s[1]]||'')}</td></tr>`).join('')}</tbody></table></div>`}
-function renderPreview(){if(!currentReport)return;let p=db.patients.find(x=>x.id===currentReport.patientId),s=db.settings||{},ordinary=currentReport.items.filter(i=>!i.template),groups={};ordinary.forEach(i=>(groups[groupName(i.name)]??=[]).push(i));let order=['Hematology','Biochemistry','Lipid Profile','Hormones','Immunology','Serology','Urine','Stool','Coagulation','Other Tests'];let rows=order.filter(g=>groups[g]?.length).map(g=>`<tr class="group-row"><td colspan="4">${esc(g)}</td></tr>${groups[g].map(i=>`<tr><td>${esc(i.name)}</td><td>${esc(i.result)}</td><td>${esc(i.unit)}</td><td>${esc(i.range)}</td></tr>`).join('')}`).join('');let specials=currentReport.items.filter(i=>i.template).map(specialReport).join('');$('reportPreview').innerHTML=`<div class="report-sheet"><img class="report-background" src="lab_form.jpg" alt="Report form background"><div class="report-content"><div class="report-patient"><div><b>Patient:</b> ${esc(p?.name)}</div><div><b>ID:</b> ${esc(p?.number)}</div><div><b>Date:</b> ${esc(currentReport.date)}</div><div><b>Age:</b> ${esc(p?.age)} ${esc(p?.ageUnit)}</div><div><b>Gender:</b> ${esc(p?.gender)}</div><div><b>Doctor:</b> ${esc(p?.doctor||'-')}</div></div>${ordinary.length?`<table class="report-results"><thead><tr><th>Test Name</th><th>Result</th><th>Unit</th><th>Reference Range</th></tr></thead><tbody>${rows}</tbody></table>`:''}${specials}</div></div>`}
-function printReport(){if(!currentReport)return alert('No report available.');renderPreview();const report=document.querySelector('#reportPreview .report-sheet');if(!report)return alert('Report preview not found.');const w=window.open('','_blank');if(!w)return alert('Please allow pop-ups for this application.');const css=`@page{size:A4 portrait;margin:0}*{box-sizing:border-box;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}html,body{margin:0;padding:0;width:210mm;height:297mm;background:#fff;font-family:Arial,sans-serif;overflow:hidden}.report-sheet{width:210mm!important;height:297mm!important;min-height:297mm!important;position:relative!important;margin:0!important;overflow:hidden!important;page-break-after:avoid!important}.report-background{position:absolute!important;inset:0!important;width:210mm!important;height:297mm!important;object-fit:fill!important;z-index:1!important}.report-content{position:relative!important;z-index:2!important;padding:50mm 15mm 20mm!important}.report-patient{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:6px!important;direction:ltr!important;text-align:left!important;font-size:9pt!important;background:#ffffffdd!important;padding:8px!important;margin-bottom:8px!important}.report-results{direction:rtl!important;width:100%!important;border-collapse:collapse!important;table-layout:fixed!important;margin-top:5px!important}.report-results th,.report-results td{border:1px solid #a9bac9!important;padding:6px 4px!important;text-align:center!important;overflow-wrap:anywhere!important}.report-results th{background:#173957!important;color:white!important;font-size:9pt!important}.report-results td{font-size:8.5pt!important;color:#24384b!important}.report-results th:nth-child(1),.report-results td:nth-child(1){width:34%!important}.report-results th:nth-child(2),.report-results td:nth-child(2){width:18%!important}.report-results th:nth-child(3),.report-results td:nth-child(3){width:16%!important}.report-results th:nth-child(4),.report-results td:nth-child(4){width:32%!important}.group-row td{background:#e5edf5!important;color:#173957!important;font-weight:bold!important;text-align:right!important}.special-report{width:100%!important;margin:3mm auto!important}.special-report h3{background:#173957!important;color:white!important;text-align:center!important;padding:7px!important;margin:0!important}.special-table{width:100%!important;border-collapse:collapse!important;direction:ltr!important}.special-table th,.special-table td{border:1px solid #c5d0da!important;padding:4px!important;font-size:8pt!important}.special-table th{background:#e5edf5!important;color:#173957!important}.hcg-report{border:1px solid #aaa!important;padding:8mm!important;min-height:80mm!important}.hcg-report h3{background:#173957!important;color:white!important;text-align:center!important;padding:8px!important}.hcg-report .hcg-result{margin-top:15mm!important;text-align:center!important;font-size:18pt!important;font-weight:bold!important}.hcg-report .hcg-date{text-align:right!important;margin-top:10mm!important}.signature,[id*="signature"],[class*="signature"]{display:none!important}`;w.document.open();w.document.write(`<!doctype html><html><head><meta charset="UTF-8"><base href="${document.baseURI}"><title>Lab Report</title><style>${css}</style></head><body>${report.outerHTML}</body></html>`);w.document.close();const waitForImage=()=>{let img=w.document.querySelector('.report-background');if(!img||img.complete){setTimeout(()=>{w.focus();w.print()},700)}else{img.onload=()=>setTimeout(()=>{w.focus();w.print()},700);img.onerror=()=>{w.focus();w.print()}}};w.onload=waitForImage}
-function renderPatients(){let q=($('patientSearch').value||'').toLowerCase(),list=db.patients.filter(p=>(p.name||'').toLowerCase().includes(q)||(p.number||'').toLowerCase().includes(q));$('patientsRows').innerHTML=list.slice().reverse().map(p=>`<tr><td>${esc(p.number)}</td><td>${esc(p.name)}</td><td>${esc(p.age)} ${esc(p.ageUnit)}</td><td>${esc(p.gender)}</td><td>${esc(p.date)}</td><td>${db.reports.filter(r=>r.patientId===p.id).length}</td><td><button class="small-btn" onclick="openPatient('${p.id}')">Open</button><button class="danger small-btn" onclick="deletePatient('${p.id}')">Delete</button></td></tr>`).join('')||'<tr><td colspan="7" class="empty">No records</td></tr>'}
-function openPatient(id){currentPatient=db.patients.find(p=>p.id===id);if(!currentPatient)return;let reports=db.reports.filter(r=>r.patientId===id);if(!reports.length){selectedTests.clear();$('choosePatientInfo').innerHTML=`<p><b>Patient:</b> ${esc(currentPatient.name)} &nbsp; <b>ID:</b> ${esc(currentPatient.number)} &nbsp; <b>Date:</b> ${esc(currentPatient.date)}</p>`;$('testSearch').value='';renderTestChoices();go('choosePage');return}let report=reports[0];currentReport=report;renderPreview();go('reportPage')}
-function deletePatient(id){if(!confirm('Delete patient and all reports?'))return;db.patients=db.patients.filter(p=>p.id!==id);db.reports=db.reports.filter(r=>r.patientId!==id);save();renderPatients();dashboard()}
-function dashboard(){$('statPatients').textContent=db.patients.length;$('statReports').textContent=db.reports.length;$('statTests').textContent=db.tests.length;$('recentPatients').innerHTML=db.patients.slice(-5).reverse().map(p=>`<tr><td>${esc(p.number)}</td><td>${esc(p.name)}</td><td>${esc(p.date)}</td><td><button class="small-btn" onclick="openPatient('${p.id}')">Open</button></td></tr>`).join('')||'<tr><td colspan="4" class="empty">No data</td></tr>'}
-function renderTests(){$('testsRows').innerHTML=db.tests.map((t,i)=>`<tr><td>${esc(t.name)}</td><td>${esc(t.unit)}</td><td>${esc(t.range)}</td><td><button class="danger small-btn" onclick="deleteTest(${i})">Delete</button></td></tr>`).join('')}
-function addTest(){let name=$('newTestName').value.trim();if(!name)return alert('Enter test name');if(db.tests.some(t=>t.name.toLowerCase()===name.toLowerCase()))return alert('Test already exists');db.tests.push({name,unit:$('newTestUnit').value,range:$('newTestRange').value,category:'Other'});save();$('newTestName').value=$('newTestUnit').value=$('newTestRange').value='';renderTests();dashboard()}
-function deleteTest(i){if(confirm('Delete test from selection list?')){db.tests.splice(i,1);save();renderTests();dashboard()}}
+function saveDraft(){currentReport.status='Draft';save();alert('تم حفظ المسودة');go('patients')}
+function saveFinal(){currentReport.status='Final';save();renderPreview();go('reportPage')}
+function editCurrentReport(){renderResults();go('resultPage')}
+function groupName(name){let n=name.toLowerCase();if(/cbc|hemoglobin|rbc|wbc|hct|mcv|mch|mchc|rdw|platelet|neutrophil|lymphocyte|monocyte|eosinophil|basophil|esr|reticulocyte|blood group/.test(n))return'Hematology';if(/glucose|urea|bun|creatinine|egfr|uric acid|sodium|potassium|chloride|bicarbonate|calcium|phosphorus|magnesium|protein|albumin|globulin|bilirubin|alt|ast|alp|ggt|amylase|lipase|ldh|ck|troponin|nt-probnp|iron|tibc/.test(n))return'Biochemistry';if(/cholesterol|triglyceride|hdl|ldl|vldl/.test(n))return'Lipid Profile';if(/tsh|t3|t4|ft3|ft4|prolactin|fsh|lh|testosterone|estradiol|progesterone|cortisol|hcg|insulin|c-peptide/.test(n))return'Hormones';if(/crp|aso|rf|anti-ccp|ferritin|vitamin|tnf|ana|dsdna/.test(n))return'Immunology';if(/hbs|hcv|hiv|vdrl|widal|brucella|toxoplasma/.test(n))return'Serology';if(/gue|urine/.test(n))return'Urine';if(/gse|stool/.test(n))return'Stool';if(/pt|inr|aptt|tt|d-dimer|fibrinogen|bleeding time|clotting time/.test(n))return'Coagulation';return'Other Tests'}
+function specialReport(item){let r=item.result||{};if(item.template==='HCG')return `<div class="hcg-report"><h3>SPECIMEN: ${esc(r.specimen||'Blood')}</h3><div class="hcg-result">${esc(item.name)} &nbsp; // &nbsp; ${esc(r.result||'________')}</div><div class="hcg-date">Date: ${esc(r.date||'')}</div></div>`;let gue=[['Color','color'],['Appearance','appearance'],['Reaction','reaction'],['S. Gravity','gravity'],['Albumin','albumin'],['Sugar','sugar'],['Bile Pigment','bilePigment'],['Ketone Bodies','ketone'],['Nitrite','nitrite'],['Ascorbic Acid','ascorbic'],['R.B.C','rbc'],['Pus Cells','pus'],['Epith Cells','epith'],['Casts','casts'],['Am. Urat','amUrat'],['Mucous','mucous'],['Uric Acid','uricAcid'],['Bacteria','bacteria'],['Ca. oxalate','oxalate']];let gse=[['Color','color'],['Consistency','consistency'],['Odor','odor'],['Reaction / pH','reaction'],['Mucus','mucus'],['Blood','blood'],['Occult Blood','occultBlood'],['Reducing Substances','reducingSubstances'],['Ova','ova'],['Cysts','cysts'],['Trophozoites','trophozoites'],['RBC','rbc'],['Pus Cells','pus'],['Fat','fat'],['Undigested Food','undigestedFood'],['Yeast','yeast'],['Other','other']];let a=item.template==='GUE'?gue:gse;let title=item.template==='GUE'?'GENERAL URINE EXAMINATION':'GENERAL STOOL EXAMINATION';let pairs=item.template==='GUE';let rows=pairs?Array.from({length:Math.ceil(a.length/2)},(_,i)=>`<tr><th>${a[i*2][0]}</th><td>${esc(r[a[i*2][1]]||'')}</td>${a[i*2+1]?`<th>${a[i*2+1][0]}</th><td>${esc(r[a[i*2+1][1]]||'')}</td>`:'<th></th><td></td>'}</tr>`).join(''):a.map(s=>`<tr><th>${s[0]}</th><td>${esc(r[s[1]]||'')}</td></tr>`).join('');return `<div class="special-report"><h3>${title}</h3><table class="special-table"><tbody>${rows}</tbody></table></div>`}
+function renderPreview(){if(!currentReport)return;let p=db.patients.find(x=>x.id===currentReport.patientId);if(!p)return;let groups={};currentReport.items.forEach(i=>(groups[groupName(i.name)]??=[]).push(i));let order=['Hematology','Biochemistry','Lipid Profile','Hormones','Immunology','Serology','Urine','Stool','Coagulation','Other Tests'];let rows=order.filter(g=>groups[g]).map(g=>`<tr class="group-row"><td colspan="4">${g}</td></tr>${groups[g].map(i=>i.template?`<tr><td colspan="4">${specialReport(i)}</td></tr>`:`<tr><td>${esc(i.name)}</td><td>${esc(i.result)}</td><td>${esc(i.unit)}</td><td>${esc(i.range)}</td></tr>`).join('')}`).join('');$('reportPreview').innerHTML=`<div class="report-sheet"><img class="report-background" src="lab_form.jpg" onerror="this.style.display='none'"><div class="report-content"><div class="report-patient"><div><b>Patient:</b> ${esc(p.name)}</div><div><b>Patient ID:</b> ${esc(p.number)}</div><div><b>Report No:</b> ${esc(currentReport.id)}</div><div><b>Age:</b> ${esc(p.age)} ${esc(p.ageUnit)}</div><div><b>Gender:</b> ${esc(p.gender)}</div><div><b>Date:</b> ${esc(currentReport.date)}</div>${p.doctor?`<div><b>Doctor:</b> ${esc(p.doctor)}</div>`:''}</div><table class="report-results"><thead><tr><th>Test Name</th><th>Result</th><th>Unit</th><th>Reference Range</th></tr></thead><tbody>${rows}</tbody></table>${p.notes?`<p style="direction:ltr;text-align:left"><b>Notes:</b> ${esc(p.notes)}</p>`:''}<p style="direction:ltr;text-align:left;margin-top:30mm">Laboratory Signature: __________________</p></div></div>`}
+function printReport(){
+ if(!currentReport)return alert('لا يوجد تقرير');
+ renderPreview();
+ const img=$('reportPreview').querySelector('.report-background');
+ const doPrint=()=>{setTimeout(()=>window.print(),250)};
+ if(img){
+   if(img.complete && img.naturalWidth>0) doPrint();
+   else {img.onload=doPrint;img.onerror=()=>{alert('تعذر تحميل خلفية التقرير lab_form.jpg. تأكد أن الصورة موجودة بجانب index.html.');doPrint();};}
+ } else doPrint();
+}
+function openPatient(id){currentPatient=db.patients.find(p=>p.id===id);let reps=db.reports.filter(r=>r.patientId===id);if(!reps.length){if(confirm('المريض لا يحتوي تقارير. هل تريد إضافة تحاليل؟')){selectedTests=new Set();$('choosePatientInfo').innerHTML=`<b>${esc(currentPatient.name)}</b>`;renderTestChoices();go('choosePage')}return}let choice=prompt('اختر رقم التقرير:\\n'+reps.map((r,i)=>`${i+1}. ${r.id} - ${r.status}`).join('\\n'));if(choice&&reps[Number(choice)-1]){currentReport=reps[Number(choice)-1];currentReport.status==='Final'?(renderPreview(),go('reportPage')):(renderResults(),go('resultPage'))}}
+function renderPatients(){let q=($('patientSearch').value||'').toLowerCase();let list=db.patients.filter(p=>(p.name||'').toLowerCase().includes(q)||(p.number||'').toLowerCase().includes(q));$('patientsRows').innerHTML=list.slice().reverse().map(p=>`<tr><td>${esc(p.number)}</td><td>${esc(p.name)}</td><td>${esc(p.age)} ${esc(p.ageUnit)}</td><td>${esc(p.gender)}</td><td>${esc(p.date)}</td><td>${db.reports.filter(r=>r.patientId===p.id).length}</td><td><button onclick="openPatient('${p.id}')">فتح</button> <button class="danger" onclick="deletePatient('${p.id}')">حذف</button></td></tr>`).join('')||'<tr><td colspan="7" class="empty">لا توجد سجلات</td></tr>'}
+function deletePatient(id){if(!confirm('حذف المريض وجميع تقاريره؟'))return;db.patients=db.patients.filter(p=>p.id!==id);db.reports=db.reports.filter(r=>r.patientId!==id);save();renderPatients();dashboard()}
+function dashboard(){$('statPatients').textContent=db.patients.length;$('statReports').textContent=db.reports.length;$('statTests').textContent=db.tests.length;$('recentPatients').innerHTML=db.patients.slice(-5).reverse().map(p=>`<tr><td>${esc(p.number)}</td><td>${esc(p.name)}</td><td>${esc(p.date)}</td><td><button onclick="openPatient('${p.id}')">فتح</button></td></tr>`).join('')||'<tr><td colspan="4" class="empty">لا توجد بيانات</td></tr>'}
+function renderTests(){$('testsRows').innerHTML=db.tests.map((t,i)=>`<tr><td>${esc(t.name)}</td><td>${esc(t.unit)}</td><td>${esc(t.range)}</td><td><button class="danger" onclick="deleteTest(${i})">حذف</button></td></tr>`).join('')}
+function addTest(){let name=$('newTestName').value.trim();if(!name)return alert('اكتب اسم التحليل');if(db.tests.some(t=>t.name.toLowerCase()===name.toLowerCase()))return alert('التحليل موجود');db.tests.push({name,unit:$('newTestUnit').value,range:$('newTestRange').value,category:'Other'});save();$('newTestName').value=$('newTestUnit').value=$('newTestRange').value='';renderTests();dashboard()}
+function deleteTest(i){if(confirm('حذف التحليل من قائمة الاختيار؟')){db.tests.splice(i,1);save();renderTests();dashboard()}}
 function loadSettings(){let s=db.settings;$('setLabAr').value=s.labAr||'';$('setLabEn').value=s.labEn||'';$('setPhone').value=s.phone||'';$('setAddress').value=s.address||''}
-function saveSettings(){db.settings={labAr:$('setLabAr').value,labEn:$('setLabEn').value,phone:$('setPhone').value,address:$('setAddress').value};save();alert('Settings saved')}
-function backupData(){let b=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='Al-Juman-Backup.json';a.click();URL.revokeObjectURL(a.href)}
-function restoreData(){let input=document.createElement('input');input.type='file';input.accept='.json,application/json';input.onchange=()=>{let f=input.files[0];if(!f)return;let rd=new FileReader();rd.onload=()=>{try{let x=JSON.parse(rd.result);if(!Array.isArray(x.patients)||!Array.isArray(x.tests))throw Error('Invalid');if(confirm('Replace current data with backup?')){db={...fresh(),...x};save();dashboard();renderPatients();renderTests();alert('Backup restored')}}catch(e){alert('Invalid backup file')}};rd.readAsText(f)};input.click()}
-function exportWord(){if(!currentReport)return;renderPreview();let html=`<html><head><meta charset="UTF-8"><style>body{font-family:Arial}table{width:100%;border-collapse:collapse}th,td{border:1px solid #777;padding:7px;text-align:center}</style></head><body>${$('reportPreview').innerHTML}</body></html>`,b=new Blob(['\ufeff',html],{type:'application/msword'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='Report-'+currentReport.id+'.doc';a.click();URL.revokeObjectURL(a.href)}
-dashboard();renderPatients();renderTests();
-  /* =================================
-   AL-JUMAN LAB REPORT FINAL FIX
-   ================================= */
-
-/* Report container */
-#reportPrintArea {
-  width: 100%;
-  box-sizing: border-box;
-  overflow: visible;
-}
-
-.report-sheet {
-  position: relative;
-  width: 100%;
-  max-width: 210mm;
-  aspect-ratio: 210 / 297;
-  margin: 0 auto;
-  background: #fff;
-  overflow: hidden;
-}
-
-/* Background form */
-.report-pdf-background {
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: fill !important;
-  display: block !important;
-}
-
-/* Report content */
-.report-content {
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  box-sizing: border-box !important;
-}
-
-/* Patient information */
-.report-info {
-  box-sizing: border-box;
-  width: 82%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Results position */
-.report-results-position {
-  width: 82% !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  box-sizing: border-box !important;
-}
-
-/* Results table */
-.report-results {
-  width: 100% !important;
-  border-collapse: collapse !important;
-  table-layout: fixed !important;
-  direction: rtl !important;
-  margin: 0 auto !important;
-}
-
-/* Table cells */
-.report-results th,
-.report-results td {
-  box-sizing: border-box !important;
-  border: 1px solid #9ba9b7 !important;
-  text-align: center !important;
-  vertical-align: middle !important;
-  padding: 5px 4px !important;
-  font-size: 11px !important;
-  line-height: 1.35 !important;
-  overflow-wrap: anywhere !important;
-  word-break: normal !important;
-}
-
-/* Header */
-.report-results th {
-  background: #173956 !important;
-  color: #ffffff !important;
-  font-weight: bold !important;
-}
-
-/* Column order:
-   LEFT  = Reference Range
-   2     = Unit
-   3     = Result
-   RIGHT = Test Name
-*/
-
-/* DOM column 1 = Test Name */
-.report-results th:nth-child(1),
-.report-results td:nth-child(1) {
-  width: 32% !important;
-}
-
-/* DOM column 2 = Result */
-.report-results th:nth-child(2),
-.report-results td:nth-child(2) {
-  width: 18% !important;
-}
-
-/* DOM column 3 = Unit */
-.report-results th:nth-child(3),
-.report-results td:nth-child(3) {
-  width: 16% !important;
-}
-
-/* DOM column 4 = Reference Range */
-.report-results th:nth-child(4),
-.report-results td:nth-child(4) {
-  width: 34% !important;
-}
-
-/* Group headings */
-.report-results .group-row td {
-  background: #e7edf3 !important;
-  font-weight: bold !important;
-  text-align: right !important;
-}
-
-/* =================================
-   PRINT / SAVE PDF - A4
-   ================================= */
-
-@page {
-  size: A4 portrait;
-  margin: 0;
-}
-
-@media print {
-
-  html,
-  body {
-    width: 210mm !important;
-    height: 297mm !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow: hidden !important;
-    background: #ffffff !important;
-  }
-
-  body * {
-    visibility: hidden !important;
-  }
-
-  #reportPrintArea,
-  #reportPrintArea * {
-    visibility: visible !important;
-  }
-
-  #reportPrintArea {
-    display: block !important;
-    position: absolute !important;
-    left: 0 !important;
-    top: 0 !important;
-    width: 210mm !important;
-    height: 297mm !important;
-    max-width: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow: hidden !important;
-  }
-
-  .report-sheet {
-    position: relative !important;
-    width: 210mm !important;
-    height: 297mm !important;
-    max-width: none !important;
-    aspect-ratio: auto !important;
-    margin: 0 !important;
-    overflow: hidden !important;
-  }
-
-  .report-pdf-background {
-    position: absolute !important;
-    inset: 0 !important;
-    width: 210mm !important;
-    height: 297mm !important;
-    object-fit: fill !important;
-  }
-
-  .report-content {
-    position: absolute !important;
-    inset: 0 !important;
-    width: 210mm !important;
-    height: 297mm !important;
-  }
-
-  .report-info {
-    width: 82% !important;
-  }
-
-  .report-results-position {
-    width: 82% !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-
-  .report-results {
-    width: 100% !important;
-    table-layout: fixed !important;
-    border-collapse: collapse !important;
-    direction: rtl !important;
-  }
-
-  .report-results th,
-  .report-results td {
-    font-size: 9pt !important;
-    padding: 4px !important;
-    line-height: 1.25 !important;
-  }
-
-  button,
-  nav,
-  .no-print {
-    display: none !important;
-  }
-}
+function saveSettings(){db.settings={labAr:$('setLabAr').value,labEn:$('setLabEn').value,phone:$('setPhone').value,address:$('setAddress').value};save();alert('تم الحفظ')}
+function backupData(){let b=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='Al-Juman-Backup.json';a.click()}
+function restoreData(){let input=document.createElement('input');input.type='file';input.accept='.json';input.onchange=()=>{let f=input.files[0];if(!f)return;let rd=new FileReader();rd.onload=()=>{try{let x=JSON.parse(rd.result);if(!Array.isArray(x.patients)||!Array.isArray(x.tests))throw Error();if(confirm('استبدال البيانات الحالية؟')){db={...fresh(),...x};save();dashboard();renderPatients();renderTests();alert('تمت الاستعادة')}}catch(e){alert('ملف النسخة غير صحيح')}};rd.readAsText(f)};input.click()}
+function exportWord(){if(!currentReport)return;renderPreview();let html=`<html><head><meta charset="UTF-8"><style>body{font-family:Arial}table{width:100%;border-collapse:collapse}th,td{border:1px solid #777;padding:7px;text-align:center}</style></head><body>${$('reportPreview').innerHTML}</body></html>`;let b=new Blob(['\\ufeff',html],{type:'application/msword'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='Report-'+currentReport.id+'.doc';a.click()}
+dashboard();renderPatients();renderTests();save();
 </script></body></html>
-
-/* ترتيب الأعمدة من اليسار إلى اليمين */
-.report-results th:nth-child(1),
-.report-results td:nth-child(1) { width: 34%; }
-
-.report-results th:nth-child(2),
-.report-results td:nth-child(2) { width: 16%; }
-
-.report-results th:nth-child(3),
-.report-results td:nth-child(3) { width: 18%; }
-
-.report-results th:nth-child(4),
-.report-results td:nth-child(4) { width: 32%; }
-
-/* ===== PRINT FIX ===== */
