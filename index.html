@@ -62,6 +62,228 @@ function backupData(){let b=new Blob([JSON.stringify(db,null,2)],{type:'applicat
 function restoreData(){let input=document.createElement('input');input.type='file';input.accept='.json,application/json';input.onchange=()=>{let f=input.files[0];if(!f)return;let rd=new FileReader();rd.onload=()=>{try{let x=JSON.parse(rd.result);if(!Array.isArray(x.patients)||!Array.isArray(x.tests))throw Error('Invalid');if(confirm('Replace current data with backup?')){db={...fresh(),...x};save();dashboard();renderPatients();renderTests();alert('Backup restored')}}catch(e){alert('Invalid backup file')}};rd.readAsText(f)};input.click()}
 function exportWord(){if(!currentReport)return;renderPreview();let html=`<html><head><meta charset="UTF-8"><style>body{font-family:Arial}table{width:100%;border-collapse:collapse}th,td{border:1px solid #777;padding:7px;text-align:center}</style></head><body>${$('reportPreview').innerHTML}</body></html>`,b=new Blob(['\ufeff',html],{type:'application/msword'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='Report-'+currentReport.id+'.doc';a.click();URL.revokeObjectURL(a.href)}
 dashboard();renderPatients();renderTests();
+  /* =================================
+   AL-JUMAN LAB REPORT FINAL FIX
+   ================================= */
+
+/* Report container */
+#reportPrintArea {
+  width: 100%;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+.report-sheet {
+  position: relative;
+  width: 100%;
+  max-width: 210mm;
+  aspect-ratio: 210 / 297;
+  margin: 0 auto;
+  background: #fff;
+  overflow: hidden;
+}
+
+/* Background form */
+.report-pdf-background {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: fill !important;
+  display: block !important;
+}
+
+/* Report content */
+.report-content {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Patient information */
+.report-info {
+  box-sizing: border-box;
+  width: 82%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Results position */
+.report-results-position {
+  width: 82% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  box-sizing: border-box !important;
+}
+
+/* Results table */
+.report-results {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  table-layout: fixed !important;
+  direction: rtl !important;
+  margin: 0 auto !important;
+}
+
+/* Table cells */
+.report-results th,
+.report-results td {
+  box-sizing: border-box !important;
+  border: 1px solid #9ba9b7 !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  padding: 5px 4px !important;
+  font-size: 11px !important;
+  line-height: 1.35 !important;
+  overflow-wrap: anywhere !important;
+  word-break: normal !important;
+}
+
+/* Header */
+.report-results th {
+  background: #173956 !important;
+  color: #ffffff !important;
+  font-weight: bold !important;
+}
+
+/* Column order:
+   LEFT  = Reference Range
+   2     = Unit
+   3     = Result
+   RIGHT = Test Name
+*/
+
+/* DOM column 1 = Test Name */
+.report-results th:nth-child(1),
+.report-results td:nth-child(1) {
+  width: 32% !important;
+}
+
+/* DOM column 2 = Result */
+.report-results th:nth-child(2),
+.report-results td:nth-child(2) {
+  width: 18% !important;
+}
+
+/* DOM column 3 = Unit */
+.report-results th:nth-child(3),
+.report-results td:nth-child(3) {
+  width: 16% !important;
+}
+
+/* DOM column 4 = Reference Range */
+.report-results th:nth-child(4),
+.report-results td:nth-child(4) {
+  width: 34% !important;
+}
+
+/* Group headings */
+.report-results .group-row td {
+  background: #e7edf3 !important;
+  font-weight: bold !important;
+  text-align: right !important;
+}
+
+/* =================================
+   PRINT / SAVE PDF - A4
+   ================================= */
+
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+@media print {
+
+  html,
+  body {
+    width: 210mm !important;
+    height: 297mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: #ffffff !important;
+  }
+
+  body * {
+    visibility: hidden !important;
+  }
+
+  #reportPrintArea,
+  #reportPrintArea * {
+    visibility: visible !important;
+  }
+
+  #reportPrintArea {
+    display: block !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 210mm !important;
+    height: 297mm !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .report-sheet {
+    position: relative !important;
+    width: 210mm !important;
+    height: 297mm !important;
+    max-width: none !important;
+    aspect-ratio: auto !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .report-pdf-background {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 210mm !important;
+    height: 297mm !important;
+    object-fit: fill !important;
+  }
+
+  .report-content {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 210mm !important;
+    height: 297mm !important;
+  }
+
+  .report-info {
+    width: 82% !important;
+  }
+
+  .report-results-position {
+    width: 82% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .report-results {
+    width: 100% !important;
+    table-layout: fixed !important;
+    border-collapse: collapse !important;
+    direction: rtl !important;
+  }
+
+  .report-results th,
+  .report-results td {
+    font-size: 9pt !important;
+    padding: 4px !important;
+    line-height: 1.25 !important;
+  }
+
+  button,
+  nav,
+  .no-print {
+    display: none !important;
+  }
+}
 </script></body></html>
 /* ===== REPORT FIX ===== */
 #reportPrintArea {
