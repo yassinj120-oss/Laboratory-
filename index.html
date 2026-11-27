@@ -4,12 +4,12 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Al-Juman Side Lab</title>
 <style>
 :root{--navy:#102b46;--blue:#1c6ca8;--silver:#d9e1e8;--bg:#f2f5f9;--white:#fff;--border:#dce4ed;--green:#16845b;--red:#c0392b;--text:#1c2938}*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Arial,sans-serif;color:var(--text)}button,input,select,textarea{font:inherit}button{border:0;border-radius:9px;padding:11px 15px;background:var(--blue);color:white;cursor:pointer}button:hover{opacity:.92}.light{background:#e8eef4;color:var(--navy)}.green{background:#d9f8e5;color:#17643b}.danger{background:#ffeded;color:#b42318}.sidebar{background:var(--navy);color:white;padding:15px}.brand{font-weight:bold;font-size:18px;padding:12px}.brand small{display:block;font-size:12px;margin-top:6px;color:#d3e0ec}.nav{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}.nav button{background:#234766}.nav button.active{background:white;color:var(--navy)}.main{max-width:1500px;margin:auto}.topbar{padding:15px 20px;background:white;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap}.content{padding:18px}.page{display:none}.page.active{display:block}.panel{background:white;border:1px solid var(--border);border-radius:15px;padding:18px;margin-bottom:17px}h2,h3{color:var(--navy)}h2{font-size:22px}.form-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.field label{display:block;font-weight:bold;font-size:13px;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;border:1px solid var(--border);padding:10px;border-radius:8px;background:white}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.search{width:100%;padding:12px;border:1px solid var(--border);border-radius:9px;margin-bottom:14px}.test-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.test-option{border:1px solid var(--border);border-radius:9px;padding:11px;display:flex;gap:8px;align-items:flex-start;background:#fff}.test-option.selected{border-color:var(--blue);background:#eef6ff}.test-option small{display:block;color:#718096;margin-top:4px}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse}th,td{border:1px solid #d5dde5;padding:9px;text-align:center}th{background:var(--navy);color:white}input.result-input{width:100%;min-width:85px;padding:7px;border:1px solid #ccd6df;border-radius:5px}.entry-table{direction:ltr}.entry-table th,.entry-table td{direction:ltr;text-align:center}.special-editor{padding:12px;border:1px solid #d5e3ef;border-radius:10px;background:#f6faff}.special-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.special-grid input,.special-grid select{width:100%;padding:9px;border:1px solid #ccd6df;border-radius:7px}.note{color:#697b8d;font-size:13px}
-/* Report sheet and table: strict left-to-right column order */
-.report-sheet{width:210mm;height:297mm;margin:auto;background:white;position:relative;overflow:hidden}.report-background{position:absolute;inset:0;width:210mm;height:297mm;object-fit:fill;z-index:1}.report-content{position:relative;z-index:2;padding:50mm 15mm 20mm}.report-patient{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;direction:ltr;text-align:left;font-size:10pt;background:#ffffffdd;padding:10px;margin-bottom:12px}.report-results{direction:ltr!important;width:100%;border-collapse:collapse;table-layout:fixed;margin-top:7px;font-family:Arial,sans-serif}.report-results th{background:#173957!important;color:#fff!important;font-weight:700;padding:8px 5px;border:1px solid #b7c7d5;font-size:9pt;text-align:center}.report-results td{border:1px solid #c5d0da;padding:6px 5px;text-align:center;vertical-align:middle;font-size:8.5pt;color:#24384b;overflow-wrap:anywhere}.report-results tbody tr:nth-child(even):not(.group-row){background:#f4f8fb}.report-results tbody tr:nth-child(odd):not(.group-row){background:#fff}.report-results th:nth-child(1),.report-results td:nth-child(1){width:34%}.report-results th:nth-child(2),.report-results td:nth-child(2){width:18%}.report-results th:nth-child(3),.report-results td:nth-child(3){width:16%}.report-results th:nth-child(4),.report-results td:nth-child(4){width:32%}.group-row td{background:#e5edf5!important;color:#173957!important;font-weight:bold;text-align:left!important;padding:7px 10px;border-top:2px solid #547895}.special-report{margin:5mm auto;width:100%;color:#111}.special-report h3{background:#173957;color:white;text-align:center;padding:8px;margin:0;font-size:9pt}.special-table{direction:ltr;min-width:0;width:100%;border-collapse:collapse}.special-table th,.special-table td{border:1px solid #c5d0da;padding:5px;font-size:8.5pt;text-align:center}.special-table th{background:#e5edf5;color:#173957}.hcg-report{border:1px solid #aaa;padding:12mm 8mm;min-height:100mm;background:white}.hcg-report h3{background:#386900;color:white;text-align:center;padding:9px}.hcg-report .hcg-result{margin-top:20mm;text-align:center;font-size:18pt;font-weight:bold}.hcg-report .hcg-date{text-align:right;margin-top:15mm}.empty{text-align:center;padding:20px;color:#6d7b89}
+/* Report table: visual LTR columns are Range | Unit | Result | Test Name */
+.report-sheet{width:210mm;height:297mm;margin:auto;background:white;position:relative;overflow:hidden}.report-background{position:absolute;inset:0;width:210mm;height:297mm;object-fit:fill;z-index:1}.report-content{position:relative;z-index:2;padding:50mm 15mm 20mm}.report-patient{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;direction:ltr;text-align:left;font-size:10pt;background:#ffffffdd;padding:10px;margin-bottom:12px}.report-results{direction:rtl!important;width:100%;border-collapse:collapse;table-layout:fixed;margin-top:7px;font-family:Arial,sans-serif}.report-results th{background:#173957!important;color:#fff!important;font-weight:700;padding:8px 5px;border:1px solid #b7c7d5;font-size:9pt;text-align:center}.report-results td{border:1px solid #c5d0da;padding:6px 5px;text-align:center;vertical-align:middle;font-size:8.5pt;color:#24384b;overflow-wrap:anywhere}.report-results tbody tr:nth-child(even):not(.group-row){background:#f4f8fb}.report-results th:nth-child(1),.report-results td:nth-child(1){width:34%}.report-results th:nth-child(2),.report-results td:nth-child(2){width:18%}.report-results th:nth-child(3),.report-results td:nth-child(3){width:16%}.report-results th:nth-child(4),.report-results td:nth-child(4){width:32%}.group-row td{background:#e5edf5!important;color:#173957!important;font-weight:bold;text-align:right!important;padding:7px 10px;border-top:2px solid #547895}.special-report{margin:5mm auto;width:100%;color:#111}.special-report h3{background:#173957;color:white;text-align:center;padding:8px;margin:0;font-size:9pt}.special-table{direction:ltr;min-width:0;width:100%;border-collapse:collapse}.special-table th,.special-table td{border:1px solid #c5d0da;padding:5px;font-size:8.5pt;text-align:center}.special-table th{background:#e5edf5;color:#173957}.hcg-report{border:1px solid #aaa;padding:12mm 8mm;min-height:100mm;background:white}.hcg-report h3{background:#386900;color:white;text-align:center;padding:9px}.hcg-report .hcg-result{margin-top:20mm;text-align:center;font-size:18pt;font-weight:bold}.hcg-report .hcg-date{text-align:right;margin-top:15mm}.empty{text-align:center;padding:20px;color:#6d7b89}.icon-btn{font-size:16px;min-width:42px}.small-btn{padding:6px 9px;margin:2px;font-size:13px}
 @media(max-width:700px){.form-grid,.special-grid{grid-template-columns:1fr}.test-list{grid-template-columns:1fr}.content{padding:10px}.panel{padding:13px}.sidebar{position:sticky;top:0;z-index:5}.report-sheet{width:100%;height:auto;min-height:100vh}.report-background{width:100%;height:100%}.report-content{padding:35% 5% 10%}}
-@media print{@page{size:A4 portrait;margin:0}html,body{margin:0!important;padding:0!important;background:white!important}.sidebar,.topbar,.content>.page:not(#reportPage),.actions,.no-print{display:none!important}.app,.main,.content,.page#reportPage{display:block!important;width:210mm!important;margin:0!important;padding:0!important}.panel#reportPreview{display:block!important;border:0!important;padding:0!important;margin:0!important}.report-sheet{width:210mm!important;height:297mm!important;min-height:297mm!important;margin:0!important;page-break-after:avoid!important;overflow:hidden!important}.report-background{width:210mm!important;height:297mm!important}.report-content{padding:50mm 15mm 20mm!important}.report-results{direction:ltr!important;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}.report-results thead{display:table-header-group}.report-content .signature,.report-content [id*="signature"],.report-content [class*="signature"]{display:none!important}}
-</style></head><body><div class="app"><aside class="sidebar"><div class="brand">✚ Al-Juman Side Lab<small>Medical Laboratory Management</small></div><nav class="nav"><button class="active" data-page="home">Home</button><button data-page="newPatient">New Patient</button><button data-page="patients">Patient Records</button><button data-page="tests">Test Management</button><button data-page="settings">Settings</button></nav></aside><div class="main"><div class="topbar"><h3 id="pageLabel">Home</h3><span id="todayLabel"></span></div><main class="content">
-<section class="page active" id="home"><div class="panel"><h2>Al-Juman Side Lab</h2><p>Patient and laboratory report management</p><button onclick="go('newPatient')">+ New Patient</button></div><div class="panel"><h3>Statistics</h3><p>Patients: <b id="statPatients">0</b></p><p>Reports: <b id="statReports">0</b></p><p>Tests: <b id="statTests">0</b></p></div><div class="panel"><h3>Recent Patients</h3><div class="table-wrap"><table><thead><tr><th>Patient ID</th><th>Name</th><th>Date</th><th>Open</th></tr></thead><tbody id="recentPatients"></tbody></table></div></div></section>
+@media print{@page{size:A4 portrait;margin:0}html,body{margin:0!important;padding:0!important;background:white!important}.sidebar,.topbar,.content>.page:not(#reportPage),.actions,.no-print{display:none!important}.app,.main,.content,.page#reportPage{display:block!important;width:210mm!important;margin:0!important;padding:0!important}.panel#reportPreview{display:block!important;border:0!important;padding:0!important;margin:0!important}.report-sheet{width:210mm!important;height:297mm!important;min-height:297mm!important;margin:0!important;page-break-after:avoid!important;overflow:hidden!important}.report-background{width:210mm!important;height:297mm!important}.report-content{padding:50mm 15mm 20mm!important}.report-results{direction:rtl!important;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}.report-results thead{display:table-header-group}.report-content .signature,.report-content [id*="signature"],.report-content [class*="signature"]{display:none!important}}
+</style></head><body><div class="app"><aside class="sidebar"><div class="brand">✚ Al-Juman Side Lab<small>Medical Laboratory Management</small></div><nav class="nav"><button class="active" data-page="home">⌂ Home</button><button data-page="newPatient">＋ New Patient</button><button data-page="patients">▤ Patient Records</button><button data-page="tests">⚙ Test Management</button><button data-page="settings">☰ Settings</button></nav></aside><div class="main"><div class="topbar"><h3 id="pageLabel">Home</h3><span id="todayLabel"></span></div><main class="content">
+<section class="page active" id="home"><div class="panel"><h2>Al-Juman Side Lab</h2><p>Patient and laboratory report management</p><button onclick="go('newPatient')">＋ New Patient</button></div><div class="panel"><h3>Statistics</h3><p>Patients: <b id="statPatients">0</b></p><p>Reports: <b id="statReports">0</b></p><p>Tests: <b id="statTests">0</b></p></div><div class="panel"><h3>Recent Patients</h3><div class="table-wrap"><table><thead><tr><th>Patient ID</th><th>Name</th><th>Date</th><th>Open</th></tr></thead><tbody id="recentPatients"></tbody></table></div></div></section>
 <section class="page" id="newPatient"><h2>New Patient Registration</h2><div class="panel"><form id="patientForm"><div class="form-grid"><div class="field"><label>Patient Name *</label><input id="pName" required></div><div class="field"><label>Age *</label><input id="pAge" type="number" min="0" required></div><div class="field"><label>Age Unit</label><select id="pAgeUnit"><option>Years</option><option>Months</option><option>Days</option></select></div><div class="field"><label>Gender *</label><select id="pGender" required><option value="">Select</option><option>Male</option><option>Female</option></select></div><div class="field"><label>Date *</label><input id="pDate" type="date" required></div><div class="field"><label>Patient ID</label><input id="pNumber" readonly></div><div class="field"><label>Doctor</label><input id="pDoctor"></div></div><div class="field" style="margin-top:12px"><label>Notes</label><textarea id="pNotes"></textarea></div><div class="actions"><button type="submit">Save & Select Tests</button></div></form></div></section>
 <section class="page" id="choosePage"><h2>Select Laboratory Tests</h2><div class="panel"><div id="choosePatientInfo"></div><input class="search" id="testSearch" placeholder="Search tests..." oninput="renderTestChoices()"><div class="test-list" id="testChoices"></div><div class="actions"><button onclick="createReport()">Continue to Results</button><button class="light" onclick="go('patients')">Back</button></div></div></section>
 <section class="page" id="resultPage"><h2>Enter Results</h2><div class="panel"><div id="resultPatientInfo"></div><div class="table-wrap"><table class="entry-table"><thead><tr><th>Test Name</th><th>Result</th><th>Unit</th><th>Reference Range</th><th>Note</th><th>Delete</th></tr></thead><tbody id="resultRows"></tbody></table></div><div class="actions"><button class="light" onclick="saveDraft()">Save Draft</button><button class="green" onclick="saveFinal()">Save Final Report</button><button class="light" onclick="go('patients')">Back</button></div></div></section>
@@ -31,287 +31,35 @@ const defaultTests=[
 {name:'GUE - General Urine Examination',unit:'',range:'',category:'Urine',template:'GUE'},{name:'GSE - General Stool Examination',unit:'',range:'',category:'Stool',template:'GSE'},{name:'Urine Albumin',unit:'',range:'Negative',category:'Urine'},{name:'Urine Sugar',unit:'',range:'Negative',category:'Urine'},{name:'Urine Pregnancy Test',unit:'',range:'Negative',category:'Urine'},{name:'Urine Protein',unit:'',range:'Negative',category:'Urine'},{name:'Urine Culture',unit:'',range:'No growth',category:'Urine'},
 {name:'PT',unit:'sec',range:'Lab-dependent',category:'Coagulation'},{name:'INR',unit:'',range:'0.8-1.2',category:'Coagulation'},{name:'APTT',unit:'sec',range:'Lab-dependent',category:'Coagulation'},{name:'TT',unit:'sec',range:'Lab-dependent',category:'Coagulation'},{name:'D-Dimer',unit:'ng/mL',range:'Lab-dependent',category:'Coagulation'},{name:'Fibrinogen',unit:'mg/dL',range:'200-400',category:'Coagulation'}];
 function fresh(){return{patients:[],reports:[],tests:defaultTests.map(t=>({...t})),settings:{labAr:'مختبر الجمان الجانبي',labEn:'Al-Juman Side Lab',phone:'',address:'الصقلاوية - الشهداء الثانية'},pseq:1,rseq:1}}
-function loadDB(){try{let old=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');if(!old)return fresh();let d=fresh();old.patients=Array.isArray(old.patients)?old.patients:[];old.reports=Array.isArray(old.reports)?old.reports:[];old.tests=Array.isArray(old.tests)?old.tests:[];let nm=new Set(old.tests.map(t=>(t.name||'').toLowerCase()));d.tests.forEach(t=>{if(!nm.has(t.name.toLowerCase()))old.tests.push({...t})});old.settings={...d.settings,...(old.settings||{})};old.pseq=old.pseq||old.patients.length+1;old.rseq=old.rseq||old.reports.length+1;return old}catch(e){console.error(e);return fresh()}}
+function loadDB(){try{let old=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');if(!old)return fresh();let d=fresh();old.patients=Array.isArray(old.patients)?old.patients:[];old.reports=Array.isArray(old.reports)?old.reports:[];old.tests=Array.isArray(old.tests)?old.tests:[];let names=new Set(old.tests.map(t=>(t.name||'').toLowerCase()));d.tests.forEach(t=>{if(!names.has(t.name.toLowerCase()))old.tests.push({...t})});old.settings={...d.settings,...(old.settings||{})};old.pseq=old.pseq||old.patients.length+1;old.rseq=old.rseq||old.reports.length+1;return old}catch(e){console.warn('DB read failed; using fresh DB',e);return fresh()}}
 let db=loadDB();function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(db))}save();let currentPatient=null,currentReport=null,selectedTests=new Set();function patientNumber(){return'P-'+seq(db.pseq||1)}function preparePatientForm(){$('pDate').value=today();$('pNumber').value=patientNumber()}
 function go(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));$(id).classList.add('active');$('pageLabel').textContent=labels[id]||id;document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));if(id==='home')dashboard();if(id==='patients')renderPatients();if(id==='tests')renderTests();if(id==='settings')loadSettings()}document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>go(b.dataset.page));$('todayLabel').textContent=today();preparePatientForm();
-$('patientForm').onsubmit=e=>{e.preventDefault();let p={id:String(Date.now()),number:patientNumber(),name:$('pName').value.trim(),age:$('pAge').value,ageUnit:$('pAgeUnit').value,gender:$('pGender').value,date:$('pDate').value,doctor:$('pDoctor').value,notes:$('pNotes').value,reports:[]};db.pseq++;db.patients.push(p);save();currentPatient=p;selectedTests=new Set();$('choosePatientInfo').innerHTML=`<p><b>Patient:</b> ${esc(p.name)} &nbsp; <b>ID:</b> ${esc(p.number)} &nbsp; <b>Date:</b> ${esc(p.date)}</p>`;$('testSearch').value='';renderTestChoices();go('choosePage')};
+$('patientForm').onsubmit=e=>{e.preventDefault();let p={id:String(Date.now()),number:patientNumber(),name:$('pName').value.trim(),age:$('pAge').value,ageUnit:$('pAgeUnit').value,gender:$('pGender').value,date:$('pDate').value,doctor:$('pDoctor').value,notes:$('pNotes').value,reports:[]};db.pseq++;db.patients.push(p);save();currentPatient=p;selectedTests=new Set();$('choosePatientInfo').innerHTML=`<p><b>Patient:</b> ${esc(p.name)} &nbsp; <b>ID:</b> ${esc(p.number)} &nbsp; <b>Date:</b> ${esc(p.date)}</p>`;$('testSearch').value='';renderTestChoices();$('patientForm').reset();preparePatientForm();go('choosePage')};
 function renderTestChoices(){let q=$('testSearch').value.trim().toLowerCase(),list=db.tests.filter(t=>(t.name||'').toLowerCase().includes(q)||(t.category||'').toLowerCase().includes(q));$('testChoices').innerHTML=list.map(t=>`<label class="test-option ${selectedTests.has(t.name)?'selected':''}"><input type="checkbox" ${selectedTests.has(t.name)?'checked':''} onchange="toggleTest('${esc(t.name)}',this.checked)"><span><b>${esc(t.name)}</b><small>${esc(t.category||'')} · ${esc(t.unit||'')} ${t.range?'· '+esc(t.range):''}</small></span></label>`).join('')||'<div class="empty">No matching tests</div>'}function toggleTest(n,c){c?selectedTests.add(n):selectedTests.delete(n);renderTestChoices()}
-function specialType(t){if(t.template)return t.template;let n=(t.name||'').toLowerCase();if(n.includes('gue')||n.includes('urine examination'))return'GUE';if(n.includes('gse')||n.includes('stool examination'))return'GSE';if(n==='hcg'||n.includes('hcg')||n.includes('pregnancy'))return'HCG';return''}function defaults(type){if(type==='GUE')return{color:'',appearance:'',reaction:'',gravity:'',albumin:'',sugar:'',bilePigment:'',ketone:'',nitrite:'',ascorbic:'',rbc:'',pus:'',epith:'',casts:'',amUrat:'',mucous:'',uricAcid:'',bacteria:'',oxalate:''};if(type==='GSE')return{color:'',consistency:'',mucus:'',blood:'',ph:'',occultBlood:'',reducingSubstances:'',ova:'',cysts:'',trophozoites:'',rbc:'',pus:'',fat:'',undigestedFood:'',yeast:'',other:''};if(type==='HCG')return{specimen:'Blood',result:'',date:currentPatient?.date||today()};return''}
+function specialType(t){if(t.template)return t.template;let n=(t.name||'').toLowerCase();if(n.includes('gue')||n.includes('urine examination'))return'GUE';if(n.includes('gse')||n.includes('stool examination'))return'GSE';if(n==='hcg'||n.includes('hcg')||n.includes('pregnancy'))return'HCG';return''}
+function defaults(type){if(type==='GUE')return{color:'',appearance:'',reaction:'',gravity:'',albumin:'',sugar:'',bilePigment:'',ketone:'',nitrite:'',ascorbic:'',rbc:'',pus:'',epith:'',casts:'',amUrat:'',mucous:'',uricAcid:'',bacteria:'',oxalate:''};if(type==='GSE')return{color:'',consistency:'',mucus:'',blood:'',ph:'',occultBlood:'',reducingSubstances:'',ova:'',cysts:'',trophozoites:'',rbc:'',pus:'',fat:'',undigestedFood:'',yeast:'',other:''};if(type==='HCG')return{specimen:'Blood',result:'',date:currentPatient?.date||today()};return''}
 function createReport(){if(!currentPatient)return alert('Register a patient first');if(!selectedTests.size)return alert('Select at least one test');let r={id:'R-'+seq(db.rseq++),patientId:currentPatient.id,date:currentPatient.date,status:'Draft',items:[]};selectedTests.forEach(name=>{let t=db.tests.find(x=>x.name===name);if(!t)return;let ty=specialType(t);r.items.push({name:t.name,result:ty?defaults(ty):'',template:ty,unit:t.unit||'',range:t.range||'',note:''})});db.reports.unshift(r);currentPatient.reports.push(r.id);save();currentReport=r;renderResults();go('resultPage')}
-function renderResults(){let p=db.patients.find(x=>x.id===currentReport.patientId);$('resultPatientInfo').innerHTML=`<p><b>${esc(p.name)}</b> | ${esc(p.number)} | ${esc(p.age)} ${esc(p.ageUnit)} | ${esc(p.gender)} | ${esc(currentReport.date)}</p>`;$('resultRows').innerHTML=currentReport.items.map((i,n)=>{if(i.template)return`<tr><td colspan="6"><div class="special-editor"><h3>${esc(i.name)}</h3>${specialEditor(i,n)}</div></td></tr>`;return`<tr><td>${esc(i.name)}</td><td><input class="result-input" value="${esc(i.result)}" oninput="currentReport.items[${n}].result=this.value"></td><td><input class="result-input" value="${esc(i.unit)}" oninput="currentReport.items[${n}].unit=this.value"></td><td><input class="result-input" value="${esc(i.range)}" oninput="currentReport.items[${n}].range=this.value"></td><td><input class="result-input" value="${esc(i.note)}" oninput="currentReport.items[${n}].note=this.value"></td><td><button class="danger" onclick="removeItem(${n})">×</button></td></tr>`}).join('')}
-function specialEditor(item,index){let r=item.result||{},fields={GUE:[['color','Color'],['appearance','Appearance'],['reaction','Reaction'],['gravity','Specific Gravity'],['albumin','Albumin'],['sugar','Sugar'],['bilePigment','Bile Pigment'],['ketone','Ketone Bodies'],['nitrite','Nitrite'],['ascorbic','Ascorbic Acid'],['rbc','RBC / HPF'],['pus','Pus Cells / HPF'],['epith','Epithelial Cells / HPF'],['casts','Casts'],['amUrat','Amorphous Urates'],['mucous','Mucous'],['uricAcid','Uric Acid'],['bacteria','Bacteria'],['oxalate','Calcium Oxalate']],GSE:[['color','Color'],['consistency','Consistency'],['mucus','Mucus'],['blood','Blood'],['ph','pH'],['occultBlood','Occult Blood'],['reducingSubstances','Reducing Substances'],['ova','Ova'],['cysts','Cysts'],['trophozoites','Trophozoites'],['rbc','RBC'],['pus','Pus Cells'],['fat','Fat'],['undigestedFood','Undigested Food'],['yeast','Yeast'],['other','Other']],HCG:[['specimen','Specimen'],['result','Result'],['date','Date']]};return`<div class="special-grid">${(fields[item.template]||[]).map(([k,l])=>{let v=r[k]??'';if(item.template==='HCG'&&k==='result')return`<div class="field"><label>${l}</label><select onchange="currentReport.items[${index}].result.result=this.value"><option value="">Select</option><option ${v==='Positive'?'selected':''}>Positive</option><option ${v==='Negative'?'selected':''}>Negative</option></select></div>`;if(item.template==='HCG'&&k==='specimen')return`<div class="field"><label>${l}</label><input value="${esc(v||'Blood')}" oninput="currentReport.items[${index}].result.specimen=this.value"></div>`;if(item.template==='HCG'&&k==='date')return`<div class="field"><label>${l}</label><input type="date" value="${esc(v)}" oninput="currentReport.items[${index}].result.date=this.value"></div>`;return`<div class="field"><label>${l}</label><input value="${esc(v)}" oninput="currentReport.items[${index}].result.${k}=this.value"></div>`}).join('')}</div>`}function removeItem(n){currentReport.items.splice(n,1);renderResults()}function saveDraft(){currentReport.status='Draft';save();alert('Draft saved');go('patients')}function saveFinal(){currentReport.status='Final';save();renderPreview();go('reportPage')}function editCurrentReport(){renderResults();go('resultPage')}
+function renderResults(){let p=db.patients.find(x=>x.id===currentReport.patientId);$('resultPatientInfo').innerHTML=`<p><b>${esc(p?.name)}</b> | ${esc(p?.number)} | ${esc(p?.age)} ${esc(p?.ageUnit)} | ${esc(p?.gender)} | ${esc(currentReport.date)}</p>`;$('resultRows').innerHTML=currentReport.items.map((i,n)=>{if(i.template)return`<tr><td colspan="6"><div class="special-editor"><h3>${esc(i.name)}</h3>${specialEditor(i,n)}</div></td></tr>`;return`<tr><td>${esc(i.name)}</td><td><input class="result-input" value="${esc(i.result)}" oninput="currentReport.items[${n}].result=this.value"></td><td><input class="result-input" value="${esc(i.unit)}" oninput="currentReport.items[${n}].unit=this.value"></td><td><input class="result-input" value="${esc(i.range)}" oninput="currentReport.items[${n}].range=this.value"></td><td><input class="result-input" value="${esc(i.note)}" oninput="currentReport.items[${n}].note=this.value"></td><td><button class="danger" onclick="removeItem(${n})">×</button></td></tr>`}).join('')}
+function specialEditor(item,index){let r=item.result||{},fields={GUE:[['color','Color'],['appearance','Appearance'],['reaction','Reaction'],['gravity','Specific Gravity'],['albumin','Albumin'],['sugar','Sugar'],['bilePigment','Bile Pigment'],['ketone','Ketone Bodies'],['nitrite','Nitrite'],['ascorbic','Ascorbic Acid'],['rbc','RBC / HPF'],['pus','Pus Cells / HPF'],['epith','Epithelial Cells / HPF'],['casts','Casts'],['amUrat','Amorphous Urates'],['mucous','Mucous'],['uricAcid','Uric Acid'],['bacteria','Bacteria'],['oxalate','Calcium Oxalate']],GSE:[['color','Color'],['consistency','Consistency'],['mucus','Mucus'],['blood','Blood'],['ph','pH'],['occultBlood','Occult Blood'],['reducingSubstances','Reducing Substances'],['ova','Ova'],['cysts','Cysts'],['trophozoites','Trophozoites'],['rbc','RBC'],['pus','Pus Cells'],['fat','Fat'],['undigestedFood','Undigested Food'],['yeast','Yeast'],['other','Other']],HCG:[['specimen','Specimen'],['result','Result'],['date','Date']]};return`<div class="special-grid">${(fields[item.template]||[]).map(([k,l])=>{let v=r[k]??'';if(item.template==='HCG'&&k==='result')return`<div class="field"><label>${l}</label><select onchange="currentReport.items[${index}].result.result=this.value"><option value="">Select</option><option ${v==='Positive'?'selected':''}>Positive</option><option ${v==='Negative'?'selected':''}>Negative</option></select></div>`;if(item.template==='HCG'&&k==='specimen')return`<div class="field"><label>${l}</label><input value="${esc(v||'Blood')}" oninput="currentReport.items[${index}].result.specimen=this.value"></div>`;if(item.template==='HCG'&&k==='date')return`<div class="field"><label>${l}</label><input type="date" value="${esc(v)}" oninput="currentReport.items[${index}].result.date=this.value"></div>`;return`<div class="field"><label>${l}</label><input value="${esc(v)}" oninput="currentReport.items[${index}].result.${k}=this.value"></div>`}).join('')}</div>`}
+function removeItem(n){currentReport.items.splice(n,1);renderResults()}
+function saveDraft(){if(!currentReport)return;currentReport.status='Draft';save();alert('Draft saved');go('patients')}
+function saveFinal(){if(!currentReport)return;currentReport.status='Final';save();renderPreview();go('reportPage')}
+function editCurrentReport(){if(!currentReport)return;renderResults();go('resultPage')}
 function groupName(name){let n=name.toLowerCase();if(/cbc|hemoglobin|rbc|wbc|hct|mcv|mch|mchc|rdw|platelet|neutrophil|lymphocyte|monocyte|eosinophil|basophil|esr|reticulocyte/.test(n))return'Hematology';if(/glucose|urea|bun|creatinine|egfr|uric acid|sodium|potassium|chloride|calcium|phosphorus|magnesium|protein|albumin|bilirubin|alt|ast|alp|ggt|amylase|lipase|ldh|ck|troponin|nt-probnp/.test(n))return'Biochemistry';if(/cholesterol|triglyceride|hdl|ldl|vldl/.test(n))return'Lipid Profile';if(/tsh|t3|t4|ft3|ft4|prolactin|fsh|lh|testosterone|estradiol|progesterone|cortisol|hcg/.test(n))return'Hormones';if(/crp|aso|rf|anti-ccp|ferritin|vitamin/.test(n))return'Immunology';if(/hbs|hcv|hiv|vdrl|widal/.test(n))return'Serology';if(/gue|urine/.test(n))return'Urine';if(/gse|stool/.test(n))return'Stool';if(/pt|inr|aptt|tt|d-dimer|fibrinogen/.test(n))return'Coagulation';return'Other Tests'}
-function specialReport(item){let r=item.result||{},gue=[['Color','color'],['Appearance','appearance'],['Reaction','reaction'],['Specific Gravity','gravity'],['Albumin','albumin'],['Sugar','sugar'],['Bile Pigment','bilePigment'],['Ketone Bodies','ketone'],['Nitrite','nitrite'],['Ascorbic Acid','ascorbic'],['RBC','rbc'],['Pus Cells','pus'],['Epithelial Cells','epith'],['Casts','casts'],['Amorphous Urates','amUrat'],['Mucous','mucous'],['Uric Acid','uricAcid'],['Bacteria','bacteria'],['Calcium Oxalate','oxalate']],gse=[['Color','color'],['Consistency','consistency'],['Mucus','mucus'],['Blood','blood'],['pH','ph'],['Occult Blood','occultBlood'],['Reducing Substances','reducingSubstances'],['Ova','ova'],['Cysts','cysts'],['Trophozoites','trophozoites'],['RBC','rbc'],['Pus Cells','pus'],['Fat','fat'],['Undigested Food','undigestedFood'],['Yeast','yeast'],['Other','other']];if(item.template==='HCG')return`<div class="hcg-report"><h3>SPECIMEN: ${esc(r.specimen||'Blood')}</h3><div class="hcg-result">HCG: ${esc(r.result||'________')}</div><div class="hcg-date">Date: ${esc(r.date||'')}</div></div>`;let specs=item.template==='GUE'?gue:gse;if(item.template==='GUE'){let pairs=[];for(let i=0;i<specs.length;i+=2){let a=specs[i],b=specs[i+1];pairs.push(`<tr><th>${a[0]}</th><td>${esc(r[a[1]]||'')}</td>${b?`<th>${b[0]}</th><td>${esc(r[b[1]]||'')}</td>`:''}</tr>`)}return`<div class="special-report"><h3>GENERAL URINE EXAMINATION</h3><table class="special-table"><tbody>${pairs.join('')}</tbody></table></div>`}return`<div class="special-report"><h3>GENERAL STOOL EXAMINATION</h3><table class="special-table"><tbody>${specs.map(s=>`<tr><th>${s[0]}</th><td>${esc(r[s[1]]||'')}</td></tr>`).join('')}</tbody></table></div>`}
-function printReport(){
-    if(!currentReport){
-        alert('No report available.');
-        return;
-    }
-
-    renderPreview();
-
-    const report = document.querySelector('#reportPreview .report-sheet');
-    if(!report){
-        alert('Report preview not found.');
-        return;
-    }
-
-    const printWindow = window.open('', '_blank');
-
-    if(!printWindow){
-        alert('Allow pop-ups for this application, then try again.');
-        return;
-    }
-
-    const printCSS = `
-        @page {
-            size: A4 portrait;
-            margin: 0;
-        }
-
-        * {
-            box-sizing: border-box;
-            -webkit-print-color-adjust: exact !important;
-            print-color-adjust: exact !important;
-        }
-
-        html, body {
-            margin: 0 !important;
-            padding: 0 !important;
-            width: 210mm !important;
-            height: 297mm !important;
-            background: #fff !important;
-            font-family: Arial, sans-serif !important;
-        }
-
-        body {
-            overflow: hidden !important;
-        }
-
-        .report-sheet {
-            position: relative !important;
-            width: 210mm !important;
-            height: 297mm !important;
-            min-height: 297mm !important;
-            margin: 0 !important;
-            overflow: hidden !important;
-            page-break-after: avoid !important;
-        }
-
-        .report-background {
-            position: absolute !important;
-            inset: 0 !important;
-            width: 210mm !important;
-            height: 297mm !important;
-            object-fit: fill !important;
-            z-index: 1 !important;
-        }
-
-        .report-content {
-            position: relative !important;
-            z-index: 2 !important;
-            padding: 50mm 15mm 20mm !important;
-        }
-
-        .report-patient {
-            display: grid !important;
-            grid-template-columns: repeat(3, 1fr) !important;
-            gap: 6px !important;
-            direction: ltr !important;
-            text-align: left !important;
-            font-size: 9pt !important;
-            background: #ffffffdd !important;
-            padding: 8px !important;
-            margin-bottom: 8px !important;
-        }
-
-        /* Correct report column order:
-           LEFT: Reference Range
-           Unit
-           Result
-           RIGHT: Test Name
-        */
-
-        .report-results {
-            direction: rtl !important;
-            width: 100% !important;
-            border-collapse: collapse !important;
-            table-layout: fixed !important;
-            margin-top: 5px !important;
-        }
-
-        .report-results th,
-        .report-results td {
-            border: 1px solid #a9bac9 !important;
-            padding: 6px 5px !important;
-            text-align: center !important;
-            vertical-align: middle !important;
-            overflow-wrap: anywhere !important;
-        }
-
-        .report-results th {
-            background: #173957 !important;
-            color: #ffffff !important;
-            font-size: 9pt !important;
-            font-weight: bold !important;
-        }
-
-        .report-results td {
-            color: #24384b !important;
-            font-size: 8.5pt !important;
-        }
-
-        .report-results th:nth-child(1),
-        .report-results td:nth-child(1) {
-            width: 34% !important;
-        }
-
-        .report-results th:nth-child(2),
-        .report-results td:nth-child(2) {
-            width: 18% !important;
-        }
-
-        .report-results th:nth-child(3),
-        .report-results td:nth-child(3) {
-            width: 16% !important;
-        }
-
-        .report-results th:nth-child(4),
-        .report-results td:nth-child(4) {
-            width: 32% !important;
-        }
-
-        .report-results tbody tr:nth-child(even):not(.group-row) {
-            background: #f4f8fb !important;
-        }
-
-        .group-row td {
-            background: #e5edf5 !important;
-            color: #173957 !important;
-            font-weight: bold !important;
-            text-align: right !important;
-            padding: 7px 9px !important;
-            border-top: 2px solid #547895 !important;
-        }
-
-        .special-report {
-            width: 100% !important;
-            margin: 3mm auto !important;
-        }
-
-        .special-report h3 {
-            background: #173957 !important;
-            color: white !important;
-            text-align: center !important;
-            padding: 7px !important;
-            margin: 0 !important;
-        }
-
-        .special-table {
-            width: 100% !important;
-            border-collapse: collapse !important;
-            direction: ltr !important;
-        }
-
-        .special-table th,
-        .special-table td {
-            border: 1px solid #c5d0da !important;
-            padding: 4px !important;
-            font-size: 8pt !important;
-        }
-
-        .special-table th {
-            background: #e5edf5 !important;
-            color: #173957 !important;
-        }
-
-        .hcg-report {
-            border: 1px solid #aaa !important;
-            padding: 8mm !important;
-            min-height: 80mm !important;
-        }
-
-        .hcg-report h3 {
-            background: #173957 !important;
-            color: white !important;
-            text-align: center !important;
-            padding: 8px !important;
-        }
-
-        .hcg-report .hcg-result {
-            margin-top: 15mm !important;
-            text-align: center !important;
-            font-size: 18pt !important;
-            font-weight: bold !important;
-        }
-
-        .hcg-report .hcg-date {
-            text-align: right !important;
-            margin-top: 10mm !important;
-        }
-
-        /* Remove any signature element */
-        .signature,
-        [id*="signature"],
-        [class*="signature"] {
-            display: none !important;
-        }
-
-        @media print {
-            html, body {
-                width: 210mm !important;
-                height: 297mm !important;
-                margin: 0 !important;
-                padding: 0 !important;
-            }
-
-            .report-results thead {
-                display: table-header-group !important;
-            }
-        }
-    `;
-
-    printWindow.document.open();
-
-    printWindow.document.write(`
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <meta charset="UTF-8">
-            <base href="${document.baseURI}">
-            <title>Laboratory Report</title>
-            <style>${printCSS}</style>
-        </head>
-        <body>
-            ${report.outerHTML}
-        </body>
-        </html>
-    `);
-
-    printWindow.document.close();
-
-    printWindow.onload = function(){
-        const image = printWindow.document.querySelector('.report-background');
-
-        function startPrint(){
-            setTimeout(function(){
-                printWindow.focus();
-                printWindow.print();
-            }, 800);
-        }
-
-        if(image && !image.complete){
-            image.onload = startPrint;
-            image.onerror = startPrint;
-        } else {
-            startPrint();
-        }
-    };
-}
-function printReport(){if(!currentReport)return alert('No report available.');renderPreview();const report=document.querySelector('#reportPreview .report-sheet');if(!report)return alert('Report preview not found.');const w=window.open('','_blank');if(!w)return alert('Please allow pop-ups to print the report.');const css=`@page{size:A4 portrait;margin:0}*{box-sizing:border-box}html,body{margin:0;padding:0;width:210mm;height:297mm;font-family:Arial,sans-serif;background:white;overflow:hidden}.report-sheet{width:210mm!important;height:297mm!important;min-height:297mm!important;position:relative!important;margin:0!important;overflow:hidden!important;page-break-after:avoid!important}.report-background{position:absolute!important;inset:0!important;width:210mm!important;height:297mm!important;object-fit:fill!important;z-index:1!important}.report-content{position:relative!important;z-index:2!important;padding:50mm 15mm 20mm!important}.report-patient{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:6px!important;direction:ltr!important;text-align:left!important;font-size:9pt!important;background:#ffffffdd!important;padding:8px!important;margin-bottom:8px!important}.report-results{direction:ltr!important;width:100%!important;border-collapse:collapse!important;table-layout:fixed!important;margin-top:5px!important}.report-results th{background:#173957!important;color:white!important;padding:7px 5px!important;border:1px solid #b7c7d5!important;font-size:9pt!important;text-align:center!important}.report-results td{border:1px solid #c5d0da!important;padding:6px 4px!important;text-align:center!important;font-size:8.5pt!important;overflow-wrap:anywhere!important}.report-results th:nth-child(1),.report-results td:nth-child(1){width:34%!important}.report-results th:nth-child(2),.report-results td:nth-child(2){width:18%!important}.report-results th:nth-child(3),.report-results td:nth-child(3){width:16%!important}.report-results th:nth-child(4),.report-results td:nth-child(4){width:32%!important}.group-row td{background:#e5edf5!important;color:#173957!important;font-weight:bold!important;text-align:left!important;padding:7px 9px!important;border-top:2px solid #547895!important}.special-report{width:100%!important;margin:3mm auto!important}.special-report h3{background:#173957!important;color:white!important;text-align:center!important;padding:7px!important;margin:0!important}.special-table{width:100%!important;border-collapse:collapse!important;direction:ltr!important}.special-table th,.special-table td{border:1px solid #c5d0da!important;padding:4px!important;font-size:8pt!important}.special-table th{background:#e5edf5!important;color:#173957!important}.hcg-report{border:1px solid #aaa!important;padding:8mm!important;min-height:80mm!important}.hcg-report 
-function renderPatients(){let q=($('patientSearch').value||'').toLowerCase(),list=db.patients.filter(p=>(p.name||'').toLowerCase().includes(q)||(p.number||'').toLowerCase().includes(q));$('patientsRows').innerHTML=list.slice().reverse().map(p=>`<tr><td>${esc(p.number)}</td><td>${esc(p.name)}</td><td>${esc(p.age)} ${esc(p.ageUnit)}</td><td>${esc(p.gender)}</td><td>${esc(p.date)}</td><td>${db.reports.filter(r=>r.patientId===p.id).length}</td><td><button onclick="openPatient('${p.id}')">Open</button><button class="danger" onclick="deletePatient('${p.id}')">Delete</button></td></tr>`).join('')||'<tr><td colspan="7" class="empty">No records</td></tr>'}function deletePatient(id){if(!confirm('Delete patient and all reports?'))return;db.patients=db.patients.filter(p=>p.id!==id);db.reports=db.reports.filter(r=>r.patientId!==id);save();renderPatients();dashboard()}function dashboard(){$('statPatients').textContent=db.patients.length;$('statReports').textContent=db.reports.length;$('statTests').textContent=db.tests.length;$('recentPatients').innerHTML=db.patients.slice(-5).reverse().map(p=>`<tr><td>${esc(p.number)}</td><td>${esc(p.name)}</td><td>${esc(p.date)}</td><td><button onclick="openPatient('${p.id}')">Open</button></td></tr>`).join('')||'<tr><td colspan="4" class="empty">No data</td></tr>'}
-function renderTests(){$('testsRows').innerHTML=db.tests.map((t,i)=>`<tr><td>${esc(t.name)}</td><td>${esc(t.unit)}</td><td>${esc(t.range)}</td><td><button class="danger" onclick="deleteTest(${i})">Delete</button></td></tr>`).join('')}function addTest(){let name=$('newTestName').value.trim();if(!name)return alert('Enter test name');if(db.tests.some(t=>t.name.toLowerCase()===name.toLowerCase()))return alert('Test already exists');db.tests.push({name,unit:$('newTestUnit').value,range:$('newTestRange').value,category:'Other'});save();$('newTestName').value=$('newTestUnit').value=$('newTestRange').value='';renderTests();dashboard()}function deleteTest(i){if(confirm('Delete test from selection list?')){db.tests.splice(i,1);save();renderTests();dashboard()}}
-function loadSettings(){let s=db.settings;$('setLabAr').value=s.labAr||'';$('setLabEn').value=s.labEn||'';$('setPhone').value=s.phone||'';$('setAddress').value=s.address||''}function saveSettings(){db.settings={labAr:$('setLabAr').value,labEn:$('setLabEn').value,phone:$('setPhone').value,address:$('setAddress').value};save();alert('Settings saved')}function backupData(){let b=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='Al-Juman-Backup.json';a.click()}function restoreData(){let input=document.createElement('input');input.type='file';input.accept='.json';input.onchange=()=>{let f=input.files[0];if(!f)return;let rd=new FileReader();rd.onload=()=>{try{let x=JSON.parse(rd.result);if(!Array.isArray(x.patients)||!Array.isArray(x.tests))throw Error();if(confirm('Replace current data with backup?')){db={...fresh(),...x};save();dashboard();renderPatients();renderTests();alert('Backup restored')}}catch(e){alert('Invalid backup file')}};rd.readAsText(f)};input.click()}
-function exportWord(){if(!currentReport)return;renderPreview();let html=`<html><head><meta charset="UTF-8"><style>body{font-family:Arial}table{width:100%;border-collapse:collapse}th,td{border:1px solid #777;padding:7px;text-align:center}</style></head><body>${$('reportPreview').innerHTML}</body></html>`,b=new Blob(['\ufeff',html],{type:'application/msword'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='Report-'+currentReport.id+'.doc';a.click()}
+function specialReport(item){let r=item.result||{},gue=[['Color','color'],['Appearance','appearance'],['Reaction','reaction'],['Specific Gravity','gravity'],['Albumin','albumin'],['Sugar','sugar'],['Bile Pigment','bilePigment'],['Ketone Bodies','ketone'],['Nitrite','nitrite'],['Ascorbic Acid','ascorbic'],['RBC','rbc'],['Pus Cells','pus'],['Epithelial Cells','epith'],['Casts','casts'],['Amorphous Urates','amUrat'],['Mucous','mucous'],['Uric Acid','uricAcid'],['Bacteria','bacteria'],['Calcium Oxalate','oxalate']],gse=[['Color','color'],['Consistency','consistency'],['Mucus','mucus'],['Blood','blood'],['pH','ph'],['Occult Blood','occultBlood'],['Reducing Substances','reducingSubstances'],['Ova','ova'],['Cysts','cysts'],['Trophozoites','trophozoites'],['RBC','rbc'],['Pus Cells','pus'],['Fat','fat'],['Undigested Food','undigestedFood'],['Yeast','yeast'],['Other','other']];if(item.template==='HCG')return`<div class="hcg-report"><h3>SPECIMEN: ${esc(r.specimen||'Blood')}</h3><div class="hcg-result">HCG: ${esc(r.result||'________')}</div><div class="hcg-date">Date: ${esc(r.date||'')}</div></div>`;let specs=item.template==='GUE'?gue:gse;if(item.template==='GUE'){let rows=[];for(let i=0;i<specs.length;i+=2){let a=specs[i],b=specs[i+1];rows.push(`<tr><th>${a[0]}</th><td>${esc(r[a[1]]||'')}</td>${b?`<th>${b[0]}</th><td>${esc(r[b[1]]||'')}</td>`:''}</tr>`)}return`<div class="special-report"><h3>GENERAL URINE EXAMINATION</h3><table class="special-table"><tbody>${rows.join('')}</tbody></table></div>`}return`<div class="special-report"><h3>GENERAL STOOL EXAMINATION</h3><table class="special-table"><tbody>${specs.map(s=>`<tr><th>${s[0]}</th><td>${esc(r[s[1]]||'')}</td></tr>`).join('')}</tbody></table></div>`}
+function renderPreview(){if(!currentReport)return;let p=db.patients.find(x=>x.id===currentReport.patientId),s=db.settings||{},ordinary=currentReport.items.filter(i=>!i.template),groups={};ordinary.forEach(i=>(groups[groupName(i.name)]??=[]).push(i));let order=['Hematology','Biochemistry','Lipid Profile','Hormones','Immunology','Serology','Urine','Stool','Coagulation','Other Tests'];let rows=order.filter(g=>groups[g]?.length).map(g=>`<tr class="group-row"><td colspan="4">${esc(g)}</td></tr>${groups[g].map(i=>`<tr><td>${esc(i.name)}</td><td>${esc(i.result)}</td><td>${esc(i.unit)}</td><td>${esc(i.range)}</td></tr>`).join('')}`).join('');let specials=currentReport.items.filter(i=>i.template).map(specialReport).join('');$('reportPreview').innerHTML=`<div class="report-sheet"><img class="report-background" src="lab_form.jpg" alt="Report form background"><div class="report-content"><div class="report-patient"><div><b>Patient:</b> ${esc(p?.name)}</div><div><b>ID:</b> ${esc(p?.number)}</div><div><b>Date:</b> ${esc(currentReport.date)}</div><div><b>Age:</b> ${esc(p?.age)} ${esc(p?.ageUnit)}</div><div><b>Gender:</b> ${esc(p?.gender)}</div><div><b>Doctor:</b> ${esc(p?.doctor||'-')}</div></div>${ordinary.length?`<table class="report-results"><thead><tr><th>Test Name</th><th>Result</th><th>Unit</th><th>Reference Range</th></tr></thead><tbody>${rows}</tbody></table>`:''}${specials}</div></div>`}
+function printReport(){if(!currentReport)return alert('No report available.');renderPreview();const report=document.querySelector('#reportPreview .report-sheet');if(!report)return alert('Report preview not found.');const w=window.open('','_blank');if(!w)return alert('Please allow pop-ups for this application.');const css=`@page{size:A4 portrait;margin:0}*{box-sizing:border-box;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}html,body{margin:0;padding:0;width:210mm;height:297mm;background:#fff;font-family:Arial,sans-serif;overflow:hidden}.report-sheet{width:210mm!important;height:297mm!important;min-height:297mm!important;position:relative!important;margin:0!important;overflow:hidden!important;page-break-after:avoid!important}.report-background{position:absolute!important;inset:0!important;width:210mm!important;height:297mm!important;object-fit:fill!important;z-index:1!important}.report-content{position:relative!important;z-index:2!important;padding:50mm 15mm 20mm!important}.report-patient{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:6px!important;direction:ltr!important;text-align:left!important;font-size:9pt!important;background:#ffffffdd!important;padding:8px!important;margin-bottom:8px!important}.report-results{direction:rtl!important;width:100%!important;border-collapse:collapse!important;table-layout:fixed!important;margin-top:5px!important}.report-results th,.report-results td{border:1px solid #a9bac9!important;padding:6px 4px!important;text-align:center!important;overflow-wrap:anywhere!important}.report-results th{background:#173957!important;color:white!important;font-size:9pt!important}.report-results td{font-size:8.5pt!important;color:#24384b!important}.report-results th:nth-child(1),.report-results td:nth-child(1){width:34%!important}.report-results th:nth-child(2),.report-results td:nth-child(2){width:18%!important}.report-results th:nth-child(3),.report-results td:nth-child(3){width:16%!important}.report-results th:nth-child(4),.report-results td:nth-child(4){width:32%!important}.group-row td{background:#e5edf5!important;color:#173957!important;font-weight:bold!important;text-align:right!important}.special-report{width:100%!important;margin:3mm auto!important}.special-report h3{background:#173957!important;color:white!important;text-align:center!important;padding:7px!important;margin:0!important}.special-table{width:100%!important;border-collapse:collapse!important;direction:ltr!important}.special-table th,.special-table td{border:1px solid #c5d0da!important;padding:4px!important;font-size:8pt!important}.special-table th{background:#e5edf5!important;color:#173957!important}.hcg-report{border:1px solid #aaa!important;padding:8mm!important;min-height:80mm!important}.hcg-report h3{background:#173957!important;color:white!important;text-align:center!important;padding:8px!important}.hcg-report .hcg-result{margin-top:15mm!important;text-align:center!important;font-size:18pt!important;font-weight:bold!important}.hcg-report .hcg-date{text-align:right!important;margin-top:10mm!important}.signature,[id*="signature"],[class*="signature"]{display:none!important}`;w.document.open();w.document.write(`<!doctype html><html><head><meta charset="UTF-8"><base href="${document.baseURI}"><title>Lab Report</title><style>${css}</style></head><body>${report.outerHTML}</body></html>`);w.document.close();const waitForImage=()=>{let img=w.document.querySelector('.report-background');if(!img||img.complete){setTimeout(()=>{w.focus();w.print()},700)}else{img.onload=()=>setTimeout(()=>{w.focus();w.print()},700);img.onerror=()=>{w.focus();w.print()}}};w.onload=waitForImage}
+function renderPatients(){let q=($('patientSearch').value||'').toLowerCase(),list=db.patients.filter(p=>(p.name||'').toLowerCase().includes(q)||(p.number||'').toLowerCase().includes(q));$('patientsRows').innerHTML=list.slice().reverse().map(p=>`<tr><td>${esc(p.number)}</td><td>${esc(p.name)}</td><td>${esc(p.age)} ${esc(p.ageUnit)}</td><td>${esc(p.gender)}</td><td>${esc(p.date)}</td><td>${db.reports.filter(r=>r.patientId===p.id).length}</td><td><button class="small-btn" onclick="openPatient('${p.id}')">Open</button><button class="danger small-btn" onclick="deletePatient('${p.id}')">Delete</button></td></tr>`).join('')||'<tr><td colspan="7" class="empty">No records</td></tr>'}
+function openPatient(id){currentPatient=db.patients.find(p=>p.id===id);if(!currentPatient)return;let reports=db.reports.filter(r=>r.patientId===id);if(!reports.length){selectedTests.clear();$('choosePatientInfo').innerHTML=`<p><b>Patient:</b> ${esc(currentPatient.name)} &nbsp; <b>ID:</b> ${esc(currentPatient.number)} &nbsp; <b>Date:</b> ${esc(currentPatient.date)}</p>`;$('testSearch').value='';renderTestChoices();go('choosePage');return}let report=reports[0];currentReport=report;renderPreview();go('reportPage')}
+function deletePatient(id){if(!confirm('Delete patient and all reports?'))return;db.patients=db.patients.filter(p=>p.id!==id);db.reports=db.reports.filter(r=>r.patientId!==id);save();renderPatients();dashboard()}
+function dashboard(){$('statPatients').textContent=db.patients.length;$('statReports').textContent=db.reports.length;$('statTests').textContent=db.tests.length;$('recentPatients').innerHTML=db.patients.slice(-5).reverse().map(p=>`<tr><td>${esc(p.number)}</td><td>${esc(p.name)}</td><td>${esc(p.date)}</td><td><button class="small-btn" onclick="openPatient('${p.id}')">Open</button></td></tr>`).join('')||'<tr><td colspan="4" class="empty">No data</td></tr>'}
+function renderTests(){$('testsRows').innerHTML=db.tests.map((t,i)=>`<tr><td>${esc(t.name)}</td><td>${esc(t.unit)}</td><td>${esc(t.range)}</td><td><button class="danger small-btn" onclick="deleteTest(${i})">Delete</button></td></tr>`).join('')}
+function addTest(){let name=$('newTestName').value.trim();if(!name)return alert('Enter test name');if(db.tests.some(t=>t.name.toLowerCase()===name.toLowerCase()))return alert('Test already exists');db.tests.push({name,unit:$('newTestUnit').value,range:$('newTestRange').value,category:'Other'});save();$('newTestName').value=$('newTestUnit').value=$('newTestRange').value='';renderTests();dashboard()}
+function deleteTest(i){if(confirm('Delete test from selection list?')){db.tests.splice(i,1);save();renderTests();dashboard()}}
+function loadSettings(){let s=db.settings;$('setLabAr').value=s.labAr||'';$('setLabEn').value=s.labEn||'';$('setPhone').value=s.phone||'';$('setAddress').value=s.address||''}
+function saveSettings(){db.settings={labAr:$('setLabAr').value,labEn:$('setLabEn').value,phone:$('setPhone').value,address:$('setAddress').value};save();alert('Settings saved')}
+function backupData(){let b=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='Al-Juman-Backup.json';a.click();URL.revokeObjectURL(a.href)}
+function restoreData(){let input=document.createElement('input');input.type='file';input.accept='.json,application/json';input.onchange=()=>{let f=input.files[0];if(!f)return;let rd=new FileReader();rd.onload=()=>{try{let x=JSON.parse(rd.result);if(!Array.isArray(x.patients)||!Array.isArray(x.tests))throw Error('Invalid');if(confirm('Replace current data with backup?')){db={...fresh(),...x};save();dashboard();renderPatients();renderTests();alert('Backup restored')}}catch(e){alert('Invalid backup file')}};rd.readAsText(f)};input.click()}
+function exportWord(){if(!currentReport)return;renderPreview();let html=`<html><head><meta charset="UTF-8"><style>body{font-family:Arial}table{width:100%;border-collapse:collapse}th,td{border:1px solid #777;padding:7px;text-align:center}</style></head><body>${$('reportPreview').innerHTML}</body></html>`,b=new Blob(['\ufeff',html],{type:'application/msword'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='Report-'+currentReport.id+'.doc';a.click();URL.revokeObjectURL(a.href)}
 dashboard();renderPatients();renderTests();
 </script></body></html>
