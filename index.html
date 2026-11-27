@@ -11,6 +11,16 @@
 @media(max-width:720px){.wrap{padding:10px}.panel{padding:15px}.grid{grid-template-columns:1fr 1fr}.test-tools{grid-template-columns:1fr}.stats{grid-template-columns:1fr}.report-info{grid-template-columns:1fr 1fr}.report-preview{padding:10px}.report-head h1{font-size:20px}}
 @page{size:A4 portrait;margin:10mm}
 @media print{body{background:#fff!important;color:#000!important}.top,.wrap>section:not(#reportPreviewPanel),#reportPreviewPanel h2,#reportPreviewPanel .report-actions,#reportPreviewPanel .notice,.toast{display:none!important}.wrap{padding:0!important;margin:0!important;max-width:none!important}.panel#reportPreviewPanel{display:block!important;border:0!important;box-shadow:none!important;margin:0!important;padding:0!important}.report-preview{display:block!important;border:0!important;padding:0!important;overflow:visible!important}.report{max-width:none!important;width:100%!important}.report-head h1{font-size:19pt}.report-head h2{font-size:11pt}.report-info{padding:8px!important;margin:8px 0!important;break-inside:avoid}.report-results{width:100%!important;min-width:0!important}.report-results th,.report-results td{font-size:9pt!important;padding:6px!important;text-align:center!important}.report-results{direction:ltr!important;table-layout:fixed!important}.report-results th:nth-child(1),.report-results td:nth-child(1){width:36%!important}.report-results th:nth-child(2),.report-results td:nth-child(2){width:18%!important}.report-results th:nth-child(3),.report-results td:nth-child(3){width:14%!important}.report-results th:nth-child(4),.report-results td:nth-child(4){width:32%!important}.report-results tr.group td{text-align:left!important}.report-results tr{break-inside:avoid}.report-foot{break-inside:avoid;margin-top:12px}.report-note{break-inside:avoid}button{display:none!important}}
+
+/* FINAL REPORT TABLE FIX - enforce English LTR column order */
+.report-results, #reportPreview .report-results { direction: ltr !important; unicode-bidi: isolate !important; width: 100% !important; table-layout: fixed !important; }
+.report-results thead, .report-results tbody { direction: ltr !important; }
+.report-results th, .report-results td { direction: ltr !important; unicode-bidi: isolate !important; }
+.report-results th:nth-child(1), .report-results td:nth-child(1) { width: 36% !important; }
+.report-results th:nth-child(2), .report-results td:nth-child(2) { width: 18% !important; }
+.report-results th:nth-child(3), .report-results td:nth-child(3) { width: 14% !important; }
+.report-results th:nth-child(4), .report-results td:nth-child(4) { width: 32% !important; }
+
 </style>
 </head>
 <body>
