@@ -1,162 +1,159 @@
 
-name: Build Android APK
+name: Build Al-Juman Side Lab APK
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   build:
+    name: Build Android Application
     runs-on: ubuntu-latest
 
     steps:
+      # 1. Download project
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # 2. Install Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
+      # 3. Install Java for Android
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: 21
+          java-version: 17
 
+      # 4. Verify files
       - name: Check project files
         run: |
           set -e
+          echo "Checking project files..."
 
-          test -f index.html
+          test -f index.html || {
+            echo "ERROR: index.html is missing"
+            exit 1
+          }
 
-          echo "Repository files:"
-          find . -maxdepth 3 -type f \
-            -not -path "./.git/*" \
-            -not -path "./node_modules/*" \
-            | sort
+          test -f package.json || {
+            echo "ERROR: package.json is missing"
+            exit 1
+          }
 
-      - name: Check report template
+          echo "Project files found."
+
+      # 5. Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # 6. Prepare application files
+      - name: Prepare web application
         run: |
           set -e
 
-          TEMPLATE="قالب تقرير مختبر الجمان الطبي.png"
+          mkdir -p www
+          cp index.html www/index.html
 
-          if [ -f "$TEMPLATE" ]; then
-            echo "Report template found:"
-            ls -lh "$TEMPLATE"
+          if [ -f app.js ]; then
+            cp app.js www/app.js
+          fi
+
+          if [ -f style.css ]; then
+            cp style.css www/style.css
+          fi
+
+          if [ -f manifest.json ]; then
+            cp manifest.json www/manifest.json
+          fi
+
+          if [ -f service-worker.js ]; then
+            cp service-worker.js www/service-worker.js
+          fi
+
+          if [ -f lab_form.jpg ]; then
+            cp lab_form.jpg www/lab_form.jpg
+            echo "JPG report template copied."
+          elif [ -f lab_form.png ]; then
+            cp lab_form.png www/lab_form.png
+            echo "PNG report template copied."
           else
-            echo "::error::Report template not found: $TEMPLATE"
-            echo "Please upload the report template PNG to the repository root."
-            echo "Files currently available:"
-            find . -maxdepth 3 -type f \
-              -not -path "./.git/*" \
-              -not -path "./node_modules/*"
+            echo "No external template found."
+            echo "Continuing without external template check."
+          fi
+
+          echo "Web application prepared."
+
+      # 7. Check Capacitor configuration
+      - name: Check Capacitor configuration
+        run: |
+          set -e
+
+          if [ ! -f capacitor.config.json ] && [ ! -f capacitor.config.js ] && [ ! -f capacitor.config.ts ]; then
+            echo "ERROR: Capacitor configuration file is missing."
             exit 1
           fi
 
-      - name: Install dependencies
-        run: |
-          set -e
-          npm install
-          npm install @capacitor/core @capacitor/cli @capacitor/android
+          echo "Capacitor configuration found."
 
-      - name: Configure Capacitor
-        run: |
-          cat > capacitor.config.json << 'EOF'
-          {
-            "appId": "com.aljuman.lab",
-            "appName": "Al-Juman Side Lab",
-            "webDir": "www",
-            "bundledWebRuntime": false
-          }
-          EOF
-
-      - name: Prepare website files
-        run: |
-          set -e
-
-          rm -rf www
-          mkdir -p www
-
-          rsync -av ./ www/ \
-            --exclude=".git" \
-            --exclude=".github" \
-            --exclude="node_modules" \
-            --exclude="android" \
-            --exclude="www" \
-            --exclude="dist" \
-            --exclude="build" \
-            --exclude="package.json" \
-            --exclude="package-lock.json" \
-            --exclude="capacitor.config.json"
-
-          echo "Files copied to www:"
-          find www -maxdepth 3 -type f | sort
-
-          test -f www/index.html
-          test -f "www/قالب تقرير مختبر الجمان الطبي.png"
-
-      - name: Verify report template in www
-        run: |
-          set -e
-
-          TEMPLATE="www/قالب تقرير مختبر الجمان الطبي.png"
-
-          test -f "$TEMPLATE"
-
-          echo "Template size:"
-          du -h "$TEMPLATE"
-
-          file "$TEMPLATE"
-
+      # 8. Add Android platform
       - name: Add Android platform
         run: |
           set -e
 
           if [ ! -d android ]; then
             npx cap add android
+          else
+            echo "Android platform already exists."
           fi
 
-      - name: Sync Android
+      # 9. Sync application
+      - name: Sync Capacitor Android
         run: |
           set -e
           npx cap sync android
 
-      - name: Verify Android assets
+      # 10. Verify Android project
+      - name: Verify Android project
         run: |
           set -e
+          test -f android/gradlew
+          test -d android/app
+          echo "Android project verified."
 
-          echo "Checking Android web assets..."
-
-          find android/app/src/main/assets -maxdepth 4 -type f | sort
-
-          test -f android/app/src/main/assets/public/index.html
-
-          echo "Android assets synchronized successfully."
-
-      - name: Build APK
+      # 11. Build APK
+      - name: Build Debug APK
         run: |
           set -e
-
           cd android
           chmod +x gradlew
           ./gradlew assembleDebug
 
-      - name: Verify APK
+      # 12. Verify APK
+      - name: Verify APK file
         run: |
           set -e
 
-          APK="android/app/build/outputs/apk/debug/app-debug.apk"
+          APK_PATH="android/app/build/outputs/apk/debug/app-debug.apk"
 
-          test -f "$APK"
+          if [ ! -f "$APK_PATH" ]; then
+            echo "ERROR: APK file was not generated."
+            exit 1
+          fi
 
-          echo "APK created successfully:"
-          ls -lh "$APK"
+          echo "APK successfully generated."
+          ls -lh "$APK_PATH"
 
-      - name: Upload APK
+      # 13. Upload APK
+      - name: Upload Android APK
         uses: actions/upload-artifact@v4
         with:
           name: Al-Juman-Side-Lab-APK
